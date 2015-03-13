@@ -9,17 +9,24 @@ namespace Model
     {
 
         private string name;
+        private int cusID;
+
+        public Customer(string name, int cusID)
+        {
+            this.name = name;
+            this.cusID = cusID;
+        }
+
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        private int id;
         public int ID
         {
-            get { return id; }
-            set { id = value; }
+            get { return cusID; }
+            set { cusID = value; }
         }
 
         public Customer(int ID, string Name)
