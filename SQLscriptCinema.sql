@@ -1,64 +1,46 @@
 use dmaa0214_3Sem_2
 
-IF OBJECT_ID('db_owner.Customer', 'U') IS NOT NULL
-	DROP TABLE db_owner.Customer;
-IF OBJECT_ID('db_owner.Movie', 'U') IS NOT NULL
-	DROP TABLE db_owner.Movie;
-IF OBJECT_ID('db_owner.Hall', 'U') IS NOT NULL
-	DROP TABLE db_owner.Hall;
-IF OBJECT_ID('db_owner.Scheduler', 'U') IS NOT NULL
-	DROP TABLE db_owner.Scheduler;
-IF OBJECT_ID('db_owner.Seat', 'U') IS NOT NULL
-	DROP TABLE db_owner.Seat;
-IF OBJECT_ID('db_owner.Reservation', 'U') IS NOT NULL
-	DROP TABLE db_owner.Reservation;
-
 create table Customer
 (
-CusID int IDENTITY(1,1),
+cusID int IDENTITY(1,1),
 name varchar(30), 
-primary key(CusID)
+
+primary key(cusID)
+
 );
 
-INSERT INTO Customer VALUES('Kaj');
-INSERT INTO Customer VALUES('Rene');
-INSERT INTO Customer VALUES('Tue');
-INSERT INTO Customer VALUES('Hamun');
+
 
 create table Movie
 (
-MovieID int IDENTITY(1,1),
-name varchar(70), 
-Playtime int,
-primary key(MovieID)
+movieID int IDENTITY(1,1),
+name varchar(30), 
+playtime time,
+primary key(movieID)
 );
-
-INSERT INTO Movie VALUES('Superman', 120);
-INSERT INTO Movie VALUES('Spider-Man', 90);
-INSERT INTO Movie VALUES('Lord of the Rings', 180);
 
 create table Hall
 (
-HallID int IDENTITY(1,1),
+hallID int IDENTITY(1,1),
 name varchar(30), 
-MaxNumberOfSeats int
-primary key(HallID)
+maxNumberOfSeats int
+primary key(hallID)
 );
 
-INSERT INTO Hall VALUES('Imperial', 90);
-INSERT INTO Hall VALUES('Green', 100);
-INSERT INTO Hall VALUES('Red', 110);
 
 create table Scheduler
 (
-SchID int IDENTITY(1,1),
+schID int IDENTITY(1,1),
 Datetime Date,
-Starttime Time,
-MovieID int ,
-HallID int ,
-foreign key(MovieID) references Movie(MovieID),
-primary key(SchID)
+starttime Time,
+movieID int ,
+hallID int ,
+foreign key(movieID) references Movie(movieID),
+primary key(schID)
+
+
 );
+
 
 create table Seat
 (
@@ -66,16 +48,17 @@ ID int IDENTITY(1,1),
 Row int,
 ColumnArray varchar(MAX),
 SchedulerID int,
+
 primary key(ID)
 );
 
 create table Reservation
 (
-ResID int IDENTITY(1,1),
-CustomerID int, 
-SchedulerID int,
-RowArray varchar(MAX),
-SeatArray varchar(MAX),
-foreign key(CustomerID) references Customer(CusID),
-primary key(ResID)
+resID int IDENTITY(1,1),
+customerID int, 
+schedulerID int,
+rowArray varchar(MAX),
+seatArray varchar(MAX),
+foreign key(customerID) references Customer(cusID),
+primary key(resID)
 );
