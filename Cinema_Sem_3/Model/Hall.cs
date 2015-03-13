@@ -11,19 +11,19 @@ namespace Model
         private string maxNumberOfSeats;
         private string hallName;
 
-        public string getSetHallName
+        public string HallName
         {
             get { return hallName; }
             set { hallName = value; }
         }
 
-        public int getSetHallID
+        public int HallID
         {
             get { return hallID; }
             set { hallID = value; }
         }
 
-        public string getSetMaxNumberOfSeats
+        public string MaxNumberOfSeats
         {
             get { return maxNumberOfSeats; }
             set { maxNumberOfSeats = value; }
