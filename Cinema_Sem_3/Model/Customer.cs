@@ -8,18 +8,18 @@ namespace Model
     public class Customer
     {
 
-        private string Name;
-        public string GetName
+        private string name;
+        public string Name
         {
-            get { return Name; }
-            set { Name = value; }
+            get { return name; }
+            set { name = value; }
         }
 
-        private int ID;
-        public int GetID
+        private int id;
+        public int ID
         {
-            get { return ID; }
-            set { ID = value; }
+            get { return id; }
+            set { id = value; }
         }
 
         public Customer(int ID, string Name)

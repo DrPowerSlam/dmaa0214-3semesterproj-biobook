@@ -1,1 +1,5 @@
 C:\Users\Rene Dahl\Desktop\Cinema3sem\dmaa0214-3semesterproj-biobook\Cinema_Sem_3\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\Rene Dahl\Desktop\Cinema3sem\dmaa0214-3semesterproj-biobook\Cinema_Sem_3\Model\bin\Debug\Model.dll
+C:\Users\Rene Dahl\Desktop\Cinema3sem\dmaa0214-3semesterproj-biobook\Cinema_Sem_3\Model\bin\Debug\Model.pdb
+C:\Users\Rene Dahl\Desktop\Cinema3sem\dmaa0214-3semesterproj-biobook\Cinema_Sem_3\Model\obj\Debug\Model.dll
+C:\Users\Rene Dahl\Desktop\Cinema3sem\dmaa0214-3semesterproj-biobook\Cinema_Sem_3\Model\obj\Debug\Model.pdb
