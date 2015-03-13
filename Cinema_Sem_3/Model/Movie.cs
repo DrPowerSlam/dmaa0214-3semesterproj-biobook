@@ -7,23 +7,30 @@ namespace Model
 {
     class Movie
     {
-        private int id;
+        private int movieID;
         private string name;
         private int playTime;
 
-        public int getSetID
+        public Movie(int movieID, string name, int playTime)
         {
-            get { return id; }
-            set { id = value; }
+            this.movieID = movieID;
+            this.name = name;
+            this.playTime = playTime;
         }
 
-        public int getSetPlayTime
+        public int MovieID
+        {
+            get { return movieID; }
+            set { movieID = value; }
+        }
+
+        public int PlayTime
         {
             get { return playTime; }
             set { playTime = value; }
         }
 
-        public string getSetName
+        public string Name
         {
             get { return name; }
             set { name = value; }

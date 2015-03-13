@@ -14,6 +14,16 @@ namespace Model
         private Hall hall;
         private int endTimeInMinutes;
 
+        public Scheduler(int schID, DateTime date, int timeInMinutes, Movie movie, Hall hall, int endTimeInMinutes)
+        {
+            this.schID = schID;
+            this.date = date;
+            this.timeInMinutes = timeInMinutes;
+            this.movie = movie;
+            this.hall = hall;
+            this.endTimeInMinutes = endTimeInMinutes;
+        }
+
         public int SchID
         {
             get { return schID; }
