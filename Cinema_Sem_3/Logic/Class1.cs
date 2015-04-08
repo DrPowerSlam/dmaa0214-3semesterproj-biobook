@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Model
+namespace Logic
 {
-    class Mom
+    public class Class1
     {
     }
 }

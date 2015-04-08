@@ -9,7 +9,7 @@ namespace Model
     {
     
         private int resID;
-        private int customerID;
+        private Customer customer;
         private Array rowArray;
         private Array seatArray;
 
@@ -20,10 +20,10 @@ namespace Model
         }
        
 
-        public int CustomerID
+        public Customer Customer
         {
-            get { return customerID; }
-            set { customerID = value; }
+            get { return customer; }
+            set { customer = value; }
         }
         private int schedulerID;
 
