@@ -9,6 +9,7 @@ namespace Model
     {
     
         private int resID;
+        private int customerID;
         private Customer customer;
         private Array rowArray;
         private Array seatArray;
@@ -51,7 +52,7 @@ namespace Model
         public Reservation(int ResID, int CustomerID, int SchedulerID, Array RowArray, Array SeatArray)
         {
             this.ResID = ResID;
-            this.CustomerID = CustomerID;
+            this.customerID = CustomerID;
             this.SchedulerID = SchedulerID;
             this.RowArray = RowArray;
             this.SeatArray = SeatArray;

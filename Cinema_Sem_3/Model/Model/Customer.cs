@@ -11,6 +11,12 @@ namespace Model
         private string name;
         private int cusID;
 
+        public Customer()
+        {
+            name = null;
+            cusID = -1;
+        }
+
         public Customer(string name, int cusID)
         {
             this.name = name;
