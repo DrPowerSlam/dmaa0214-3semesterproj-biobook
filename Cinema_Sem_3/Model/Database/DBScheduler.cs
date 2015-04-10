@@ -8,5 +8,6 @@ namespace Model.Database
     class DBScheduler
     {
         //Use LINQ to get the schedulers where the schedulerID is x. (See inside SchedulerController.cs)
+
     }
 }

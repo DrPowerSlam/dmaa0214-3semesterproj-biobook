@@ -11,9 +11,9 @@ namespace Model.Controller
         
         public Scheduler GetScheduler(int schedulerID)
         {
+           
             //Use the database (DB??.cs) to get this
-            Scheduler scheduler = FindSchedulerWithID(int schedulerID);
-            return scheduler;
+            FindSchedulerWithID(4);        
         }
     }
 }
