@@ -43,23 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CinemaService.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\HallController.cs" />
     <Compile Include="Controller\MovieController.cs" />
+    <Compile Include="Controller\ReserveController.cs" />
     <Compile Include="Controller\SchedulerController.cs" />
     <Compile Include="Controller\SeatController.cs" />
     <Compile Include="Database\DBCustomer.cs" />
     <Compile Include="Database\DBHall.cs" />
     <Compile Include="Database\DBMovie.cs" />
+    <Compile Include="Database\DBScheduler.cs" />
     <Compile Include="Database\DBSeat.cs" />
-    <Compile Include="IService1.cs" />
+    <Compile Include="ICinemaService.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Hall.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Seat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Scheduler.cs" />
-    <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

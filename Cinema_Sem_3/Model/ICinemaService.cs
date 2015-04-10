@@ -12,7 +12,7 @@ namespace Model
     public interface ICinemaService
     {
         [OperationContract]
-        Scheduler GetScheduler(int schedulerID);
+        void GetScheduler(int schedulerID);
         
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model.Database;
 using System.Collections;
+using Model;
 
 namespace Model.Controller
 {

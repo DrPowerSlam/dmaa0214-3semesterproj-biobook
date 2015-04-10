@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class Hall
+    public class Hall
     {
         private int hallID;
         private int maxNumberOfSeats;

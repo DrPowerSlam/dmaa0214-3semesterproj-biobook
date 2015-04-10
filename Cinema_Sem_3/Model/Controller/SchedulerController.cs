@@ -13,7 +13,8 @@ namespace Model.Controller
         {
            
             //Use the database (DB??.cs) to get this
-            FindSchedulerWithID(4);        
+            //return FindSchedulerWithID(4);  
+            return null;
         }
     }
 }
