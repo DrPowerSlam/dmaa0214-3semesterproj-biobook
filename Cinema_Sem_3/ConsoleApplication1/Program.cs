@@ -12,6 +12,8 @@ namespace ConsoleApplication1
         static void Main(String[] arg)
         {
             Model.Controller.CustomerController cusCtr = new Model.Controller.CustomerController();
+            Model.Controller.MovieController movCtr = new Model.Controller.MovieController();
+
             Console.WriteLine("WELCOME TO THE TEST APP \n");
 
             foreach(Customer customer in cusCtr.getAllCustomers())
@@ -28,6 +30,22 @@ namespace ConsoleApplication1
             foreach(Customer customer in cusCtr.findCustomersByName("Jens"))
             {
                 Console.WriteLine(customer.ID + ": " + customer.Name + "\n");
+            }
+
+            Console.WriteLine("****************************** FIND MOVIE BY NAME ******************************\n");
+
+            Console.WriteLine(movCtr.findMovieByName("Super-Man").MovieID + ": " + movCtr.findMovieByName("Super-Man").Name + ". Playtime: " + movCtr.findMovieByName("Super-Man").PlayTime + "\n");
+
+            Console.WriteLine("****************************** FIND MOVIE BY ID ******************************\n");
+
+            Console.WriteLine(movCtr.findMovieByID("3").MovieID + ": " + movCtr.findMovieByID("3").Name + ". Playtime: " + movCtr.findMovieByID("3").PlayTime + "\n");
+
+            Console.WriteLine("****************************** FIND ALL MOVIES ******************************\n");
+
+
+            foreach (Movie movie in movCtr.getAllMovies())
+            {
+                Console.WriteLine(movie.MovieID + ": " + movie.Name + ". Playtime: " + movie.PlayTime + "\n");
             }
 
             Console.ReadLine();
