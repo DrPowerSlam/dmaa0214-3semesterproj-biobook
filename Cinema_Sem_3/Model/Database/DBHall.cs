@@ -16,6 +16,7 @@ namespace Model.Database
     {
         string cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString; // Concencting string
 
+        // Select hall by  id
         public Hall selectWhereID(string hallID)
         {
             Hall hall = new Hall();
@@ -47,6 +48,44 @@ namespace Model.Database
 
             return hall;
         }
+
+
+
+        // Select * halls
+
+        public ArrayList selectWhereName(string name)
+        {
+            ArrayList hallList = new ArrayList();
+            using (SqlConnection cn = new SqlConnection())
+            {
+                cn.ConnectionString = cnStr;
+                cn.Open();
+
+                string strSql = "Select * from Hall";
+
+                using (SqlCommand myCommand = new SqlCommand(strSql, cn))
+                {
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+                        while (myDataReader.Read())
+                        {
+                            if(name.Equals(myDataReader["name"].ToString()))
+                            {
+                                Hall hall = new Hall();
+                                hall.HallID = (int)myDataReader["HallID"];
+                                hall.HallName = myDataReader["name"].ToString();
+                                hallList.Add(hall);
+                            }
+                        }
+                    }
+ 
+                }
+                cn.Close();
+            }
+
+            return hallList;
+        }
+
     }
 
 
