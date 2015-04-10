@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConnectToDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Database\ConnetionToDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConnetionToDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Database\DBCustomer.cs" />
     <Compile Include="Database\DBHall.cs" />
     <Compile Include="Database\DBMovie.cs" />
@@ -85,6 +90,11 @@
       <LastGenOutput>ConnectToDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Database\ConnetionToDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ConnetionToDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +106,11 @@
   <ItemGroup>
     <None Include="Database\ConnectToDB.dbml.layout">
       <DependentUpon>ConnectToDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database\ConnetionToDB.dbml.layout">
+      <DependentUpon>ConnetionToDB.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
