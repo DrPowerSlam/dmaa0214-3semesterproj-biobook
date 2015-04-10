@@ -10,6 +10,7 @@ namespace Model
     
         private int resID;
         private int customerID;
+        private Customer customer;
         private Array rowArray;
         private Array seatArray;
 
@@ -20,10 +21,10 @@ namespace Model
         }
        
 
-        public int CustomerID
+        public Customer Customer
         {
-            get { return customerID; }
-            set { customerID = value; }
+            get { return customer; }
+            set { customer = value; }
         }
         private int schedulerID;
 
@@ -51,7 +52,7 @@ namespace Model
         public Reservation(int ResID, int CustomerID, int SchedulerID, Array RowArray, Array SeatArray)
         {
             this.ResID = ResID;
-            this.CustomerID = CustomerID;
+            this.customerID = CustomerID;
             this.SchedulerID = SchedulerID;
             this.RowArray = RowArray;
             this.SeatArray = SeatArray;
