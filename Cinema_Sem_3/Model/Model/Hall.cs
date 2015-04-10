@@ -18,6 +18,13 @@ namespace Model
             this.hallName = hallName;
         }
 
+         public Hall()
+        {
+            //hallName = null;
+            //hallID = -1;
+        }
+
+
         public string HallName
         {
             get { return hallName; }
