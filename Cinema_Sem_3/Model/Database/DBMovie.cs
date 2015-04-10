@@ -9,7 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace Model.Database
+namespace Model
 {
     class DBMovie
     {

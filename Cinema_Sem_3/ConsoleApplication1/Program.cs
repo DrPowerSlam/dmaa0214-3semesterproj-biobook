@@ -13,10 +13,13 @@ namespace ConsoleApplication1
         {
             Model.Controller.CustomerController cusCtr = new Model.Controller.CustomerController();
             Model.Controller.MovieController movCtr = new Model.Controller.MovieController();
+            Model.Database.DBScheduler schCtr = new Model.Database.DBScheduler();
+
+            Console.WriteLine("ID:" + schCtr.GetScheduler(1).SchID + "\nHall ID: " + schCtr.GetScheduler(1).HallID + "\nDate: " + schCtr.GetScheduler(1).Datetime);
 
             Console.WriteLine("WELCOME TO THE TEST APP \n");
 
-            foreach(Customer customer in cusCtr.getAllCustomers())
+            foreach (Customer customer in cusCtr.getAllCustomers())
             {
                 Console.WriteLine(customer.ID + ": " + customer.Name + "\n");
             }
@@ -27,7 +30,7 @@ namespace ConsoleApplication1
 
             Console.WriteLine("****************************** FIND CUSTOMERS WITH NAME ******************************\n");
 
-            foreach(Customer customer in cusCtr.findCustomersByName("Jens"))
+            foreach (Customer customer in cusCtr.findCustomersByName("Jens"))
             {
                 Console.WriteLine(customer.ID + ": " + customer.Name + "\n");
             }

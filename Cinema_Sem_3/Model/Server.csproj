@@ -52,14 +52,9 @@
     <Compile Include="Controller\SchedulerController.cs" />
     <Compile Include="Controller\SeatController.cs" />
     <Compile Include="Database\ConnectToDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>ConnectToDB.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Database\ConnetionToDB.designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConnetionToDB.dbml</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Database\DBCustomer.cs" />
     <Compile Include="Database\DBHall.cs" />
@@ -86,14 +81,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Database\ConnectToDB.dbml">
+      <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ConnectToDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
-    <None Include="Database\ConnetionToDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ConnetionToDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <None Include="Database\ConnectToDB.dbml.layout">
+      <DependentUpon>ConnectToDB.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,16 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Database\ConnectToDB.dbml.layout">
-      <DependentUpon>ConnectToDB.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Database\ConnetionToDB.dbml.layout">
-      <DependentUpon>ConnetionToDB.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
