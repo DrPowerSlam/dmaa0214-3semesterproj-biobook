@@ -14,7 +14,11 @@ namespace Model.Database
 {
     class DBCustomer
     {
-        string cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString;
+        public DBCustomer()
+        { 
+        }
+
+        public String cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString;
 
         public Customer selectWhereID(string customerID)
         {
@@ -36,7 +40,7 @@ namespace Model.Database
                         {
                             if(customerID.Equals(myDataReader["CusID"].ToString()))
                             {
-                                customer.ID = (int)myDataReader["CustID"];
+                                customer.ID = (int)myDataReader["CusID"];
                                 customer.Name = myDataReader["name"].ToString();
                             }
                         }
@@ -68,10 +72,40 @@ namespace Model.Database
                             if (name.Equals(myDataReader["name"].ToString()))
                             {
                                 Customer customer = new Customer();
-                                customer.ID = (int)myDataReader["CustID"];
+                                customer.ID = (int)myDataReader["CusID"];
                                 customer.Name = myDataReader["name"].ToString();
                                 customerList.Add(customer);
                             }
+                        }
+                    }
+                }
+                cn.Close();
+            }
+            return customerList;
+        }
+
+        public ArrayList getAllCustomers()
+        {
+            ArrayList customerList = new ArrayList();
+
+            using (SqlConnection cn = new SqlConnection())
+            {
+                cn.ConnectionString = cnStr;
+                cn.Open();
+
+
+                string strSQL = "Select * from Customer";
+
+                using (SqlCommand myCommand = new SqlCommand(strSQL, cn))
+                {
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+                        while (myDataReader.Read())
+                        {
+                                Customer customer = new Customer();
+                                customer.ID = (int)myDataReader["CusID"];
+                                customer.Name = myDataReader["name"].ToString();
+                                customerList.Add(customer);
                         }
                     }
                 }
