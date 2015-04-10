@@ -7,5 +7,13 @@ namespace Model.Controller
 {
     class SchedulerController
     {
+
+        
+        public Scheduler GetScheduler(int schedulerID)
+        {
+            //Use the database (DB??.cs) to get this
+            Scheduler scheduler = FindSchedulerWithID(int schedulerID);
+            return scheduler;
+        }
     }
 }

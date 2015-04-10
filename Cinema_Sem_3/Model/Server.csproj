@@ -11,6 +11,7 @@
     <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,14 +52,17 @@
     <Compile Include="Database\DBHall.cs" />
     <Compile Include="Database\DBMovie.cs" />
     <Compile Include="Database\DBSeat.cs" />
+    <Compile Include="IService1.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Hall.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Scheduler.cs" />
+    <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Database\App.config">
       <SubType>Designer</SubType>
     </None>
