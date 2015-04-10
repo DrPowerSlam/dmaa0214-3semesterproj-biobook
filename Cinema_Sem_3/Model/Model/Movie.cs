@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class Movie
+    public class Movie
     {
         private int movieID;
         private string name;
