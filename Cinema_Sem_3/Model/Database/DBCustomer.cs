@@ -18,7 +18,7 @@ namespace Model.Database
         { 
         }
 
-        public String cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString;
+        public String cnStr = "Data Source=kraka.ucn.dk;Initial Catalog=dmaa0214_3Sem_2;Persist Security Info=True;User ID=dmaa0214_3sem_2;Password=IsAllowed";
 
         public Customer selectWhereID(string customerID)
         {
