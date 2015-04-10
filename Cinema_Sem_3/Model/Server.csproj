@@ -52,6 +52,7 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Hall.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Seat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Reservation.cs" />
     <Compile Include="Model\Scheduler.cs" />
