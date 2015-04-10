@@ -65,6 +65,7 @@ foreign key(MovieID) references Movie(MovieID) on delete set default,
 foreign key(HallID) references Hall(HallID),
 primary key(SchID)
 );
+INSERT INTO Scheduler values ('2015-05-22', '18:00:00', 1, 1)
 
 create table Seat
 (
