@@ -32,16 +32,16 @@ namespace Model
                 {
                     using (SqlDataReader myDataReader = myCommand.ExecuteReader())
                     {
-                        while(myDataReader.Read())
+                        while (myDataReader.Read())
                         {
-                            if(hallID.Equals(myDataReader["hallID"].ToString()))
+                            if (hallID.Equals(myDataReader["hallID"].ToString()))
                             {
                                 hall.HallID = (int)myDataReader["hallID"];
                                 hall.HallName = myDataReader["name"].ToString();
                                 hall.MaxNumberOfSeats = (int)myDataReader["MaxNumberOfSeats"];
                             }
                         }
- 
+
                     }
                 }
             }
@@ -69,7 +69,7 @@ namespace Model
                     {
                         while (myDataReader.Read())
                         {
-                            if(name.Equals(myDataReader["name"].ToString()))
+                            if (name.Equals(myDataReader["name"].ToString()))
                             {
                                 Hall hall = new Hall();
                                 hall.HallID = (int)myDataReader["HallID"];
@@ -78,9 +78,41 @@ namespace Model
                             }
                         }
                     }
- 
+
                 }
                 cn.Close();
+            }
+
+            return hallList;
+        }
+
+        public ArrayList getAllHalls()
+        {
+            ArrayList hallList = new ArrayList();
+
+            using (SqlConnection cn = new SqlConnection())
+            {
+                cn.ConnectionString = cnStr;
+                cn.Open();
+
+                string strSQL = "select * from Hall";
+
+                using (SqlCommand myCommand = new SqlCommand(strSQL, cn))
+                {
+                    using (SqlDataReader myDataReader = myCommand.ExecuteReader())
+                    {
+                        while (myDataReader.Read())
+                        {
+                            Hall hall = new Hall();
+                            hall.HallID = (int)myDataReader["HallID"];
+                            hall.HallName = myDataReader["name"].ToString();
+                            hallList.Add(hall);
+
+                        }
+
+                    }
+                }
+
             }
 
             return hallList;

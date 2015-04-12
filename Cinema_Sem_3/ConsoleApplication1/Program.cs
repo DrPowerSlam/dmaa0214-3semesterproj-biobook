@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 using Model;
 
 namespace ConsoleApplication1
-{ 
+{
     class Program
     {
         static void Main(String[] arg)
+        {
+            Program program = new Program();
+
+            //program.GetScheduler();
+
+            program.getHall();
+        }
+
+        public void GetScheduler()
         {
             Model.Controller.CustomerController cusCtr = new Model.Controller.CustomerController();
             Model.Controller.MovieController movCtr = new Model.Controller.MovieController();
@@ -52,8 +61,14 @@ namespace ConsoleApplication1
             }
 
             Console.ReadLine();
+
         }
-        
+
+        public void getHall()
+        {
+            Console.WriteLine("WELCOME TO THE TEST APP \n");
+        }
+
     }
 }
 
