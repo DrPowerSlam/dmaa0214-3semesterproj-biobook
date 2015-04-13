@@ -29,9 +29,9 @@ namespace ConsoleApplication1
 
             Console.WriteLine("WELCOME TO THE TEST APP \n");
 
-            foreach (ServerProject.ModelLayer.Customer customer in cusCtr.getAllCustomers())
+            foreach (ServerProject.DatabaseLayer.Customer customer in cusCtr.getAllCustomers())
             {
-                Console.WriteLine(customer.ID + ": " + customer.Name + "\n");
+                Console.WriteLine(customer.CusID + ": " + customer.name + "\n");
             }
 
             Console.WriteLine("****************************** FIND CUSTOMER BY ID ******************************\n");
