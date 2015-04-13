@@ -36,13 +36,13 @@ namespace ConsoleApplication1
 
             Console.WriteLine("****************************** FIND CUSTOMER BY ID ******************************\n");
 
-            Console.WriteLine(cusCtr.findCustomerByID(4).ID + ": " + cusCtr.findCustomerByID(4).Name + "\n");
+            Console.WriteLine(cusCtr.findCustomerByID(4).CusID + ": " + cusCtr.findCustomerByID(4).Name + "\n");
 
             Console.WriteLine("****************************** FIND CUSTOMERS WITH NAME ******************************\n");
 
             foreach (Customer customer in cusCtr.findCustomersByName("Jens"))
             {
-                Console.WriteLine(customer.ID + ": " + customer.Name + "\n");
+                Console.WriteLine(customer.CusID + ": " + customer.Name + "\n");
             }
 
             Console.WriteLine("****************************** FIND MOVIE BY NAME ******************************\n");

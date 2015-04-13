@@ -24,10 +24,11 @@ namespace ServerProject.DatabaseLayer
             var db = new ConnectToDBDataContext();
 
             var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID);
+            //db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID).Cast<ModelLayer.Customer>();
 
             ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
 
-            customerModel.ID = customer.First().CusID;
+            customerModel.CusID = customer.First().CusID;
             customerModel.Name = customer.First().name;
 
             return customerModel;

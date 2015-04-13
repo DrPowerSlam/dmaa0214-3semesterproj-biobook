@@ -29,7 +29,7 @@ namespace ServerProject.ControllerLayer
                 if (c.name == name)
                 {
                     ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
-                    customerModel.ID = c.CusID;
+                    customerModel.CusID = c.CusID;
                     customerModel.Name = c.name;
                     customerList.Add(customerModel);
                 }

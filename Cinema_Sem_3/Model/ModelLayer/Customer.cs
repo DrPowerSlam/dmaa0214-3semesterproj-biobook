@@ -31,7 +31,7 @@ namespace ServerProject.ModelLayer
             set { name = value; }
         }
 
-        public int ID
+        public int CusID
         {
             get { return cusID; }
             set { cusID = value; }
@@ -39,7 +39,7 @@ namespace ServerProject.ModelLayer
 
         public Customer(int ID, string Name)
         {
-            this.ID = ID;
+            this.CusID = ID;
             this.Name = Name;
         }
 
