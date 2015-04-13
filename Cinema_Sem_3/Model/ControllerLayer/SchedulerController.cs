@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ServerProject.ModelLayer;
 
-namespace Model.Controller
+namespace ServerProject.ControllerLayer
 {
     class SchedulerController
     {
-
-        
         public Scheduler GetScheduler(int schedulerID)
         {
            

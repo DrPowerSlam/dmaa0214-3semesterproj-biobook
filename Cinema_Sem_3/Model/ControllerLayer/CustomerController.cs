@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Model.Database;
+using ServerProject.DatabaseLayer;
 using System.Collections;
-using Model;
 
-namespace Model.Controller
+namespace ServerProject.ControllerLayer
 {
     public class CustomerController
     {
@@ -17,7 +16,7 @@ namespace Model.Controller
             return dbCus.getAllCustomers();
         }
 
-        public Customer findCustomerByID(string ID)
+        public ServerProject.ModelLayer.Customer findCustomerByID(int ID)
         {
             return dbCus.selectWhereID(ID);
         }

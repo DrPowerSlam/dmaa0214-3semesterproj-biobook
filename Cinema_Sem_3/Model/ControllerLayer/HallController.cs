@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Model.Database;
+using ServerProject.DatabaseLayer;
 using System.Collections;
-using Model;
 
 
-namespace Model.Controller
+namespace ServerProject.ControllerLayer
 {
     
     public class HallController
@@ -21,7 +20,7 @@ namespace Model.Controller
         }
 
         // Gets hall by ID
-        public Hall findHallByID(string ID)
+        public Hall findHallByID(int ID)
         {
             return dbHall.selectWhereID(ID);
         }

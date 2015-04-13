@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Model.Database
+namespace ServerProject.DatabaseLayer
 {
     public class DBScheduler
     {

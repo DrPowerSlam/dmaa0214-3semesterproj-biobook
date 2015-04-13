@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Model.Controller
+namespace ServerProject.DatabaseLayer
 {
-    class SeatController
+    class DBSeat
     {
     }
 }

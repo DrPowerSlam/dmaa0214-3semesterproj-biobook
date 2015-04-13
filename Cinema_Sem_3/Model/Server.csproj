@@ -7,11 +7,12 @@
     <ProjectGuid>{D5F05812-7FD7-40AC-B2A0-464D7393497B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>ServerProject</RootNamespace>
+    <AssemblyName>ServerProject</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,30 +46,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CinemaService.cs" />
-    <Compile Include="Controller\CustomerController.cs" />
-    <Compile Include="Controller\HallController.cs" />
-    <Compile Include="Controller\MovieController.cs" />
-    <Compile Include="Controller\ReserveController.cs" />
-    <Compile Include="Controller\SchedulerController.cs" />
-    <Compile Include="Controller\SeatController.cs" />
-    <Compile Include="Database\ConnectToDB.designer.cs">
+    <Compile Include="ControllerLayer\CustomerController.cs" />
+    <Compile Include="ControllerLayer\HallController.cs" />
+    <Compile Include="ControllerLayer\MovieController.cs" />
+    <Compile Include="ControllerLayer\ReserveController.cs" />
+    <Compile Include="ControllerLayer\SchedulerController.cs" />
+    <Compile Include="ControllerLayer\SeatController.cs" />
+    <Compile Include="DatabaseLayer\ConnectToDB.designer.cs">
       <DependentUpon>ConnectToDB.dbml</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Database\DBCustomer.cs" />
-    <Compile Include="Database\DBHall.cs" />
-    <Compile Include="Database\DBMovie.cs" />
-    <Compile Include="Database\DBScheduler.cs" />
-    <Compile Include="Database\DBSeat.cs" />
+    <Compile Include="DatabaseLayer\DBCustomer.cs" />
+    <Compile Include="DatabaseLayer\DBHall.cs" />
+    <Compile Include="DatabaseLayer\DBMovie.cs" />
+    <Compile Include="DatabaseLayer\DBScheduler.cs" />
+    <Compile Include="DatabaseLayer\DBSeat.cs" />
     <Compile Include="ICinemaService.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Hall.cs" />
-    <Compile Include="Model\Movie.cs" />
-    <Compile Include="Model\Seat.cs" />
+    <Compile Include="ModelLayer\Customer.cs" />
+    <Compile Include="ModelLayer\Hall.cs" />
+    <Compile Include="ModelLayer\Movie.cs" />
+    <Compile Include="ModelLayer\Seat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Reservation.cs" />
-    <Compile Include="Model\Scheduler.cs" />
+    <Compile Include="ModelLayer\Reservation.cs" />
+    <Compile Include="ModelLayer\Scheduler.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -77,15 +78,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Database\App.config">
+    <None Include="DatabaseLayer\App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Database\ConnectToDB.dbml">
+    <None Include="DatabaseLayer\ConnectToDB.dbml">
       <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ConnectToDB.designer.cs</LastGenOutput>
     </None>
-    <None Include="Database\ConnectToDB.dbml.layout">
+    <None Include="DatabaseLayer\ConnectToDB.dbml.layout">
       <DependentUpon>ConnectToDB.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

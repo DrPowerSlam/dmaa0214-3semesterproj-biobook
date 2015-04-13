@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
-using Model.Database;
+using ServerProject.DatabaseLayer;
+using ServerProject.ModelLayer;
 
-namespace Model.Controller
+namespace ServerProject.ControllerLayer
 {
     public class MovieController
     {
@@ -16,12 +17,12 @@ namespace Model.Controller
             return dbMovie.getAllMovies();
         }
 
-        public Movie findMovieByID(string ID)
+        public ModelLayer.Movie findMovieByID(int ID)
         {
             return dbMovie.selectWhereID(ID);
         }
 
-        public Movie findMovieByName(string name)
+        public ModelLayer.Movie findMovieByName(string name)
         {
             return dbMovie.selectWhereName(name);
         }
