@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Linq.Mapping;
 
 namespace ServerProject.ModelLayer
 {
-    public class Customer
+    [Table(Name="Customer")]
+    public partial class Customer
     {
 
         private string name;
