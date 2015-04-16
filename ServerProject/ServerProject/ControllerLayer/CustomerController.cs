@@ -32,7 +32,7 @@ namespace ServerProject.ControllerLayer
                 {
                     Customer customerModel = new Customer();
                     customerModel.CusID = c.CusID;
-                    //customerModel.Name = c.name;
+                    customerModel.name = c.name;
                     customerList.Add(customerModel);
                 }
             }
