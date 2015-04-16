@@ -9,9 +9,12 @@ namespace ServerProject.ControllerLayer
 {
     class SchedulerController
     {
-        //public Scheduler GetScheduler(int schedulerID)
-        //{
-        //    return GetScheduler(schedulerID);
-        //}
+        public Scheduler GetScheduler(int schedulerID)
+        {
+           
+            //Use the database (DB??.cs) to get this
+            //return FindSchedulerWithID(4);  
+            return null;
+        }
     }
 }

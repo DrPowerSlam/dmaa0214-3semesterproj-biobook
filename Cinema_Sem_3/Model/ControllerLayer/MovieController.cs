@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD:Cinema_Sem_3/Model/Controller/MovieController.cs
+=======
 using System.Collections;
 using ServerProject.DatabaseLayer;
 using ServerProject.ModelLayer;
+>>>>>>> 02dd249414c384d58cfbf064a1f5ff2d094c055d:Cinema_Sem_3/Model/ControllerLayer/MovieController.cs
 
 namespace ServerProject.ControllerLayer
 {
-    public class MovieController
+    class MovieController
     {
+<<<<<<< HEAD:Cinema_Sem_3/Model/Controller/MovieController.cs
+=======
         DBMovie dbMovie = new DBMovie();
 
         public ArrayList getAllMovies()
@@ -26,5 +31,6 @@ namespace ServerProject.ControllerLayer
         {
             return dbMovie.selectWhereName(name);
         }
+>>>>>>> 02dd249414c384d58cfbf064a1f5ff2d094c055d:Cinema_Sem_3/Model/ControllerLayer/MovieController.cs
     }
 }

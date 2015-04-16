@@ -37,8 +37,6 @@ namespace ServerProject.DatabaseLayer
 
             var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.name.Equals(name));
 
-            customer.First();
-
             return customer;
         }
 

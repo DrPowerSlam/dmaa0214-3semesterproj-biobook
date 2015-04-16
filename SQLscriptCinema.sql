@@ -1,70 +1,46 @@
 use dmaa0214_3Sem_2
 
-IF OBJECT_ID('Reservation', 'U') IS NOT NULL
-	DROP TABLE Reservation;
-IF OBJECT_ID('Seat', 'U') IS NOT NULL
-	DROP TABLE Seat;
-IF OBJECT_ID('Scheduler', 'U') IS NOT NULL
-	DROP TABLE Scheduler;
-IF OBJECT_ID('Customer', 'U') IS NOT NULL
-	DROP TABLE Customer;
-IF OBJECT_ID('Movie', 'U') IS NOT NULL
-	DROP TABLE Movie;
-IF OBJECT_ID('Hall', 'U') IS NOT NULL
-	DROP TABLE Hall;
-
-
 create table Customer
 (
-CusID int IDENTITY(1,1),
+cusID int IDENTITY(1,1),
 name varchar(30), 
 
-primary key(CusID)
+primary key(cusID)
 
 );
-insert into Customer values ('Jens');
-insert into Customer values ('Kaj');
-insert into Customer values ('Tue');
-insert into Customer values ('Hamun');
-insert into Customer values ('Renee');
+
+
 
 create table Movie
 (
-MovieID int IDENTITY(1,1),
+movieID int IDENTITY(1,1),
 name varchar(30), 
-Playtime int,
-unique(name),
-primary key(MovieID)
+playtime time,
+primary key(movieID)
 );
-
-insert into Movie values ('Spiderman', 60);
-insert into Movie values ('Super-Man', 80);
-insert into Movie values ('Lord of the Rings', 300);
 
 create table Hall
 (
-HallID int IDENTITY(1,1),
+hallID int IDENTITY(1,1),
 name varchar(30), 
-MaxNumberOfSeats int
-primary key(HallID)
+maxNumberOfSeats int
+primary key(hallID)
 );
-
-insert into Hall values ('Blue', 90);
-insert into Hall values ('Red', 100);
-insert into Hall values ('Green', 110);
 
 
 create table Scheduler
 (
-SchID int IDENTITY(1,1),
+schID int IDENTITY(1,1),
 Datetime Date,
-Starttime Time,
-MovieID int ,
-HallID int ,
-foreign key(MovieID) references Movie(MovieID) on delete set default,
-foreign key(HallID) references Hall(HallID),
-primary key(SchID)
+starttime Time,
+movieID int ,
+hallID int ,
+foreign key(movieID) references Movie(movieID),
+primary key(schID)
+
+
 );
+
 
 create table Seat
 (
@@ -73,22 +49,16 @@ Row int,
 ColumnArray varchar(MAX),
 SchedulerID int,
 
-foreign key(SchedulerID) references Scheduler(SchID) on delete cascade,
 primary key(ID)
 );
 
 create table Reservation
 (
-ResID int IDENTITY(1,1),
-CustomerID int, 
-SchedulerID int,
-Row varchar(MAX),
-Seat varchar(MAX),
-foreign key(CustomerID) references Customer(CusID) on delete cascade,
-foreign key(SchedulerID) references Scheduler(SchID) on delete set default,
-primary key(ResID)
+resID int IDENTITY(1,1),
+customerID int, 
+schedulerID int,
+rowArray varchar(MAX),
+seatArray varchar(MAX),
+foreign key(customerID) references Customer(cusID),
+primary key(resID)
 );
-
-
-
-

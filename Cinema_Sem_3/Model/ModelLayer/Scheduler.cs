@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ServerProject.ModelLayer
 {
-    public class Scheduler
+    class Scheduler
     {
         private int schID;
         private DateTime date;

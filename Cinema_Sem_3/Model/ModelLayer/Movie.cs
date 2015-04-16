@@ -5,18 +5,12 @@ using System.Text;
 
 namespace ServerProject.ModelLayer
 {
-    public class Movie
+    class Movie
     {
         private int movieID;
         private string name;
         private int playTime;
 
-        public Movie()
-        {
-            MovieID = -1;
-            Name = "";
-            PlayTime = -1;
-        }
         public Movie(int movieID, string name, int playTime)
         {
             this.movieID = movieID;

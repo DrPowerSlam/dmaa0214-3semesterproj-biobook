@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD:Cinema_Sem_3/Model/Controller/HallController.cs
+=======
 using ServerProject.DatabaseLayer;
 using System.Collections;
 
+>>>>>>> 02dd249414c384d58cfbf064a1f5ff2d094c055d:Cinema_Sem_3/Model/ControllerLayer/HallController.cs
 
 namespace ServerProject.ControllerLayer
 {
-    
-    public class HallController
+    class HallController
     {
+<<<<<<< HEAD:Cinema_Sem_3/Model/Controller/HallController.cs
+=======
         DBHall dbHall = new DBHall();
 
         //Get all halls
@@ -31,5 +35,6 @@ namespace ServerProject.ControllerLayer
         {
             return dbHall.selectWhereName(name);
         }
+>>>>>>> 02dd249414c384d58cfbf064a1f5ff2d094c055d:Cinema_Sem_3/Model/ControllerLayer/HallController.cs
     }
 }

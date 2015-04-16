@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ServerProject.ModelLayer
 {
-    public class Hall
+    class Hall
     {
         private int hallID;
         private int maxNumberOfSeats;
@@ -17,13 +17,6 @@ namespace ServerProject.ModelLayer
             this.maxNumberOfSeats = maxNumberOfSeats;
             this.hallName = hallName;
         }
-
-         public Hall()
-        {
-            //hallName = null;
-            //hallID = -1;
-        }
-
 
         public string HallName
         {
