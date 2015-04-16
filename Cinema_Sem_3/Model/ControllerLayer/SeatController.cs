@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Model.Controller
+namespace ServerProject.ControllerLayer
 {
-    class ReserveController
+    class SeatController
     {
-
-
     }
 }
