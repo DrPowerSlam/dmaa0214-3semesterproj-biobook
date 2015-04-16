@@ -24,57 +24,35 @@ namespace ServerProject.DatabaseLayer
             var db = new ConnectToDBDataContext();
 
             var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID);
+            //db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID).Cast<ModelLayer.Customer>();
 
             ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
 
-            customerModel.ID = customer.First().CusID;
+            customerModel.CusID = customer.First().CusID;
             customerModel.Name = customer.First().name;
 
             return customerModel;
         }
 
-        public ArrayList selectWhereName(string name)
+        public IEnumerable selectWhereName(string name)
         {
-            ArrayList customerList = new ArrayList();
 
             var db = new ConnectToDBDataContext();
 
-            var customer = db.Customers.Select(x => x).AsEnumerable();
+            var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.name.Equals(name));
 
-            foreach(Customer c in customer)
-            {
-                if(c.name == name)
-                {
-                    ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
-                    customerModel.ID = c.CusID;
-                    customerModel.Name = c.name;
-                    customerList.Add(customerModel);
-                }
-            }
-
-            return customerList;
+            return customer;
         }
 
         //TO-DO:
         //Ændre denne funktion så den primært fungere i controlleren
-        public ArrayList getAllCustomers()
+        public IEnumerable getAllCustomers()
         {
-            ArrayList customerList = new ArrayList();
-
             var db = new ConnectToDBDataContext();
-            int customerID = 1;
 
-            while (customerID <= db.Customers.AsEnumerable().Last().CusID)
-            {
-                var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID).Where(x => !x.name.Equals(null));
-                ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
-                customerModel.ID = customer.First().CusID;
-                customerModel.Name = customer.First().name;
-                customerList.Add(customerModel);
-                customerID++;
-            }
+            var customer = db.Customers.Select(x => x).AsEnumerable();
 
-            return customerList;
+            return customer;
         }
     }
       

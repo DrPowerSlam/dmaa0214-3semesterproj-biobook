@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Linq.Mapping;
 
 namespace ServerProject.ModelLayer
 {
-    public class Customer
+    [Table(Name="Customer")]
+    public partial class Customer
     {
 
         private string name;
@@ -29,7 +31,7 @@ namespace ServerProject.ModelLayer
             set { name = value; }
         }
 
-        public int ID
+        public int CusID
         {
             get { return cusID; }
             set { cusID = value; }
@@ -37,7 +39,7 @@ namespace ServerProject.ModelLayer
 
         public Customer(int ID, string Name)
         {
-            this.ID = ID;
+            this.CusID = ID;
             this.Name = Name;
         }
 

@@ -16,7 +16,7 @@ namespace ServerProject.ControllerLayer
 =======
         DBCustomer dbCus = new DBCustomer();
 
-        public ArrayList getAllCustomers()
+        public IEnumerable getAllCustomers()
         {
             return dbCus.getAllCustomers();
         }
@@ -28,7 +28,18 @@ namespace ServerProject.ControllerLayer
 
         public ArrayList findCustomersByName(string name)
         {
-            return dbCus.selectWhereName(name);
+            ArrayList customerList = new ArrayList();
+            foreach (Customer c in dbCus.selectWhereName(name))
+            {
+                if (c.name == name)
+                {
+                    ServerProject.ModelLayer.Customer customerModel = new ServerProject.ModelLayer.Customer();
+                    customerModel.CusID = c.CusID;
+                    customerModel.Name = c.name;
+                    customerList.Add(customerModel);
+                }
+            }
+            return customerList;
         }
 >>>>>>> 02dd249414c384d58cfbf064a1f5ff2d094c055d:Cinema_Sem_3/Model/ControllerLayer/CustomerController.cs
     }

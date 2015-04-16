@@ -84,7 +84,7 @@ namespace ServerProject.DatabaseLayer
 		{
 			get
 			{
-				return this.GetTable<Customer>();
+                return this.GetTable<Customer>();
 			}
 		}
 		
