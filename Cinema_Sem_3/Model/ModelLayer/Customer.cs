@@ -6,8 +6,7 @@ using System.Data.Linq.Mapping;
 
 namespace ServerProject.ModelLayer
 {
-    [Table(Name="Customer")]
-    public partial class Customer
+    public class Customer : DatabaseLayer.Customer
     {
 
         private string name;
