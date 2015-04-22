@@ -30,7 +30,7 @@ namespace ServerProject.DatabaseLayer
                 Console.WriteLine(e);
             }
         }
-        public Scheduler GetAllSchedulers()
+        public List<Scheduler> GetAllSchedulers()
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -38,10 +38,10 @@ namespace ServerProject.DatabaseLayer
             List<Scheduler> Sch = new List<Scheduler>();
             Sch = Schedulerlist.ToList();
 
-            return Schedulerlist;
+            return Sch;
         }
 
-        public Scheduler GetByDate(DateTime date)
+        public List<Scheduler> GetByDate(DateTime date)
         {
             var db = new ConnectToDatabaseDataContext();
             var Schedulerlist = db.Schedulers.Select(x => x).Where(x => x.Datetime == date);
