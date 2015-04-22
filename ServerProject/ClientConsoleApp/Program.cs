@@ -29,7 +29,7 @@ namespace ConsoleApplication1
 
             Console.WriteLine("WELCOME TO THE TEST APP \n");
 
-            cusCtr.insertCustomer("Hans");
+            cusCtr.deleteCustomer(1);
 
             foreach (Customer customer in cusCtr.getAllCustomers())
             {
