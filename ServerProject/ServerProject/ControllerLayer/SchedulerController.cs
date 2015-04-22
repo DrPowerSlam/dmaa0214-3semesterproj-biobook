@@ -6,14 +6,12 @@ using ServerProject.DatabaseLayer;
 
 namespace ServerProject.ControllerLayer
 {
-    class SchedulerController
+    public class SchedulerController
     {
-        public Scheduler GetScheduler(int schedulerID)
+        public Scheduler GetScheduler(int movieID)
         {
-           
-            //Use the database (DB??.cs) to get this
-            //return FindSchedulerWithID(4);  
-            return null;
+            DBScheduler schedulerDatabase = new DBScheduler();
+            return schedulerDatabase.GetScheduler(movieID);
         }
     }
 }

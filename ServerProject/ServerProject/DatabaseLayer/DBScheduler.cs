@@ -8,12 +8,13 @@ namespace ServerProject.DatabaseLayer
     public class DBScheduler
     {
         //Use LINQ to get the schedulers where the schedulerID is x. (See inside SchedulerController.cs)
-        public Scheduler GetScheduler(int schedulerID)
+        //although it should be possible to find a scheduler by using the movieID
+        public Scheduler GetScheduler(int movieID)
         {
-
+            //Find the schedulerID's by movieID
             var db = new ConnectToDatabaseDataContext();
 
-            Scheduler scheduler = (Scheduler)db.Schedulers.Single(x => x.SchID == schedulerID);
+            Scheduler scheduler = (Scheduler)db.Schedulers.Single(x => x.MovieID == movieID);
 
             return scheduler;
         }

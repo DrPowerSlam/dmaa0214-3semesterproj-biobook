@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ServerProject.DatabaseLayer;
 using ServerProject.ControllerLayer;
+using ClientConsoleApp.CustomerServiceReference;
 
 namespace ConsoleApplication1
 {
@@ -14,10 +15,24 @@ namespace ConsoleApplication1
         {
             Program program = new Program();
 
-            program.GetScheduler();
+            //program.GetScheduler();
+
+            var client = new CustomerServiceClient();
+
+            Scheduler scheduler = client.GetScheduler(1);
+
+            //somehow this does not work. I want to get the movie from the scheduler that is referenced by the foreign key in the database?
+            //Movie movie = scheduler.Movie;
+            //Use only the ones that are from the database. The one that are in the class gives an nullpointerexception
+            Console.WriteLine(scheduler.MovieID);
+
+
 
             //program.getHall();
         }
+
+        
+
 
         public void GetScheduler()
         {
