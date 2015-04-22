@@ -29,6 +29,8 @@ namespace ConsoleApplication1
 
             Console.WriteLine("WELCOME TO THE TEST APP \n");
 
+            cusCtr.insertCustomer("Hans");
+
             foreach (Customer customer in cusCtr.getAllCustomers())
             {
                 Console.WriteLine(customer.CusID + ": " + customer.name + "\n");

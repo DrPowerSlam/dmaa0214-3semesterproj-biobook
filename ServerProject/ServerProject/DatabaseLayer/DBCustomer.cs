@@ -49,6 +49,28 @@ namespace ServerProject.DatabaseLayer
 
             return customer;
         }
+
+        public int insertCustomer(string name)
+        {
+            int controlInt = -1;
+            var db = new ConnectToDatabaseDataContext();
+
+            Customer customer = new Customer();
+            customer.name = name;
+
+            db.Customers.InsertOnSubmit(customer);
+
+            try
+            {
+                db.SubmitChanges();
+                controlInt = 1;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return controlInt;
+        }
     }
       
 }

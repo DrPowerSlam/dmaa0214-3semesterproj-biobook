@@ -38,5 +38,10 @@ namespace ServerProject.ControllerLayer
             }
             return customerList;
         }
+
+        public void insertCustomer(string name)
+        {
+            dbCus.insertCustomer(name);
+        }
     }
 }
