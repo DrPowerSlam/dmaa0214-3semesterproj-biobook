@@ -22,7 +22,7 @@ namespace ServerProject.DatabaseLayer
         {
             var db = new ConnectToDatabaseDataContext();
 
-            Customer customer = (Customer)db.Customers.Single(x => x.CusID == customerID);
+            Customer customer = db.Customers.Single(x => x.CusID == customerID);
             //db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID).Cast<ModelLayer.Customer>();
 
 
@@ -69,6 +69,31 @@ namespace ServerProject.DatabaseLayer
             {
                 Console.WriteLine(e);
             }
+            return controlInt;
+        }
+
+        public int deleteCustomer(Customer customer)
+        {
+            int controlInt = -1;
+            var db = new ConnectToDatabaseDataContext();
+
+            Customer customerToDelete = new Customer();
+            customerToDelete.name = customer.name;
+            customerToDelete.CusID = customer.CusID;
+
+            db.Customers.Attach(customerToDelete);
+            db.Customers.DeleteOnSubmit(customerToDelete);
+
+            try
+            {
+                db.SubmitChanges();
+                controlInt = 1;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
             return controlInt;
         }
     }

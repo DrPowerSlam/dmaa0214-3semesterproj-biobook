@@ -43,5 +43,10 @@ namespace ServerProject.ControllerLayer
         {
             dbCus.insertCustomer(name);
         }
+
+        public void deleteCustomer(int cusID)
+        {
+            dbCus.deleteCustomer(dbCus.selectWhereID(cusID));
+        }
     }
 }
