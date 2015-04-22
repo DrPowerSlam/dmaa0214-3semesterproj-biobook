@@ -8,15 +8,49 @@ namespace ServerProject.DatabaseLayer
     public class DBScheduler
     {
         //Use LINQ to get the schedulers where the schedulerID is x. (See inside SchedulerController.cs)
-        //although it should be possible to find a scheduler by using the movieID
-        public Scheduler GetScheduler(int movieID)
+        public Scheduler GetScheduler(int schedulerID)
         {
-            //Find the schedulerID's by movieID
+
             var db = new ConnectToDatabaseDataContext();
 
-            Scheduler scheduler = (Scheduler)db.Schedulers.Single(x => x.MovieID == movieID);
-
+            Scheduler scheduler = (Scheduler)db.Schedulers.Single(x => x.SchID == schedulerID);
             return scheduler;
         }
+
+        public void insertScheduler(Scheduler sch)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            db.Schedulers.InsertOnSubmit(sch);
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        public Scheduler GetAllSchedulers()
+        {
+            var db = new ConnectToDatabaseDataContext();
+
+            var Schedulerlist = db.Schedulers.Select(x => x).AsEnumerable();
+            List<Scheduler> Sch = new List<Scheduler>();
+            Sch = Schedulerlist.ToList();
+
+            return Schedulerlist;
+        }
+
+        public Scheduler GetByDate(DateTime date)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            var Schedulerlist = db.Schedulers.Select(x => x).Where(x => x.Datetime == date);
+            List<Scheduler> Sch = new List<Scheduler>();
+            Sch = Schedulerlist.ToList();
+
+            return Sch;
+        }
+
+
     }
 }
