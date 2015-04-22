@@ -17,18 +17,25 @@ namespace ServerProject.DatabaseLayer
         public DBCustomer()
         { 
         }
-
+        /// <summary>
+        /// Finds a customer by the customer ID
+        /// </summary>
+        /// <param name="customerID">The customer ID you want to search for</param>
+        /// <returns>The customer, if it's found</returns>
         public Customer selectWhereID(int customerID)
         {
             var db = new ConnectToDatabaseDataContext();
 
             Customer customer = db.Customers.Single(x => x.CusID == customerID);
-            //db.Customers.Select(x => x).AsEnumerable().Where(x => x.CusID == customerID).Cast<ModelLayer.Customer>();
-
 
             return customer;
         }
 
+        /// <summary>
+        /// Selects all customers with a given name
+        /// </summary>
+        /// <param name="name">The name which to search for</param>
+        /// <returns>Returns a list of all customers with the name</returns>
         public IEnumerable selectWhereName(string name)
         {
 
@@ -39,8 +46,10 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
-        //TO-DO:
-        //Ændre denne funktion så den primært fungere i controlleren
+        /// <summary>
+        /// Creates a list with all customers
+        /// </summary>
+        /// <returns>The list of customers</returns>
         public IEnumerable getAllCustomers()
         {
             var db = new ConnectToDatabaseDataContext();
@@ -50,6 +59,11 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
+        /// <summary>
+        /// Inserts a customer into the database
+        /// </summary>
+        /// <param name="name">The name of the customer (ID is auto-generated in the database)</param>
+        /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
         public int insertCustomer(string name)
         {
             int controlInt = -1;
@@ -72,6 +86,11 @@ namespace ServerProject.DatabaseLayer
             return controlInt;
         }
 
+        /// <summary>
+        /// Deletes a customer
+        /// </summary>
+        /// <param name="customer">The customer object from the database to delete</param>
+        /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
         public int deleteCustomer(Customer customer)
         {
             int controlInt = -1;
