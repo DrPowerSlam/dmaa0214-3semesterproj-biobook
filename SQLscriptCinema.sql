@@ -18,15 +18,16 @@ create table Customer
 (
 CusID int IDENTITY(1,1),
 name varchar(30), 
+phoneNumber varchar(20),
 
 primary key(CusID)
 
 );
-insert into Customer values ('Jens');
-insert into Customer values ('Kaj');
-insert into Customer values ('Tue');
-insert into Customer values ('Hamun');
-insert into Customer values ('Renee');
+insert into Customer values ('Jens', '+4520304051');
+insert into Customer values ('Kaj', '+4520324050');
+insert into Customer values ('Tue', '+4520304056');
+insert into Customer values ('Hamun', '+4520354050');
+insert into Customer values ('Renee', '+4522304050');
 
 create table Movie
 (
