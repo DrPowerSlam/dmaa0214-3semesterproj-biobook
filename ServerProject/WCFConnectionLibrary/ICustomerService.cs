@@ -14,6 +14,9 @@ namespace WCFConnectionLibrary
     {
         [OperationContract]
         Scheduler getSchedulerByMovie(int movieID);
+        
+        [OperationContract]
+        Scheduler getSchedulerByID(int schedulerID);
 
         
     }

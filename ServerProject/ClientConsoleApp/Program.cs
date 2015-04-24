@@ -23,13 +23,16 @@ namespace ConsoleApplication1
 
             var client = new CustomerServiceClient();
 
-            Scheduler scheduler = client.getSchedulerByMovie(1);
+            //Scheduler scheduler = client.getSchedulerByMovie(1);
+            Scheduler scheduler = client.getSchedulerByID(1);
 
             //somehow this does not work. I want to get the movie from the scheduler that is referenced by the foreign key in the database?
             //Movie movie = scheduler.Movie;
             //Use only the ones that are from the database. The one that are in the class gives an nullpointerexception
-            Console.WriteLine(scheduler.Movie.name);
-            Console.WriteLine(program.movCtr.findMovieByID(1).name);
+            //Console.WriteLine(scheduler.Movie.name);
+            //Console.WriteLine(program.movCtr.findMovieByID(1).name);
+            Console.WriteLine(scheduler.Movie.MovieID);
+            
             Console.ReadLine();
 
 

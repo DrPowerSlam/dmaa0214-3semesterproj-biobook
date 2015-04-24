@@ -19,6 +19,13 @@ namespace WCFConnectionLibrary
             return schedulerController.getSchedulerByMovie(movieID);
         }
 
+        public Scheduler getSchedulerByID(int schedulerID) 
+        {
+            SchedulerController schedulerController = new SchedulerController();
+
+            return schedulerController.getSchedulerByID(schedulerID);
+        }
+
         
     }
 }

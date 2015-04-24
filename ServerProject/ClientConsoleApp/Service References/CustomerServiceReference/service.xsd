@@ -15,4 +15,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getSchedulerByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schedulerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSchedulerByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="getSchedulerByIDResult" nillable="true" type="q2:Scheduler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

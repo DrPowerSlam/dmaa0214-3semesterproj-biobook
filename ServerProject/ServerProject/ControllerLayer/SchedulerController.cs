@@ -8,11 +8,19 @@ namespace ServerProject.ControllerLayer
 {
     public class SchedulerController
     {
+
+        public Scheduler getSchedulerByID(int schedulerID)
+        {
+            DBScheduler schedulerDatabase = new DBScheduler();
+            Scheduler scheduler = schedulerDatabase.getSchedulerByID(schedulerID);
+            return scheduler;
+        }
+
         public Scheduler getSchedulerByMovie(int movieID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
             MovieController movieCtr = new MovieController();
-            Scheduler scheduler = schedulerDatabase.getSchedulerByMovie(movieID);
+            Scheduler scheduler = schedulerDatabase.getSchedulerByMovieID(movieID);
             scheduler.Movie = movieCtr.findMovieByID(movieID);
 
             return scheduler;
