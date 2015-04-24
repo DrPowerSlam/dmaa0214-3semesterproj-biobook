@@ -13,12 +13,8 @@ namespace ServerProject.ControllerLayer
             DBScheduler schedulerDatabase = new DBScheduler();
             MovieController movieCtr = new MovieController();
             Scheduler scheduler = schedulerDatabase.getSchedulerByMovie(movieID);
-            Movie movie = movieCtr.findMovieByID(movieID);
-            scheduler.Movie = new Movie();
-            scheduler.Movie.MovieID = movie.MovieID;
-            scheduler.Movie.name = movie.name;
-            scheduler.Movie.Playtime = movie.Playtime;
-            scheduler.Movie.Schedulers.Add(scheduler);
+            scheduler.Movie = movieCtr.findMovieByID(movieID);
+
             return scheduler;
         }
     }
