@@ -15,11 +15,17 @@ namespace ClientConsoleApp.CustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CustomerServiceReference.ICustomerService")]
     public interface ICustomerService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetScheduler", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerResponse")]
-        ServerProject.DatabaseLayer.Scheduler GetScheduler(int movieID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/getSchedulerByMovie", ReplyAction="http://tempuri.org/ICustomerService/getSchedulerByMovieResponse")]
+        ServerProject.DatabaseLayer.Scheduler getSchedulerByMovie(int movieID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetScheduler", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerResponse")]
-        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerAsync(int movieID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/getSchedulerByMovie", ReplyAction="http://tempuri.org/ICustomerService/getSchedulerByMovieResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> getSchedulerByMovieAsync(int movieID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/getSchedulerByID", ReplyAction="http://tempuri.org/ICustomerService/getSchedulerByIDResponse")]
+        ServerProject.DatabaseLayer.Scheduler getSchedulerByID(int schedulerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/getSchedulerByID", ReplyAction="http://tempuri.org/ICustomerService/getSchedulerByIDResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> getSchedulerByIDAsync(int schedulerID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +55,20 @@ namespace ClientConsoleApp.CustomerServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public ServerProject.DatabaseLayer.Scheduler GetScheduler(int movieID) {
-            return base.Channel.GetScheduler(movieID);
+        public ServerProject.DatabaseLayer.Scheduler getSchedulerByMovie(int movieID) {
+            return base.Channel.getSchedulerByMovie(movieID);
         }
         
-        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerAsync(int movieID) {
-            return base.Channel.GetSchedulerAsync(movieID);
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> getSchedulerByMovieAsync(int movieID) {
+            return base.Channel.getSchedulerByMovieAsync(movieID);
+        }
+        
+        public ServerProject.DatabaseLayer.Scheduler getSchedulerByID(int schedulerID) {
+            return base.Channel.getSchedulerByID(schedulerID);
+        }
+        
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> getSchedulerByIDAsync(int schedulerID) {
+            return base.Channel.getSchedulerByIDAsync(schedulerID);
         }
     }
 }

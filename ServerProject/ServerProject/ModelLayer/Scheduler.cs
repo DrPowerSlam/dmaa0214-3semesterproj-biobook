@@ -10,11 +10,11 @@ namespace ServerProject.ModelLayer
         private int schID;
         private DateTime date;
         private int timeInMinutes;
-        private Movie movie;
+        private DatabaseLayer.Movie movie;
         private Hall hall;
         private int endTimeInMinutes;
 
-        public Scheduler(int schID, DateTime date, int timeInMinutes, Movie movie, Hall hall, int endTimeInMinutes)
+        public Scheduler(int schID, DateTime date, int timeInMinutes, DatabaseLayer.Movie movie, Hall hall, int endTimeInMinutes)
         {
             this.schID = schID;
             this.date = date;
@@ -42,13 +42,13 @@ namespace ServerProject.ModelLayer
             set { timeInMinutes = value; }
         }
 
-        internal Movie Movie
+        public DatabaseLayer.Movie Movie
         {
             get { return movie; }
             set { movie = value; }
         }
 
-        internal Hall Hall
+        public Hall Hall
         {
             get { return hall; }
             set { hall = value; }

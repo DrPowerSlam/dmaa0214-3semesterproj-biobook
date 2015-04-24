@@ -16,9 +16,9 @@ namespace ServerProject.DatabaseLayer
         {
             var db = new ConnectToDatabaseDataContext();
 
-            Movie movie = (Movie)db.Movies.Single(x => x.MovieID.Equals(movieID));
+            Movie movie = db.Movies.Single(x => x.MovieID == movieID);
             
-            Movie movieModel = new Movie();
+            //Movie movieModel = new Movie();
             //movieModel.MovieID = movie.First().MovieID;
             //movieModel.Name = movie.First().name;
             //movieModel.PlayTime = (int)movie.First().Playtime;

@@ -13,7 +13,10 @@ namespace WCFConnectionLibrary
     public interface ICustomerService
     {
         [OperationContract]
-        Scheduler GetScheduler(int movieID);
+        Scheduler getSchedulerByMovie(int movieID);
+        
+        [OperationContract]
+        Scheduler getSchedulerByID(int schedulerID);
 
         
     }
