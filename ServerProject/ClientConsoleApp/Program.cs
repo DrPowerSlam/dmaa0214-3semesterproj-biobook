@@ -31,7 +31,7 @@ namespace ConsoleApplication1
             //Use only the ones that are from the database. The one that are in the class gives an nullpointerexception
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
-            Console.WriteLine(scheduler.Movie.MovieID);
+            Console.WriteLine(scheduler.MovieID);
             
             Console.ReadLine();
 
