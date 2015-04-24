@@ -8,10 +8,18 @@ namespace ServerProject.ControllerLayer
 {
     public class SchedulerController
     {
-        public Scheduler GetScheduler(int movieID)
+        public Scheduler getSchedulerByMovie(int movieID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
-            return schedulerDatabase.GetScheduler(movieID);
+            MovieController movieCtr = new MovieController();
+            Scheduler scheduler = schedulerDatabase.getSchedulerByMovie(movieID);
+            Movie movie = movieCtr.findMovieByID(movieID);
+            scheduler.Movie = new Movie();
+            scheduler.Movie.MovieID = movie.MovieID;
+            scheduler.Movie.name = movie.name;
+            scheduler.Movie.Playtime = movie.Playtime;
+            scheduler.Movie.Schedulers.Add(scheduler);
+            return scheduler;
         }
     }
 }
