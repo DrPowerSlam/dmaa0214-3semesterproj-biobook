@@ -22,6 +22,7 @@ namespace ConsoleApplication1
             Program program = new Program();
 
             program.getAllReservations();
+           
 
             //program.GetScheduler();
 

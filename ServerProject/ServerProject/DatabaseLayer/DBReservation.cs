@@ -57,9 +57,14 @@ namespace ServerProject.DatabaseLayer
         public void  createCustomer()
         {
             
-            var db = new ConnectToDatabaseDataContext();
+            //var db = new ConnectToDatabaseDataContext();
 
-            customerList = db.Customers.Select(x => x).AsEnumerable().ToList();
+            DBCustomer cust = new DBCustomer();
+
+
+            customerList = cust.getAllCustomers().Cast<Customer>().ToList();
+
+            //customerList = db.Customers.Select(x => x).AsEnumerable().ToList();
 
           
 

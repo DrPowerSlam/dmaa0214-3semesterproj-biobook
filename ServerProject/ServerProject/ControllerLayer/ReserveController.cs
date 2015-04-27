@@ -16,5 +16,11 @@ namespace ServerProject.ControllerLayer
             dbRes.getReservation();
         }
 
+        public void makeReservation(string row, string seat, int schedulerID)
+        {
+            //reserveSeat(string row, string seat, int schedulerID);
+
+        }
+
     }
 }
