@@ -13,31 +13,35 @@ namespace ConsoleApplication1
     {
         ServerProject.ControllerLayer.CustomerController cusCtr = new CustomerController();
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
+        ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
         ServerProject.DatabaseLayer.DBScheduler schCtr = new ServerProject.DatabaseLayer.DBScheduler();
+        
 
         static void Main(String[] arg)
         {
             Program program = new Program();
 
+            program.getAllReservations();
+
             //program.GetScheduler();
 
-            var client = new CustomerServiceClient();
+        //    var client = new CustomerServiceClient();
 
             //Scheduler scheduler = client.getSchedulerByMovie(1);
-            Scheduler scheduler = client.getSchedulerByID(1);
+           // Scheduler scheduler = client.getSchedulerByID(1);
 
             //somehow this does not work. I want to get the movie from the scheduler that is referenced by the foreign key in the database?
             //Movie movie = scheduler.Movie;
             //Use only the ones that are from the database. The one that are in the class gives an nullpointerexception
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
-            Console.WriteLine(scheduler.MovieID);
+           // Console.WriteLine(scheduler.MovieID);
             
             Console.ReadLine();
 
 
 
-            //program.getHall();
+           
         }
 
         
@@ -172,6 +176,26 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n");
             }
+        }
+
+
+
+
+
+
+
+        ///Reservation
+        ///
+
+        public void getAllReservations()
+        {
+            Console.WriteLine("****************************** FIND ALL RESERVATION ******************************\n");
+
+            ReserveController resCtr = new ReserveController();
+
+            resCtr.getReservations();
+          
+
         }
     }
 }
