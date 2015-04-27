@@ -11,7 +11,7 @@ namespace ServerProject.ControllerLayer
     {
         DBMovie dbMovie = new DBMovie();
 
-        public ArrayList getAllMovies()
+        public IEnumerable getAllMovies()
         {
             return dbMovie.getAllMovies();
         }
@@ -24,6 +24,16 @@ namespace ServerProject.ControllerLayer
         public Movie findMovieByName(string name)
         {
             return dbMovie.selectWhereName(name);
+        }
+
+        public void insertMovie(string name, int playTime)
+        {
+            dbMovie.insertMovie(name, playTime);
+        }
+
+        public void deleteMovie(Movie movie)
+        {
+            dbMovie.deleteCustomer(movie);
         }
     }
 }
