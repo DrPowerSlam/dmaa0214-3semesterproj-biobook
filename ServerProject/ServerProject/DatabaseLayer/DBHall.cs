@@ -30,38 +30,26 @@ namespace ServerProject.DatabaseLayer
 
         // Select * halls
 
-        public ArrayList selectWhereName(string name)
+        public IEnumerable selectWhereName(string name)
         {
             ArrayList hallList = new ArrayList();
 
             var db = new ConnectToDatabaseDataContext();
-            int hallID = 1;
 
-            while (hallID < db.Halls.AsEnumerable().Last().HallID)
-            {
-                Hall hall = db.Halls.Single(x => x.name.Equals(name));
-                hallList.Add(hall);
-                hallID++;
-            }
+            var hall = db.Halls.Select(x => x).AsEnumerable().Where(x => x.name.Equals(name));
 
-            return hallList;
+            return hall;
         }
 
-        public ArrayList getAllHalls()
+        public IEnumerable getAllHalls()
         {
             ArrayList hallList = new ArrayList();
 
             var db = new ConnectToDatabaseDataContext();
-            int hallID = 1;
 
-            while (hallID < db.Halls.AsEnumerable().Last().HallID)
-            {
-                Hall hall = db.Halls.Single(x => x.HallID == hallID);
-                hallList.Add(hall);
-                hallID++;
-            }
+            var hall = db.Halls.Select(x => x).AsEnumerable();
 
-            return hallList;
+            return hall;
         }
 
     }
