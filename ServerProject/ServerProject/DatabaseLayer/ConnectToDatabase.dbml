@@ -4,6 +4,7 @@
     <Type Name="Customer">
       <Column Name="CusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="phoneNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="Customer_Reservation" Member="Reservations" ThisKey="CusID" OtherKey="CustomerID" Type="Reservation" />
     </Type>
   </Table>
@@ -16,20 +17,17 @@
       <Association Name="Scheduler_Seat" Member="Scheduler" ThisKey="SchedulerID" OtherKey="SchID" Type="Scheduler" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.Hall" Member="Halls">
-    <Type Name="Hall">
-      <Column Name="HallID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="MaxNumberOfSeats" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Hall_Scheduler" Member="Schedulers" ThisKey="HallID" OtherKey="HallID" Type="Scheduler" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Movie" Member="Movies">
-    <Type Name="Movie">
-      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Playtime" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Movie_Scheduler" Member="Schedulers" ThisKey="MovieID" OtherKey="MovieID" Type="Scheduler" />
+  <Table Name="dbo.Scheduler" Member="Schedulers">
+    <Type Name="Scheduler">
+      <Column Name="SchID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Datetime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Starttime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="MovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HallID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Scheduler_Seat" Member="Seats" ThisKey="SchID" OtherKey="SchedulerID" Type="Seat" />
+      <Association Name="Scheduler_Reservation" Member="Reservations" ThisKey="SchID" OtherKey="SchedulerID" Type="Reservation" />
+      <Association Name="Movie_Scheduler" Member="Movie" ThisKey="MovieID" OtherKey="MovieID" Type="Movie" IsForeignKey="true" DeleteRule="SET DEFAULT" />
+      <Association Name="Hall_Scheduler" Member="Hall" ThisKey="HallID" OtherKey="HallID" Type="Hall" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Reservation" Member="Reservations">
@@ -43,17 +41,20 @@
       <Association Name="Scheduler_Reservation" Member="Scheduler" ThisKey="SchedulerID" OtherKey="SchID" Type="Scheduler" IsForeignKey="true" DeleteRule="SET DEFAULT" />
     </Type>
   </Table>
-  <Table Name="dbo.Scheduler" Member="Schedulers">
-    <Type Name="Scheduler">
-      <Column Name="SchID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Datetime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Starttime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="MovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HallID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Scheduler_Seat" Member="Seats" ThisKey="SchID" OtherKey="SchedulerID" Type="Seat" />
-      <Association Name="Scheduler_Reservation" Member="Reservations" ThisKey="SchID" OtherKey="SchedulerID" Type="Reservation" />
-      <Association Name="Hall_Scheduler" Member="Hall" ThisKey="HallID" OtherKey="HallID" Type="Hall" IsForeignKey="true" />
-      <Association Name="Movie_Scheduler" Member="Movie" ThisKey="MovieID" OtherKey="MovieID" Type="Movie" IsForeignKey="true" DeleteRule="SET DEFAULT" />
+  <Table Name="dbo.Movie" Member="Movies">
+    <Type Name="Movie">
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Playtime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Movie_Scheduler" Member="Schedulers" ThisKey="MovieID" OtherKey="MovieID" Type="Scheduler" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Hall" Member="Halls">
+    <Type Name="Hall">
+      <Column Name="HallID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MaxNumberOfSeats" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Hall_Scheduler" Member="Schedulers" ThisKey="HallID" OtherKey="HallID" Type="Scheduler" />
     </Type>
   </Table>
 </Database>

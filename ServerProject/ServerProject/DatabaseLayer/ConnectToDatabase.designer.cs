@@ -37,18 +37,18 @@ namespace ServerProject.DatabaseLayer
     partial void InsertSeat(Seat instance);
     partial void UpdateSeat(Seat instance);
     partial void DeleteSeat(Seat instance);
-    partial void InsertHall(Hall instance);
-    partial void UpdateHall(Hall instance);
-    partial void DeleteHall(Hall instance);
-    partial void InsertMovie(Movie instance);
-    partial void UpdateMovie(Movie instance);
-    partial void DeleteMovie(Movie instance);
-    partial void InsertReservation(Reservation instance);
-    partial void UpdateReservation(Reservation instance);
-    partial void DeleteReservation(Reservation instance);
     partial void InsertScheduler(Scheduler instance);
     partial void UpdateScheduler(Scheduler instance);
     partial void DeleteScheduler(Scheduler instance);
+    partial void InsertReservation(Reservation instance);
+    partial void UpdateReservation(Reservation instance);
+    partial void DeleteReservation(Reservation instance);
+    partial void InsertMovie(Movie instance);
+    partial void UpdateMovie(Movie instance);
+    partial void DeleteMovie(Movie instance);
+    partial void InsertHall(Hall instance);
+    partial void UpdateHall(Hall instance);
+    partial void DeleteHall(Hall instance);
     #endregion
 		
 		public ConnectToDatabaseDataContext() : 
@@ -97,19 +97,11 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Hall> Halls
+		public System.Data.Linq.Table<Scheduler> Schedulers
 		{
 			get
 			{
-				return this.GetTable<Hall>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Movie> Movies
-		{
-			get
-			{
-				return this.GetTable<Movie>();
+				return this.GetTable<Scheduler>();
 			}
 		}
 		
@@ -121,11 +113,19 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Scheduler> Schedulers
+		public System.Data.Linq.Table<Movie> Movies
 		{
 			get
 			{
-				return this.GetTable<Scheduler>();
+				return this.GetTable<Movie>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Hall> Halls
+		{
+			get
+			{
+				return this.GetTable<Hall>();
 			}
 		}
 	}
@@ -141,6 +141,8 @@ namespace ServerProject.DatabaseLayer
 		
 		private string _name;
 		
+		private string _phoneNumber;
+		
 		private EntitySet<Reservation> _Reservations;
 		
 		private bool serializing;
@@ -153,6 +155,8 @@ namespace ServerProject.DatabaseLayer
     partial void OnCusIDChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
+    partial void OnphoneNumberChanging(string value);
+    partial void OnphoneNumberChanged();
     #endregion
 		
 		public Customer()
@@ -202,8 +206,29 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string phoneNumber
+		{
+			get
+			{
+				return this._phoneNumber;
+			}
+			set
+			{
+				if ((this._phoneNumber != value))
+				{
+					this.OnphoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._phoneNumber = value;
+					this.SendPropertyChanged("phoneNumber");
+					this.OnphoneNumberChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Reservations", ThisKey="CusID", OtherKey="CustomerID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
 		public EntitySet<Reservation> Reservations
 		{
 			get
@@ -473,20 +498,30 @@ namespace ServerProject.DatabaseLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Hall")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scheduler")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class Hall : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Scheduler : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _HallID;
+		private int _SchID;
 		
-		private string _name;
+		private System.Nullable<System.DateTime> _Datetime;
 		
-		private System.Nullable<int> _MaxNumberOfSeats;
+		private System.Nullable<System.TimeSpan> _Starttime;
 		
-		private EntitySet<Scheduler> _Schedulers;
+		private System.Nullable<int> _MovieID;
+		
+		private System.Nullable<int> _HallID;
+		
+		private EntitySet<Seat> _Seats;
+		
+		private EntitySet<Reservation> _Reservations;
+		
+		private EntityRef<Movie> _Movie;
+		
+		private EntityRef<Hall> _Hall;
 		
 		private bool serializing;
 		
@@ -494,198 +529,89 @@ namespace ServerProject.DatabaseLayer
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnHallIDChanging(int value);
-    partial void OnHallIDChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnMaxNumberOfSeatsChanging(System.Nullable<int> value);
-    partial void OnMaxNumberOfSeatsChanged();
-    #endregion
-		
-		public Hall()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int HallID
-		{
-			get
-			{
-				return this._HallID;
-			}
-			set
-			{
-				if ((this._HallID != value))
-				{
-					this.OnHallIDChanging(value);
-					this.SendPropertyChanging();
-					this._HallID = value;
-					this.SendPropertyChanged("HallID");
-					this.OnHallIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxNumberOfSeats", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<int> MaxNumberOfSeats
-		{
-			get
-			{
-				return this._MaxNumberOfSeats;
-			}
-			set
-			{
-				if ((this._MaxNumberOfSeats != value))
-				{
-					this.OnMaxNumberOfSeatsChanging(value);
-					this.SendPropertyChanging();
-					this._MaxNumberOfSeats = value;
-					this.SendPropertyChanged("MaxNumberOfSeats");
-					this.OnMaxNumberOfSeatsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hall_Scheduler", Storage="_Schedulers", ThisKey="HallID", OtherKey="HallID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
-		public EntitySet<Scheduler> Schedulers
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._Schedulers;
-			}
-			set
-			{
-				this._Schedulers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Schedulers(Scheduler entity)
-		{
-			this.SendPropertyChanging();
-			entity.Hall = this;
-		}
-		
-		private void detach_Schedulers(Scheduler entity)
-		{
-			this.SendPropertyChanging();
-			entity.Hall = null;
-		}
-		
-		private void Initialize()
-		{
-			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerializing(StreamingContext context)
-		{
-			this.serializing = true;
-		}
-		
-		[global::System.Runtime.Serialization.OnSerializedAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnSerialized(StreamingContext context)
-		{
-			this.serializing = false;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Movie")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class Movie : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MovieID;
-		
-		private string _name;
-		
-		private System.Nullable<int> _Playtime;
-		
-		private EntitySet<Scheduler> _Schedulers;
-		
-		private bool serializing;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMovieIDChanging(int value);
+    partial void OnSchIDChanging(int value);
+    partial void OnSchIDChanged();
+    partial void OnDatetimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDatetimeChanged();
+    partial void OnStarttimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnStarttimeChanged();
+    partial void OnMovieIDChanging(System.Nullable<int> value);
     partial void OnMovieIDChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnPlaytimeChanging(System.Nullable<int> value);
-    partial void OnPlaytimeChanged();
+    partial void OnHallIDChanging(System.Nullable<int> value);
+    partial void OnHallIDChanged();
     #endregion
 		
-		public Movie()
+		public Scheduler()
 		{
 			this.Initialize();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int MovieID
+		public int SchID
+		{
+			get
+			{
+				return this._SchID;
+			}
+			set
+			{
+				if ((this._SchID != value))
+				{
+					this.OnSchIDChanging(value);
+					this.SendPropertyChanging();
+					this._SchID = value;
+					this.SendPropertyChanged("SchID");
+					this.OnSchIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datetime", DbType="Date")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<System.DateTime> Datetime
+		{
+			get
+			{
+				return this._Datetime;
+			}
+			set
+			{
+				if ((this._Datetime != value))
+				{
+					this.OnDatetimeChanging(value);
+					this.SendPropertyChanging();
+					this._Datetime = value;
+					this.SendPropertyChanged("Datetime");
+					this.OnDatetimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Starttime", DbType="Time")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<System.TimeSpan> Starttime
+		{
+			get
+			{
+				return this._Starttime;
+			}
+			set
+			{
+				if ((this._Starttime != value))
+				{
+					this.OnStarttimeChanging(value);
+					this.SendPropertyChanging();
+					this._Starttime = value;
+					this.SendPropertyChanged("Starttime");
+					this.OnStarttimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<int> MovieID
 		{
 			get
 			{
@@ -695,6 +621,10 @@ namespace ServerProject.DatabaseLayer
 			{
 				if ((this._MovieID != value))
 				{
+					if (this._Movie.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMovieIDChanging(value);
 					this.SendPropertyChanging();
 					this._MovieID = value;
@@ -704,64 +634,134 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public string name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public System.Nullable<int> HallID
 		{
 			get
 			{
-				return this._name;
+				return this._HallID;
 			}
 			set
 			{
-				if ((this._name != value))
+				if ((this._HallID != value))
 				{
-					this.OnnameChanging(value);
+					if (this._Hall.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnHallIDChanging(value);
 					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
+					this._HallID = value;
+					this.SendPropertyChanged("HallID");
+					this.OnHallIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Playtime", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<int> Playtime
-		{
-			get
-			{
-				return this._Playtime;
-			}
-			set
-			{
-				if ((this._Playtime != value))
-				{
-					this.OnPlaytimeChanging(value);
-					this.SendPropertyChanging();
-					this._Playtime = value;
-					this.SendPropertyChanged("Playtime");
-					this.OnPlaytimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Scheduler", Storage="_Schedulers", ThisKey="MovieID", OtherKey="MovieID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
-		public EntitySet<Scheduler> Schedulers
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Seat", Storage="_Seats", ThisKey="SchID", OtherKey="SchedulerID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
+		public EntitySet<Seat> Seats
 		{
 			get
 			{
 				if ((this.serializing 
-							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
+							&& (this._Seats.HasLoadedOrAssignedValues == false)))
 				{
 					return null;
 				}
-				return this._Schedulers;
+				return this._Seats;
 			}
 			set
 			{
-				this._Schedulers.Assign(value);
+				this._Seats.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Reservation", Storage="_Reservations", ThisKey="SchID", OtherKey="SchedulerID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
+		public EntitySet<Reservation> Reservations
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._Reservations.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._Reservations;
+			}
+			set
+			{
+				this._Reservations.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Scheduler", Storage="_Movie", ThisKey="MovieID", OtherKey="MovieID", IsForeignKey=true, DeleteRule="SET DEFAULT")]
+		public Movie Movie
+		{
+			get
+			{
+				return this._Movie.Entity;
+			}
+			set
+			{
+				Movie previousValue = this._Movie.Entity;
+				if (((previousValue != value) 
+							|| (this._Movie.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Movie.Entity = null;
+						previousValue.Schedulers.Remove(this);
+					}
+					this._Movie.Entity = value;
+					if ((value != null))
+					{
+						value.Schedulers.Add(this);
+						this._MovieID = value.MovieID;
+					}
+					else
+					{
+						this._MovieID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Movie");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hall_Scheduler", Storage="_Hall", ThisKey="HallID", OtherKey="HallID", IsForeignKey=true)]
+		public Hall Hall
+		{
+			get
+			{
+				return this._Hall.Entity;
+			}
+			set
+			{
+				Hall previousValue = this._Hall.Entity;
+				if (((previousValue != value) 
+							|| (this._Hall.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Hall.Entity = null;
+						previousValue.Schedulers.Remove(this);
+					}
+					this._Hall.Entity = value;
+					if ((value != null))
+					{
+						value.Schedulers.Add(this);
+						this._HallID = value.HallID;
+					}
+					else
+					{
+						this._HallID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Hall");
+				}
 			}
 		}
 		
@@ -785,21 +785,36 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		private void attach_Schedulers(Scheduler entity)
+		private void attach_Seats(Seat entity)
 		{
 			this.SendPropertyChanging();
-			entity.Movie = this;
+			entity.Scheduler = this;
 		}
 		
-		private void detach_Schedulers(Scheduler entity)
+		private void detach_Seats(Seat entity)
 		{
 			this.SendPropertyChanging();
-			entity.Movie = null;
+			entity.Scheduler = null;
+		}
+		
+		private void attach_Reservations(Reservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Scheduler = this;
+		}
+		
+		private void detach_Reservations(Reservation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Scheduler = null;
 		}
 		
 		private void Initialize()
 		{
-			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
+			this._Seats = new EntitySet<Seat>(new Action<Seat>(this.attach_Seats), new Action<Seat>(this.detach_Seats));
+			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
+			this._Movie = default(EntityRef<Movie>);
+			this._Hall = default(EntityRef<Hall>);
 			OnCreated();
 		}
 		
@@ -1083,30 +1098,20 @@ namespace ServerProject.DatabaseLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scheduler")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Movie")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class Scheduler : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Movie : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SchID;
+		private int _MovieID;
 		
-		private System.Nullable<System.DateTime> _Datetime;
+		private string _name;
 		
-		private System.Nullable<System.TimeSpan> _Starttime;
+		private System.Nullable<int> _Playtime;
 		
-		private System.Nullable<int> _MovieID;
-		
-		private System.Nullable<int> _HallID;
-		
-		private EntitySet<Seat> _Seats;
-		
-		private EntitySet<Reservation> _Reservations;
-		
-		private EntityRef<Hall> _Hall;
-		
-		private EntityRef<Movie> _Movie;
+		private EntitySet<Scheduler> _Schedulers;
 		
 		private bool serializing;
 		
@@ -1114,89 +1119,22 @@ namespace ServerProject.DatabaseLayer
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSchIDChanging(int value);
-    partial void OnSchIDChanged();
-    partial void OnDatetimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDatetimeChanged();
-    partial void OnStarttimeChanging(System.Nullable<System.TimeSpan> value);
-    partial void OnStarttimeChanged();
-    partial void OnMovieIDChanging(System.Nullable<int> value);
+    partial void OnMovieIDChanging(int value);
     partial void OnMovieIDChanged();
-    partial void OnHallIDChanging(System.Nullable<int> value);
-    partial void OnHallIDChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnPlaytimeChanging(System.Nullable<int> value);
+    partial void OnPlaytimeChanged();
     #endregion
 		
-		public Scheduler()
+		public Movie()
 		{
 			this.Initialize();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int SchID
-		{
-			get
-			{
-				return this._SchID;
-			}
-			set
-			{
-				if ((this._SchID != value))
-				{
-					this.OnSchIDChanging(value);
-					this.SendPropertyChanging();
-					this._SchID = value;
-					this.SendPropertyChanged("SchID");
-					this.OnSchIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datetime", DbType="Date")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<System.DateTime> Datetime
-		{
-			get
-			{
-				return this._Datetime;
-			}
-			set
-			{
-				if ((this._Datetime != value))
-				{
-					this.OnDatetimeChanging(value);
-					this.SendPropertyChanging();
-					this._Datetime = value;
-					this.SendPropertyChanged("Datetime");
-					this.OnDatetimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Starttime", DbType="Time")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<System.TimeSpan> Starttime
-		{
-			get
-			{
-				return this._Starttime;
-			}
-			set
-			{
-				if ((this._Starttime != value))
-				{
-					this.OnStarttimeChanging(value);
-					this.SendPropertyChanging();
-					this._Starttime = value;
-					this.SendPropertyChanged("Starttime");
-					this.OnStarttimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public System.Nullable<int> MovieID
+		public int MovieID
 		{
 			get
 			{
@@ -1206,10 +1144,6 @@ namespace ServerProject.DatabaseLayer
 			{
 				if ((this._MovieID != value))
 				{
-					if (this._Movie.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMovieIDChanging(value);
 					this.SendPropertyChanging();
 					this._MovieID = value;
@@ -1219,134 +1153,64 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public System.Nullable<int> HallID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string name
 		{
 			get
 			{
-				return this._HallID;
+				return this._name;
 			}
 			set
 			{
-				if ((this._HallID != value))
+				if ((this._name != value))
 				{
-					if (this._Hall.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnHallIDChanging(value);
+					this.OnnameChanging(value);
 					this.SendPropertyChanging();
-					this._HallID = value;
-					this.SendPropertyChanged("HallID");
-					this.OnHallIDChanged();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Seat", Storage="_Seats", ThisKey="SchID", OtherKey="SchedulerID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
-		public EntitySet<Seat> Seats
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Playtime", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> Playtime
+		{
+			get
+			{
+				return this._Playtime;
+			}
+			set
+			{
+				if ((this._Playtime != value))
+				{
+					this.OnPlaytimeChanging(value);
+					this.SendPropertyChanging();
+					this._Playtime = value;
+					this.SendPropertyChanged("Playtime");
+					this.OnPlaytimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Scheduler", Storage="_Schedulers", ThisKey="MovieID", OtherKey="MovieID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<Scheduler> Schedulers
 		{
 			get
 			{
 				if ((this.serializing 
-							&& (this._Seats.HasLoadedOrAssignedValues == false)))
+							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
 				{
 					return null;
 				}
-				return this._Seats;
+				return this._Schedulers;
 			}
 			set
 			{
-				this._Seats.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Reservation", Storage="_Reservations", ThisKey="SchID", OtherKey="SchedulerID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
-		public EntitySet<Reservation> Reservations
-		{
-			get
-			{
-				if ((this.serializing 
-							&& (this._Reservations.HasLoadedOrAssignedValues == false)))
-				{
-					return null;
-				}
-				return this._Reservations;
-			}
-			set
-			{
-				this._Reservations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hall_Scheduler", Storage="_Hall", ThisKey="HallID", OtherKey="HallID", IsForeignKey=true)]
-		public Hall Hall
-		{
-			get
-			{
-				return this._Hall.Entity;
-			}
-			set
-			{
-				Hall previousValue = this._Hall.Entity;
-				if (((previousValue != value) 
-							|| (this._Hall.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Hall.Entity = null;
-						previousValue.Schedulers.Remove(this);
-					}
-					this._Hall.Entity = value;
-					if ((value != null))
-					{
-						value.Schedulers.Add(this);
-						this._HallID = value.HallID;
-					}
-					else
-					{
-						this._HallID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Hall");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Scheduler", Storage="_Movie", ThisKey="MovieID", OtherKey="MovieID", IsForeignKey=true, DeleteRule="SET DEFAULT")]
-		public Movie Movie
-		{
-			get
-			{
-				return this._Movie.Entity;
-			}
-			set
-			{
-				Movie previousValue = this._Movie.Entity;
-				if (((previousValue != value) 
-							|| (this._Movie.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Movie.Entity = null;
-						previousValue.Schedulers.Remove(this);
-					}
-					this._Movie.Entity = value;
-					if ((value != null))
-					{
-						value.Schedulers.Add(this);
-						this._MovieID = value.MovieID;
-					}
-					else
-					{
-						this._MovieID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Movie");
-				}
+				this._Schedulers.Assign(value);
 			}
 		}
 		
@@ -1370,36 +1234,197 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		private void attach_Seats(Seat entity)
+		private void attach_Schedulers(Scheduler entity)
 		{
 			this.SendPropertyChanging();
-			entity.Scheduler = this;
+			entity.Movie = this;
 		}
 		
-		private void detach_Seats(Seat entity)
+		private void detach_Schedulers(Scheduler entity)
 		{
 			this.SendPropertyChanging();
-			entity.Scheduler = null;
-		}
-		
-		private void attach_Reservations(Reservation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Scheduler = this;
-		}
-		
-		private void detach_Reservations(Reservation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Scheduler = null;
+			entity.Movie = null;
 		}
 		
 		private void Initialize()
 		{
-			this._Seats = new EntitySet<Seat>(new Action<Seat>(this.attach_Seats), new Action<Seat>(this.detach_Seats));
-			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
-			this._Hall = default(EntityRef<Hall>);
-			this._Movie = default(EntityRef<Movie>);
+			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Hall")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class Hall : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _HallID;
+		
+		private string _name;
+		
+		private System.Nullable<int> _MaxNumberOfSeats;
+		
+		private EntitySet<Scheduler> _Schedulers;
+		
+		private bool serializing;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnHallIDChanging(int value);
+    partial void OnHallIDChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnMaxNumberOfSeatsChanging(System.Nullable<int> value);
+    partial void OnMaxNumberOfSeatsChanged();
+    #endregion
+		
+		public Hall()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int HallID
+		{
+			get
+			{
+				return this._HallID;
+			}
+			set
+			{
+				if ((this._HallID != value))
+				{
+					this.OnHallIDChanging(value);
+					this.SendPropertyChanging();
+					this._HallID = value;
+					this.SendPropertyChanged("HallID");
+					this.OnHallIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxNumberOfSeats", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> MaxNumberOfSeats
+		{
+			get
+			{
+				return this._MaxNumberOfSeats;
+			}
+			set
+			{
+				if ((this._MaxNumberOfSeats != value))
+				{
+					this.OnMaxNumberOfSeatsChanging(value);
+					this.SendPropertyChanging();
+					this._MaxNumberOfSeats = value;
+					this.SendPropertyChanged("MaxNumberOfSeats");
+					this.OnMaxNumberOfSeatsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hall_Scheduler", Storage="_Schedulers", ThisKey="HallID", OtherKey="HallID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		public EntitySet<Scheduler> Schedulers
+		{
+			get
+			{
+				if ((this.serializing 
+							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
+				return this._Schedulers;
+			}
+			set
+			{
+				this._Schedulers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Schedulers(Scheduler entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hall = this;
+		}
+		
+		private void detach_Schedulers(Scheduler entity)
+		{
+			this.SendPropertyChanging();
+			entity.Hall = null;
+		}
+		
+		private void Initialize()
+		{
+			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
 			OnCreated();
 		}
 		

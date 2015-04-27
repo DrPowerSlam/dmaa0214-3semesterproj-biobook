@@ -27,11 +27,11 @@ namespace ServerProject.DatabaseLayer
 
             var cusResJoin = from res in reservation
                              join cust in customers on res.CustomerID equals cust.CusID
-                             select new { Name = cust.name };
+                             select new {cusID = cust.CusID, Name = cust.name, Phone = cust.phoneNumber, ResID = res.ResID, ResSchID = res.SchedulerID, ResRow = res.Row, ResSeat = res.Seat };
 
             foreach (var item in cusResJoin)
             {
-                Console.WriteLine("Name" + item.Name);
+                Console.WriteLine("Customer ID: " + item.cusID + "\n" + "Name: " + item.Name + "\n" + "Phone: " + item.Phone + "\n" + "Reservation ID: " + item.ResID + "\n" + "Scheduler ID: " + item.ResSchID + "\n" + "Row: " + item.ResRow + "\n" + "Seat: " + item.ResSeat + "\n");
             }
       
 
