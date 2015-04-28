@@ -28,10 +28,10 @@ namespace WCFConnectionLibrary
 
             return schedulerController.getSchedulerByID(schedulerID);
         }
-        public void makeReservation(string row, string seat, int schedulerID)
+        public void makeReservation(string row, string seat, int schedulerID, int customerID)
         {
            ReserveController reserveController = new ReserveController();
-           reserveController.makeReservation(row, seat, schedulerID);
+           reserveController.makeReservation(row, seat, schedulerID, customerID);
         }
         
 

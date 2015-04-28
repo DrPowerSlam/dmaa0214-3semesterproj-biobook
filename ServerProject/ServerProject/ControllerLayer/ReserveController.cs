@@ -20,9 +20,9 @@ namespace ServerProject.ControllerLayer
         {
 
         }
-        public void makeReservation(string row, string seat, int schedulerID)
+        public void makeReservation(string row, string seat, int schedulerID, int customerID)
         {
-            //reserveSeat(string row, string seat, int schedulerID);
+            //reserveSeat(row, seat, schedulerID, customerID);
 
         }
 
