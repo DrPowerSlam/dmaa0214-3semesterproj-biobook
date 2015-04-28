@@ -193,8 +193,10 @@ namespace ConsoleApplication1
             Console.WriteLine("****************************** FIND ALL RESERVATION ******************************\n");
             ReserveController resCtr = new ReserveController();
 
-            foreach(var r in resCtr.getReservations().Cast<Reservation>())
+            foreach(var r in resCtr.getReservationsByCustomerID(4).Cast<Reservation>())
             {
+                Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
+                Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
                 if (r.Customer.CusID == 4)
                 {
                     Console.WriteLine(r.Scheduler.Movie.name);

@@ -16,7 +16,7 @@ namespace ServerProject.ControllerLayer
         {
             foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
             {
-                if(r.Customer.CusID == customerID)
+                if (r.Customer.CusID == customerID)
                 {
                     listToReturn.Add(r);
                 }
@@ -30,10 +30,10 @@ namespace ServerProject.ControllerLayer
         {
 
         }
-        public void makeReservation(string row, string seat, int schedulerID, int customerID)
+        public void makeReservation(string row, string seat, int schedulerID)
         {
-            dbRes.makeReservation(row, seat, schedulerID, customerID);
-        }
+            //reserveSeat(string row, string seat, int schedulerID);
 
+        }
     }
 }
