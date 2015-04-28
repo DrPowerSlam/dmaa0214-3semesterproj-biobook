@@ -192,8 +192,11 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("****************************** FIND ALL RESERVATION ******************************\n");
             ReserveController resCtr = new ReserveController();
-            foreach (ServerProject.ModelLayer.Reservation r in resCtr.getReservations(2))
-                Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.RowArray + " " + r.SeatArray);
+
+            foreach(var r in resCtr.getReservations(4).Cast<Reservation>())
+            {
+                Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
+            }           
         }
     }
 }
