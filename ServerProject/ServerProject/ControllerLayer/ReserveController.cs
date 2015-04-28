@@ -10,10 +10,20 @@ namespace ServerProject.ControllerLayer
     public class ReserveController
     {
         DBReservation dbRes = new DBReservation();
+        List<Reservation> listToReturn = new List<Reservation>();
 
-        public IEnumerable getReservations()
+        public IEnumerable getReservationsByCustomerID(int customerID)
         {
-            return dbRes.getReservation();
+            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            {
+                if(r.Customer.CusID == customerID)
+                {
+                    listToReturn.Add(r);
+                }
+
+            }
+
+            return listToReturn;
         }
 
         public void findReservationByPhone(string phone)
