@@ -195,8 +195,8 @@ namespace ConsoleApplication1
 
             foreach(var r in resCtr.getReservations(4).Cast<Reservation>())
             {
-                Console.WriteLine(r.Scheduler.Movie.name);
-                Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
+                Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
+                Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
             }           
         }
     }
