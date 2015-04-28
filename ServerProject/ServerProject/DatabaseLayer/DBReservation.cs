@@ -13,34 +13,23 @@ namespace ServerProject.DatabaseLayer
 {
     class DBReservation
     {
-        private IEnumerable customerList;
-        private IEnumerable reservationList;
-
-
-     
-
-        public void getReservation()
+        public IEnumerable getReservation(int customerID)
         {
             var db = new ConnectToDatabaseDataContext();
             DBCustomer dbCustomer = new DBCustomer();
-            List<Customer> customers = null;
-            List<Reservation> reservation = null;
-
-            if (customers == null)
-                customers = dbCustomer.getAllCustomers().Cast<Customer>().ToList();
-
-            if (reservation == null)
-                reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
-
+            List<Customer> customers = dbCustomer.getAllCustomers().Cast<Customer>().ToList();
+            List<Reservation> reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
             var cusResJoin = from res in reservation
-                             join cust in customers on res.CustomerID equals cust.CusID
+                             join cust in customers on res.CustomerID equals customerID
                              select new {cusID = cust.CusID, Name = cust.name, Phone = cust.phoneNumber, ResID = res.ResID, ResSchID = res.SchedulerID, ResRow = res.Row, ResSeat = res.Seat };
 
-            foreach (var item in cusResJoin)
+            foreach (var c in cusResJoin)
             {
-                Console.WriteLine("Customer ID: " + item.cusID + "\n" + "Name: " + item.Name + "\n" + "Phone: " + item.Phone + "\n" + "Reservation ID: " + item.ResID + "\n" + "Scheduler ID: " + item.ResSchID + "\n" + "Row: " + item.ResRow + "\n" + "Seat: " + item.ResSeat + "\n");
+                Console.WriteLine(c.cusID + " " + c.Name + " " + c.ResSchID + " " + c.ResRow + " " + c.ResSeat + " " + c.ResID);
             }
+
+            return cusResJoin;
         }
     }
 }

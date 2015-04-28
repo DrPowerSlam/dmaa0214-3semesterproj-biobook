@@ -194,9 +194,7 @@ namespace ConsoleApplication1
 
             ReserveController resCtr = new ReserveController();
 
-            resCtr.getReservations();
-          
-
+            resCtr.getReservations(4);
         }
     }
 }
