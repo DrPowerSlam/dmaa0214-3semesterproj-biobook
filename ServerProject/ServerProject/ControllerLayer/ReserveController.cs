@@ -11,9 +11,11 @@ namespace ServerProject.ControllerLayer
     {
         DBReservation dbRes = new DBReservation();
 
-        public void getReservations(int customerID)
+        public ArrayList getReservations(int customerID)
         {
-            dbRes.getReservation(customerID);
+            ArrayList list = dbRes.getReservation(customerID);
+
+            return list;
         }
 
         public void findReservationByPhone(string phone)

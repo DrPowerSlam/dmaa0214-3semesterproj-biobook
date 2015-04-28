@@ -5,14 +5,34 @@ using System.Text;
 
 namespace ServerProject.ModelLayer
 {
-    class Reservation
+    public class Reservation
     {
     
         private int resID;
         private int customerID;
         private Customer customer;
-        private Array rowArray;
-        private Array seatArray;
+        private int rowArray;
+        private int seatArray;
+        private int schedulerID;
+
+        public Reservation(int ResID, int CustomerID, int SchedulerID, int RowArray, int SeatArray)
+        {
+            this.ResID = ResID;
+            this.customerID = CustomerID;
+            this.SchedulerID = SchedulerID;
+            this.RowArray = RowArray;
+            this.SeatArray = SeatArray;
+        }
+
+        public Reservation()
+        {
+            ResID = -1;
+            customerID = -1;
+            SchedulerID = -1;
+            rowArray = -1;
+            seatArray = -1;
+            customer = null;
+        }
 
         public int ResID
         {
@@ -26,7 +46,6 @@ namespace ServerProject.ModelLayer
             get { return customer; }
             set { customer = value; }
         }
-        private int schedulerID;
 
         public int SchedulerID
         {
@@ -35,28 +54,17 @@ namespace ServerProject.ModelLayer
         }
  
 
-        public Array RowArray
+        public int RowArray
         {
             get { return rowArray; }
             set { rowArray = value; }
         }
     
 
-        public Array SeatArray
+        public int SeatArray
         {
             get { return seatArray; }
             set { seatArray = value; }
         }
-
-
-        public Reservation(int ResID, int CustomerID, int SchedulerID, Array RowArray, Array SeatArray)
-        {
-            this.ResID = ResID;
-            this.customerID = CustomerID;
-            this.SchedulerID = SchedulerID;
-            this.RowArray = RowArray;
-            this.SeatArray = SeatArray;
-        }
-
     }
 }
