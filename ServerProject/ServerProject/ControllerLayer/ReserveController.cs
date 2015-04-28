@@ -22,8 +22,7 @@ namespace ServerProject.ControllerLayer
         }
         public void makeReservation(string row, string seat, int schedulerID, int customerID)
         {
-            //reserveSeat(row, seat, schedulerID, customerID);
-
+            dbRes.makeReservation(row, seat, schedulerID, customerID);
         }
 
     }
