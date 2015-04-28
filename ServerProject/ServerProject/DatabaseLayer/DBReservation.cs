@@ -21,7 +21,7 @@ namespace ServerProject.DatabaseLayer
             List<Reservation> reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
             var cusResJoin = from res in reservation
-                             join cust in customers on res.CustomerID equals cust.CusID
+                             join cust in customers on res.CustomerID equals cust.CusID where cust.CusID == customerID
                              select res;
 
             return cusResJoin;
