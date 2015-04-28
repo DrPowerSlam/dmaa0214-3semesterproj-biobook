@@ -13,16 +13,24 @@ namespace ServerProject.DatabaseLayer
 {
     class DBReservation
     {
-        private List<Customer> customerList;
-        private List<Reservation> reservationList;
+        private IEnumerable customerList;
+        private IEnumerable reservationList;
 
 
      
 
         public void getReservation()
         {
-            List<Customer> customers = GetCustomerList();
-            List<Reservation> reservation = GetReservationList();
+            var db = new ConnectToDatabaseDataContext();
+            DBCustomer dbCustomer = new DBCustomer();
+            List<Customer> customers = null;
+            List<Reservation> reservation = null;
+
+            if (customers == null)
+                customers = dbCustomer.getAllCustomers().Cast<Customer>().ToList();
+
+            if (reservation == null)
+                reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
 
             var cusResJoin = from res in reservation
@@ -33,64 +41,6 @@ namespace ServerProject.DatabaseLayer
             {
                 Console.WriteLine("Customer ID: " + item.cusID + "\n" + "Name: " + item.Name + "\n" + "Phone: " + item.Phone + "\n" + "Reservation ID: " + item.ResID + "\n" + "Scheduler ID: " + item.ResSchID + "\n" + "Row: " + item.ResRow + "\n" + "Seat: " + item.ResSeat + "\n");
             }
-      
-
         }
-
-        public List<Customer> GetCustomerList()
-        {
-            if (customerList == null)
-                createCustomer();
-
-            return customerList;
-        }
-
-        public List<Reservation> GetReservationList()
-        {
-            if (reservationList == null)
-                createReservation();
-
-            return reservationList;
-        }
-
-
-        public void  createCustomer()
-        {
-            
-            //var db = new ConnectToDatabaseDataContext();
-
-            DBCustomer cust = new DBCustomer();
-
-
-            customerList = cust.getAllCustomers().Cast<Customer>().ToList();
-
-            //customerList = db.Customers.Select(x => x).AsEnumerable().ToList();
-
-          
-
-        }
-
-        public void createReservation()
-        {
-            var db = new ConnectToDatabaseDataContext();
-
-            reservationList = db.Reservations.Select(x => x).AsEnumerable().ToList();
-
-        
-
-        }
-
-        //public IEnumerable getAllCustomers()
-        //{
-        //    var db = new ConnectToDatabaseDataContext();
-
-        //    var customer = db.Customers.Select(x => x).AsEnumerable();
-
-        //    return customer;
-        //}
-
-
-
-
     }
 }
