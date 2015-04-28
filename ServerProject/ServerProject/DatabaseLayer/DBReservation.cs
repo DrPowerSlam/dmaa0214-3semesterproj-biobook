@@ -13,7 +13,7 @@ namespace ServerProject.DatabaseLayer
 {
     class DBReservation
     {
-        public IEnumerable getReservation(int customerID)
+        public IEnumerable getReservation()
         {
             var db = new ConnectToDatabaseDataContext();
             DBCustomer dbCustomer = new DBCustomer();
@@ -21,7 +21,7 @@ namespace ServerProject.DatabaseLayer
             List<Reservation> reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
             var cusResJoin = from res in reservation
-                             join cust in customers on res.CustomerID equals cust.CusID where cust.CusID == customerID
+                             join cust in customers on res.CustomerID equals cust.CusID
                              select res;
 
             return cusResJoin;
