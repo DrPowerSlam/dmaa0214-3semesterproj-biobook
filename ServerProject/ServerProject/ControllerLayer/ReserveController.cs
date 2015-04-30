@@ -22,6 +22,7 @@ namespace ServerProject.ControllerLayer
         }
         public void makeReservation(string row, string seat, int schedulerID, int customerID)
         {
+            //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.makeReservation(row, seat, schedulerID, customerID);
         }
 
