@@ -19,7 +19,7 @@ namespace WCFConnectionLibrary
         Scheduler getSchedulerByID(int schedulerID);
 
         [OperationContract]
-        void makeReservation(string row, string seat, int schedulerID, int customerID);
+        void makeReservation(string row, string seat, int schedulerID);
 
         
     }

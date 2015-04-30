@@ -10,21 +10,30 @@ namespace ServerProject.ControllerLayer
     public class ReserveController
     {
         DBReservation dbRes = new DBReservation();
+        List<Reservation> listToReturn = new List<Reservation>();
 
-        public IEnumerable getReservations()
+        public IEnumerable getReservationsByCustomerID(int customerID)
         {
-            return dbRes.getReservation();
+            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            {
+                if (r.Customer.CusID == customerID)
+                {
+                    listToReturn.Add(r);
+                }
+
+            }
+
+            return listToReturn;
         }
 
         public void findReservationByPhone(string phone)
         {
 
         }
-        public void makeReservation(string row, string seat, int schedulerID, int customerID)
+        public void makeReservation(string row, string seat, int schedulerID)
         {
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
-            dbRes.makeReservation(row, seat, schedulerID, customerID);
+            //dbRes.makeReservation(row, seat, schedulerID, customerID);
         }
-
     }
 }

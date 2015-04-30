@@ -26,10 +26,5 @@ namespace ServerProject.DatabaseLayer
 
             return cusResJoin;
         }
-
-        public void makeReservation(string row, string seat, int schedulerID, int customerID)
-        {
-            //insert a reservation into the databse:
-        }
     }
 }
