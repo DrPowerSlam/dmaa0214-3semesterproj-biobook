@@ -18,7 +18,7 @@ namespace ServerProject.DatabaseLayer
         {
             
             DBCustomer dbCustomer = new DBCustomer();
-            List<Customer> customers = dbCustomer.getAllCustomers().Cast<Customer>().ToList();
+            List<Customer> customers = dbCustomer.GetAllCustomers().Cast<Customer>().ToList();
             List<Reservation> reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
             var cusResJoin = from res in reservation

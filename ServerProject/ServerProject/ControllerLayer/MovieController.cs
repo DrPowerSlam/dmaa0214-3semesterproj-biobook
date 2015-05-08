@@ -15,9 +15,9 @@ namespace ServerProject.ControllerLayer
         /// Gets all the movies from the database
         /// </summary>
         /// <returns>Returns an IEnumerable with all the movies</returns>
-        public IEnumerable getAllMovies()
+        public IEnumerable GetAllMovies()
         {
-            return dbMovie.getAllMovies();
+            return dbMovie.GetAllMovies();
         }
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="ID">The ID of the movie you want to find</param>
         /// <returns>Returns the movie as a movie object</returns>
-        public Movie findMovieByID(int ID)
+        public Movie FindMovieByID(int ID)
         {
-            return dbMovie.selectWhereID(ID);
+            return dbMovie.GetMovieByID(ID);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="name">The name of the movie you want to find</param>
         /// <returns>Returns the movie as a movie object</returns>
-        public Movie findMovieByName(string name)
+        public Movie FindMovieByName(string name)
         {
-            return dbMovie.selectWhereName(name);
+            return dbMovie.GetByMovieName(name);
         }
 
         /// <summary>
@@ -45,18 +45,18 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="name">The name of the movie</param>
         /// <param name="playTime">The playtime of the movie</param>
-        public void insertMovie(string name, int playTime)
+        public void InsertMovie(string name, int playTime)
         {
-            dbMovie.insertMovie(name, playTime);
+            dbMovie.InsertMovie(name, playTime);
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="movie"></param>
-        public void deleteMovie(Movie movie)
+        public void DeleteMovie(Movie movie)
         {
-            dbMovie.deleteCustomer(movie);
+            dbMovie.DeleteMovie(movie);
         }
     }
 }

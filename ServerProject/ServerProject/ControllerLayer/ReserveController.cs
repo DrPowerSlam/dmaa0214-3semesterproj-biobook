@@ -10,10 +10,11 @@ namespace ServerProject.ControllerLayer
     public class ReserveController
     {
         DBReservation dbRes = new DBReservation();
-        List<Reservation> listToReturn = new List<Reservation>();
+        
 
         public IEnumerable getReservationsByCustomerID(int customerID)
         {
+            List<Reservation> listToReturn = new List<Reservation>();
             foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
             {
                 if (r.Customer.CusID == customerID)
@@ -26,9 +27,19 @@ namespace ServerProject.ControllerLayer
             return listToReturn;
         }
 
-        public void findReservationByPhone(string phone)
+        public List<Reservation> findReservationByPhone(string phone)
         {
+            List<Reservation> listToReturn = new List<Reservation>();
+            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            {
+                if (r.Customer.phoneNumber.Equals(phone))
+                {
+                    listToReturn.Add(r);
+                }
 
+            }
+
+            return listToReturn;
         }
 
         //This needs to have both schedulerID customerId and row and seat.

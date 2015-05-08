@@ -22,7 +22,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="customerID">The customer ID you want to search for</param>
         /// <returns>The customer, if it's found</returns>
-        public Customer selectWhereID(int customerID)
+        public Customer GetCustomerByID(int customerID)
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -36,7 +36,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="name">The name which to search for</param>
         /// <returns>Returns a list of all customers with the name</returns>
-        public IEnumerable selectWhereName(string name)
+        public IEnumerable GetCustomerByName(string name)
         {
 
             var db = new ConnectToDatabaseDataContext();
@@ -50,7 +50,7 @@ namespace ServerProject.DatabaseLayer
         /// Creates a list with all customers
         /// </summary>
         /// <returns>The list of customers</returns>
-        public IEnumerable getAllCustomers()
+        public IEnumerable GetAllCustomers()
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -64,7 +64,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="name">The name of the customer (ID is auto-generated in the database)</param>
         /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
-        public int insertCustomer(string name)
+        public int InsertCustomer(string name)
         {
             int controlInt = -1;
             var db = new ConnectToDatabaseDataContext();
@@ -92,7 +92,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="customer">The customer object from the database to delete</param>
         /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
-        public int deleteCustomer(Customer customer)
+        public int DeleteCustomer(Customer customer)
         {
             int controlInt = -1;
             var db = new ConnectToDatabaseDataContext();
