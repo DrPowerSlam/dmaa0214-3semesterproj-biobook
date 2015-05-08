@@ -30,10 +30,22 @@ namespace ServerProject.ControllerLayer
         {
 
         }
-        public void makeReservation(string row, string seat, int schedulerID)
+
+        //This needs to have both schedulerID customerId and row and seat.
+        //ex. row = "1,1,1" seat = "2,3,4"
+        public void makeReservation(string row, string seat, int schedulerID, int customerID)
         {
+            Reservation reservation = new Reservation();
+
+            reservation.Seat = seat;
+            reservation.Row = row;
+
+            reservation.CustomerID = customerID;
+            reservation.SchedulerID = schedulerID;
+
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
-            //dbRes.makeReservation(row, seat, schedulerID, customerID);
+            dbRes.insertReservation(reservation);
+
         }
     }
 }

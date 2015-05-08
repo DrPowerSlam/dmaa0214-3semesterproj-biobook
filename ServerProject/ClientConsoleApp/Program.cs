@@ -21,10 +21,10 @@ namespace ConsoleApplication1
         {
             Program program = new Program();
 
-            program.getAllReservations();
+            //program.getAllReservations();
            
 
-            //program.GetScheduler();
+            program.GetScheduler();
 
         //    var client = new CustomerServiceClient();
 
@@ -65,6 +65,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Press 4: Find a movie by name\n");
             Console.WriteLine("Press 5: Find a movie by ID\n");
             Console.WriteLine("Press 6: See all movies\n");
+            Console.WriteLine("Press 7: To make a Reservation\n");
             Console.WriteLine("Press 0: Close the application\n");
             line = Console.ReadLine();
             if (line.Equals("1"))
@@ -117,10 +118,18 @@ namespace ConsoleApplication1
                 Console.Clear();
                 startScreen();
             }
+            else if (line.Equals("7"))
+            {
+                MakeReservation();
+                Console.ReadLine();
+                Console.Clear();
+                startScreen();
+            }
             else if (line.Equals("0"))
             {
                 Environment.Exit(0);
             }
+
         }
         public void getAllCustomers()
         {
@@ -179,12 +188,6 @@ namespace ConsoleApplication1
             }
         }
 
-
-
-
-
-
-
         ///Reservation
         ///
 
@@ -203,6 +206,17 @@ namespace ConsoleApplication1
                     Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
                 }
             }           
+
+        }
+
+
+        public void MakeReservation()
+        {
+            ReserveController resController = new ReserveController();
+            
+
+            //Change this so it works with the algorithm..
+            resController.makeReservation("3", "3", 3, 3);
         }
     }
 }
