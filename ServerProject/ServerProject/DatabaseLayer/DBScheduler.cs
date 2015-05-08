@@ -41,7 +41,7 @@ namespace ServerProject.DatabaseLayer
         /// Inserts a scheduler into the database
         /// </summary>
         /// <param name="sch">The object to insert</param>
-        public void insertScheduler(Scheduler sch)
+        public void InsertScheduler(Scheduler sch)
         {
             var db = new ConnectToDatabaseDataContext();
             db.Schedulers.InsertOnSubmit(sch);
@@ -72,7 +72,7 @@ namespace ServerProject.DatabaseLayer
         /// <summary>
         /// Gets a scheduler by date and time
         /// </summary>
-        /// <param name="date">Date and time writen as DD:MM:YYYY HH:MM:SS</param>
+        /// <param name="date">Date and time writen as yyyyMMdd hhMMss</param>
         /// <returns>A list of schedulers</returns>
         public List<Scheduler> GetByDate(DateTime date)
         {
