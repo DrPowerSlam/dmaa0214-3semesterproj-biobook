@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Scheduler">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SchID" type="xs:int" />
+      <xs:element minOccurs="0" name="Datetime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Starttime" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="MovieID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HallID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Seats" nillable="true" type="tns:ArrayOfSeat">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Reservations" nillable="true" type="tns:ArrayOfReservation">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Scheduler" nillable="true" type="tns:Scheduler" />
+  <xs:complexType name="ArrayOfSeat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Seat" nillable="true" type="tns:Seat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeat" nillable="true" type="tns:ArrayOfSeat" />
+  <xs:complexType name="Seat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ColumnArray" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SchedulerID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Seat" nillable="true" type="tns:Seat" />
+  <xs:complexType name="ArrayOfReservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reservation" nillable="true" type="tns:Reservation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReservation" nillable="true" type="tns:ArrayOfReservation" />
+  <xs:complexType name="Reservation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResID" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SchedulerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Seat" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reservation" nillable="true" type="tns:Reservation" />
+</xs:schema>
