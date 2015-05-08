@@ -11,17 +11,20 @@ namespace ServerProject.ModelLayer
 
         private string name;
         private int cusID;
+        private string phoneNumber;
 
         public Customer()
         {
             name = null;
             cusID = -1;
+            phoneNumber = "";
         }
 
-        public Customer(string name, int cusID)
+        public Customer(string name, int cusID, string phoneNumber)
         {
             this.name = name;
             this.cusID = cusID;
+            this.phoneNumber = phoneNumber;
         }
 
         public string Name

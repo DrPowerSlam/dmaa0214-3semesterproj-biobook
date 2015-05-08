@@ -57,6 +57,7 @@
     <Compile Include="DatabaseLayer\DBCustomer.cs" />
     <Compile Include="DatabaseLayer\DBHall.cs" />
     <Compile Include="DatabaseLayer\DBMovie.cs" />
+    <Compile Include="DatabaseLayer\DBReservation.cs" />
     <Compile Include="DatabaseLayer\DBScheduler.cs" />
     <Compile Include="DatabaseLayer\DBSeat.cs" />
     <Compile Include="ModelLayer\Customer.cs" />

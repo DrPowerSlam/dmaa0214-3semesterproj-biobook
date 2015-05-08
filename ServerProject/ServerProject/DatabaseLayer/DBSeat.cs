@@ -16,9 +16,8 @@ namespace ServerProject.DatabaseLayer
         {
 
             var db = new ConnectToDatabaseDataContext();
-            List<Seat> seatListoperator = new List<Seat>();
 
-            return seatListoperator = db.Seats.Where(x => x.SchedulerID == schID).ToList();
+            return db.Seats.Where(x => x.SchedulerID == schID).ToList();
 
             //// Testing translater
             //Console.WriteLine(count);

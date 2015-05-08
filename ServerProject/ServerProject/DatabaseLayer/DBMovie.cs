@@ -17,11 +17,6 @@ namespace ServerProject.DatabaseLayer
             var db = new ConnectToDatabaseDataContext();
 
             Movie movie = db.Movies.Single(x => x.MovieID == movieID);
-            
-            //Movie movieModel = new Movie();
-            //movieModel.MovieID = movie.First().MovieID;
-            //movieModel.Name = movie.First().name;
-            //movieModel.PlayTime = (int)movie.First().Playtime;
 
             return movie;
         }
@@ -35,21 +30,62 @@ namespace ServerProject.DatabaseLayer
             return movie;
         }
 
-        public ArrayList getAllMovies()
+        public IEnumerable getAllMovies()
         {
-            ArrayList movieList = new ArrayList();
-
             var db = new ConnectToDatabaseDataContext();
-            int movieID = 1;
 
-            while (movieID <= db.Movies.AsEnumerable().Last().MovieID)
+            var movies = db.Movies.Select(x => x).AsEnumerable();
+
+            return movies;
+        }
+
+        public int insertMovie(string name, int playTime)
+        {
+            int controlInt = -1;
+            var db = new ConnectToDatabaseDataContext();
+
+            Movie movie = new Movie();
+            movie.name = name;
+            movie.Playtime = playTime;
+
+            db.Movies.InsertOnSubmit(movie);
+
+            try
             {
-                Movie movie = db.Movies.Single(x => x.MovieID == movieID && !x.name.Equals(null));
-                movieList.Add(movie);
-                movieID++;
+                db.SubmitChanges();
+                controlInt = 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return controlInt;
+        }
+
+        public int deleteCustomer(Movie movie)
+        {
+            int controlInt = -1;
+            var db = new ConnectToDatabaseDataContext();
+
+            Movie movieToDelete = new Movie();
+            movieToDelete.name = movie.name;
+            movieToDelete.MovieID = movie.MovieID;
+            movieToDelete.Playtime = movie.Playtime;
+
+            db.Movies.Attach(movieToDelete);
+            db.Movies.DeleteOnSubmit(movieToDelete);
+
+            try
+            {
+                db.SubmitChanges();
+                controlInt = 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
 
-            return movieList;
+            return controlInt;
         }
     }
 }

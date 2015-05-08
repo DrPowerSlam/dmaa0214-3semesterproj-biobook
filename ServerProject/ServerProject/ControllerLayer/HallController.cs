@@ -11,7 +11,7 @@ namespace ServerProject.ControllerLayer
         DBHall dbHall = new DBHall();
 
         //Get all halls
-        public ArrayList getAllHalls()
+        public IEnumerable getAllHalls()
         {
             return dbHall.getAllHalls();
         }
@@ -24,7 +24,7 @@ namespace ServerProject.ControllerLayer
 
 
         // Gets hall by name
-        public ArrayList findHallByName(string name)
+        public IEnumerable findHallByName(string name)
         {
             return dbHall.selectWhereName(name);
         }

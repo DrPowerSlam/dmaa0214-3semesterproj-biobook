@@ -82,6 +82,7 @@ namespace ServerProject.DatabaseLayer
             catch(Exception e)
             {
                 Console.WriteLine(e);
+
             }
             return controlInt;
         }
