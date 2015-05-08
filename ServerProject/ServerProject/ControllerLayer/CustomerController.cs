@@ -17,9 +17,9 @@ namespace ServerProject.ControllerLayer
         /// Gets all the customers from the databaselayer
         /// </summary>
         /// <returns>Returns the list of customers</returns>
-        public IEnumerable getAllCustomers()
+        public IEnumerable GetAllCustomers()
         {
-            return dbCus.getAllCustomers();
+            return dbCus.GetAllCustomers();
         }
 
         /// <summary>
@@ -27,9 +27,9 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="ID">The ID to search for</param>
         /// <returns>The customer, if any is found</returns>
-        public Customer findCustomerByID(int ID)
+        public Customer GetCustomerByID(int ID)
         {
-            return dbCus.selectWhereID(ID);
+            return dbCus.GetCustomerByID(ID);
         }
 
         /// <summary>
@@ -37,27 +37,27 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="name">The name to search for</param>
         /// <returns>Returns a list of customers</returns>
-        public IEnumerable findCustomersByName(string name)
+        public IEnumerable FindCustomerByName(string name)
         {
-            return dbCus.selectWhereName(name);
+            return dbCus.GetCustomerByName(name);
         }
 
         /// <summary>
         /// Inserts a customer to the database
         /// </summary>
         /// <param name="name">The name of the customer (ID is auto-generated)</param>
-        public void insertCustomer(string name)
+        public void InsertCustomer(string name)
         {
-            dbCus.insertCustomer(name);
+            dbCus.InsertCustomer(name);
         }
 
         /// <summary>
         /// Deletes a customer with a given ID
         /// </summary>
         /// <param name="cusID">The ID of the customer to delete</param>
-        public void deleteCustomer(int cusID)
+        public void DeleteCustomer(int cusID)
         {
-            dbCus.deleteCustomer(dbCus.selectWhereID(cusID));
+            dbCus.DeleteCustomer(dbCus.GetCustomerByID(cusID));
         }
     }
 }

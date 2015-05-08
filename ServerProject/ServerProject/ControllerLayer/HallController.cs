@@ -11,22 +11,22 @@ namespace ServerProject.ControllerLayer
         DBHall dbHall = new DBHall();
 
         //Get all halls
-        public IEnumerable getAllHalls()
+        public IEnumerable GetAllHalls()
         {
-            return dbHall.getAllHalls();
+            return dbHall.GetAllHalls();
         }
 
         // Gets hall by ID
-        public Hall findHallByID(int ID)
+        public Hall FindHallByID(int ID)
         {
-            return dbHall.selectWhereID(ID);
+            return dbHall.GetByHallID(ID);
         }
 
 
         // Gets hall by name
-        public IEnumerable findHallByName(string name)
+        public IEnumerable FindHallByName(string name)
         {
-            return dbHall.selectWhereName(name);
+            return dbHall.GetHallByName(name);
         }
     }
 }
