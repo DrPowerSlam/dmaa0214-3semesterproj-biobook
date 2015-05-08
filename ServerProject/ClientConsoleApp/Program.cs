@@ -66,6 +66,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Press 5: Find a movie by ID\n");
             Console.WriteLine("Press 6: See all movies\n");
             Console.WriteLine("Press 7: To make a Reservation\n");
+            Console.WriteLine("press 8: To make a Customer\n");
             Console.WriteLine("Press 0: Close the application\n");
             line = Console.ReadLine();
             if (line.Equals("1"))
@@ -121,6 +122,13 @@ namespace ConsoleApplication1
             else if (line.Equals("7"))
             {
                 MakeReservation();
+                Console.ReadLine();
+                Console.Clear();
+                startScreen();
+            }
+            else if (line.Equals("8"))
+            {
+                MakeCustomer();
                 Console.ReadLine();
                 Console.Clear();
                 startScreen();
@@ -212,12 +220,29 @@ namespace ConsoleApplication1
 
         public void MakeReservation()
         {
+            Console.WriteLine("****************************** MAKE A RESERVATION ******************************\n");
+
             ReserveController resController = new ReserveController();
             
 
             //Change this so it works with the algorithm..
             resController.makeReservation("3", "3", 3, 3);
         }
+
+
+
+        /*
+         * 
+         * Customer
+         * 
+         * 
+         * */
+
+        public void MakeCustomer()
+        {
+            cusCtr.InsertCustomer("writeyournamehere");
+        }
+
     }
 }
 
