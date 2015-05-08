@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="DatabaseLayer\DBCustomer.cs" />
     <Compile Include="DatabaseLayer\DBHall.cs" />
+    <Compile Include="DatabaseLayer\DBMethods.cs" />
     <Compile Include="DatabaseLayer\DBMovie.cs" />
     <Compile Include="DatabaseLayer\DBReservation.cs" />
     <Compile Include="DatabaseLayer\DBScheduler.cs" />
@@ -91,6 +92,9 @@
     <None Include="DatabaseLayer\ConnectToDatabase.dbml.layout">
       <DependentUpon>ConnectToDatabase.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQLscriptCinema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

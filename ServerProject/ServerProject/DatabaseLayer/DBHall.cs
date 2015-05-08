@@ -16,8 +16,12 @@ namespace ServerProject.DatabaseLayer
     {
         //string cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString; // Concencting string
 
-        // Select hall by  id
-        public Hall selectWhereID(int hallID)
+        /// <summary>
+        /// Gets a hall by it's ID
+        /// </summary>
+        /// <param name="hallID">The ID of the hall</param>
+        /// <returns>Returns a hall of type hall object</returns>
+        public Hall GetByHallID(int hallID)
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -28,9 +32,12 @@ namespace ServerProject.DatabaseLayer
 
 
 
-        // Select * halls
-
-        public IEnumerable selectWhereName(string name)
+       /// <summary>
+       /// Gets all halls with a given name (in case some have the same name)
+       /// </summary>
+       /// <param name="name">Name of the hall</param>
+       /// <returns>Returns an IEnumerable with all the halls with the name</returns>
+        public IEnumerable GetHallByName(string name)
         {
             ArrayList hallList = new ArrayList();
 
@@ -41,7 +48,11 @@ namespace ServerProject.DatabaseLayer
             return hall;
         }
 
-        public IEnumerable getAllHalls()
+        /// <summary>
+        /// Gets all halls
+        /// </summary>
+        /// <returns>An IEnumerable with all halls</returns>
+        public IEnumerable GetAllHalls()
         {
             ArrayList hallList = new ArrayList();
 
@@ -53,6 +64,4 @@ namespace ServerProject.DatabaseLayer
         }
 
     }
-
-
 }

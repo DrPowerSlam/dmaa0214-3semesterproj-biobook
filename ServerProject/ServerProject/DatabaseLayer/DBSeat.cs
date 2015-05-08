@@ -8,10 +8,12 @@ namespace ServerProject.DatabaseLayer
     public class DBSeat
     {
         static int lengthChar;
-        public void main()
-        {
-            GetSeats(1);
-        }
+
+        /// <summary>
+        /// Gets all seats in a given scheduler
+        /// </summary>
+        /// <param name="schID">The ID of the scheduler</param>
+        /// <returns>Returns a list of the seats</returns>
         public List<Seat> GetSeats(int schID)
         {
 

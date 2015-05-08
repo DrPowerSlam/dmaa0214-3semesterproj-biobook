@@ -21,7 +21,7 @@ namespace ServerProject.ControllerLayer
             DBScheduler schedulerDatabase = new DBScheduler();
             MovieController movieCtr = new MovieController();
             Scheduler scheduler = schedulerDatabase.getSchedulerByMovieID(movieID);
-            scheduler.Movie = movieCtr.findMovieByID(movieID);
+            scheduler.Movie = movieCtr.FindMovieByID(movieID);
 
             return scheduler;
         }

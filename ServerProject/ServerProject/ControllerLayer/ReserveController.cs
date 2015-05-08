@@ -10,21 +10,53 @@ namespace ServerProject.ControllerLayer
     public class ReserveController
     {
         DBReservation dbRes = new DBReservation();
+        
 
-        public IEnumerable getReservations(int customerID)
+        public IEnumerable getReservationsByCustomerID(int customerID)
         {
-            return dbRes.getReservation(customerID);
+            List<Reservation> listToReturn = new List<Reservation>();
+            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            {
+                if (r.Customer.CusID == customerID)
+                {
+                    listToReturn.Add(r);
+                }
+
+            }
+
+            return listToReturn;
         }
 
-        public void findReservationByPhone(string phone)
+        public List<Reservation> findReservationByPhone(string phone)
         {
+            List<Reservation> listToReturn = new List<Reservation>();
+            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            {
+                if (r.Customer.phoneNumber.Equals(phone))
+                {
+                    listToReturn.Add(r);
+                }
+
+            }
+
+            return listToReturn;
+        }
+
+        //This needs to have both schedulerID customerId and row and seat.
+        //ex. row = "1,1,1" seat = "2,3,4"
+        public void makeReservation(string row, string seat, int schedulerID, int customerID)
+        {
+            Reservation reservation = new Reservation();
+
+            reservation.Seat = seat;
+            reservation.Row = row;
+
+            reservation.CustomerID = customerID;
+            reservation.SchedulerID = schedulerID;
+
+            //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
+            dbRes.insertReservation(reservation);
 
         }
-        public void makeReservation(string row, string seat, int schedulerID)
-        {
-            //reserveSeat(string row, string seat, int schedulerID);
-
-        }
-
     }
 }

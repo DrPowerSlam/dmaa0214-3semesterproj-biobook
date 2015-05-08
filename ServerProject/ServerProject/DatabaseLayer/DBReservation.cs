@@ -13,18 +13,39 @@ namespace ServerProject.DatabaseLayer
 {
     class DBReservation
     {
-        public IEnumerable getReservation(int customerID)
+        ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
+        public IEnumerable getReservation()
         {
-            var db = new ConnectToDatabaseDataContext();
+            
             DBCustomer dbCustomer = new DBCustomer();
-            List<Customer> customers = dbCustomer.getAllCustomers().Cast<Customer>().ToList();
+            List<Customer> customers = dbCustomer.GetAllCustomers().Cast<Customer>().ToList();
             List<Reservation> reservation = db.Reservations.Select(x => x).AsEnumerable().ToList();
 
             var cusResJoin = from res in reservation
-                             join cust in customers on res.CustomerID equals cust.CusID where cust.CusID == customerID
+                             join cust in customers on res.CustomerID equals cust.CusID
                              select res;
 
             return cusResJoin;
+        }
+
+        public void insertReservation(Reservation res)
+        {
+            //make it a reservation
+           
+            Reservation reservation = new Reservation();
+            reservation = res;
+
+            
+            db.Reservations.InsertOnSubmit(reservation);
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
         }
     }
 }
