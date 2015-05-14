@@ -34,13 +34,15 @@ create table Movie
 MovieID int IDENTITY(1,1),
 name varchar(30), 
 Playtime int,
+Price int,
+Image varchar(50),
 unique(name),
 primary key(MovieID)
 );
 
-insert into Movie values ('Spiderman', 60);
-insert into Movie values ('Super-Man', 80);
-insert into Movie values ('Lord of the Rings', 300);
+insert into Movie values ('Spiderman', 60, 100, 'spiderman.jpg');
+insert into Movie values ('Super-Man', 80, 100, 'superman.jpg');
+insert into Movie values ('Lord of the Rings', 300, 100, 'Lordoftherings.jpg');
 
 create table Hall
 (
