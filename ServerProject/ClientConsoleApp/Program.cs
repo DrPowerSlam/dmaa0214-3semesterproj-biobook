@@ -184,7 +184,7 @@ namespace ConsoleApplication1
 
             foreach (Movie movie in movCtr.GetAllMovies())
             {
-                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n");
+                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n" + movie.Price  + "\n" + movie.Image + "\n");
             }
         }
 

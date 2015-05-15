@@ -95,6 +95,8 @@ namespace ServerProject.DatabaseLayer
             movieToDelete.name = movie.name;
             movieToDelete.MovieID = movie.MovieID;
             movieToDelete.Playtime = movie.Playtime;
+            movieToDelete.Image = movie.Image;
+            movieToDelete.Price = movie.Price;
 
             db.Movies.Attach(movieToDelete);
             db.Movies.DeleteOnSubmit(movieToDelete);

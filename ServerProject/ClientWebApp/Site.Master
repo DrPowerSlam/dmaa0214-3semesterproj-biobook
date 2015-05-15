@@ -44,8 +44,8 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">FILM</a></li>
-                            <li><a href="#about">RESEVER</a></li>
+                            <li class="active"><a href="Default" runat="server">FILM</a></li>
+                            <li><a href="Resever.aspx">RESEVER</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
@@ -110,13 +110,13 @@
 
             <!-- Page Content -->
             <div class="container">
-                     <asp:Literal ID="litTest" runat="server"></asp:Literal>
+
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
-                hhhe
-           
 
-              
+
+
+            </div>
 
             <!-- FOOTER -->
             <footer class="footer">
