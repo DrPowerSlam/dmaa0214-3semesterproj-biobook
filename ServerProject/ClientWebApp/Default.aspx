@@ -4,11 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+
+
+
+
     <!-- ASP literal her, som udskriver alle nyste film, fra codebehind: Default.cs -->
     <!-- Title -->
-    <asp:Literal ID="litNewstMovies"  runat="server"></asp:Literal>
-
- <asp:HyperLink ID="test" runat="server" Text = "View" DataNavigateUrlFormatString = "~/Customers/{0}" DataNavigateUrlFields = "Id"></asp:HyperLink>
+    <asp:Literal ID="litNewstMovies"   runat="server"></asp:Literal>
 
 
 </asp:Content>
