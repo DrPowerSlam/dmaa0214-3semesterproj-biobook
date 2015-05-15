@@ -99,10 +99,11 @@ namespace ServerProject.ControllerLayer
             reservation.SchedulerID = schedulerID;
 
 
-            return isAvailable;
+            
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
-            //dbRes.insertReservation(reservation);
+            dbRes.insertReservation(reservation);
+            return isAvailable;
 
         }
     }
