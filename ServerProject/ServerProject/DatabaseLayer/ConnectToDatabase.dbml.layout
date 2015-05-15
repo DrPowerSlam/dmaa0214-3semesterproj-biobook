@@ -2,75 +2,75 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.375" name="ConnectToDatabase">
   <DataContextMoniker Name="/ConnectToDatabaseDataContext" />
   <nestedChildShapes>
-    <classShape Id="36fc8a42-fb68-4bea-b4b9-7899cfe4bd31" absoluteBounds="3.5, 7.75, 2, 1.3862939453125005">
+    <classShape Id="f1e61be6-5481-497b-8fcf-9b9ceafa3734" absoluteBounds="3.5, 7.75, 2, 1.3862939453125005">
       <DataClassMoniker Name="/ConnectToDatabaseDataContext/Customer" />
       <nestedChildShapes>
-        <elementListCompartment Id="7aa0d132-ba94-4262-b377-3ccc827b7fe9" absoluteBounds="3.515, 8.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="55336cf6-fa19-4aee-bbbe-df2ab4bd417f" absoluteBounds="3.515, 8.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="845bf43f-64f0-4a0c-8287-025fddbb4a35" absoluteBounds="6.25, 3.875, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Seat" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c5ab38cc-945f-43c1-9513-f6dad81f2607" absoluteBounds="6.265, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="99233e42-29bf-48f5-8bda-750e54a096ca" absoluteBounds="3.5, 3.75, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Scheduler" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8379ceb0-39c8-4e1f-81f7-94acc706cb75" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="36d14a68-ca86-49b9-9cf6-7d75b9d85ab7" absoluteBounds="6.25, 0.75, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Reservation" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ba27b135-4281-496e-aa69-70a35fc8fc5d" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="79c131ca-29a5-42ec-b85d-a2532c2ca090" absoluteBounds="0.75, 4, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Movie" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c3c268b1-4739-499b-8ede-4c0269670dc7" absoluteBounds="0.765, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a8d06170-3bbf-4b62-b91d-16871d5d72d7" absoluteBounds="0.75, 1, 2, 1.3862939453125">
+    <classShape Id="bbbd25a2-a3b3-4a28-8ea2-170ec580f8e0" absoluteBounds="0.75, 4, 2, 1.3862939453125005">
       <DataClassMoniker Name="/ConnectToDatabaseDataContext/Hall" />
       <nestedChildShapes>
-        <elementListCompartment Id="720ab503-586a-4a39-b5ab-2dbf34f5f0a7" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="81befe40-72a3-4f56-925e-010633f1ae52" absoluteBounds="0.765, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="180b0c77-322f-4c94-afe0-0dca2dc3446a" absoluteBounds="0.75, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Movie" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7dbd3e5-6cec-4bcc-a8c5-67a0a5986a55" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d69a2842-d64d-4d1c-985f-44c109051674" absoluteBounds="3.5, 3.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Scheduler" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55a1ca6a-b7d7-4052-a375-07620d7004bf" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c421c98f-b498-409a-9c79-02724fd0ffd6" absoluteBounds="6.25, 3.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Seat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0a7c269-6155-4443-b6ef-d7f68865ae64" absoluteBounds="6.265, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="89dcc7dd-8e9b-4064-8f6d-0913892fa0f9" absoluteBounds="6.25, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ConnectToDatabaseDataContext/Reservation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2904bf02-a701-4131-a89e-47b9498313f5" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 4.69314697265625); (3.5 : 4.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConnectToDatabaseDataContext/Hall/Hall_Scheduler" />
+      <nodes>
+        <classShapeMoniker Id="bbbd25a2-a3b3-4a28-8ea2-170ec580f8e0" />
+        <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.63544840494792); (4.5 : 1.63544840494792); (4.5 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConnectToDatabaseDataContext/Movie/Movie_Scheduler" />
+      <nodes>
+        <classShapeMoniker Id="180b0c77-322f-4c94-afe0-0dca2dc3446a" />
+        <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
+      </nodes>
+    </associationConnector>
     <associationConnector edgePoints="[(5.5 : 4.66429768880208); (5.79166666666667 : 4.66429768880208 : JumpStart); (5.95833333333333 : 4.66429768880208 : JumpEnd); (6.25 : 4.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Scheduler/Scheduler_Seat" />
       <nodes>
-        <classShapeMoniker Id="99233e42-29bf-48f5-8bda-750e54a096ca" />
-        <classShapeMoniker Id="845bf43f-64f0-4a0c-8287-025fddbb4a35" />
+        <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
+        <classShapeMoniker Id="c421c98f-b498-409a-9c79-02724fd0ffd6" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 7.75); (5.875 : 7.375); (5.875 : 1.63544840494792); (6.25 : 1.63544840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Customer/Customer_Reservation" />
       <nodes>
-        <classShapeMoniker Id="36fc8a42-fb68-4bea-b4b9-7899cfe4bd31" />
-        <classShapeMoniker Id="36d14a68-ca86-49b9-9cf6-7d75b9d85ab7" />
+        <classShapeMoniker Id="f1e61be6-5481-497b-8fcf-9b9ceafa3734" />
+        <classShapeMoniker Id="89dcc7dd-8e9b-4064-8f6d-0913892fa0f9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 3.75); (4.5 : 2.10942510742187); (5.79166666666667 : 2.10942510742187 : JumpStart); (5.95833333333333 : 2.10942510742187 : JumpEnd); (6.25 : 2.10942510742187)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.0312525 : 3.75); (5.0312525 : 2.10942510742187); (5.79166666666667 : 2.10942510742187 : JumpStart); (5.95833333333333 : 2.10942510742187 : JumpEnd); (6.25 : 2.10942510742187)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Scheduler/Scheduler_Reservation" />
       <nodes>
-        <classShapeMoniker Id="99233e42-29bf-48f5-8bda-750e54a096ca" />
-        <classShapeMoniker Id="36d14a68-ca86-49b9-9cf6-7d75b9d85ab7" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.69314697265625); (3.5 : 4.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ConnectToDatabaseDataContext/Movie/Movie_Scheduler" />
-      <nodes>
-        <classShapeMoniker Id="79c131ca-29a5-42ec-b85d-a2532c2ca090" />
-        <classShapeMoniker Id="99233e42-29bf-48f5-8bda-750e54a096ca" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.55471255371094); (3.9687475 : 1.55471255371094); (3.9687475 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ConnectToDatabaseDataContext/Hall/Hall_Scheduler" />
-      <nodes>
-        <classShapeMoniker Id="a8d06170-3bbf-4b62-b91d-16871d5d72d7" />
-        <classShapeMoniker Id="99233e42-29bf-48f5-8bda-750e54a096ca" />
+        <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
+        <classShapeMoniker Id="89dcc7dd-8e9b-4064-8f6d-0913892fa0f9" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -78,6 +78,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="DatabaseLayer\ConnectToDatabase.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ConnectToDatabase.designer.cs</LastGenOutput>
@@ -89,12 +90,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQLscriptCinema.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="DatabaseLayer\ConnectToDatabase.dbml.layout">
       <DependentUpon>ConnectToDatabase.dbml</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SQLscriptCinema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

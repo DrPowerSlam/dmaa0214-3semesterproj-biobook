@@ -33,5 +33,16 @@ namespace ServerProject.Properties {
                 return ((string)(this["dmaa0214_3Sem_2ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=kraka.ucn.dk;Initial Catalog=dmaa0214_3Sem_2;Persist Security Info=Tr" +
+            "ue;User ID=dmaa0214_3Sem_2;Password=IsAllowed")]
+        public string dmaa0214_3Sem_2ConnectionString1 {
+            get {
+                return ((string)(this["dmaa0214_3Sem_2ConnectionString1"]));
+            }
+        }
     }
 }

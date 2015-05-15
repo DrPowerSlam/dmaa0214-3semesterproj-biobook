@@ -10,17 +10,16 @@ using ServerProject.ControllerLayer;
 
 namespace ClientWebApp
 {
-    public partial class Site : System.Web.UI.MasterPage
+    public partial class Resever : System.Web.UI.Page
     {
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
-   
         protected void Page_Load(object sender, EventArgs e)
         {
-    
-      
-
-
-
+            if (!IsPostBack)
+            {
+                litMovieInfo.Text += "hehe";
+            }
+           
         }
     }
 }
