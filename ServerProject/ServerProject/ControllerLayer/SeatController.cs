@@ -46,16 +46,23 @@ namespace ServerProject.ControllerLayer
             // convert database info of the schedule to jagged array
             int[][] jaggedArray = ConvertStringToArray(schID);
             // loop through to see if enough seats are available
-            for(int i = 0; i < jaggedArray.Length; i++)
+            int i = 0;
+            int j = 0;
+            while(freeSeats < personer && i < jaggedArray.Length )
+            //for(int i = 0; i < jaggedArray.Length; i++)
             {
-                for(int j = 0; j < jaggedArray[i].Length; j++)
+                j = 0;
+                while(freeSeats < personer && j < jaggedArray[i].Length)
+                //for(int j = 0; j < jaggedArray[i].Length; j++)
                 {
                     // if not 0, then the seat is available
                     if(jaggedArray[i][j] != 0)
                     {
                         freeSeats++;
                     }
+                    j++;
                 }
+                i++;
             }
 
             if(freeSeats < personer)
