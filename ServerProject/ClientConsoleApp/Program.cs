@@ -21,10 +21,10 @@ namespace ConsoleApplication1
         {
             Program program = new Program();
 
-            program.getAllReservations();
+            //program.getAllReservations();
            
 
-            //program.GetScheduler();
+            program.GetScheduler();
 
         //    var client = new CustomerServiceClient();
 
@@ -65,6 +65,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Press 4: Find a movie by name\n");
             Console.WriteLine("Press 5: Find a movie by ID\n");
             Console.WriteLine("Press 6: See all movies\n");
+            Console.WriteLine("Press 7: To make a Reservation\n");
             Console.WriteLine("Press 0: Close the application\n");
             line = Console.ReadLine();
             if (line.Equals("1"))
@@ -117,14 +118,22 @@ namespace ConsoleApplication1
                 Console.Clear();
                 startScreen();
             }
+            else if (line.Equals("7"))
+            {
+                MakeReservation();
+                Console.ReadLine();
+                Console.Clear();
+                startScreen();
+            }
             else if (line.Equals("0"))
             {
                 Environment.Exit(0);
             }
+
         }
         public void getAllCustomers()
         {
-            foreach (Customer customer in cusCtr.getAllCustomers())
+            foreach (Customer customer in cusCtr.GetAllCustomers())
             {
                 Console.WriteLine(customer.CusID + ": " + customer.name + "\n");
             }
@@ -141,14 +150,14 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("****************************** FIND CUSTOMER BY ID ******************************\n");
 
-            Console.WriteLine(cusCtr.findCustomerByID(ID).CusID + ": " + cusCtr.findCustomerByID(ID).name + "\n");
+            Console.WriteLine(cusCtr.GetCustomerByID(ID).CusID + ": " + cusCtr.GetCustomerByID(ID).name + "\n");
         }
 
         public void findCustomerByName(string name)
         {
             Console.WriteLine("****************************** FIND CUSTOMERS WITH NAME ******************************\n");
 
-            foreach (Customer customer in cusCtr.findCustomersByName(name))
+            foreach (Customer customer in cusCtr.FindCustomerByName(name))
             {
                 Console.WriteLine(customer.CusID + ": " + customer.name + "\n");
             }
@@ -158,14 +167,14 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("****************************** FIND MOVIE BY NAME ******************************\n");
 
-            Console.WriteLine(movCtr.findMovieByName(name).MovieID + ": " + movCtr.findMovieByName(name).name + ". Playtime: " + movCtr.findMovieByName(name).Playtime + "\n");
+            Console.WriteLine(movCtr.FindMovieByName(name).MovieID + ": " + movCtr.FindMovieByName(name).name + ". Playtime: " + movCtr.FindMovieByName(name).Playtime + "\n");
         }
 
         public void findMovieByID(int ID)
         {
             Console.WriteLine("****************************** FIND MOVIE BY ID ******************************\n");
 
-            Console.WriteLine(movCtr.findMovieByID(ID).MovieID + ": " + movCtr.findMovieByID(ID).name + ". Playtime: " + movCtr.findMovieByID(ID).Playtime + "\n");
+            Console.WriteLine(movCtr.FindMovieByID(ID).MovieID + ": " + movCtr.FindMovieByID(ID).name + ". Playtime: " + movCtr.FindMovieByID(ID).Playtime + "\n");
         }
 
         public void getAllMovies()
@@ -173,17 +182,11 @@ namespace ConsoleApplication1
             Console.WriteLine("****************************** FIND ALL MOVIES ******************************\n");
 
 
-            foreach (Movie movie in movCtr.getAllMovies())
+            foreach (Movie movie in movCtr.GetAllMovies())
             {
-                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n");
+                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n" + movie.Price  + "\n" + movie.Image + "\n");
             }
         }
-
-
-
-
-
-
 
         ///Reservation
         ///
@@ -203,6 +206,17 @@ namespace ConsoleApplication1
                     Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
                 }
             }           
+
+        }
+
+
+        public void MakeReservation()
+        {
+            ReserveController resController = new ReserveController();
+            
+
+            //Change this so it works with the algorithm..
+            resController.makeReservation("3", "3", 3, 3);
         }
     }
 }
