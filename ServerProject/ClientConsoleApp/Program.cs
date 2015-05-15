@@ -226,7 +226,10 @@ namespace ConsoleApplication1
             
 
             //Change this so it works with the algorithm..
-            resController.makeReservation("3", "3", 3, 3);
+            //It must go through the algorithm first to check if the seats available (you can not reserve before you have run through the algorithm
+            //and update the seat tabel in the database.
+            
+            bool successful = resController.makeReservation("1,2,3,4,5,1", "1", 1, 1);
         }
 
 

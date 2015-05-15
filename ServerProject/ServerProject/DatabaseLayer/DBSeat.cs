@@ -33,5 +33,13 @@ namespace ServerProject.DatabaseLayer
             //}
 
         }
+
+        public List<Seat> GetSeatsBySchIDAndRow(int schID, int row)
+        {
+            var db = new ConnectToDatabaseDataContext();
+
+            List<Seat> record = db.Seats.Where(x => x.SchedulerID == schID && x.Row == row).ToList();
+            return record;
+        }
     }
 }

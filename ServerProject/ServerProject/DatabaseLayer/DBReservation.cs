@@ -13,6 +13,7 @@ namespace ServerProject.DatabaseLayer
 {
     class DBReservation
     {
+        private object lockToken = new object();
         ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
         public IEnumerable getReservation()
         {
@@ -35,15 +36,19 @@ namespace ServerProject.DatabaseLayer
             Reservation reservation = new Reservation();
             reservation = res;
 
-            
-            db.Reservations.InsertOnSubmit(reservation);
-            try
+            //lock it so only one at a time can work with it?
+
+            lock (lockToken)
             {
-                db.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
+                db.Reservations.InsertOnSubmit(reservation);
+                try
+                {
+                    db.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
 
         }
