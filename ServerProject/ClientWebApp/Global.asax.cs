@@ -6,22 +6,25 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Routing;
 
+
+
 namespace ClientWebApp
 {
     public class Global : System.Web.HttpApplication
     {
         void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapPageRoute("Default", "Default", "~/Default.aspx");
-
-
+                routes.MapPageRoute(
+                 "",
+                 "Resever/{name}",
+                 "~/Resever.aspx"
+                 );
         }
-
         protected void Application_Start(object sender, EventArgs e)
         {
-        
-      
+            RegisterRoutes(System.Web.Routing.RouteTable.Routes);
         }
+
 
 
 

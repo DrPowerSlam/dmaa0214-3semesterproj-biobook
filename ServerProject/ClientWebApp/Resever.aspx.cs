@@ -15,11 +15,22 @@ namespace ClientWebApp
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+           // int MovieID = Convert.ToInt32(Page.RouteData.Values["MovieID"]);
+            
+            var MovieID = Page.RouteData.Values["name"];
+            if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["MovieID"]))
             {
-                litMovieInfo.Text += "hehe";
+              
+ 
             }
-           
+          
+
+         
+
+    
+
+
+
         }
     }
 }

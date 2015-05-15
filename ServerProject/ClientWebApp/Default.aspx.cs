@@ -18,7 +18,10 @@ namespace ClientWebApp
 
             if (!IsPostBack)
             {
+               //Page.RouteData.Values["movieID"]
 
+                
+                
 
                 litNewstMovies.Text += "<div class=\"row\">";
 
@@ -37,16 +40,19 @@ namespace ClientWebApp
 
                 foreach (Movie movie in movCtr.GetAllMovies())
                 {
+                   //  Page.RouteData.Values["movieID"] 
+
                     litNewstMovies.Text += "<div class=\"col-md-3 col-sm-6\">";
                     litNewstMovies.Text += "<div class=\"thumbnail\">";
-             
-                    litNewstMovies.Text += "<a href=\""    + movie.name + "\"><img src='../../Content/Images/" + movie.Image  + " ' alt='' title='' border=\"0\" /></a>";
+
+                  //  litNewstMovies.Text += "<a href=\"Resever/"   + movie.MovieID + movie.name + "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
+                    litNewstMovies.Text += "<a href=\"Resever/" + movie.name  +  "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
                     litNewstMovies.Text += "<div class=\"caption\">";
                     litNewstMovies.Text += "<h3>" + movie.name + "</h3>";
 
                     litNewstMovies.Text += "<p>";
 
-                    litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + movie.MovieID + "\" class=\"btn btn-primary\">" + movie.Price + "&nbsp;" + "DKK" + "</a>" + "&nbsp;";
+                    litNewstMovies.Text += "<a href=\"Resever.aspx?id="  + movie.MovieID + "\" class=\"btn btn-primary\">" + movie.Price + "&nbsp;" + "DKK" + "</a>" + "&nbsp;";
 
                     litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + movie.MovieID + "\" class=\"btn btn-default\">" + "&nbsp;" + "Resever" + "</a>";
 
