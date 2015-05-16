@@ -46,7 +46,9 @@ namespace ServerProject.ControllerLayer
         //ex. row = "1,1,1" seat = "2,3,4"
         public bool makeReservation(string row, string seatArray, int schedulerID, int customerID)
         {
+            
             bool isAvailable = true;
+            
             //find seat by schedulerID and use row and seat to see if they are available.
             //lock here. After you have writtin to the database release the lock.
             DBSeat seatTable = new DBSeat();
@@ -55,6 +57,7 @@ namespace ServerProject.ControllerLayer
             //check if the row exist in database.
             for (int i = 0; i < rowArray.Length - 1; i++)
             {
+                
                 int rowIndex;
                 Int32.TryParse(rowArray[i], out rowIndex);
                 List<Seat> eachRowList = seatTable.GetSeatsBySchIDAndRow(schedulerID, rowIndex);
@@ -85,10 +88,10 @@ namespace ServerProject.ControllerLayer
                     }
                 }
             }
-
-            //tag deres colum og se om de er ledige.
+                
             
-
+            //Remember to update seat in the seat table also. Or else it will only be updated in the reserve table.
+            //so call to the dbSeat and make an update there also.
 
             Reservation reservation = new Reservation();
 
@@ -97,9 +100,6 @@ namespace ServerProject.ControllerLayer
 
             reservation.CustomerID = customerID;
             reservation.SchedulerID = schedulerID;
-
-
-            
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.insertReservation(reservation);

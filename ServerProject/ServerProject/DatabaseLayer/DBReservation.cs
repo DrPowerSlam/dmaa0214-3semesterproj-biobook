@@ -38,17 +38,14 @@ namespace ServerProject.DatabaseLayer
 
             //lock it so only one at a time can work with it?
 
-            lock (lockToken)
+            db.Reservations.InsertOnSubmit(reservation);
+            try
             {
-                db.Reservations.InsertOnSubmit(reservation);
-                try
-                {
-                    db.SubmitChanges();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
 
         }
