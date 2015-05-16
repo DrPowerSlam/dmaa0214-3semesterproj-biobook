@@ -11,23 +11,32 @@ using ServerProject.ControllerLayer;
 namespace ClientWebApp
 {
     public partial class Resever : System.Web.UI.Page
-    {
-        ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
+    {     
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           // int MovieID = Convert.ToInt32(Page.RouteData.Values["MovieID"]);
-            
-            var MovieID = Page.RouteData.Values["name"];
-            if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["MovieID"]))
-            {
-              
- 
-            }
-          
+            ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
 
-         
+            string str = Page.RouteData.Values["name"].ToString();
+        
 
     
+
+            litMovieInfo.Text += "<div class=\"col-md-3\">";
+
+            litMovieInfo.Text += "<img src=\"../../Content/Images/" + movCtr.FindMovieByName(str).Image + "\" + class=\"MovieImg\" />";
+
+            litMovieInfo.Text += "</div>";
+
+            litMovieInfo.Text += "<div class=\"col-md-3\">";
+
+            litMovieInfo.Text += movCtr.FindMovieByName(str).name;
+
+            litMovieInfo.Text += "</div>";
+
+
+
+
 
 
 

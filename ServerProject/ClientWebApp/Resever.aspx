@@ -5,11 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
    
-     <div class="container">
-         <div class="col-md-12">
-                <div class="thumbnail">
-             <asp:Literal ID="litMovieInfo" runat="server"></asp:Literal>
 
+     <div class="container">
+               <div class="thumbnail2">
+         <div class="col-md-12">
+          
+
+          
+                             <asp:Literal ID="litMovieInfo" runat="server"></asp:Literal>
+        
+                  
                     </div>
          </div>
    

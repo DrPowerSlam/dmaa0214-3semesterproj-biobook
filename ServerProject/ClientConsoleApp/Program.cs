@@ -107,7 +107,7 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine("Type the ID of the movie you want to find\n");
                 methodLine = Console.ReadLine();
-                findMovieByID(int.Parse(methodLine));
+               findMovieByID(int.Parse(methodLine));
                 Console.ReadLine();
                 Console.Clear();
                 startScreen();
@@ -145,6 +145,14 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine(customer.CusID + ": " + customer.name + "\n");
             }
+        }
+
+        public void getAllScheduleres(int movieID)
+        {
+            // skal finde en controller, som går til dblaget, hvor der er en meteode med en innerjoin..
+           
+               // Console.WriteLine(schCtr.getInnerJoin(movieID));
+            
         }
 
         //public void GetScheduler()

@@ -17,10 +17,11 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="movieID">The ID of the movie</param>
         /// <returns>A movie of a movie object</returns>
-        public Movie GetMovieByID(int movieID)
+        public Movie GetMovieByID(int movieID )
         {
             var db = new ConnectToDatabaseDataContext();
 
+         //   Movie movie = db.Movies.Single(x => x.MovieID == movieID);
             Movie movie = db.Movies.Single(x => x.MovieID == movieID);
 
             return movie;
