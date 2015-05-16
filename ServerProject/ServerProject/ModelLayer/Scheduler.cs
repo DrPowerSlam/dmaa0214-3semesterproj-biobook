@@ -10,6 +10,7 @@ namespace ServerProject.ModelLayer
         private int schID;
         private DateTime date;
         private int timeInMinutes;
+        private Scheduler scheduler;
         private DatabaseLayer.Movie movie;
         private Hall hall;
         private int endTimeInMinutes;
@@ -29,6 +30,13 @@ namespace ServerProject.ModelLayer
             get { return schID; }
             set { schID = value; }
         }
+
+        //public Scheduler scheduler
+        //{
+        //    get { return scheduler; }
+        //    set { scheduler = value; }
+        //}
+
 
         public DateTime Date
         {

@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
 
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 namespace ServerProject.DatabaseLayer
 {
     public class DBScheduler
@@ -35,6 +40,27 @@ namespace ServerProject.DatabaseLayer
 
             return scheduler;
 
+        }
+
+
+        ///Innerjoin som joiner tabellerne scheduler, movie og hall
+        ///
+
+
+        public IEnumerable getScheduler()
+        {
+            var db = new ConnectToDatabaseDataContext();
+
+            DBMovie dbMovie = new DBMovie();
+            List<Movie> movie = dbMovie.GetAllMovies().Cast<Movie>().ToList();
+            List<Scheduler> scheduler = db.Schedulers.Select(x => x).AsEnumerable().ToList();
+
+            var   InnerJoin =  from sch in scheduler
+                               join mov in movie on sch.MovieID equals mov.MovieID
+                                select sch;
+
+
+            return InnerJoin;
         }
 
         /// <summary>

@@ -2,12 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 using ServerProject.DatabaseLayer;
 
 namespace ServerProject.ControllerLayer
 {
     public class SchedulerController
     {
+       
+
+        DBScheduler dbSch = new DBScheduler();
+
+        // Ikke færdig
+        public IEnumerable getMovieByMovieID(int movieID)
+        {
+            List<Scheduler> listToReturn = new List<Scheduler>();
+            foreach (Scheduler s in dbSch.getScheduler().Cast<Scheduler>())
+            {
+                if (s.Movie.MovieID == movieID)
+                {
+                    listToReturn.Add(s);
+                }
+
+            }
+
+            return listToReturn;
+        }
 
         public Scheduler getSchedulerByID(int schedulerID)
         {
