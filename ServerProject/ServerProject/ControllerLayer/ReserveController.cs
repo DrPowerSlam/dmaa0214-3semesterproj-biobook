@@ -12,7 +12,7 @@ namespace ServerProject.ControllerLayer
         DBReservation dbRes = new DBReservation();
         
 
-        public IEnumerable getReservationsByCustomerID(int customerID)
+        public List<Reservation> getReservationsByCustomerID(int customerID)
         {
             List<Reservation> listToReturn = new List<Reservation>();
             foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
@@ -54,7 +54,7 @@ namespace ServerProject.ControllerLayer
             DBSeat seatTable = new DBSeat();
             string[] rowArray = row.Split(',');
             //Console.WriteLine(rowArray[3]);
-            //check if the row exist in database.
+            //check if the row exist in seat table in the database
             for (int i = 0; i < rowArray.Length - 1; i++)
             {
                 
@@ -88,12 +88,20 @@ namespace ServerProject.ControllerLayer
                     }
                 }
             }
-                
+
+            //do the same as above but in reservation table also?????
+            List<Reservation> reservationCustomer = getReservationsByCustomerID(customerID);
+            //find and compare the row and scheduler
+            
             
             //Remember to update seat in the seat table also. Or else it will only be updated in the reserve table.
             //so call to the dbSeat and make an update there also.
+            
+
 
             Reservation reservation = new Reservation();
+
+            
 
             reservation.Seat = seatArray;
             reservation.Row = row;
@@ -105,6 +113,19 @@ namespace ServerProject.ControllerLayer
             dbRes.insertReservation(reservation);
             return isAvailable;
 
+        }
+
+        public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID, int sleepTime)
+        {
+            Reservation reservation = new Reservation();
+
+            reservation.Seat = seatArray;
+            reservation.Row = row;
+
+            reservation.CustomerID = customerID;
+            reservation.SchedulerID = schedulerID;
+
+            dbRes.UpdateReservation(reservation, sleepTime);
         }
     }
 }

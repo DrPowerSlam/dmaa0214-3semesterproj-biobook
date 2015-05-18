@@ -9,7 +9,7 @@ namespace ServerProject.DatabaseLayer
     {
         static int lengthChar;
         ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
-
+        
         /// <summary>
         /// Gets all seats in a given scheduler
         /// </summary>

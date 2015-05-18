@@ -11,6 +11,8 @@ namespace ConsoleApplication1
 {
     class Program
     {
+        //each thread is each instance of this program?
+        
         ServerProject.ControllerLayer.CustomerController cusCtr = new CustomerController();
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
@@ -22,7 +24,7 @@ namespace ConsoleApplication1
             Program program = new Program();
 
             //program.getAllReservations();
-           
+            
 
             program.GetScheduler();
 
@@ -67,6 +69,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Press 6: See all movies\n");
             Console.WriteLine("Press 7: To make a Reservation\n");
             Console.WriteLine("press 8: To make a Customer\n");
+            Console.WriteLine("Press 9: To Update a Reservation");
             Console.WriteLine("Press 0: Close the application\n");
             line = Console.ReadLine();
             if (line.Equals("1"))
@@ -133,11 +136,27 @@ namespace ConsoleApplication1
                 Console.Clear();
                 startScreen();
             }
+            else if (line.Equals("9"))
+            {
+                UpdateReservation();
+                Console.ReadLine();
+                Console.Clear();
+                startScreen();
+
+            }
             else if (line.Equals("0"))
             {
                 Environment.Exit(0);
             }
 
+        }
+
+        private static void UpdateReservation()
+        {
+            ReserveController resCtr = new ReserveController();
+            Console.WriteLine("Write the time for how long it should take");
+            int sleepTime = Console.Read();
+            resCtr.UpdateReservation("1,2,3,4", "1", 1, 1, sleepTime);
         }
         public void getAllCustomers()
         {
