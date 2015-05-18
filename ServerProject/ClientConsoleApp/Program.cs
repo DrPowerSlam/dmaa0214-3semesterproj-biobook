@@ -21,7 +21,7 @@ namespace ConsoleApplication1
         {
             Program program = new Program();
 
-            program.getAllReservations();
+            program.getAllschedulers();
 
 
             // program.GetScheduler();
@@ -139,6 +139,17 @@ namespace ConsoleApplication1
             }
 
         }
+
+        public void getAllschedulers()
+        {
+            foreach (Scheduler schduler in schCtr.GetAllSchedulers())
+            {
+                if (schduler.MovieID == schduler.Movie.MovieID)
+                {
+                    Console.WriteLine(schduler.Movie.name);
+                }
+            }
+        }
         public void getAllCustomers()
         {
             foreach (Customer customer in cusCtr.GetAllCustomers())
@@ -147,33 +158,35 @@ namespace ConsoleApplication1
             }
         }
 
-        public void getAllScheduleres(int movieID)
-        {
-            Console.WriteLine("****************************** FIND ALL SCHEDULERS ******************************\n");
 
-            SchedulerController schCtr = new SchedulerController();
 
-            foreach (var s in schCtr.getMovieByMovieID(1).Cast<Scheduler>())
-            {
-                Console.WriteLine("Scheduler ID: " + s.SchID);
-                if (s.Movie.MovieID == 1)
-                {
-                }
+        //public void getAllScheduleres()//
+        //{
+        //    Console.WriteLine("****************************** FIND ALL SCHEDULERS ******************************\n");
 
-            }
+        //    SchedulerController schCtr = new SchedulerController();
 
-            //foreach (var r in resCtr.getReservationsByCustomerID(1).Cast<Reservation>())
-            //{
-            //    Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
-            //    Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
-            //    if (r.Customer.CusID == 1)
-            //    {
-            //        Console.WriteLine(r.Scheduler.Movie.name);
-            //        Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
-            //    }
-            //}           
+        //    foreach (var s in schCtr.getMovieByMovieID(1).Cast<Scheduler>())
+        //    {
+        //        Console.WriteLine("Scheduler ID: " + s.Movie.name);
+        //        if (s.Movie.MovieID == 1)
+        //        {
+        //        }
 
-        }
+        //    }
+
+        //    //foreach (var r in resCtr.getReservationsByCustomerID(1).Cast<Reservation>())
+        //    //{
+        //    //    Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
+        //    //    Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
+        //    //    if (r.Customer.CusID == 1)
+        //    //    {
+        //    //        Console.WriteLine(r.Scheduler.Movie.name);
+        //    //        Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
+        //    //    }
+        //    //}           
+
+        //}
 
         //public void GetScheduler()
         //{
