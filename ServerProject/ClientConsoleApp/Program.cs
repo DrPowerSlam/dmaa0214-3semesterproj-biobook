@@ -15,37 +15,37 @@ namespace ConsoleApplication1
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
         ServerProject.DatabaseLayer.DBScheduler schCtr = new ServerProject.DatabaseLayer.DBScheduler();
-        
+
 
         static void Main(String[] arg)
         {
             Program program = new Program();
 
-            //program.getAllReservations();
-           
+            program.getAllReservations();
 
-            program.GetScheduler();
 
-        //    var client = new CustomerServiceClient();
+            // program.GetScheduler();
+
+            //    var client = new CustomerServiceClient();
 
             //Scheduler scheduler = client.getSchedulerByMovie(1);
-           // Scheduler scheduler = client.getSchedulerByID(1);
+            // Scheduler scheduler = client.getSchedulerByID(1);
 
             //somehow this does not work. I want to get the movie from the scheduler that is referenced by the foreign key in the database?
             //Movie movie = scheduler.Movie;
             //Use only the ones that are from the database. The one that are in the class gives an nullpointerexception
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
-           // Console.WriteLine(scheduler.MovieID);
-            
+            // Console.WriteLine(scheduler.MovieID);
+
             Console.ReadLine();
 
 
 
-           
+
         }
 
-        
+
 
 
         public void GetScheduler()
@@ -107,7 +107,7 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine("Type the ID of the movie you want to find\n");
                 methodLine = Console.ReadLine();
-               findMovieByID(int.Parse(methodLine));
+                findMovieByID(int.Parse(methodLine));
                 Console.ReadLine();
                 Console.Clear();
                 startScreen();
@@ -149,10 +149,30 @@ namespace ConsoleApplication1
 
         public void getAllScheduleres(int movieID)
         {
-            // skal finde en controller, som går til dblaget, hvor der er en meteode med en innerjoin..
-           
-               // Console.WriteLine(schCtr.getInnerJoin(movieID));
-            
+            Console.WriteLine("****************************** FIND ALL SCHEDULERS ******************************\n");
+
+            SchedulerController schCtr = new SchedulerController();
+
+            foreach (var s in schCtr.getMovieByMovieID(1).Cast<Scheduler>())
+            {
+                Console.WriteLine("Scheduler ID: " + s.SchID);
+                if (s.Movie.MovieID == 1)
+                {
+                }
+
+            }
+
+            //foreach (var r in resCtr.getReservationsByCustomerID(1).Cast<Reservation>())
+            //{
+            //    Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
+            //    Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
+            //    if (r.Customer.CusID == 1)
+            //    {
+            //        Console.WriteLine(r.Scheduler.Movie.name);
+            //        Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
+            //    }
+            //}           
+
         }
 
         //public void GetScheduler()
@@ -160,7 +180,7 @@ namespace ConsoleApplication1
         //    Console.WriteLine("ID:" + schCtr.GetScheduler(1).SchID + "\nHall ID: " + schCtr.GetScheduler(1).HallID + "\nDate: " + schCtr.GetScheduler(1).Datetime);
         //}
 
-        
+
 
         public void findCustomerByID(int ID)
         {
@@ -200,7 +220,7 @@ namespace ConsoleApplication1
 
             foreach (Movie movie in movCtr.GetAllMovies())
             {
-                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n" + movie.Price  + "\n" + movie.Image + "\n");
+                Console.WriteLine(movie.MovieID + ": " + movie.name + ". Playtime: " + movie.Playtime + "\n" + movie.Price + "\n" + movie.Image + "\n");
             }
         }
 
@@ -212,16 +232,16 @@ namespace ConsoleApplication1
             Console.WriteLine("****************************** FIND ALL RESERVATION ******************************\n");
             ReserveController resCtr = new ReserveController();
 
-            foreach(var r in resCtr.getReservationsByCustomerID(4).Cast<Reservation>())
+            foreach (var r in resCtr.getReservationsByCustomerID(1).Cast<Reservation>())
             {
                 Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
                 Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
-                if (r.Customer.CusID == 4)
+                if (r.Customer.CusID == 1)
                 {
                     Console.WriteLine(r.Scheduler.Movie.name);
                     Console.WriteLine(r.Customer.name + " " + r.ResID + " " + r.Row + " " + r.Seat);
                 }
-            }           
+            }
 
         }
 
@@ -231,12 +251,12 @@ namespace ConsoleApplication1
             Console.WriteLine("****************************** MAKE A RESERVATION ******************************\n");
 
             ReserveController resController = new ReserveController();
-            
+
 
             //Change this so it works with the algorithm..
             //It must go through the algorithm first to check if the seats available (you can not reserve before you have run through the algorithm
             //and update the seat tabel in the database.
-            
+
             bool successful = resController.makeReservation("1,2,3,4", "1", 1, 1);
         }
 
