@@ -21,11 +21,9 @@ namespace ServerProject.ControllerLayer
             for (int row = 0; row < count; row++)
             {
                 Seat s = seatListoperator.ElementAt(row);
-                //int tempCount = (int)s.ColumnArray.Count();
                 int i = 0;
                 int lengthChar = (1 + s.ColumnArray.Count()) / 2;
                 jagged[row] = new int[lengthChar];
-                Console.WriteLine("length: " + lengthChar);
                 foreach (char c in s.ColumnArray)
                 {
                     if (!c.Equals(','))
@@ -39,9 +37,9 @@ namespace ServerProject.ControllerLayer
             return jagged;
         }
 
-        public string findBestSeats(int personer, int schID)
+        public int[] findBestSeats(int personer, int schID)
         {
-            List<string> savedOption = new List<string>();
+            List<int[]> savedOption = new List<int[]>();
             int freeSeats = 0;
             // convert database info of the schedule to jagged array
             int[][] jaggedArray = ConvertStringToArray(schID);
@@ -49,11 +47,9 @@ namespace ServerProject.ControllerLayer
             int i = 0;
             int j = 0;
             while(freeSeats < personer && i < jaggedArray.Length )
-            //for(int i = 0; i < jaggedArray.Length; i++)
             {
                 j = 0;
                 while(freeSeats < personer && j < jaggedArray[i].Length)
-                //for(int j = 0; j < jaggedArray[i].Length; j++)
                 {
                     // if not 0, then the seat is available
                     if(jaggedArray[i][j] != 0)
@@ -68,7 +64,7 @@ namespace ServerProject.ControllerLayer
             if(freeSeats < personer)
             {
                 // there were not enough available seats available
-                return "Could not find enough seats";
+                return null;
             }
 
             // enough seats were available, can we find enough adjecent seats?
@@ -102,40 +98,53 @@ namespace ServerProject.ControllerLayer
                     if(counter == personer && possible)
                     {
                         // start values
-                        string savestring = y.ToString();
-                        int point = jaggedArray[x][y];
+                        int[] saveArray = new int[personer+2];
+                        int point = 0;
 
                         // save the seats to a list
-                        for(int next = 1; next < personer; next++)
+                        for(int next = 0; next < personer; next++)
                         {
-                            savestring += "-" + (next + y);
+                            saveArray[next + 2] = y + next;
                             point += jaggedArray[x][next + y];
                         }
-                        savestring += "," + x;
-                        savestring += "*"+point;
-                        savedOption.Add(savestring);                       
+                        saveArray[0] = point;
+                        saveArray[1] = x;
+                        savedOption.Add(saveArray);                       
                     }
                 }
             }
 
             int bestPoint = 0;
-            string bestSeats = "";
-            string compareString = "";
-            foreach(string s in savedOption)
-            {   // Loop through the options, and return the best seats
-
-                compareString = s.Substring(s.LastIndexOf("*")+1);
-
-                if(bestPoint < int.Parse(compareString))
-                {
-                    bestPoint = int.Parse(compareString);
-                    bestSeats = s;
-                }
-            }
+            // No hall will have a row with more than 25 seats
+            int[] bestSeats = new int[25];
+                foreach (int[] option in savedOption)
+                {   // Loop through the options, and return the best seats
+                    // check each of the options total point, and if better than current best
+                    // option, replace best option
+                    if (bestPoint < option[0])
+                    {
+                        bestPoint = option[0];
+                        bestSeats = option;
+                    }
+                }       
             return bestSeats;
 
 
         }
+
+        public void easytest()
+        {
+            int[] p = findBestSeats(3, 1);
+
+            Console.WriteLine("Rækken er: " + (p[1] + 1));
+            Console.WriteLine("Total point er :" + p[0]);
+            Console.WriteLine("sæderne er: ");
+            for (int x = 2; x < p.Length; x++)
+                Console.WriteLine((1+p[x]) + ", ");
+            Console.ReadLine();
+        }
+
+
     }
 }
 
