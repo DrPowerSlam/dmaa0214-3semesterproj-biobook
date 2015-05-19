@@ -8,6 +8,10 @@ using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+<<<<<<< HEAD
+=======
+using System.Threading;
+>>>>>>> parent of 8afe8ad... Se tidligere kommentar.
 
 namespace ServerProject.DatabaseLayer
 {
@@ -29,6 +33,37 @@ namespace ServerProject.DatabaseLayer
             return cusResJoin;
         }
 
+<<<<<<< HEAD
+=======
+        public void UpdateReservation(Reservation res, int sleepTime)
+        {
+            ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
+            Reservation reservation = db.Reservations.First(r => r.CustomerID == res.CustomerID);
+            reservation.Row = res.Row;
+            reservation.SchedulerID = res.SchedulerID;
+            reservation.Seat = res.Seat;
+            reservation.CustomerID = reservation.CustomerID;
+            Console.WriteLine("Thread is now sleeping");
+            try
+            {
+                Thread.Sleep(sleepTime);
+                Console.WriteLine("Thread is now not sleeping");
+                db.SubmitChanges();
+                db.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                db.Transaction.Rollback();
+                Console.WriteLine(e);
+            }
+
+        }
+
+
+>>>>>>> parent of 8afe8ad... Se tidligere kommentar.
         public void insertReservation(Reservation res)
         {
             //make it a reservation
