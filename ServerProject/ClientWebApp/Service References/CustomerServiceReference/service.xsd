@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" />
+  <xs:element name="GetAllSchedulers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSchedulersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetAllSchedulersResult" nillable="true" type="q1:ArrayOfScheduler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSchedulerByMovie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="movieID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSchedulerByMovieResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="getSchedulerByMovieResult" nillable="true" type="q2:Scheduler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSchedulerByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schedulerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSchedulerByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="getSchedulerByIDResult" nillable="true" type="q3:Scheduler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="makeReservation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="row" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="seat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="schedulerID" type="xs:int" />
+        <xs:element minOccurs="0" name="customerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="makeReservationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
