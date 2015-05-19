@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using ServerProject.DatabaseLayer;
+using System.Collections;
 
 namespace WCFConnectionLibrary
 {
@@ -12,6 +13,9 @@ namespace WCFConnectionLibrary
     [ServiceContract]
     public interface ICustomerService
     {
+        [OperationContract]
+        Scheduler[] GetAllSchedulers();
+
         [OperationContract]
         Scheduler getSchedulerByMovie(int movieID);
         

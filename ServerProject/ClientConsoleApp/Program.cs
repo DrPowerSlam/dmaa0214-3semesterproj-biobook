@@ -21,7 +21,7 @@ namespace ConsoleApplication1
         {
             Program program = new Program();
 
-            program.getAllschedulers();
+            program.GetAllschedulers();
 
 
             // program.GetScheduler();
@@ -140,7 +140,7 @@ namespace ConsoleApplication1
 
         }
 
-        public void getAllschedulers()
+        public void GetAllschedulers()
         {
             foreach (Scheduler schduler in schCtr.GetAllSchedulers())
             {

@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using ClientWebApp.CustomerServiceReference;
 using ServerProject.DatabaseLayer;
-using ServerProject.ControllerLayer;
 
 namespace ClientWebApp
 {
@@ -14,10 +14,7 @@ namespace ClientWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
-
-            ServerProject.ControllerLayer.SchedulerController schCtr = new SchedulerController();
-
+            var client = new CustomerServiceClient();
             if (!IsPostBack)
             {
                //Page.RouteData.Values["movieID"]
@@ -40,7 +37,7 @@ namespace ClientWebApp
 
                 litNewstMovies.Text += "<div class=\"row text-center\">";
 
-                foreach (Scheduler scheduler in schCtr.getAllSchedulers())
+                foreach (Scheduler scheduler in client.GetAllSchedulers())
                 {
               
 
