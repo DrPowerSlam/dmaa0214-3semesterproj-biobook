@@ -104,11 +104,11 @@ namespace ServerProject.ControllerLayer
                         // save the seats to a list
                         for(int next = 0; next < personer; next++)
                         {
-                            saveArray[next + 2] = y + next;
+                            saveArray[next + 2] = y + next+1;
                             point += jaggedArray[x][next + y];
                         }
                         saveArray[0] = point;
-                        saveArray[1] = x;
+                        saveArray[1] = x+1;
                         savedOption.Add(saveArray);                       
                     }
                 }
@@ -136,11 +136,11 @@ namespace ServerProject.ControllerLayer
         {
             int[] p = findBestSeats(3, 1);
 
-            Console.WriteLine("Rækken er: " + (p[1] + 1));
+            Console.WriteLine("Rækken er: " + (p[1]));
             Console.WriteLine("Total point er :" + p[0]);
             Console.WriteLine("sæderne er: ");
             for (int x = 2; x < p.Length; x++)
-                Console.WriteLine((1+p[x]) + ", ");
+                Console.WriteLine((p[x]) + ", ");
             Console.ReadLine();
         }
 
