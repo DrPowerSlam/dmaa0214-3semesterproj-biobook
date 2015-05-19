@@ -106,5 +106,18 @@ namespace ServerProject.ControllerLayer
             return isAvailable;
 
         }
+
+        public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID, int sleepTime)
+        {
+            Reservation reservation = new Reservation();
+
+            reservation.Seat = seatArray;
+            reservation.Row = row;
+
+            reservation.CustomerID = customerID;
+            reservation.SchedulerID = schedulerID;
+
+            dbRes.UpdateReservation(reservation, sleepTime);
+        }
     }
 }
