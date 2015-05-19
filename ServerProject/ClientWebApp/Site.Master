@@ -44,12 +44,12 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="Default" runat="server">FILM</a></li>
+                            <li class="active"><a href="Default.aspx" runat="server">FILM</a></li>
                             <li><a href="Resever.aspx">RESEVER</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#contact">REGISTRER</a></li>
+                            <li><a href="Registrer.aspx">REGISTRER</a></li>
                             <li><a href="#contact">LOG IND</a></li>
                         </ul>
                     </div>
