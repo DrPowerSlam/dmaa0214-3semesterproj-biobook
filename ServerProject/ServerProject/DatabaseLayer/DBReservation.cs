@@ -9,7 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading;
-//using System.Transactions;
+using System.Threading;
 
 namespace ServerProject.DatabaseLayer
 {
@@ -37,10 +37,6 @@ namespace ServerProject.DatabaseLayer
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             Reservation reservation = db.Reservations.First(r => r.ResID == 4);
-            
-            //Console.WriteLine(reservation.Row);
-            //using (var transation = new TransactionScope() )
-            //{
 
                 reservation.CustomerID = 1;
                 reservation.Row = "1,2,3,4";
@@ -67,10 +63,7 @@ namespace ServerProject.DatabaseLayer
                     db.Transaction.Rollback();
                     Console.WriteLine(e);
                 }
-            //}
         }
-
-
         public void insertReservation(Reservation res)
         {
             //make it a reservation
