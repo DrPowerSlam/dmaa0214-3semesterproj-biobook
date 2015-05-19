@@ -13,6 +13,12 @@ namespace ServerProject.ControllerLayer
 
         DBScheduler dbSch = new DBScheduler();
 
+        public IEnumerable getAllSchedulers()
+        {
+            return dbSch.GetAllSchedulers();
+        }
+
+
         // Ikke færdig
         public IEnumerable getMovieByMovieID(int movieID)
         {
