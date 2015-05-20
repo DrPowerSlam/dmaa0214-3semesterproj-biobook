@@ -145,7 +145,7 @@ namespace ServerProject.DatabaseLayer
 		
 		private string _password;
 		
-		private string _Mail;
+		private string _mail;
 		
 		private EntitySet<Reservation> _Reservations;
 		
@@ -163,8 +163,8 @@ namespace ServerProject.DatabaseLayer
     partial void OnphoneNumberChanged();
     partial void OnpasswordChanging(string value);
     partial void OnpasswordChanged();
-    partial void OnMailChanging(string value);
-    partial void OnMailChanged();
+    partial void OnmailChanging(string value);
+    partial void OnmailChanged();
     #endregion
 		
 		public Customer()
@@ -256,23 +256,23 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mail", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mail", DbType="VarChar(50)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public string Mail
+		public string mail
 		{
 			get
 			{
-				return this._Mail;
+				return this._mail;
 			}
 			set
 			{
-				if ((this._Mail != value))
+				if ((this._mail != value))
 				{
-					this.OnMailChanging(value);
+					this.OnmailChanging(value);
 					this.SendPropertyChanging();
-					this._Mail = value;
-					this.SendPropertyChanged("Mail");
-					this.OnMailChanged();
+					this._mail = value;
+					this.SendPropertyChanged("mail");
+					this.OnmailChanged();
 				}
 			}
 		}

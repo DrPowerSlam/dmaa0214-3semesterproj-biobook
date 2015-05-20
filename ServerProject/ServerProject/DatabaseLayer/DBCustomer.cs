@@ -64,13 +64,16 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="name">The name of the customer (ID is auto-generated in the database)</param>
         /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
-        public int InsertCustomer(string name)
+        public int InsertCustomer(string name, string phoneNumber, string password, string mail)
         {
             int controlInt = -1;
             var db = new ConnectToDatabaseDataContext();
 
             Customer customer = new Customer();
             customer.name = name;
+            customer.phoneNumber = phoneNumber;
+            customer.password = password;
+            customer.mail = mail;
 
             db.Customers.InsertOnSubmit(customer);
 
