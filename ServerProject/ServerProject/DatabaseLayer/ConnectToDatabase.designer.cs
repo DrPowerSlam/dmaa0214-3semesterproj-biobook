@@ -434,7 +434,7 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColumnArray", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColumnArray", DbType="VarChar(45)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string ColumnArray
 		{
@@ -1063,7 +1063,7 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="VarChar(45)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Row
 		{
@@ -1084,7 +1084,7 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="VarChar(45)")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string Seat
 		{
@@ -1217,7 +1217,7 @@ namespace ServerProject.DatabaseLayer
 		
 		private int _SchID;
 		
-		private System.Nullable<System.DateTime> _Datetime;
+		private System.Nullable<System.DateTime> _Date;
 		
 		private System.Nullable<System.TimeSpan> _Starttime;
 		
@@ -1241,8 +1241,8 @@ namespace ServerProject.DatabaseLayer
     partial void OnCreated();
     partial void OnSchIDChanging(int value);
     partial void OnSchIDChanged();
-    partial void OnDatetimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDatetimeChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
     partial void OnStarttimeChanging(System.Nullable<System.TimeSpan> value);
     partial void OnStarttimeChanged();
     partial void OnMovieIDChanging(System.Nullable<int> value);
@@ -1277,23 +1277,23 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datetime", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
 		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<System.DateTime> Datetime
+		public System.Nullable<System.DateTime> Date
 		{
 			get
 			{
-				return this._Datetime;
+				return this._Date;
 			}
 			set
 			{
-				if ((this._Datetime != value))
+				if ((this._Date != value))
 				{
-					this.OnDatetimeChanging(value);
+					this.OnDateChanging(value);
 					this.SendPropertyChanging();
-					this._Datetime = value;
-					this.SendPropertyChanged("Datetime");
-					this.OnDatetimeChanged();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}

@@ -46,10 +46,10 @@ namespace ServerProject.ControllerLayer
         /// Inserts a customer to the database
         /// </summary>
         /// <param name="name">The name of the customer (ID is auto-generated)</param>
-        public void InsertCustomer(string name, string phoneNumber, string password, string Mail)
+        public void InsertCustomer(string name, string phoneNumber, string password, string mail)
         {
             //make some checks here.
-            dbCus.InsertCustomer(name, phoneNumber, password, Mail);
+            dbCus.InsertCustomer(name, phoneNumber, password, mail);
         }
 
         /// <summary>

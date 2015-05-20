@@ -105,7 +105,7 @@ namespace ServerProject.DatabaseLayer
         public List<Scheduler> GetByDate(DateTime date)
         {
             var db = new ConnectToDatabaseDataContext();
-            var Schedulerlist = db.Schedulers.Select(x => x).Where(x => x.Datetime == date);
+            var Schedulerlist = db.Schedulers.Select(x => x).Where(x => x.Date == date);
             List<Scheduler> Sch = new List<Scheduler>();
             Sch = Schedulerlist.ToList();
 

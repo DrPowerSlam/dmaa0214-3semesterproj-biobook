@@ -14,7 +14,7 @@
     <Type Name="Seat">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Row" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ColumnArray" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ColumnArray" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Column Name="SchedulerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Scheduler_Seat" Member="Scheduler" ThisKey="SchedulerID" OtherKey="SchID" Type="Scheduler" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
@@ -42,8 +42,8 @@
       <Column Name="ResID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SchedulerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Row" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Seat" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Row" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Seat" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
       <Association Name="Customer_Reservation" Member="Customer" ThisKey="CustomerID" OtherKey="CusID" Type="Customer" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="Scheduler_Reservation" Member="Scheduler" ThisKey="SchedulerID" OtherKey="SchID" Type="Scheduler" IsForeignKey="true" DeleteRule="SET DEFAULT" />
     </Type>
@@ -51,7 +51,7 @@
   <Table Name="dbo.Scheduler" Member="Schedulers">
     <Type Name="Scheduler">
       <Column Name="SchID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Datetime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Starttime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="MovieID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HallID" Type="System.Int32" DbType="Int" CanBeNull="true" />

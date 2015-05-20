@@ -58,11 +58,10 @@
 	insert into Hall values ('Red', 100);
 	insert into Hall values ('Green', 110);
 
-
 	create table Scheduler
 	(
 	SchID int IDENTITY(1,1),
-	Datetime Date,
+	Date Date,
 	Starttime Time,
 	MovieID int ,
 	HallID int ,
@@ -71,27 +70,41 @@
 	primary key(SchID)
 	);
 
+	insert into Scheduler values ('2015-01-01 10:10:10', '10-10-10', 1,1)
+	insert into Scheduler values ('2015-02-02 10:10:10', '10-10-10', 2,2)
+	insert into Scheduler values ('2015-03-03 10:10:10', '10-10-10', 3,3)
+
+
 	create table Seat
 	(
 	ID int IDENTITY(1,1),
 	Row int,
-	ColumnArray varchar(MAX),
+	ColumnArray varchar(45),
 	SchedulerID int,
 
 	foreign key(SchedulerID) references Scheduler(SchID) on delete cascade,
 	primary key(ID)
 	);
-
+	
+	insert into Seat values (1, '1,2,3,4,5,4,3,2,1', 1)
+	insert into Seat values (1, '1,2,3,4,3,2,1', 1)
+	insert into Seat values (2, '1,2,3,4,5,6,5,4,3,2,1', 2)
+	insert into Seat values (3, '1,2,3,4,5,4,3,2,1', 2)
+	
 	create table Reservation
 	(
 	ResID int IDENTITY(1,1),
 	CustomerID int, 
 	SchedulerID int,
-	Row varchar(MAX),
-	Seat varchar(MAX),
+	Row varchar(45),
+	Seat varchar(45),
 	foreign key(CustomerID) references Customer(CusID) on delete cascade,
 	foreign key(SchedulerID) references Scheduler(SchID) on delete set default,
 	primary key(ResID)
 	);
 
+	insert into Reservation values (1, 1, '1,2,3,4', '1,2,3,4')
+	insert into Reservation values (2, 2, '1,2,3,4', '1,2,3,4')
+	insert into Reservation values (3, 3, '1,2,3,4', '1,2,3,4')
+	insert into Reservation values (4, 4, '1,2,3,4', '1,2,3,4')
 
