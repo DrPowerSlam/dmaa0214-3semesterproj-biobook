@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmaa0214_3Sem_2" Class="ConnectToDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmaa0214_3Sem_2" Class="ConnectToDatabaseDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=kraka.ucn.dk;Initial Catalog=dmaa0214_3Sem_2;Persist Security Info=True;User ID=dmaa0214_3Sem_2" SettingsObjectName="ServerProject.Properties.Settings" SettingsPropertyName="dmaa0214_3Sem_2ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Customer" Member="Customers">
     <Type Name="Customer">

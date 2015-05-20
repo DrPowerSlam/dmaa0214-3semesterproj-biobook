@@ -38,35 +38,35 @@
         <elementListCompartment Id="2904bf02-a701-4131-a89e-47b9498313f5" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.69314697265625); (3.5 : 4.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.69314697265625); (3.5 : 4.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Hall/Hall_Scheduler" />
       <nodes>
         <classShapeMoniker Id="bbbd25a2-a3b3-4a28-8ea2-170ec580f8e0" />
         <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.63544840494792); (4.5 : 1.63544840494792); (4.5 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.42971255371093); (4.23437375 : 1.42971255371093); (4.23437375 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Movie/Movie_Scheduler" />
       <nodes>
         <classShapeMoniker Id="180b0c77-322f-4c94-afe0-0dca2dc3446a" />
         <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.66429768880208); (5.79166666666667 : 4.66429768880208 : JumpStart); (5.95833333333333 : 4.66429768880208 : JumpEnd); (6.25 : 4.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.66429768880208); (5.79166666666667 : 4.66429768880208 : JumpStart); (5.95833333333333 : 4.66429768880208 : JumpEnd); (6.25 : 4.66429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Scheduler/Scheduler_Seat" />
       <nodes>
         <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
         <classShapeMoniker Id="c421c98f-b498-409a-9c79-02724fd0ffd6" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.75); (5.875 : 7.375); (5.875 : 1.63544840494792); (6.25 : 1.63544840494792)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 7.75); (5.875 : 7.375); (5.875 : 1.63544840494792); (6.25 : 1.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Customer/Customer_Reservation" />
       <nodes>
         <classShapeMoniker Id="f1e61be6-5481-497b-8fcf-9b9ceafa3734" />
         <classShapeMoniker Id="89dcc7dd-8e9b-4064-8f6d-0913892fa0f9" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.0312525 : 3.75); (5.0312525 : 2.10942510742187); (5.79166666666667 : 2.10942510742187 : JumpStart); (5.95833333333333 : 2.10942510742187 : JumpEnd); (6.25 : 2.10942510742187)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.0312525 : 3.75); (5.0312525 : 2.10942510742187); (6.25 : 2.10942510742187)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ConnectToDatabaseDataContext/Scheduler/Scheduler_Reservation" />
       <nodes>
         <classShapeMoniker Id="d69a2842-d64d-4d1c-985f-44c109051674" />
