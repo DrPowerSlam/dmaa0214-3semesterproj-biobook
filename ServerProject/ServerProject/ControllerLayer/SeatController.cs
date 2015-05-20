@@ -68,6 +68,7 @@ namespace ServerProject.ControllerLayer
             }
 
             // enough seats were available, can we find enough adjecent seats?
+            // x is the row y is the seat in the row
             for (int x = 0; x < jaggedArray.Length; x++)
             {
                 for (int y = 0; y < jaggedArray[x].Length; y++)
@@ -113,10 +114,14 @@ namespace ServerProject.ControllerLayer
                     }
                 }
             }
-
+            if(savedOption.Count == 0)
+            {
+                return null;
+            }
             int bestPoint = 0;
-            // No hall will have a row with more than 25 seats
-            int[] bestSeats = new int[25];
+            // If one or more options are found, they will always need room for 
+            // amount of people+2 ( for row number and point)
+            int[] bestSeats = new int[personer+2];
                 foreach (int[] option in savedOption)
                 {   // Loop through the options, and return the best seats
                     // check each of the options total point, and if better than current best
@@ -126,7 +131,8 @@ namespace ServerProject.ControllerLayer
                         bestPoint = option[0];
                         bestSeats = option;
                     }
-                }       
+                }    
+            
             return bestSeats;
 
 
@@ -134,14 +140,20 @@ namespace ServerProject.ControllerLayer
 
         public void easytest()
         {
-            int[] p = findBestSeats(3, 1);
-
-            Console.WriteLine("Rækken er: " + (p[1]));
-            Console.WriteLine("Total point er :" + p[0]);
-            Console.WriteLine("sæderne er: ");
-            for (int x = 2; x < p.Length; x++)
-                Console.WriteLine((p[x]) + ", ");
-            Console.ReadLine();
+            int[] p = findBestSeats(10, 1);
+            if (p == null)
+            {
+                Console.WriteLine("nederen");
+            }
+            else
+            {
+                Console.WriteLine("Rækken er: " + (p[1]));
+                Console.WriteLine("Total point er :" + p[0]);
+                Console.WriteLine("sæderne er: ");
+                for (int x = 2; x < p.Length; x++)
+                    Console.WriteLine((p[x]) + ", ");
+                Console.ReadLine();
+            }
         }
 
 
