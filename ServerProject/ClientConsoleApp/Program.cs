@@ -288,7 +288,7 @@ namespace ConsoleApplication1
 
         public void MakeCustomer()
         {
-            cusCtr.InsertCustomer("writeyournamehere");
+            cusCtr.InsertCustomer("writeyournamehere", "+459999999", "kodener123", "Hej@gmail.com");
         }
 
     }

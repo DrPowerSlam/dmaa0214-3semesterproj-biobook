@@ -34,21 +34,21 @@ namespace ServerProject.DatabaseLayer
     partial void InsertCustomer(Customer instance);
     partial void UpdateCustomer(Customer instance);
     partial void DeleteCustomer(Customer instance);
+    partial void InsertSeat(Seat instance);
+    partial void UpdateSeat(Seat instance);
+    partial void DeleteSeat(Seat instance);
     partial void InsertHall(Hall instance);
     partial void UpdateHall(Hall instance);
     partial void DeleteHall(Hall instance);
     partial void InsertMovie(Movie instance);
     partial void UpdateMovie(Movie instance);
     partial void DeleteMovie(Movie instance);
-    partial void InsertScheduler(Scheduler instance);
-    partial void UpdateScheduler(Scheduler instance);
-    partial void DeleteScheduler(Scheduler instance);
-    partial void InsertSeat(Seat instance);
-    partial void UpdateSeat(Seat instance);
-    partial void DeleteSeat(Seat instance);
     partial void InsertReservation(Reservation instance);
     partial void UpdateReservation(Reservation instance);
     partial void DeleteReservation(Reservation instance);
+    partial void InsertScheduler(Scheduler instance);
+    partial void UpdateScheduler(Scheduler instance);
+    partial void DeleteScheduler(Scheduler instance);
     #endregion
 		
 		public ConnectToDatabaseDataContext() : 
@@ -89,6 +89,14 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
+		public System.Data.Linq.Table<Seat> Seats
+		{
+			get
+			{
+				return this.GetTable<Seat>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Hall> Halls
 		{
 			get
@@ -105,27 +113,19 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
-		public System.Data.Linq.Table<Scheduler> Schedulers
-		{
-			get
-			{
-				return this.GetTable<Scheduler>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Seat> Seats
-		{
-			get
-			{
-				return this.GetTable<Seat>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Reservation> Reservations
 		{
 			get
 			{
 				return this.GetTable<Reservation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Scheduler> Schedulers
+		{
+			get
+			{
+				return this.GetTable<Scheduler>();
 			}
 		}
 	}
@@ -143,6 +143,10 @@ namespace ServerProject.DatabaseLayer
 		
 		private string _phoneNumber;
 		
+		private string _password;
+		
+		private string _Mail;
+		
 		private EntitySet<Reservation> _Reservations;
 		
 		private bool serializing;
@@ -157,6 +161,10 @@ namespace ServerProject.DatabaseLayer
     partial void OnnameChanged();
     partial void OnphoneNumberChanging(string value);
     partial void OnphoneNumberChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnMailChanging(string value);
+    partial void OnMailChanged();
     #endregion
 		
 		public Customer()
@@ -227,8 +235,50 @@ namespace ServerProject.DatabaseLayer
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mail", DbType="VarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public string Mail
+		{
+			get
+			{
+				return this._Mail;
+			}
+			set
+			{
+				if ((this._Mail != value))
+				{
+					this.OnMailChanging(value);
+					this.SendPropertyChanging();
+					this._Mail = value;
+					this.SendPropertyChanged("Mail");
+					this.OnMailChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Reservations", ThisKey="CusID", OtherKey="CustomerID")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
 		public EntitySet<Reservation> Reservations
 		{
 			get
@@ -303,6 +353,198 @@ namespace ServerProject.DatabaseLayer
 		public void OnSerialized(StreamingContext context)
 		{
 			this.serializing = false;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Seat")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class Seat : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _Row;
+		
+		private string _ColumnArray;
+		
+		private System.Nullable<int> _SchedulerID;
+		
+		private EntityRef<Scheduler> _Scheduler;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnRowChanging(System.Nullable<int> value);
+    partial void OnRowChanged();
+    partial void OnColumnArrayChanging(string value);
+    partial void OnColumnArrayChanged();
+    partial void OnSchedulerIDChanging(System.Nullable<int> value);
+    partial void OnSchedulerIDChanged();
+    #endregion
+		
+		public Seat()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<int> Row
+		{
+			get
+			{
+				return this._Row;
+			}
+			set
+			{
+				if ((this._Row != value))
+				{
+					this.OnRowChanging(value);
+					this.SendPropertyChanging();
+					this._Row = value;
+					this.SendPropertyChanged("Row");
+					this.OnRowChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColumnArray", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public string ColumnArray
+		{
+			get
+			{
+				return this._ColumnArray;
+			}
+			set
+			{
+				if ((this._ColumnArray != value))
+				{
+					this.OnColumnArrayChanging(value);
+					this.SendPropertyChanging();
+					this._ColumnArray = value;
+					this.SendPropertyChanged("ColumnArray");
+					this.OnColumnArrayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public System.Nullable<int> SchedulerID
+		{
+			get
+			{
+				return this._SchedulerID;
+			}
+			set
+			{
+				if ((this._SchedulerID != value))
+				{
+					if (this._Scheduler.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSchedulerIDChanging(value);
+					this.SendPropertyChanging();
+					this._SchedulerID = value;
+					this.SendPropertyChanged("SchedulerID");
+					this.OnSchedulerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Seat", Storage="_Scheduler", ThisKey="SchedulerID", OtherKey="SchID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Scheduler Scheduler
+		{
+			get
+			{
+				return this._Scheduler.Entity;
+			}
+			set
+			{
+				Scheduler previousValue = this._Scheduler.Entity;
+				if (((previousValue != value) 
+							|| (this._Scheduler.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Scheduler.Entity = null;
+						previousValue.Seats.Remove(this);
+					}
+					this._Scheduler.Entity = value;
+					if ((value != null))
+					{
+						value.Seats.Add(this);
+						this._SchedulerID = value.SchID;
+					}
+					else
+					{
+						this._SchedulerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Scheduler");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._Scheduler = default(EntityRef<Scheduler>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
 		}
 	}
 	
@@ -708,6 +950,264 @@ namespace ServerProject.DatabaseLayer
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reservation")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
+	public partial class Reservation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ResID;
+		
+		private System.Nullable<int> _CustomerID;
+		
+		private System.Nullable<int> _SchedulerID;
+		
+		private string _Row;
+		
+		private string _Seat;
+		
+		private EntityRef<Customer> _Customer;
+		
+		private EntityRef<Scheduler> _Scheduler;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnResIDChanging(int value);
+    partial void OnResIDChanged();
+    partial void OnCustomerIDChanging(System.Nullable<int> value);
+    partial void OnCustomerIDChanged();
+    partial void OnSchedulerIDChanging(System.Nullable<int> value);
+    partial void OnSchedulerIDChanged();
+    partial void OnRowChanging(string value);
+    partial void OnRowChanged();
+    partial void OnSeatChanging(string value);
+    partial void OnSeatChanged();
+    #endregion
+		
+		public Reservation()
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+		public int ResID
+		{
+			get
+			{
+				return this._ResID;
+			}
+			set
+			{
+				if ((this._ResID != value))
+				{
+					this.OnResIDChanging(value);
+					this.SendPropertyChanging();
+					this._ResID = value;
+					this.SendPropertyChanged("ResID");
+					this.OnResIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+		public System.Nullable<int> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					if (this._Customer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+		public System.Nullable<int> SchedulerID
+		{
+			get
+			{
+				return this._SchedulerID;
+			}
+			set
+			{
+				if ((this._SchedulerID != value))
+				{
+					if (this._Scheduler.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSchedulerIDChanging(value);
+					this.SendPropertyChanging();
+					this._SchedulerID = value;
+					this.SendPropertyChanged("SchedulerID");
+					this.OnSchedulerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+		public string Row
+		{
+			get
+			{
+				return this._Row;
+			}
+			set
+			{
+				if ((this._Row != value))
+				{
+					this.OnRowChanging(value);
+					this.SendPropertyChanging();
+					this._Row = value;
+					this.SendPropertyChanged("Row");
+					this.OnRowChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
+		public string Seat
+		{
+			get
+			{
+				return this._Seat;
+			}
+			set
+			{
+				if ((this._Seat != value))
+				{
+					this.OnSeatChanging(value);
+					this.SendPropertyChanging();
+					this._Seat = value;
+					this.SendPropertyChanged("Seat");
+					this.OnSeatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Customer", ThisKey="CustomerID", OtherKey="CusID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.Reservations.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.Reservations.Add(this);
+						this._CustomerID = value.CusID;
+					}
+					else
+					{
+						this._CustomerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Reservation", Storage="_Scheduler", ThisKey="SchedulerID", OtherKey="SchID", IsForeignKey=true, DeleteRule="SET DEFAULT")]
+		public Scheduler Scheduler
+		{
+			get
+			{
+				return this._Scheduler.Entity;
+			}
+			set
+			{
+				Scheduler previousValue = this._Scheduler.Entity;
+				if (((previousValue != value) 
+							|| (this._Scheduler.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Scheduler.Entity = null;
+						previousValue.Reservations.Remove(this);
+					}
+					this._Scheduler.Entity = value;
+					if ((value != null))
+					{
+						value.Reservations.Add(this);
+						this._SchedulerID = value.SchID;
+					}
+					else
+					{
+						this._SchedulerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Scheduler");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void Initialize()
+		{
+			this._Customer = default(EntityRef<Customer>);
+			this._Scheduler = default(EntityRef<Scheduler>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scheduler")]
 	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Scheduler : INotifyPropertyChanging, INotifyPropertyChanged
@@ -1047,456 +1547,6 @@ namespace ServerProject.DatabaseLayer
 		public void OnSerialized(StreamingContext context)
 		{
 			this.serializing = false;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Seat")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class Seat : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _Row;
-		
-		private string _ColumnArray;
-		
-		private System.Nullable<int> _SchedulerID;
-		
-		private EntityRef<Scheduler> _Scheduler;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnRowChanging(System.Nullable<int> value);
-    partial void OnRowChanged();
-    partial void OnColumnArrayChanging(string value);
-    partial void OnColumnArrayChanged();
-    partial void OnSchedulerIDChanging(System.Nullable<int> value);
-    partial void OnSchedulerIDChanged();
-    #endregion
-		
-		public Seat()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<int> Row
-		{
-			get
-			{
-				return this._Row;
-			}
-			set
-			{
-				if ((this._Row != value))
-				{
-					this.OnRowChanging(value);
-					this.SendPropertyChanging();
-					this._Row = value;
-					this.SendPropertyChanged("Row");
-					this.OnRowChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColumnArray", DbType="VarChar(MAX)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public string ColumnArray
-		{
-			get
-			{
-				return this._ColumnArray;
-			}
-			set
-			{
-				if ((this._ColumnArray != value))
-				{
-					this.OnColumnArrayChanging(value);
-					this.SendPropertyChanging();
-					this._ColumnArray = value;
-					this.SendPropertyChanged("ColumnArray");
-					this.OnColumnArrayChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public System.Nullable<int> SchedulerID
-		{
-			get
-			{
-				return this._SchedulerID;
-			}
-			set
-			{
-				if ((this._SchedulerID != value))
-				{
-					if (this._Scheduler.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSchedulerIDChanging(value);
-					this.SendPropertyChanging();
-					this._SchedulerID = value;
-					this.SendPropertyChanged("SchedulerID");
-					this.OnSchedulerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Seat", Storage="_Scheduler", ThisKey="SchedulerID", OtherKey="SchID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Scheduler Scheduler
-		{
-			get
-			{
-				return this._Scheduler.Entity;
-			}
-			set
-			{
-				Scheduler previousValue = this._Scheduler.Entity;
-				if (((previousValue != value) 
-							|| (this._Scheduler.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Scheduler.Entity = null;
-						previousValue.Seats.Remove(this);
-					}
-					this._Scheduler.Entity = value;
-					if ((value != null))
-					{
-						value.Seats.Add(this);
-						this._SchedulerID = value.SchID;
-					}
-					else
-					{
-						this._SchedulerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Scheduler");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void Initialize()
-		{
-			this._Scheduler = default(EntityRef<Scheduler>);
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reservation")]
-	[global::System.Runtime.Serialization.DataContractAttribute()]
-	public partial class Reservation : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ResID;
-		
-		private System.Nullable<int> _CustomerID;
-		
-		private System.Nullable<int> _SchedulerID;
-		
-		private string _Row;
-		
-		private string _Seat;
-		
-		private EntityRef<Customer> _Customer;
-		
-		private EntityRef<Scheduler> _Scheduler;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnResIDChanging(int value);
-    partial void OnResIDChanged();
-    partial void OnCustomerIDChanging(System.Nullable<int> value);
-    partial void OnCustomerIDChanged();
-    partial void OnSchedulerIDChanging(System.Nullable<int> value);
-    partial void OnSchedulerIDChanged();
-    partial void OnRowChanging(string value);
-    partial void OnRowChanged();
-    partial void OnSeatChanging(string value);
-    partial void OnSeatChanged();
-    #endregion
-		
-		public Reservation()
-		{
-			this.Initialize();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-		public int ResID
-		{
-			get
-			{
-				return this._ResID;
-			}
-			set
-			{
-				if ((this._ResID != value))
-				{
-					this.OnResIDChanging(value);
-					this.SendPropertyChanging();
-					this._ResID = value;
-					this.SendPropertyChanged("ResID");
-					this.OnResIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-		public System.Nullable<int> CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					if (this._Customer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCustomerIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerID = value;
-					this.SendPropertyChanged("CustomerID");
-					this.OnCustomerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-		public System.Nullable<int> SchedulerID
-		{
-			get
-			{
-				return this._SchedulerID;
-			}
-			set
-			{
-				if ((this._SchedulerID != value))
-				{
-					if (this._Scheduler.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSchedulerIDChanging(value);
-					this.SendPropertyChanging();
-					this._SchedulerID = value;
-					this.SendPropertyChanged("SchedulerID");
-					this.OnSchedulerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="VarChar(MAX)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-		public string Row
-		{
-			get
-			{
-				return this._Row;
-			}
-			set
-			{
-				if ((this._Row != value))
-				{
-					this.OnRowChanging(value);
-					this.SendPropertyChanging();
-					this._Row = value;
-					this.SendPropertyChanged("Row");
-					this.OnRowChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="VarChar(MAX)")]
-		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
-		public string Seat
-		{
-			get
-			{
-				return this._Seat;
-			}
-			set
-			{
-				if ((this._Seat != value))
-				{
-					this.OnSeatChanging(value);
-					this.SendPropertyChanging();
-					this._Seat = value;
-					this.SendPropertyChanged("Seat");
-					this.OnSeatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Customer", ThisKey="CustomerID", OtherKey="CusID", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
-				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Customer.Entity = null;
-						previousValue.Reservations.Remove(this);
-					}
-					this._Customer.Entity = value;
-					if ((value != null))
-					{
-						value.Reservations.Add(this);
-						this._CustomerID = value.CusID;
-					}
-					else
-					{
-						this._CustomerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Customer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Reservation", Storage="_Scheduler", ThisKey="SchedulerID", OtherKey="SchID", IsForeignKey=true, DeleteRule="SET DEFAULT")]
-		public Scheduler Scheduler
-		{
-			get
-			{
-				return this._Scheduler.Entity;
-			}
-			set
-			{
-				Scheduler previousValue = this._Scheduler.Entity;
-				if (((previousValue != value) 
-							|| (this._Scheduler.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Scheduler.Entity = null;
-						previousValue.Reservations.Remove(this);
-					}
-					this._Scheduler.Entity = value;
-					if ((value != null))
-					{
-						value.Reservations.Add(this);
-						this._SchedulerID = value.SchID;
-					}
-					else
-					{
-						this._SchedulerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Scheduler");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void Initialize()
-		{
-			this._Customer = default(EntityRef<Customer>);
-			this._Scheduler = default(EntityRef<Scheduler>);
-			OnCreated();
-		}
-		
-		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
-		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
-		public void OnDeserializing(StreamingContext context)
-		{
-			this.Initialize();
 		}
 	}
 }

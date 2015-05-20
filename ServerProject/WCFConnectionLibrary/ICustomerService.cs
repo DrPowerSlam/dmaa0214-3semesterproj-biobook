@@ -25,6 +25,8 @@ namespace WCFConnectionLibrary
         [OperationContract]
         void makeReservation(string row, string seat, int schedulerID, int customerID);
 
+        [OperationContract]
+        void makeCustomer(string name);
         
     }
 }

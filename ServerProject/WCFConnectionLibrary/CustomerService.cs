@@ -38,6 +38,10 @@ namespace WCFConnectionLibrary
             return schedulerController.GetAllSchedulers();
 
         }
+        public void makeCustomer(string name)
+        {
+
+        }
 
     }
 }
