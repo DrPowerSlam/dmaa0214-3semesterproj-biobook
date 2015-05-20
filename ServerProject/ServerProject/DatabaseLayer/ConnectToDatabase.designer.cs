@@ -18,6 +18,7 @@ namespace ServerProject.DatabaseLayer
 	using System.Reflection;
 	using System.Linq;
 	using System.Linq.Expressions;
+	using System.Runtime.Serialization;
 	using System.ComponentModel;
 	using System;
 	
@@ -130,6 +131,7 @@ namespace ServerProject.DatabaseLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customer")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -142,6 +144,8 @@ namespace ServerProject.DatabaseLayer
 		private string _phoneNumber;
 		
 		private EntitySet<Reservation> _Reservations;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -157,11 +161,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Customer()
 		{
-			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int CusID
 		{
 			get
@@ -182,6 +186,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string name
 		{
 			get
@@ -202,6 +207,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneNumber", DbType="VarChar(20)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string phoneNumber
 		{
 			get
@@ -222,10 +228,16 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Reservation", Storage="_Reservations", ThisKey="CusID", OtherKey="CustomerID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
 		public EntitySet<Reservation> Reservations
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Reservations.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Reservations;
 			}
 			set
@@ -265,9 +277,37 @@ namespace ServerProject.DatabaseLayer
 			this.SendPropertyChanging();
 			entity.Customer = null;
 		}
+		
+		private void Initialize()
+		{
+			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Hall")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Hall : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -280,6 +320,8 @@ namespace ServerProject.DatabaseLayer
 		private System.Nullable<int> _MaxNumberOfSeats;
 		
 		private EntitySet<Scheduler> _Schedulers;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -295,11 +337,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Hall()
 		{
-			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int HallID
 		{
 			get
@@ -320,6 +362,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string name
 		{
 			get
@@ -340,6 +383,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxNumberOfSeats", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> MaxNumberOfSeats
 		{
 			get
@@ -360,10 +404,16 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hall_Scheduler", Storage="_Schedulers", ThisKey="HallID", OtherKey="HallID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4, EmitDefaultValue=false)]
 		public EntitySet<Scheduler> Schedulers
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Schedulers;
 			}
 			set
@@ -403,9 +453,37 @@ namespace ServerProject.DatabaseLayer
 			this.SendPropertyChanging();
 			entity.Hall = null;
 		}
+		
+		private void Initialize()
+		{
+			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Movie")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Movie : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -422,6 +500,8 @@ namespace ServerProject.DatabaseLayer
 		private string _Image;
 		
 		private EntitySet<Scheduler> _Schedulers;
+		
+		private bool serializing;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -441,11 +521,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Movie()
 		{
-			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int MovieID
 		{
 			get
@@ -466,6 +546,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(30)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public string name
 		{
 			get
@@ -486,6 +567,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Playtime", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> Playtime
 		{
 			get
@@ -506,6 +588,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> Price
 		{
 			get
@@ -526,6 +609,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(50)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string Image
 		{
 			get
@@ -546,10 +630,16 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Movie_Scheduler", Storage="_Schedulers", ThisKey="MovieID", OtherKey="MovieID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
 		public EntitySet<Scheduler> Schedulers
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Schedulers.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Schedulers;
 			}
 			set
@@ -589,9 +679,37 @@ namespace ServerProject.DatabaseLayer
 			this.SendPropertyChanging();
 			entity.Movie = null;
 		}
+		
+		private void Initialize()
+		{
+			this._Schedulers = new EntitySet<Scheduler>(new Action<Scheduler>(this.attach_Schedulers), new Action<Scheduler>(this.detach_Schedulers));
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scheduler")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Scheduler : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -615,6 +733,8 @@ namespace ServerProject.DatabaseLayer
 		
 		private EntityRef<Movie> _Movie;
 		
+		private bool serializing;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -633,14 +753,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Scheduler()
 		{
-			this._Seats = new EntitySet<Seat>(new Action<Seat>(this.attach_Seats), new Action<Seat>(this.detach_Seats));
-			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
-			this._Hall = default(EntityRef<Hall>);
-			this._Movie = default(EntityRef<Movie>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int SchID
 		{
 			get
@@ -661,6 +778,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datetime", DbType="Date")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<System.DateTime> Datetime
 		{
 			get
@@ -681,6 +799,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Starttime", DbType="Time")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<System.TimeSpan> Starttime
 		{
 			get
@@ -701,6 +820,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MovieID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> MovieID
 		{
 			get
@@ -725,6 +845,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HallID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public System.Nullable<int> HallID
 		{
 			get
@@ -749,10 +870,16 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Seat", Storage="_Seats", ThisKey="SchID", OtherKey="SchedulerID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=6, EmitDefaultValue=false)]
 		public EntitySet<Seat> Seats
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Seats.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Seats;
 			}
 			set
@@ -762,10 +889,16 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Scheduler_Reservation", Storage="_Reservations", ThisKey="SchID", OtherKey="SchedulerID")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=7, EmitDefaultValue=false)]
 		public EntitySet<Reservation> Reservations
 		{
 			get
 			{
+				if ((this.serializing 
+							&& (this._Reservations.HasLoadedOrAssignedValues == false)))
+				{
+					return null;
+				}
 				return this._Reservations;
 			}
 			set
@@ -885,9 +1018,40 @@ namespace ServerProject.DatabaseLayer
 			this.SendPropertyChanging();
 			entity.Scheduler = null;
 		}
+		
+		private void Initialize()
+		{
+			this._Seats = new EntitySet<Seat>(new Action<Seat>(this.attach_Seats), new Action<Seat>(this.detach_Seats));
+			this._Reservations = new EntitySet<Reservation>(new Action<Reservation>(this.attach_Reservations), new Action<Reservation>(this.detach_Reservations));
+			this._Hall = default(EntityRef<Hall>);
+			this._Movie = default(EntityRef<Movie>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerializing(StreamingContext context)
+		{
+			this.serializing = true;
+		}
+		
+		[global::System.Runtime.Serialization.OnSerializedAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnSerialized(StreamingContext context)
+		{
+			this.serializing = false;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Seat")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Seat : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -919,11 +1083,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Seat()
 		{
-			this._Scheduler = default(EntityRef<Scheduler>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ID
 		{
 			get
@@ -944,6 +1108,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> Row
 		{
 			get
@@ -964,6 +1129,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ColumnArray", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public string ColumnArray
 		{
 			get
@@ -984,6 +1150,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public System.Nullable<int> SchedulerID
 		{
 			get
@@ -1060,9 +1227,23 @@ namespace ServerProject.DatabaseLayer
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void Initialize()
+		{
+			this._Scheduler = default(EntityRef<Scheduler>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Reservation")]
+	[global::System.Runtime.Serialization.DataContractAttribute()]
 	public partial class Reservation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1100,12 +1281,11 @@ namespace ServerProject.DatabaseLayer
 		
 		public Reservation()
 		{
-			this._Customer = default(EntityRef<Customer>);
-			this._Scheduler = default(EntityRef<Scheduler>);
-			OnCreated();
+			this.Initialize();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=1)]
 		public int ResID
 		{
 			get
@@ -1126,6 +1306,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=2)]
 		public System.Nullable<int> CustomerID
 		{
 			get
@@ -1150,6 +1331,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchedulerID", DbType="Int")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=3)]
 		public System.Nullable<int> SchedulerID
 		{
 			get
@@ -1174,6 +1356,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=4)]
 		public string Row
 		{
 			get
@@ -1194,6 +1377,7 @@ namespace ServerProject.DatabaseLayer
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="VarChar(MAX)")]
+		[global::System.Runtime.Serialization.DataMemberAttribute(Order=5)]
 		public string Seat
 		{
 			get
@@ -1299,6 +1483,20 @@ namespace ServerProject.DatabaseLayer
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void Initialize()
+		{
+			this._Customer = default(EntityRef<Customer>);
+			this._Scheduler = default(EntityRef<Scheduler>);
+			OnCreated();
+		}
+		
+		[global::System.Runtime.Serialization.OnDeserializingAttribute()]
+		[global::System.ComponentModel.EditorBrowsableAttribute(EditorBrowsableState.Never)]
+		public void OnDeserializing(StreamingContext context)
+		{
+			this.Initialize();
 		}
 	}
 }

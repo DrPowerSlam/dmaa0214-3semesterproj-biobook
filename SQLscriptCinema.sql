@@ -19,15 +19,17 @@ create table Customer
 CusID int IDENTITY(1,1),
 name varchar(30), 
 phoneNumber varchar(20),
+password varchar(50),
+Mail varchar(50),
 
 primary key(CusID)
 
 );
-insert into Customer values ('Jens', '+4520304051');
-insert into Customer values ('Kaj', '+4520324050');
-insert into Customer values ('Tue', '+4520304056');
-insert into Customer values ('Hamun', '+4520354050');
-insert into Customer values ('Renee', '+4522304050');
+insert into Customer values ('Jens', '+4520304051', '20302020','******');
+insert into Customer values ('Kaj', '+4520324050','20302020','******');
+insert into Customer values ('Tue', '+4520304056','20302020','******');
+insert into Customer values ('Hamun', '+4520354050','20302020','******');
+insert into Customer values ('Renee', '+4522304050','20302020','******');
 
 create table Movie
 (
