@@ -43,7 +43,7 @@ namespace ServerProject.ControllerLayer
         }
 
         //This needs to have both schedulerID customerId and row and seat.
-        //ex. row = "1,1,1" seat = "2,3,4"
+        //e.g. row = "1,1,1" seat = "2,3,4"
         public bool makeReservation(string row, string seatArray, int schedulerID, int customerID)
         {
             
@@ -100,6 +100,14 @@ namespace ServerProject.ControllerLayer
 
             reservation.CustomerID = customerID;
             reservation.SchedulerID = schedulerID;
+            int charArrayIndex = 0;
+            char[] charArray = new char[seatArray.Length];
+            foreach(char seat in seatArray)
+            {
+                charArray[charArrayIndex] = '0';
+                charArrayIndex++;
+            }
+            seatTable.UpdateSeat(row, seatArray, charArray.ToString(), schedulerID);
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.insertReservation(reservation);
@@ -109,14 +117,6 @@ namespace ServerProject.ControllerLayer
 
         public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID)
         {
-            Reservation reservation = new Reservation();
-
-            reservation.Seat = seatArray;
-            reservation.Row = row;
-
-            reservation.CustomerID = customerID;
-            reservation.SchedulerID = schedulerID;
-
             dbRes.UpdateReservation(customerID, row, seatArray, schedulerID);
         }
     }
