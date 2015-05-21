@@ -14,13 +14,21 @@ namespace ConsoleApplication1
         ServerProject.ControllerLayer.CustomerController cusCtr = new CustomerController();
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
-        ServerProject.DatabaseLayer.DBScheduler schCtr = new ServerProject.DatabaseLayer.DBScheduler();
-        CustomerServiceClient client = new CustomerServiceClient();
-
+        ServerProject.ControllerLayer.SchedulerController schCtr = new SchedulerController();
+        //CustomerServiceClient client = new CustomerServiceClient();
+        
         static void Main(String[] arg)
         {            
             Program program = new Program();
 
+            TimeSpan t = new TimeSpan(2);
+            DateTime d = new DateTime(3);
+
+            program.schCtr.CreateScheduler(d, t, 1, 1);
+
+            Console.ReadLine();
+            
+            
             program.GetAllschedulers();
             //program.MakeCustomer();
 
@@ -289,7 +297,7 @@ namespace ConsoleApplication1
         public void MakeCustomer()
         {
             //Make sure that promt the user to do it
-            client.MakeCustomer("writeyournamehere", "+459999999", "kodener123", "Hej@gmail.com");
+           // client.MakeCustomer("writeyournamehere", "+459999999", "kodener123", "Hej@gmail.com");
             Console.WriteLine("done making customer.");
         }
 

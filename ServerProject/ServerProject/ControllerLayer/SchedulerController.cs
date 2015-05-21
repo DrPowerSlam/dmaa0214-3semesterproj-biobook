@@ -52,5 +52,10 @@ namespace ServerProject.ControllerLayer
 
             return scheduler;
         }
+
+        public void CreateScheduler(DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            dbSch.InsertScheduler(date, time, movieID, hallID);
+        }
     }
 }

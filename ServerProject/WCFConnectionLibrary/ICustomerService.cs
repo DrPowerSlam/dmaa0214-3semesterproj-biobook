@@ -30,6 +30,9 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         void MakeCustomer(string name, string phoneNumber, string password, string mail);
+
+        [OperationContract]
+        void MakeScheduler(DateTime date, TimeSpan time, int movieID, int hallID);
         
     }
 }

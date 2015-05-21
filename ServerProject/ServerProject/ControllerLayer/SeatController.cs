@@ -140,7 +140,7 @@ namespace ServerProject.ControllerLayer
 
         public void easytest()
         {
-            int[] p = findBestSeats(10, 1);
+            int[] p = findBestSeats(3, 1);
             if (p == null)
             {
                 Console.WriteLine("nederen");
