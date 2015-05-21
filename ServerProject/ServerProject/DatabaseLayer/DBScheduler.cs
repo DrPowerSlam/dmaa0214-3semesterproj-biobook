@@ -112,6 +112,32 @@ namespace ServerProject.DatabaseLayer
             return Sch;
         }
 
+        public void InsertScheduler(DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            var db = new ConnectToDatabaseDataContext();
+
+            Scheduler sch = new Scheduler();
+            sch.Date = date;
+            sch.Starttime = time;
+            sch.MovieID = movieID;
+            sch.HallID = hallID;
+
+            db.Schedulers.InsertOnSubmit(sch);
+            db.SubmitChanges();
+
+            var result = (from t in db.Schedulers orderby t.SchID descending select t.SchID).First();
+            var HallSeatList = db.HallSeats.Select(x => x).Where(x => x.HallID == hallID);
+            foreach (HallSeat hallSeat in HallSeatList)
+            {
+                Seat seat = new Seat();
+                seat.Row = hallSeat.Row;
+                seat.ColumnArray = hallSeat.seatNumbers;
+                seat.SchedulerID = result;
+                db.Seats.InsertOnSubmit(seat);
+            }
+            db.SubmitChanges();
+        }
+
 
     }
 }

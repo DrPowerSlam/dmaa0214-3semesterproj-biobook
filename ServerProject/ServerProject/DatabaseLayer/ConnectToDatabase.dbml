@@ -24,7 +24,17 @@
       <Column Name="HallID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="MaxNumberOfSeats" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Hall_HallSeat" Member="HallSeats" ThisKey="HallID" OtherKey="HallID" Type="HallSeat" />
       <Association Name="Hall_Scheduler" Member="Schedulers" ThisKey="HallID" OtherKey="HallID" Type="Scheduler" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HallSeats" Member="HallSeats">
+    <Type Name="HallSeat">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Row" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="seatNumbers" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="HallID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Hall_HallSeat" Member="Hall" ThisKey="HallID" OtherKey="HallID" Type="Hall" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Movie" Member="Movies">

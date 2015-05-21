@@ -50,5 +50,11 @@ namespace WCFConnectionLibrary
             customerController.InsertCustomer(name, phoneNumber, password, mail);
         }
 
+        public void MakeScheduler(DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            SchedulerController SchCtr = new SchedulerController();
+            SchCtr.CreateScheduler(date, time, movieID, hallID);
+        }
+
     }
 }
