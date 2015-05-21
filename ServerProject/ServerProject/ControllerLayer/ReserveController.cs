@@ -12,10 +12,10 @@ namespace ServerProject.ControllerLayer
         DBReservation dbRes = new DBReservation();
         
 
-        public IEnumerable getReservationsByCustomerID(int customerID)
+        public List<Reservation> GetReservationsByCustomerID(int customerID)
         {
             List<Reservation> listToReturn = new List<Reservation>();
-            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            foreach (Reservation r in dbRes.GetReservation().Cast<Reservation>())
             {
                 if (r.Customer.CusID == customerID)
                 {
@@ -30,7 +30,7 @@ namespace ServerProject.ControllerLayer
         public List<Reservation> findReservationByPhone(string phone)
         {
             List<Reservation> listToReturn = new List<Reservation>();
-            foreach (Reservation r in dbRes.getReservation().Cast<Reservation>())
+            foreach (Reservation r in dbRes.GetReservation().Cast<Reservation>())
             {
                 if (r.Customer.phoneNumber.Equals(phone))
                 {
