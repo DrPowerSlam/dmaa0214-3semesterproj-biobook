@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Linq;
 
 namespace ServerProject.DatabaseLayer
 {
@@ -43,44 +44,51 @@ namespace ServerProject.DatabaseLayer
             //
         }
 
-        public void UpdateSeat(string rows, string seats, int schID)
+        public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
         {
-            //see if the seats are already there and then update it
-            //therefore check for schedulerID and row. If they are the same, then update it.
+            //Create some arrays that doesn't have comma (the seperator in our strings)
             string[] rowsArray = rows.Split(',');
             string[] seatsArray = seats.Split(',');
+            string[] updateArray = updateInfo.Split(',');
+            //Create a seat object that will hold the seats from the database
             Seat seatFromDB = new Seat();
-            Seat seatToDB = new Seat();
-            //get only the rows and seats with the schID
-            DBSeat seatDB = new DBSeat();
+            //Loop through all the rows
             foreach(string row in rowsArray)
             {
+                //Index for the seats, so we know which element we are at
+                int seatIndex = 0;
+                //Index for the rows
                 int rowIndex;
                 Int32.TryParse(row, out rowIndex);
 
-                //this should only take one from the database.
-                //although if that row does not exists then make an error
-                seatFromDB = seatDB.GetSeatsBySchIDAndRow(schID,rowIndex).First();
+                //Gets the first (and only) seat from the database
+                seatFromDB = GetSeatsBySchIDAndRow(schID,rowIndex).First();
+                //Check if it's non-exsistent
                 if (seatFromDB == null)
                 {
-                    throw new Exception("There are no such row in the database");
+                    throw new Exception("There is no such row in the database");
                 }
-
-                if (seatFromDB.ColumnArray.Length == seatsArray.Length)
+                //If not, check if they are equal in length (compared to the input seat)
+                else if (seatFromDB.ColumnArray.Length == seats.Length)
                 {
-                    //then you can make the update, to that row and ColumnArray
-                    
-                    seatToDB.ColumnArray = seats;
-                    seatToDB.Row = rowIndex;
-                    seatToDB.SchedulerID = schID;
-                    db.Seats.InsertOnSubmit(seatToDB);
+                    //Convert the seats from the database to a char array (so the program can replace chars at certain indices
+                    char[] charArray = seatFromDB.ColumnArray.ToCharArray();
+                    charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[seatIndex];
+                    seatFromDB.ColumnArray = charArray.ToString();
+                    //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
+                    seatIndex++;
                 }
                 
-            }   
-            //if the scheduler does not exists then make a new one?
-            //why?
-
-
+            }
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                db.Transaction.Rollback();
+            }
         }
     }
 }

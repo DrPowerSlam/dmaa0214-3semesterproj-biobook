@@ -152,7 +152,7 @@ namespace ConsoleApplication1
             ReserveController resCtr = new ReserveController();
             Console.WriteLine("Write the time for how long it should take");
             int sleepTime = Console.Read();
-            resCtr.UpdateReservation("1,2,3,4", "1", 1, 1, sleepTime);
+            //resCtr.UpdateReservation("1,2,3,4", "1", 1, 1, sleepTime);
         }
         public void getAllCustomers()
         {

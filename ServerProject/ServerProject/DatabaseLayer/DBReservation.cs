@@ -31,27 +31,21 @@ namespace ServerProject.DatabaseLayer
             return cusResJoin;
         }
 
-        public void UpdateReservation(Reservation res, int sleepTime)
+        public void UpdateReservation(int customerID, string row, string seat, int schID)
         {
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             Reservation reservation = db.Reservations.First(r => r.ResID == 4);
 
-                reservation.CustomerID = 1;
-                reservation.Row = "1,2,3,4";
-                reservation.Seat = "5,5,5,5,1,4,";
-                reservation.SchedulerID = 1;
-                //reservation.ResID = 1;
-
-                Console.WriteLine("Thread is now sleeping");
+            reservation.CustomerID = customerID;
+            reservation.Row = row;
+            reservation.Seat = seat;
+            reservation.SchedulerID = schID;
                 
                 try
                 {
-
-                    Console.WriteLine("Thread is now not sleeping");
                     db.SubmitChanges();
-                    Thread.Sleep(10000);
                     db.Transaction.Commit();
                     db.Transaction.Dispose();
                     //transation.Complete();
@@ -75,10 +69,7 @@ namespace ServerProject.DatabaseLayer
             db.Reservations.InsertOnSubmit(reservation);
             try
             {
-                Thread.Sleep(2000);
-                Console.WriteLine("Thread is now not sleeping");
                 db.SubmitChanges();
-                
             }
             catch (Exception e)
             {

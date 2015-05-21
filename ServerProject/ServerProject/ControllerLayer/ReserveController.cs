@@ -107,7 +107,7 @@ namespace ServerProject.ControllerLayer
 
         }
 
-        public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID, int sleepTime)
+        public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID)
         {
             Reservation reservation = new Reservation();
 
@@ -117,7 +117,7 @@ namespace ServerProject.ControllerLayer
             reservation.CustomerID = customerID;
             reservation.SchedulerID = schedulerID;
 
-            dbRes.UpdateReservation(reservation, sleepTime);
+            dbRes.UpdateReservation(customerID, row, seatArray, schedulerID);
         }
     }
 }
