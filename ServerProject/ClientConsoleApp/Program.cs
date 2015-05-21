@@ -18,7 +18,7 @@ namespace ConsoleApplication1
         CustomerServiceClient client = new CustomerServiceClient();
 
         static void Main(String[] arg)
-        {
+        {            
             Program program = new Program();
 
             program.GetAllschedulers();

@@ -15,6 +15,12 @@ namespace ClientConsoleApp.CustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CustomerServiceReference.ICustomerService")]
     public interface ICustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetReservationByCustomerID", ReplyAction="http://tempuri.org/ICustomerService/GetReservationByCustomerIDResponse")]
+        ServerProject.DatabaseLayer.Reservation[] GetReservationByCustomerID(int customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetReservationByCustomerID", ReplyAction="http://tempuri.org/ICustomerService/GetReservationByCustomerIDResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Reservation[]> GetReservationByCustomerIDAsync(int customerID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllSchedulers", ReplyAction="http://tempuri.org/ICustomerService/GetAllSchedulersResponse")]
         ServerProject.DatabaseLayer.Scheduler[] GetAllSchedulers();
         
@@ -71,6 +77,14 @@ namespace ClientConsoleApp.CustomerServiceReference {
         
         public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ServerProject.DatabaseLayer.Reservation[] GetReservationByCustomerID(int customerID) {
+            return base.Channel.GetReservationByCustomerID(customerID);
+        }
+        
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Reservation[]> GetReservationByCustomerIDAsync(int customerID) {
+            return base.Channel.GetReservationByCustomerIDAsync(customerID);
         }
         
         public ServerProject.DatabaseLayer.Scheduler[] GetAllSchedulers() {

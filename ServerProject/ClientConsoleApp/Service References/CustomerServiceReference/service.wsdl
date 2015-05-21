@@ -96,6 +96,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICustomerService_GetReservationByCustomerID_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ICustomerService_GetReservationByCustomerID_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ICustomerService_GetAllSchedulers_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -293,6 +331,12 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ICustomerService_GetReservationByCustomerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationByCustomerID" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_GetReservationByCustomerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationByCustomerIDResponse" />
+  </wsdl:message>
   <wsdl:message name="ICustomerService_GetAllSchedulers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSchedulers" />
   </wsdl:message>
@@ -324,6 +368,10 @@
     <wsdl:part name="parameters" element="tns:MakeCustomerResponse" />
   </wsdl:message>
   <wsdl:portType name="ICustomerService">
+    <wsdl:operation name="GetReservationByCustomerID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetReservationByCustomerID" message="tns:ICustomerService_GetReservationByCustomerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetReservationByCustomerIDResponse" message="tns:ICustomerService_GetReservationByCustomerID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllSchedulers">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetAllSchedulers" message="tns:ICustomerService_GetAllSchedulers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetAllSchedulersResponse" message="tns:ICustomerService_GetAllSchedulers_OutputMessage" />
@@ -347,6 +395,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerService" type="tns:ICustomerService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReservationByCustomerID">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/GetReservationByCustomerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllSchedulers">
       <soap:operation soapAction="http://tempuri.org/ICustomerService/GetAllSchedulers" style="document" />
       <wsdl:input>
@@ -396,6 +453,17 @@
   <wsdl:binding name="WSHttpBinding_ICustomerService" type="tns:ICustomerService">
     <wsp:PolicyReference URI="#WSHttpBinding_ICustomerService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetReservationByCustomerID">
+      <soap12:operation soapAction="http://tempuri.org/ICustomerService/GetReservationByCustomerID" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICustomerService_GetReservationByCustomerID_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ICustomerService_GetReservationByCustomerID_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllSchedulers">
       <soap12:operation soapAction="http://tempuri.org/ICustomerService/GetAllSchedulers" style="document" />
       <wsdl:input>
