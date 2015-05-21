@@ -1,32 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" />
-  <xs:element name="getSchedulerByMovie">
+  <xs:element name="GetAllSchedulers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSchedulersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetAllSchedulersResult" nillable="true" type="q1:ArrayOfScheduler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchedulerByMovie">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="movieID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getSchedulerByMovieResponse">
+  <xs:element name="GetSchedulerByMovieResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="getSchedulerByMovieResult" nillable="true" type="q1:Scheduler" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetSchedulerByMovieResult" nillable="true" type="q2:Scheduler" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getSchedulerByID">
+  <xs:element name="GetSchedulerByID">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="schedulerID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getSchedulerByIDResponse">
+  <xs:element name="GetSchedulerByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="getSchedulerByIDResult" nillable="true" type="q2:Scheduler" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetSchedulerByIDResult" nillable="true" type="q3:Scheduler" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeReservation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="row" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="seat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="schedulerID" type="xs:int" />
+        <xs:element minOccurs="0" name="customerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeReservationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

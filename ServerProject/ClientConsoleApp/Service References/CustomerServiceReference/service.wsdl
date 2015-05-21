@@ -7,32 +7,62 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ICustomerService_getSchedulerByMovie_InputMessage">
-    <wsdl:part name="parameters" element="tns:getSchedulerByMovie" />
+  <wsdl:message name="ICustomerService_GetAllSchedulers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSchedulers" />
   </wsdl:message>
-  <wsdl:message name="ICustomerService_getSchedulerByMovie_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getSchedulerByMovieResponse" />
+  <wsdl:message name="ICustomerService_GetAllSchedulers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSchedulersResponse" />
   </wsdl:message>
-  <wsdl:message name="ICustomerService_getSchedulerByID_InputMessage">
-    <wsdl:part name="parameters" element="tns:getSchedulerByID" />
+  <wsdl:message name="ICustomerService_GetSchedulerByMovie_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchedulerByMovie" />
   </wsdl:message>
-  <wsdl:message name="ICustomerService_getSchedulerByID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getSchedulerByIDResponse" />
+  <wsdl:message name="ICustomerService_GetSchedulerByMovie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchedulerByMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_GetSchedulerByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchedulerByID" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_GetSchedulerByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchedulerByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_MakeReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeReservation" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_MakeReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_MakeCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ICustomerService_MakeCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeCustomerResponse" />
   </wsdl:message>
   <wsdl:portType name="ICustomerService">
-    <wsdl:operation name="getSchedulerByMovie">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/getSchedulerByMovie" message="tns:ICustomerService_getSchedulerByMovie_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/getSchedulerByMovieResponse" message="tns:ICustomerService_getSchedulerByMovie_OutputMessage" />
+    <wsdl:operation name="GetAllSchedulers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetAllSchedulers" message="tns:ICustomerService_GetAllSchedulers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetAllSchedulersResponse" message="tns:ICustomerService_GetAllSchedulers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getSchedulerByID">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/getSchedulerByID" message="tns:ICustomerService_getSchedulerByID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/getSchedulerByIDResponse" message="tns:ICustomerService_getSchedulerByID_OutputMessage" />
+    <wsdl:operation name="GetSchedulerByMovie">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetSchedulerByMovie" message="tns:ICustomerService_GetSchedulerByMovie_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetSchedulerByMovieResponse" message="tns:ICustomerService_GetSchedulerByMovie_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulerByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/GetSchedulerByID" message="tns:ICustomerService_GetSchedulerByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/GetSchedulerByIDResponse" message="tns:ICustomerService_GetSchedulerByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/MakeReservation" message="tns:ICustomerService_MakeReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/MakeReservationResponse" message="tns:ICustomerService_MakeReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/MakeCustomer" message="tns:ICustomerService_MakeCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/MakeCustomerResponse" message="tns:ICustomerService_MakeCustomer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerService" type="tns:ICustomerService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="getSchedulerByMovie">
-      <soap:operation soapAction="http://tempuri.org/ICustomerService/getSchedulerByMovie" style="document" />
+    <wsdl:operation name="GetAllSchedulers">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/GetAllSchedulers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -40,8 +70,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getSchedulerByID">
-      <soap:operation soapAction="http://tempuri.org/ICustomerService/getSchedulerByID" style="document" />
+    <wsdl:operation name="GetSchedulerByMovie">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/GetSchedulerByMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulerByID">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/GetSchedulerByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReservation">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/MakeReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeCustomer">
+      <soap:operation soapAction="http://tempuri.org/ICustomerService/MakeCustomer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

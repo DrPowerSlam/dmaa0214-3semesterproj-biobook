@@ -15,18 +15,18 @@ namespace ConsoleApplication1
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
         ServerProject.DatabaseLayer.DBScheduler schCtr = new ServerProject.DatabaseLayer.DBScheduler();
-
+        CustomerServiceClient client = new CustomerServiceClient();
 
         static void Main(String[] arg)
         {
             Program program = new Program();
 
             program.GetAllschedulers();
+            //program.MakeCustomer();
 
+            //program.GetScheduler();
 
-            // program.GetScheduler();
-
-            //    var client = new CustomerServiceClient();
+           
 
             //Scheduler scheduler = client.getSchedulerByMovie(1);
             // Scheduler scheduler = client.getSchedulerByID(1);
@@ -288,7 +288,9 @@ namespace ConsoleApplication1
 
         public void MakeCustomer()
         {
-            cusCtr.InsertCustomer("writeyournamehere", "+459999999", "kodener123", "Hej@gmail.com");
+            //Make sure that promt the user to do it
+            client.MakeCustomer("writeyournamehere", "+459999999", "kodener123", "Hej@gmail.com");
+            Console.WriteLine("done making customer.");
         }
 
     }
