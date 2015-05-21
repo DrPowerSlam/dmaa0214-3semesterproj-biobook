@@ -17,7 +17,7 @@ namespace ServerProject.DatabaseLayer
     {
         private object lockToken = new object();        
 
-        public IEnumerable getReservation()
+        public IEnumerable GetReservation()
         {
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
             DBCustomer dbCustomer = new DBCustomer();

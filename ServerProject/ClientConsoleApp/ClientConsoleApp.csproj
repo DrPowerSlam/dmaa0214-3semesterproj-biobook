@@ -52,7 +52,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Scheduler.datasource" />
     <None Include="Service References\CustomerServiceReference\ServerProject.DatabaseLayer.xsd">
       <SubType>Designer</SubType>

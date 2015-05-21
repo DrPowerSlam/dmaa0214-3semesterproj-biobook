@@ -249,7 +249,7 @@ namespace ConsoleApplication1
             Console.WriteLine("****************************** FIND ALL RESERVATION ******************************\n");
             ReserveController resCtr = new ReserveController();
 
-            foreach (var r in resCtr.getReservationsByCustomerID(1).Cast<Reservation>())
+            foreach (var r in resCtr.GetReservationsByCustomerID(1).Cast<Reservation>())
             {
                 Console.WriteLine("Movie name: " + r.Scheduler.Movie.name);
                 Console.WriteLine("Customer name: " + r.Customer.name + "\n" + "Reservation ID: " + r.ResID + "\n" + "Row: " + r.Row + "\nSeat: " + r.Seat + "\n");
