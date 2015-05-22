@@ -37,11 +37,13 @@ namespace WCFConnectionLibrary
            ReserveController reserveController = new ReserveController();
            reserveController.makeReservation(row, seat, schedulerID, customerID);
         }
-        public Scheduler[] GetAllSchedulers()
+        public List<Scheduler> GetAllSchedulers()
         {
             SchedulerController schedulerController = new SchedulerController();
-            
-            return schedulerController.GetAllSchedulers();
+
+            List<Scheduler> schedulerList = schedulerController.GetAllSchedulers();
+            Reservation reservation = schedulerList.First().Reservations.First();
+            return schedulerList;
 
         }
         public void MakeCustomer(string name, string phoneNumber, string password, string mail)

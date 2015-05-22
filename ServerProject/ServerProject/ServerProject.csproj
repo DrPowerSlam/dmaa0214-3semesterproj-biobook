@@ -78,7 +78,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="DatabaseLayer\ConnectToDatabase.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>ConnectToDatabase.designer.cs</LastGenOutput>

@@ -13,9 +13,12 @@ namespace ServerProject.ControllerLayer
 
         DBScheduler dbSch = new DBScheduler();
 
-        public Scheduler[] GetAllSchedulers()
+        public List<Scheduler> GetAllSchedulers()
         {
-            return dbSch.GetAllSchedulers().ToArray();
+
+            List<Scheduler> schedulerList = dbSch.GetAllSchedulers();
+            
+            return schedulerList;
 
         }
 

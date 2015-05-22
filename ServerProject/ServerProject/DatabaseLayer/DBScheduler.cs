@@ -90,11 +90,15 @@ namespace ServerProject.DatabaseLayer
         {
             var db = new ConnectToDatabaseDataContext();
 
-            var Schedulerlist = db.Schedulers.Select(x => x).AsEnumerable();
-            List<Scheduler> Sch = new List<Scheduler>();
-            Sch = Schedulerlist.ToList();
+            var schedulerList = db.Schedulers.Select(x => x);
+            var reservationList = db.Reservations.Select(x => x);
 
-            return Sch;
+
+            var   InnerJoin =  from sch in schedulerList
+                               join res in reservationList on sch.SchID equals res.SchedulerID
+                               select sch;
+
+            return InnerJoin.ToList();
         }
 
         /// <summary>

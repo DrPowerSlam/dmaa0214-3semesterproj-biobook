@@ -17,7 +17,7 @@ namespace WCFConnectionLibrary
         Reservation[] GetReservationByCustomerID(int customerID);
 
         [OperationContract]
-        Scheduler[] GetAllSchedulers();
+        List<Scheduler> GetAllSchedulers();
 
         [OperationContract]
         Scheduler GetSchedulerByMovie(int movieID);
