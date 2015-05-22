@@ -20,11 +20,15 @@ namespace ClientWebApp
             {
                //Page.RouteData.Values["movieID"]
 
-                List<Scheduler> schedulers = client.GetAllSchedulers();
-                Reservation reservation = schedulers.First().Reservations.First();
+                List<Movie> movieList = client.GetAllMovies();
+                
+                foreach(Movie movie in movieList)
+                {
+                    litNewstMovies.Text += movie.name;
+                }
 
+                
 
-                litNewstMovies.Text += reservation.Row;
                 litNewstMovies.Text += "<div class=\"row\">";
 
                 litNewstMovies.Text += "<div class=\"col-lg-12\">";

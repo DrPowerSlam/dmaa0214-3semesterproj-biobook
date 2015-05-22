@@ -44,11 +44,11 @@ namespace ServerProject.DatabaseLayer
         /// Gets all movies
         /// </summary>
         /// <returns>Returns an IEnumerable of all the movies</returns>
-        public IEnumerable GetAllMovies()
+        public List<Movie> GetAllMovies()
         {
             var db = new ConnectToDatabaseDataContext();
 
-            var movies = db.Movies.Select(x => x).AsEnumerable();
+            var movies = db.Movies.Select(x => x).ToList();
 
             return movies;
         }

@@ -15,7 +15,7 @@ namespace ServerProject.ControllerLayer
         /// Gets all the movies from the database
         /// </summary>
         /// <returns>Returns an IEnumerable with all the movies</returns>
-        public IEnumerable GetAllMovies()
+        public List<Movie> GetAllMovies()
         {
             return dbMovie.GetAllMovies();
         }

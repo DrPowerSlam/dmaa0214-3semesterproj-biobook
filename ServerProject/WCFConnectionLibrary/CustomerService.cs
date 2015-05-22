@@ -19,6 +19,15 @@ namespace WCFConnectionLibrary
             return resCrt.GetReservationsByCustomerID(customerID).ToArray();
         }
 
+        public List<Movie> GetAllMovies()
+        {
+            MovieController movieCtr = new MovieController();
+
+            Scheduler scheduler = movieCtr.GetAllMovies().First().Schedulers.First();
+
+            return movieCtr.GetAllMovies();
+        }
+
         public Scheduler GetSchedulerByMovie(int movieID)
         {
             SchedulerController schedulerController = new SchedulerController();
@@ -42,7 +51,9 @@ namespace WCFConnectionLibrary
             SchedulerController schedulerController = new SchedulerController();
 
             List<Scheduler> schedulerList = schedulerController.GetAllSchedulers();
+
             Reservation reservation = schedulerList.First().Reservations.First();
+
             return schedulerList;
 
         }

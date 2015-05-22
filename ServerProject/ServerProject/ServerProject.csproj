@@ -61,12 +61,6 @@
     <Compile Include="DatabaseLayer\DBReservation.cs" />
     <Compile Include="DatabaseLayer\DBScheduler.cs" />
     <Compile Include="DatabaseLayer\DBSeat.cs" />
-    <Compile Include="ModelLayer\Customer.cs" />
-    <Compile Include="ModelLayer\Hall.cs" />
-    <Compile Include="ModelLayer\Movie.cs" />
-    <Compile Include="ModelLayer\Reservation.cs" />
-    <Compile Include="ModelLayer\Scheduler.cs" />
-    <Compile Include="ModelLayer\Seat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

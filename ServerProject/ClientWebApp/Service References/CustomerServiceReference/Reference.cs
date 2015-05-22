@@ -15,6 +15,12 @@ namespace ClientWebApp.CustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CustomerServiceReference.ICustomerService")]
     public interface ICustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllMovies", ReplyAction="http://tempuri.org/ICustomerService/GetAllMoviesResponse")]
+        System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie> GetAllMovies();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllMovies", ReplyAction="http://tempuri.org/ICustomerService/GetAllMoviesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie>> GetAllMoviesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetReservationByCustomerID", ReplyAction="http://tempuri.org/ICustomerService/GetReservationByCustomerIDResponse")]
         System.Collections.Generic.List<ServerProject.DatabaseLayer.Reservation> GetReservationByCustomerID(int customerID);
         
@@ -83,6 +89,14 @@ namespace ClientWebApp.CustomerServiceReference {
         
         public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie> GetAllMovies() {
+            return base.Channel.GetAllMovies();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie>> GetAllMoviesAsync() {
+            return base.Channel.GetAllMoviesAsync();
         }
         
         public System.Collections.Generic.List<ServerProject.DatabaseLayer.Reservation> GetReservationByCustomerID(int customerID) {

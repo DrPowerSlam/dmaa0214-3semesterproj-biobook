@@ -15,7 +15,8 @@
     <AssemblyName>ClientWebApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -76,6 +77,7 @@
     <Content Include="Resever.aspx" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Scheduler.datasource" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Reservation.datasource" />
+    <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Movie1.datasource" />
     <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
     <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
     <None Include="Service References\CustomerServiceReference\Reference.svcmap">
