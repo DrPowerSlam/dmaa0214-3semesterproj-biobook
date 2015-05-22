@@ -22,12 +22,11 @@ namespace ClientWebApp
 
                 List<Movie> movieList = client.GetAllMovies();
                 
-                foreach(Movie movie in movieList)
-                {
-                    litNewstMovies.Text += movie.name;
-                }
+                //foreach(Movie movie in movieList)
+                //{
+                //    litNewstMovies.Text += movie.name + "<br/>";
+                //}
 
-                
 
                 litNewstMovies.Text += "<div class=\"row\">";
 
@@ -44,36 +43,36 @@ namespace ClientWebApp
 
                 litNewstMovies.Text += "<div class=\"row text-center\">";
 
-                //foreach (Scheduler scheduler in client.GetAllSchedulers())
-                //{
-              
-
-                //    litNewstMovies.Text += "<div class=\"col-md-3 col-sm-6\">";
-                //    litNewstMovies.Text += "<div class=\"thumbnail\">";
-
-                //    litNewstMovies.Text += "<a href=\"Resever/"   + movie.MovieID + movie.name + "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
-                //    litNewstMovies.Text += "<a href=\"Resever/" + scheduler.Movie.name + "\"><img src='../../Content/Images/" + scheduler.Movie.Image + " ' alt='' title='' border=\"0\" /></a>";
-                //    litNewstMovies.Text += "<div class=\"caption\">";
-                //    litNewstMovies.Text += "<h3>" + scheduler.Movie.name + "</h3>";
-
-                //    litNewstMovies.Text += "<p>";
-
-                //    litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + scheduler.Movie.MovieID + "\" class=\"btn btn-primary\">" + scheduler.Movie.Price + "&nbsp;" + "DKK" + "</a>" + "&nbsp;";
-
-                //    litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + scheduler.MovieID + "\" class=\"btn btn-default\">" + "&nbsp;" + "Resever" + "</a>";
-
-                //    litNewstMovies.Text += "</p>";
+                foreach (Movie movie in movieList)
+                {
 
 
-                //    litNewstMovies.Text += "</div>";
+                    litNewstMovies.Text += "<div class=\"col-md-3 col-sm-6\">";
+                    litNewstMovies.Text += "<div class=\"thumbnail\">";
 
-                //    litNewstMovies.Text += "</div>";
-                //    litNewstMovies.Text += "</div>";
+                   // litNewstMovies.Text += "<a href=\"Resever/" + movie.MovieID + movie.name + "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
+                    litNewstMovies.Text += "<a href=\"Resever/" + movie.name + "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
+                    litNewstMovies.Text += "<div class=\"caption\">";
+                    litNewstMovies.Text += "<h3>" + movie.name + "</h3>";
+
+                    litNewstMovies.Text += "<p>";
+
+                    litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + movie.MovieID + "\" class=\"btn btn-primary\">" + movie.Price + "&nbsp;" + "DKK" + "</a>" + "&nbsp;";
+
+                    litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + movie.MovieID + "\" class=\"btn btn-default\">" + "&nbsp;" + "Resever" + "</a>";
+
+                    litNewstMovies.Text += "</p>";
+
+
+                    litNewstMovies.Text += "</div>";
+
+                    litNewstMovies.Text += "</div>";
+                    litNewstMovies.Text += "</div>";
 
 
 
 
-                //}
+                }
 
                 litNewstMovies.Text += "</div>";
 
