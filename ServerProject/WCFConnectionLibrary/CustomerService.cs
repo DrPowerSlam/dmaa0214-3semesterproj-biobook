@@ -34,7 +34,11 @@ namespace WCFConnectionLibrary
 
             List<Movie> movieList = movieCtr.GetAllMovies();
 
-            Scheduler scheduler = movieCtr.GetAllMovies().First().Schedulers.First();
+            //loop through it to have the schedulers loaded imidiately
+            foreach (Movie movie in movieList)
+            {
+                List<Scheduler> scheduler = movie.Schedulers.ToList();
+            }
 
             return movieList;
 
@@ -52,7 +56,7 @@ namespace WCFConnectionLibrary
         {
             SchedulerController schedulerController = new SchedulerController();
 
-            return schedulerController.getSchedulerByMovie(movieID);
+            return schedulerController.GetSchedulerByMovie(movieID);
         }
 
         public Scheduler GetSchedulerByID(int schedulerID)

@@ -34,7 +34,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="movieID">The ID of the movie</param>
         /// <returns>Returns the scheduler as a scheduler object</returns>
-        public Scheduler getSchedulerByMovieID(int movieID)
+        public Scheduler GetSchedulerByMovieID(int movieID)
         {
             var db = new ConnectToDatabaseDataContext();
 

@@ -46,11 +46,11 @@ namespace ServerProject.ControllerLayer
             return scheduler;
         }
 
-        public Scheduler getSchedulerByMovie(int movieID)
+        public Scheduler GetSchedulerByMovie(int movieID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
             MovieController movieCtr = new MovieController();
-            Scheduler scheduler = schedulerDatabase.getSchedulerByMovieID(movieID);
+            Scheduler scheduler = schedulerDatabase.GetSchedulerByMovieID(movieID);
             scheduler.Movie = movieCtr.FindMovieByID(movieID);
 
             return scheduler;

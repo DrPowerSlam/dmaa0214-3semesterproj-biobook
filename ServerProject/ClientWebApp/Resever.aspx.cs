@@ -21,26 +21,28 @@ namespace ClientWebApp
 
             string str = Page.RouteData.Values["name"].ToString();
             
-            List<Movie> movies = client.FindMovieByName(str)
+            //Movie movie = client.FindMovieByName(str);
 
-    
+            //Scheduler scheduler = client.GetSchedulerByMovieID(movie.MovieID);
+            //litSeatList.Text += 
+            //litMovieInfo.Text += movie.MovieID;
 
             litMovieInfo.Text += "<div class=\"col-md-3\">";
 
-            litMovieInfo.Text += "<img src=\"../../Content/Images/" + movCtr.FindMovieByName(str).Image + "\" + class=\"MovieImg\" />";
+            litMovieInfo.Text += "<img src=\"../../Content/Images/" + movie.Image + "\" + class=\"MovieImg\" />";
 
             litMovieInfo.Text += "</div>";
 
             litMovieInfo.Text += "<div class=\"col-md-3\">";
 
-            litMovieInfo.Text += movCtr.FindMovieByName(str).name;
+            litMovieInfo.Text += movie.name;
 
             litMovieInfo.Text += "</div>";
 
 
             
-            foreach(
-            litSeatList.Text +=
+            //foreach(1
+            //litSeatList.Text +=
 
 
 
