@@ -32,9 +32,20 @@ namespace WCFConnectionLibrary
         {
             MovieController movieCtr = new MovieController();
 
+            List<Movie> movieList = movieCtr.GetAllMovies();
+
             Scheduler scheduler = movieCtr.GetAllMovies().First().Schedulers.First();
 
-            return movieCtr.GetAllMovies();
+            return movieList;
+
+
+            //SchedulerController schedulerController = new SchedulerController();
+
+            //List<Scheduler> schedulerList = schedulerController.GetAllSchedulers();
+
+            //Reservation reservation = schedulerList.First().Reservations.First();
+
+            //return schedulerList;
         }
 
         public Scheduler GetSchedulerByMovieID(int movieID)

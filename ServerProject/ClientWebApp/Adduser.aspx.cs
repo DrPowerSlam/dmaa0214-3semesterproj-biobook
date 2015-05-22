@@ -35,7 +35,7 @@ namespace ClientWebApp
 
 
                 objCustomer.name +=  txtName.Text;
-                objCustomer.phoneNumber += txtPhone.Text; ;
+                objCustomer.phoneNumber +=  "+ 45" + txtPhone.Text; ;
                 objCustomer.password += txtPassword.Text ;
                 objCustomer.mail +=  txtMail.Text;
 
