@@ -33,11 +33,11 @@ namespace ClientWebApp.CustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllSchedulers", ReplyAction="http://tempuri.org/ICustomerService/GetAllSchedulersResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ServerProject.DatabaseLayer.Scheduler>> GetAllSchedulersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerByMovie", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerByMovieResponse")]
-        ServerProject.DatabaseLayer.Scheduler GetSchedulerByMovie(int movieID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerByMovieIDResponse")]
+        ServerProject.DatabaseLayer.Scheduler GetSchedulerByMovieID(int movieID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerByMovie", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerByMovieResponse")]
-        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerByMovieAsync(int movieID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerByMovieIDResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerByMovieIDAsync(int movieID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerByID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerByIDResponse")]
         ServerProject.DatabaseLayer.Scheduler GetSchedulerByID(int schedulerID);
@@ -62,6 +62,12 @@ namespace ClientWebApp.CustomerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/MakeScheduler", ReplyAction="http://tempuri.org/ICustomerService/MakeSchedulerResponse")]
         System.Threading.Tasks.Task MakeSchedulerAsync(System.DateTime date, System.TimeSpan time, int movieID, int hallID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/FindMovieByName", ReplyAction="http://tempuri.org/ICustomerService/FindMovieByNameResponse")]
+        ServerProject.DatabaseLayer.Movie FindMovieByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/FindMovieByName", ReplyAction="http://tempuri.org/ICustomerService/FindMovieByNameResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Movie> FindMovieByNameAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -115,12 +121,12 @@ namespace ClientWebApp.CustomerServiceReference {
             return base.Channel.GetAllSchedulersAsync();
         }
         
-        public ServerProject.DatabaseLayer.Scheduler GetSchedulerByMovie(int movieID) {
-            return base.Channel.GetSchedulerByMovie(movieID);
+        public ServerProject.DatabaseLayer.Scheduler GetSchedulerByMovieID(int movieID) {
+            return base.Channel.GetSchedulerByMovieID(movieID);
         }
         
-        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerByMovieAsync(int movieID) {
-            return base.Channel.GetSchedulerByMovieAsync(movieID);
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Scheduler> GetSchedulerByMovieIDAsync(int movieID) {
+            return base.Channel.GetSchedulerByMovieIDAsync(movieID);
         }
         
         public ServerProject.DatabaseLayer.Scheduler GetSchedulerByID(int schedulerID) {
@@ -153,6 +159,14 @@ namespace ClientWebApp.CustomerServiceReference {
         
         public System.Threading.Tasks.Task MakeSchedulerAsync(System.DateTime date, System.TimeSpan time, int movieID, int hallID) {
             return base.Channel.MakeSchedulerAsync(date, time, movieID, hallID);
+        }
+        
+        public ServerProject.DatabaseLayer.Movie FindMovieByName(string name) {
+            return base.Channel.FindMovieByName(name);
+        }
+        
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Movie> FindMovieByNameAsync(string name) {
+            return base.Channel.FindMovieByNameAsync(name);
         }
     }
 }

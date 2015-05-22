@@ -91,17 +91,9 @@ namespace ServerProject.DatabaseLayer
             var db = new ConnectToDatabaseDataContext();
 
             var schedulerList = db.Schedulers.Select(x => x);
-            var movieList = db.Movies.Select(x => x);
-            var hallList = db.Halls.Select(x => x);
 
 
-
-            var   InnerJoin =  from sch in schedulerList
-                               join movie in movieList on sch.MovieID equals movie.MovieID
-                               join hall in hallList on sch.HallID equals hall.HallID
-                               select sch;
-
-            return InnerJoin.ToList();
+            return schedulerList.ToList();
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace ServerProject.DatabaseLayer
         /// Gets a movie by it's name
         /// </summary>
         /// <param name="name">Name of the movie</param>
-        /// <returns>A movoe of a movie object</returns>
+        /// <returns>A movie of a movie object</returns>
         public Movie GetByMovieName(string name)
         {
             var db = new ConnectToDatabaseDataContext();
@@ -43,7 +43,7 @@ namespace ServerProject.DatabaseLayer
         /// <summary>
         /// Gets all movies
         /// </summary>
-        /// <returns>Returns an IEnumerable of all the movies</returns>
+        /// <returns>Returns an List of all the movies</returns>
         public List<Movie> GetAllMovies()
         {
             var db = new ConnectToDatabaseDataContext();

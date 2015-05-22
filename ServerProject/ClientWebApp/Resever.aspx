@@ -33,7 +33,10 @@
                 <span class="glyphicon glyphicon-th"></span>
                   <div class="title">
                      VÆLG <b>PLACERING</b>   
+                      <asp:Literal ID="litSeatList" runat="server"></asp:Literal>
             </div>
+                <asp:DataList ID="DataList1" runat="server"></asp:DataList>
+                <asp:ListView ID="ListView1" runat="server"></asp:ListView>
             </div>
 
         </div>

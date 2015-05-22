@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using ServerProject.DatabaseLayer;
 using ServerProject.ControllerLayer;
+using ClientWebApp.CustomerServiceReference;
 
 namespace ClientWebApp
 {
@@ -15,10 +16,12 @@ namespace ClientWebApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
+
+            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");                      
 
             string str = Page.RouteData.Values["name"].ToString();
-        
+            
+            List<Movie> movies = client.FindMovieByName(str)
 
     
 
@@ -35,8 +38,9 @@ namespace ClientWebApp
             litMovieInfo.Text += "</div>";
 
 
-
-
+            
+            foreach(
+            litSeatList.Text +=
 
 
 
