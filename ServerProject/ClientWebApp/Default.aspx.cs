@@ -54,13 +54,14 @@ namespace ClientWebApp
                     foreach (Scheduler scheduler in movie.Schedulers)
                     {
                         //litNewstMovies.Text += scheduler.Movie.name;
-                    
+
+                        litNewstMovies.Text += "";
                     
                         litNewstMovies.Text += "<div class=\"col-md-3 col-sm-6\">";
                         litNewstMovies.Text += "<div class=\"thumbnail\">";
 
                        // litNewstMovies.Text += "<a href=\"Resever/" + movie.MovieID + movie.name + "\"><img src='../../Content/Images/" + movie.Image + " ' alt='' title='' border=\"0\" /></a>";
-                        litNewstMovies.Text += "<a href=\"Resever/" + scheduler.Movie.name + "\"><img src='../../Content/Images/" + scheduler.Movie.Image + " ' alt='' title='' border=\"0\" /></a>";
+                        litNewstMovies.Text += "<a href=\"Resever/"  + scheduler.SchID + "\"><img src='../../Content/Images/" + scheduler.Movie.Image + " ' alt='' title='' border=\"0\" /></a>";
                         litNewstMovies.Text += "<div class=\"caption\">";
                         litNewstMovies.Text += "<h3>" + scheduler.Movie.name + "</h3>";
 
@@ -71,6 +72,7 @@ namespace ClientWebApp
                         litNewstMovies.Text += "<a href=\"Resever.aspx?id=" + scheduler.Movie.MovieID + "\" class=\"btn btn-default\">" + "&nbsp;" + "Resever" + "</a>";
 
                         litNewstMovies.Text += "</p>";
+
 
 
                         litNewstMovies.Text += "</div>";

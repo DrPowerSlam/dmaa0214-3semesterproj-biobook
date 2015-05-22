@@ -17,11 +17,14 @@ namespace ClientWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");                      
+            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
 
-            string str = Page.RouteData.Values["name"].ToString();
-            
-            //Movie movie = client.FindMovieByName(str);
+
+            int i = Convert.ToInt32(Page.RouteData.Values["SchID"]);
+
+
+            litMovieInfo.Text += i;
+
 
             //Scheduler scheduler = client.GetSchedulerByMovieID(movie.MovieID);
             //litSeatList.Text += 
@@ -29,13 +32,13 @@ namespace ClientWebApp
 
             litMovieInfo.Text += "<div class=\"col-md-3\">";
 
-            litMovieInfo.Text += "<img src=\"../../Content/Images/" + movie.Image + "\" + class=\"MovieImg\" />";
+        //    litMovieInfo.Text += "<img src=\"../../Content/Images/" + movie.Image + "\" + class=\"MovieImg\" />";
 
             litMovieInfo.Text += "</div>";
 
             litMovieInfo.Text += "<div class=\"col-md-3\">";
 
-            litMovieInfo.Text += movie.name;
+          //  litMovieInfo.Text += movie.name;
 
             litMovieInfo.Text += "</div>";
 

@@ -16,7 +16,7 @@ namespace ClientWebApp
         {
                 routes.MapPageRoute(
                  "",
-                 "Resever/{name}",
+                 "Resever/{SchID}",
                  "~/Resever.aspx"
                  );
         }
