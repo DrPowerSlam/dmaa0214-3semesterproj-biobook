@@ -40,15 +40,6 @@ namespace ClientWebApp {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ddlTickets control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTickets;
-        
-        /// <summary>
         /// txtSeatList control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace ClientWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSeatList;
+        
+        /// <summary>
+        /// ddlTickets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTickets;
         
         /// <summary>
         /// litSeatList control.
