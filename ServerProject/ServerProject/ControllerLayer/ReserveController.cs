@@ -74,16 +74,17 @@ namespace ServerProject.ControllerLayer
                     //check the index from checkSeat and see if that index in seatList is available
                     foreach (string check in checkSeat)
                     {
-                        int index;
+                        int index = 0;
                         Int32.TryParse(check, out index);
                         int seatPoint;
-                        Int32.TryParse(seatList[index-1], out seatPoint);
+                        Int32.TryParse(seatList[index], out seatPoint);
                         if (seatPoint < 0)
                         {
                             //The seat is not available, therefore you should not reserve it.
                             isAvailable = false;
                             return isAvailable;
                         }
+                        index++;
 
                     }
                 }
@@ -101,13 +102,14 @@ namespace ServerProject.ControllerLayer
             reservation.CustomerID = customerID;
             reservation.SchedulerID = schedulerID;
             int charArrayIndex = 0;
-            char[] charArray = new char[seatArray.Length];
-            foreach(char seat in seatArray)
+            string[] splitSeatArray = seatArray.Split(',');
+            char[] charArray = new char[splitSeatArray.Length];
+            while (charArrayIndex < charArray.Length)
             {
                 charArray[charArrayIndex] = '0';
                 charArrayIndex++;
             }
-            seatTable.UpdateSeat(row, seatArray, charArray.ToString(), schedulerID);
+            seatTable.UpdateSeat(row, seatArray, charArray, schedulerID);
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.insertReservation(reservation);

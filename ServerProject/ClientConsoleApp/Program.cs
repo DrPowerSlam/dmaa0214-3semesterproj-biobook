@@ -15,6 +15,7 @@ namespace ConsoleApplication1
         ServerProject.ControllerLayer.MovieController movCtr = new MovieController();
         ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
         ServerProject.ControllerLayer.SchedulerController schCtr = new SchedulerController();
+        ServerProject.ControllerLayer.SeatController seatCtr = new SeatController();
         //CustomerServiceClient client = new CustomerServiceClient();
         
         static void Main(String[] arg)
@@ -24,12 +25,12 @@ namespace ConsoleApplication1
             TimeSpan t = new TimeSpan(2);
             DateTime d = new DateTime(3);
 
-            program.schCtr.CreateScheduler(d, t, 1, 1);
+            //program.schCtr.CreateScheduler(d, t, 1, 1);
 
-            Console.ReadLine();
+            //Console.ReadLine();
             
             
-            program.GetAllschedulers();
+            //program.GetAllschedulers();
             //program.MakeCustomer();
 
             //program.GetScheduler();
@@ -45,6 +46,8 @@ namespace ConsoleApplication1
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
             // Console.WriteLine(scheduler.MovieID);
+            ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
+            resCtr.makeReservation("2,2,2", "0,2,3", 18, 1);
 
             Console.ReadLine();
 
@@ -56,9 +59,9 @@ namespace ConsoleApplication1
 
 
 
-        public void GetScheduler()
+        public void CreateReservationTest()
         {
-            startScreen();
+            resCtr.makeReservation("2,2,2", "0,1,2", 18, 1);
         }
 
         public void startScreen()

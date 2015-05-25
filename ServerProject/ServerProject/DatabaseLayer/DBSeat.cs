@@ -44,12 +44,12 @@ namespace ServerProject.DatabaseLayer
             //
         }
 
-        public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
+        public void UpdateSeat(string rows, string seats,char[] updateInfo, int schID)
         {
             //Create some arrays that doesn't have comma (the seperator in our strings)
             string[] rowsArray = rows.Split(',');
             string[] seatsArray = seats.Split(',');
-            string[] updateArray = updateInfo.Split(',');
+            //string[] updateArray = updateInfo.Split(',');
             //Create a seat object that will hold the seats from the database
             Seat seatFromDB = new Seat();
             //Loop through all the rows
@@ -57,28 +57,39 @@ namespace ServerProject.DatabaseLayer
             {
                 //Index for the seats, so we know which element we are at
                 int seatIndex = 0;
+                int updateInfoIndex = 0;
                 //Index for the rows
                 int rowIndex;
                 Int32.TryParse(row, out rowIndex);
 
                 //Gets the first (and only) seat from the database
                 seatFromDB = GetSeatsBySchIDAndRow(schID,rowIndex).First();
+                //Convert the seats from the database to a char array (so the program can replace chars at certain indices
+                char[] charArray = seatFromDB.ColumnArray.ToCharArray();
                 //Check if it's non-exsistent
-                if (seatFromDB == null)
+                //If not, check if they are equal in length (compared to the input seat)
+                if (seatFromDB != null)
+                {
+                    foreach (char updateChar in updateInfo)
+                    {
+                        if (int.Parse(seatsArray[seatIndex]) == 0)
+                            charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[updateInfoIndex];
+                        else if (int.Parse(seatsArray[seatIndex]) % 2 == 0)
+                            charArray[int.Parse(seatsArray[seatIndex])+2] = updateInfo[updateInfoIndex];
+                        else if (int.Parse(seatsArray[seatIndex]) % 2 != 0)
+                            charArray[int.Parse(seatsArray[seatIndex])*2] = updateInfo[updateInfoIndex];
+
+                        //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
+                        seatIndex++;
+                        updateInfoIndex++;
+                    }
+                }
+                else if (seatFromDB == null)
                 {
                     throw new Exception("There is no such row in the database");
                 }
-                //If not, check if they are equal in length (compared to the input seat)
-                else if (seatFromDB.ColumnArray.Length == seats.Length)
-                {
-                    //Convert the seats from the database to a char array (so the program can replace chars at certain indices
-                    char[] charArray = seatFromDB.ColumnArray.ToCharArray();
-                    charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[seatIndex];
-                    seatFromDB.ColumnArray = charArray.ToString();
-                    //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
-                    seatIndex++;
-                }
-                
+                string stringToUpload = new string(charArray);
+                seatFromDB.ColumnArray = stringToUpload;
             }
             try
             {
