@@ -13,6 +13,15 @@ namespace ClientWebApp {
     public partial class Resever {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// litMovieInfo control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace ClientWebApp {
         protected global::System.Web.UI.WebControls.Literal litMovieInfo;
         
         /// <summary>
-        /// litSeatList control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSeatList;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// ddlTickets control.
@@ -38,5 +47,23 @@ namespace ClientWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTickets;
+        
+        /// <summary>
+        /// txtSeatList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSeatList;
+        
+        /// <summary>
+        /// litSeatList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litSeatList;
     }
 }

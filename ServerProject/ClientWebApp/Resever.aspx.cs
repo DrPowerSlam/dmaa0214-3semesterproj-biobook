@@ -8,42 +8,43 @@ using System.Data;
 using ServerProject.DatabaseLayer;
 using ServerProject.ControllerLayer;
 using ClientWebApp.CustomerServiceReference;
+using System.Web.Services;
 
 namespace ClientWebApp
 {
     public partial class Resever : System.Web.UI.Page
-    {     
-
+    {
+        CustomerServiceClient client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
+        int schedulerID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
-
-
-            int i = Convert.ToInt32(Page.RouteData.Values["SchID"]);
-
-
-            litMovieInfo.Text += i;
-
-
-            Scheduler scheduler = client.GetSchedulerByID(i);
-
-            /*
-            for (int j = 0; j < 10; j++)
+            if (!IsPostBack)
             {
-                ddlTickets.Items.Add(new ListItem(j.ToString(), j.ToString()));
+
+                for (int j = 0; j < 10; j++)
+                {
+                    ddlTickets.Items.Add(new ListItem(j.ToString(), j.ToString()));
+                }
+
+
             }
 
-            int amount;
-            Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
-            */
+            ddlTickets_SelectedIndexChanged(sender, e);
 
-            List<int> bestSeats = client.GetBestSeats(1, i);
 
-            foreach(int j in bestSeats)
-            {
-                litSeatList.Text += j.ToString();
-            }
+            schedulerID = Convert.ToInt32(Page.RouteData.Values["SchID"]);
+            
+
+            litMovieInfo.Text = schedulerID.ToString();
+
+
+            Scheduler scheduler = client.GetSchedulerByID(schedulerID);
+
+
+
+      
+
+
 
 
             //Scheduler scheduler = client.GetSchedulerByMovieID(movie.MovieID);
@@ -69,6 +70,29 @@ namespace ClientWebApp
 
 
 
+        }
+
+        
+        protected void ddlTickets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int amount;
+            Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
+            List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
+
+            if (bestSeats == null)
+            {
+                litSeatList.Text += "nederen";
+            }
+            else
+            {
+                litSeatList.Text += "Rækken er: " + bestSeats[1].ToString();
+                litSeatList.Text += "Total point er :" + bestSeats[0].ToString();
+                litSeatList.Text += "sæderne er: ";
+                for (int x = 2; x < bestSeats.Count - 1; x++)
+                    litSeatList.Text += bestSeats[x].ToString() + ", ";
+
+            }
+            
         }
     }
 }
