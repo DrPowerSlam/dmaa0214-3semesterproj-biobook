@@ -15,6 +15,12 @@ namespace ClientWebApp.CustomerServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CustomerServiceReference.ICustomerService")]
     public interface ICustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetBestSeats", ReplyAction="http://tempuri.org/ICustomerService/GetBestSeatsResponse")]
+        System.Collections.Generic.List<int> GetBestSeats(int amount, int schedulerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetBestSeats", ReplyAction="http://tempuri.org/ICustomerService/GetBestSeatsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetBestSeatsAsync(int amount, int schedulerID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllMovies", ReplyAction="http://tempuri.org/ICustomerService/GetAllMoviesResponse")]
         System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie> GetAllMovies();
         
@@ -95,6 +101,14 @@ namespace ClientWebApp.CustomerServiceReference {
         
         public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public System.Collections.Generic.List<int> GetBestSeats(int amount, int schedulerID) {
+            return base.Channel.GetBestSeats(amount, schedulerID);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetBestSeatsAsync(int amount, int schedulerID) {
+            return base.Channel.GetBestSeatsAsync(amount, schedulerID);
         }
         
         public System.Collections.Generic.List<ServerProject.DatabaseLayer.Movie> GetAllMovies() {

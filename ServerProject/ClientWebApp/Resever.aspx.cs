@@ -26,6 +26,26 @@ namespace ClientWebApp
             litMovieInfo.Text += i;
 
 
+            Scheduler scheduler = client.GetSchedulerByID(i);
+
+            /*
+            for (int j = 0; j < 10; j++)
+            {
+                ddlTickets.Items.Add(new ListItem(j.ToString(), j.ToString()));
+            }
+
+            int amount;
+            Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
+            */
+
+            List<int> bestSeats = client.GetBestSeats(1, i);
+
+            foreach(int j in bestSeats)
+            {
+                litSeatList.Text += j.ToString();
+            }
+
+
             //Scheduler scheduler = client.GetSchedulerByMovieID(movie.MovieID);
             //litSeatList.Text += 
             //litMovieInfo.Text += movie.MovieID;

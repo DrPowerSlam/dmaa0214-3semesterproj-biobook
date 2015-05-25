@@ -37,7 +37,7 @@ namespace ServerProject.ControllerLayer
             return jagged;
         }
 
-        public int[] findBestSeats(int personer, int schID)
+        public int[] FindBestSeats(int personer, int schID)
         {
             List<int[]> savedOption = new List<int[]>();
             int freeSeats = 0;
@@ -140,7 +140,7 @@ namespace ServerProject.ControllerLayer
 
         public void easytest()
         {
-            int[] p = findBestSeats(3, 1);
+            int[] p = FindBestSeats(3, 1);
             if (p == null)
             {
                 Console.WriteLine("nederen");

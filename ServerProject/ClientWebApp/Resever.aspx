@@ -34,21 +34,18 @@
                   <div class="title">
                      VÆLG <b>PLACERING</b>   
                       <asp:Literal ID="litSeatList" runat="server"></asp:Literal>
-            </div>
-                <asp:DataList ID="DataList1" runat="server"></asp:DataList>
-                <asp:ListView ID="ListView1" runat="server"></asp:ListView>
-            </div>
 
         </div>
- <%--       <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6">
              <div class="thumbnail">
                 <span class="glyphicon glyphicon-credit-card"></span>
                   <div class="title">
-                     VÆLG <b>BETALING/KVITTERING</b>   
+                     VÆLG <b>BETALING/KVITTERING</b>  
+                      <asp:DropDownList ID="ddlTickets" runat="server"></asp:DropDownList>
             </div>
             </div>
 
-        </div>--%>
+        </div>
     </div>
 
 

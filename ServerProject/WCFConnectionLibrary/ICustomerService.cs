@@ -14,6 +14,9 @@ namespace WCFConnectionLibrary
     public interface ICustomerService
     {
         [OperationContract]
+        int[] GetBestSeats(int amount, int schedulerID);
+
+        [OperationContract]
         List<Movie> GetAllMovies();
 
         [OperationContract]
