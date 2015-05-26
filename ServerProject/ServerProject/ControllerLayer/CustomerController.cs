@@ -32,6 +32,14 @@ namespace ServerProject.ControllerLayer
             return dbCus.GetCustomerByID(ID);
         }
 
+        public bool CustomerLogin(string userMail, string passWord)
+        {
+         
+            return dbCus.CustomerLogin(userMail, passWord);
+        }
+
+
+
         /// <summary>
         /// Finds all the customers with a given name
         /// </summary>

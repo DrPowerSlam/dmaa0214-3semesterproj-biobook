@@ -100,6 +100,24 @@ namespace WCFConnectionLibrary
             customerController.InsertCustomer(name, phoneNumber, password, mail);
         }
 
+        // get customer by id
+        public Customer GetCustomerByID(int customerID)
+        {
+            CustomerController customerCtr = new CustomerController();
+
+
+            return customerCtr.GetCustomerByID(customerID);
+        }
+
+        // get user login
+        public bool CustomerLogin(string userMail, string passWord)
+        {
+            CustomerController customerCtr = new CustomerController();
+
+            return customerCtr.CustomerLogin(userMail, passWord);
+        }
+
+
         public void MakeScheduler(DateTime date, TimeSpan time, int movieID, int hallID)
         {
             SchedulerController SchCtr = new SchedulerController();

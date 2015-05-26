@@ -15,7 +15,8 @@ namespace ServerProject.DatabaseLayer
     class DBCustomer
     {
         public DBCustomer()
-        { 
+        {
+
         }
         /// <summary>
         /// Finds a customer by the customer ID
@@ -44,6 +45,32 @@ namespace ServerProject.DatabaseLayer
             var customer = db.Customers.Select(x => x).AsEnumerable().Where(x => x.name.Equals(name));
 
             return customer;
+        }
+
+        public bool CustomerLogin(string userMail, string passWord)
+        {
+            try
+            {
+                var db = new ConnectToDatabaseDataContext();
+
+                Customer user = (from m in db.Customers
+                                 where m.mail.ToLower() == userMail.ToLower() &&
+                                     m.password == passWord
+                                 select m).SingleOrDefault();
+
+                if (user != null)
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine("[ValidateUser] Exception " + ex.Message);
+            }
+
+            return false;
+
         }
 
         /// <summary>
@@ -82,7 +109,7 @@ namespace ServerProject.DatabaseLayer
                 db.SubmitChanges();
                 controlInt = 1;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
 
@@ -112,7 +139,7 @@ namespace ServerProject.DatabaseLayer
                 db.SubmitChanges();
                 controlInt = 1;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -120,5 +147,5 @@ namespace ServerProject.DatabaseLayer
             return controlInt;
         }
     }
-      
+
 }
