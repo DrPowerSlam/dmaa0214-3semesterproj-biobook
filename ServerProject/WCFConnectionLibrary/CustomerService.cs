@@ -14,6 +14,14 @@ namespace WCFConnectionLibrary
     public class CustomerService : ICustomerService
     {
 
+        public int[] GetBestSeats(int amount, int schedulerID)
+        {
+            SeatController seatCtr = new SeatController();
+            int[] bestSeats = seatCtr.FindBestSeats(amount, schedulerID);
+
+            return bestSeats;
+        }
+
         public Movie FindMovieByName(string name)
         {
             MovieController movieCtr = new MovieController();

@@ -78,6 +78,9 @@
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Scheduler.datasource" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Reservation.datasource" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Movie1.datasource" />
+    <None Include="Service References\CustomerServiceReference\Arrays2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
     <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
     <None Include="Service References\CustomerServiceReference\Reference.svcmap">

@@ -4,52 +4,87 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   
 
-     <div class="container">
-               <div class="thumbnail2">
-         <div class="col-md-12">
-          
+    <script runat="server">
 
-          
-                             <asp:Literal ID="litMovieInfo" runat="server"></asp:Literal>
-        
-                  
+    </script>
+
+
+        <div class="thumbnail2">
+            <div class="col-md-12">
+
+
+
+                <asp:Literal ID="litMovieInfo" runat="server"></asp:Literal>
+
+
+            </div>
+        </div>
+
+<%--        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>--%>
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+
+                        <span class="glyphicon glyphicon-film"></span>
+                        <div class="title">
+                            VÆLG <b>BILLETTER</b>
+
+
+
+                        </div>
+
                     </div>
-         </div>
-   
-        <div class="col-md-4 col-sm-6">
-            <div class="thumbnail">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                        <div class="title">
+                            <!-- <asp:TextBox ID="txtSeatList" runat="server" ReadOnly="True" TextMode="MultiLine"></asp:TextBox> -->
 
-                <span class="glyphicon glyphicon-film"></span>
-                <div class="title">
-                    VÆLG <b>BILLETTER</b>
+                            VÆLG <b>PLACERING</b>
+                        </div>
+
+
+                    </div>
                 </div>
 
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="thumbnail">
-                <span class="glyphicon glyphicon-th"></span>
-                  <div class="title">
-                     VÆLG <b>PLACERING</b>   
-                      <asp:Literal ID="litSeatList" runat="server"></asp:Literal>
-            </div>
-                <asp:DataList ID="DataList1" runat="server"></asp:DataList>
-                <asp:ListView ID="ListView1" runat="server"></asp:ListView>
-            </div>
-
-        </div>
- <%--       <div class="col-md-4 col-sm-6">
-             <div class="thumbnail">
-                <span class="glyphicon glyphicon-credit-card"></span>
-                  <div class="title">
-                     VÆLG <b>BETALING/KVITTERING</b>   
-            </div>
-            </div>
-
-        </div>--%>
-    </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+                        <span class="glyphicon glyphicon-th"></span>
+                        <div class="title">
+                            VÆLG <b>BETALING/KVITTERING</b>
 
 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+                        <asp:DropDownList ID="ddlTickets" AutoPostBack="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlTickets_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+
+                            <asp:Literal ID="litSeatList" runat="server"></asp:Literal>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail">
+                        ddd
+                    </div>
+                </div>
+                </div>
+
+
+<%--            </ContentTemplate>--%>
+   <%--         <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ddlTickets" EventName="SelectedIndexChanged" />
+            </Triggers>
+        </asp:UpdatePanel>--%>
 </asp:Content>
