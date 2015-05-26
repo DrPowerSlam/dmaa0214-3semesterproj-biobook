@@ -66,4 +66,3 @@ packages/
 
 #Test files
 *.testsettings
-*.csproj

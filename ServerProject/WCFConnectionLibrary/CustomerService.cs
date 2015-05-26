@@ -13,6 +13,11 @@ namespace WCFConnectionLibrary
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class CustomerService : ICustomerService
     {
+        public List<Seat> GetAllSeatsBySchedulerID(int schedulerID)
+        {
+            SeatController seatCtr = new SeatController();
+            return seatCtr.GetAllSeatsBySchedulerID(schedulerID);
+        }
 
         public int[] GetBestSeats(int amount, int schedulerID)
         {
@@ -99,6 +104,12 @@ namespace WCFConnectionLibrary
         {
             SchedulerController SchCtr = new SchedulerController();
             SchCtr.CreateScheduler(date, time, movieID, hallID);
+        }
+
+        public List<Scheduler> GetSchedulerListByMovieID(int movieID)
+        {
+            SchedulerController SchCtr = new SchedulerController();
+            return SchCtr.GetSchListByMovieID(movieID);
         }
 
     }

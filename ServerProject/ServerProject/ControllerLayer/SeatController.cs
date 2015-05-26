@@ -9,6 +9,13 @@ namespace ServerProject.ControllerLayer
     public class SeatController
     {
         static int counter;
+
+        public List<Seat> GetAllSeatsBySchedulerID(int schedulerID)
+        {
+            DBSeat dbSeat = new DBSeat();
+            return dbSeat.GetSeats(schedulerID);
+        }
+
         public int[][] ConvertStringToArray(int schID)
         {
             DBSeat dbSeat = new DBSeat();
