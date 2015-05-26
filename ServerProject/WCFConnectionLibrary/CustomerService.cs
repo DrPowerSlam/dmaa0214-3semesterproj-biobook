@@ -93,5 +93,11 @@ namespace WCFConnectionLibrary
             SchCtr.CreateScheduler(date, time, movieID, hallID);
         }
 
+        public List<Scheduler> GetSchedulerListByMovieID(int movieID)
+        {
+            SchedulerController SchCtr = new SchedulerController();
+            return SchCtr.GetSchListByMovieID(movieID);
+        }
+
     }
 }

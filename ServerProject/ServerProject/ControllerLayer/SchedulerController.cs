@@ -60,5 +60,11 @@ namespace ServerProject.ControllerLayer
         {
             dbSch.InsertScheduler(date, time, movieID, hallID);
         }
+
+        public List<Scheduler> GetSchListByMovieID(int movieID)
+        {
+            List<Scheduler> list = dbSch.GetScheduerListByMovieID(movieID);
+            return list;
+        }
     }
 }

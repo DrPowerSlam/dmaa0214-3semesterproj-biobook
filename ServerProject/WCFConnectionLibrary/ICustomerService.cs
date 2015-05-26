@@ -40,5 +40,9 @@ namespace WCFConnectionLibrary
         [OperationContract]
         Movie FindMovieByName(string name);
 
+        [OperationContract]
+        List<Scheduler> GetSchedulerListByMovieID(int movieID);
+        
+
     }
 }

@@ -45,6 +45,16 @@ namespace ServerProject.DatabaseLayer
         }
 
 
+        // Gets a list of schedulers by the specified Movie ID
+        public List<Scheduler> GetScheduerListByMovieID(int movieID)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            List<Scheduler> SchList = db.Schedulers.Select(x => x).Where(x => x.MovieID == movieID).ToList();
+            return SchList;
+            
+        }
+
+
         ///Innerjoin som joiner tabellerne scheduler, movie og hall
         ///
 
