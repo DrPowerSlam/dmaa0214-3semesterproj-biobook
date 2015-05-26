@@ -64,13 +64,13 @@
 
                     <h2 class="form-signin-heading">Log ind</h2>
 
-
-                    <input name="txtMail" type="text" id="txtMail" class="form-control" placeholder="E-mail adresse" />
-
+                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control" placeholder="E-mail"></asp:TextBox>
+ 
                     <p>
                     </p>
 
-                    <input name="txtPassword" type="text" id="txtPassword" class="form-control" placeholder="Adgangskode" />
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Adgangskode"></asp:TextBox>
+               
 
                     <p>
                     </p>
