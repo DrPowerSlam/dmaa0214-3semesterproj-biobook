@@ -56,15 +56,17 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.MovieTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SchID1Box = new System.Windows.Forms.TextBox();
+            this.SeatBox = new System.Windows.Forms.TextBox();
+            this.SchID2Box = new System.Windows.Forms.TextBox();
             this.custo_Panel.SuspendLayout();
             this.Scheduler_Panel.SuspendLayout();
             this.sch_Panel.SuspendLayout();
@@ -303,13 +305,13 @@
             // 
             this.richTextBox4.Location = new System.Drawing.Point(571, 310);
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(189, 68);
+            this.richTextBox4.Size = new System.Drawing.Size(189, 83);
             this.richTextBox4.TabIndex = 26;
             this.richTextBox4.Text = "";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(571, 407);
+            this.button3.Location = new System.Drawing.Point(571, 425);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(189, 23);
             this.button3.TabIndex = 27;
@@ -320,19 +322,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(561, 384);
+            this.label7.Location = new System.Drawing.Point(561, 397);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 20);
             this.label7.TabIndex = 28;
             this.label7.Text = "Scheduler ID:";
-            // 
-            // richTextBox5
-            // 
-            this.richTextBox5.Location = new System.Drawing.Point(671, 384);
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(89, 21);
-            this.richTextBox5.TabIndex = 29;
-            this.richTextBox5.Text = "";
             // 
             // richTextBox6
             // 
@@ -352,18 +346,9 @@
             this.label8.TabIndex = 31;
             this.label8.Text = "Scheduler ID:";
             // 
-            // richTextBox7
-            // 
-            this.richTextBox7.Location = new System.Drawing.Point(457, 383);
-            this.richTextBox7.Name = "richTextBox7";
-            this.richTextBox7.Size = new System.Drawing.Size(81, 21);
-            this.richTextBox7.TabIndex = 32;
-            this.richTextBox7.Text = "";
-            this.richTextBox7.TextChanged += new System.EventHandler(this.richTextBox7_TextChanged);
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(349, 407);
+            this.button4.Location = new System.Drawing.Point(349, 436);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(189, 23);
             this.button4.TabIndex = 33;
@@ -405,20 +390,53 @@
             this.MovieTextBox.Size = new System.Drawing.Size(100, 20);
             this.MovieTextBox.TabIndex = 38;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(345, 405);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 20);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Seats to Resere";
+            // 
+            // SchID1Box
+            // 
+            this.SchID1Box.Location = new System.Drawing.Point(497, 384);
+            this.SchID1Box.Name = "SchID1Box";
+            this.SchID1Box.Size = new System.Drawing.Size(41, 20);
+            this.SchID1Box.TabIndex = 40;
+            // 
+            // SeatBox
+            // 
+            this.SeatBox.Location = new System.Drawing.Point(497, 410);
+            this.SeatBox.Name = "SeatBox";
+            this.SeatBox.Size = new System.Drawing.Size(43, 20);
+            this.SeatBox.TabIndex = 41;
+            // 
+            // SchID2Box
+            // 
+            this.SchID2Box.Location = new System.Drawing.Point(717, 399);
+            this.SchID2Box.Name = "SchID2Box";
+            this.SchID2Box.Size = new System.Drawing.Size(43, 20);
+            this.SchID2Box.TabIndex = 42;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 460);
+            this.Controls.Add(this.SchID2Box);
+            this.Controls.Add(this.SeatBox);
+            this.Controls.Add(this.SchID1Box);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.MovieTextBox);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.richTextBox7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.richTextBox6);
-            this.Controls.Add(this.richTextBox5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.richTextBox4);
@@ -487,15 +505,17 @@
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.RichTextBox richTextBox6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox7;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox8;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox MovieTextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox SchID1Box;
+        private System.Windows.Forms.TextBox SeatBox;
+        private System.Windows.Forms.TextBox SchID2Box;
 
     }
 }
