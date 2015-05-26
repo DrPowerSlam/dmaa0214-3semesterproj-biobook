@@ -28,6 +28,14 @@ namespace ClientWebApp
                 {
                     ddlTickets.Items.Add(new ListItem(j.ToString(), j.ToString()));
                 }
+                if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    //the user is logged in therefore just show the reserver button
+                    btnConfirm.Visible = true;
+                    litLoggedOn.Visible = false;
+
+                }
+                //if the user is not logged on do something?
 
 
             }
@@ -79,17 +87,39 @@ namespace ClientWebApp
 
         protected void ddlTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int amount;
+            Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
+            List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
 
-            litSeatList.Text = ddlTickets.SelectedItem.Text;
+            if (bestSeats == null)
+            {
+                litSeatList.Text = "Der er desværre ingen ledige pladser til de antal personer";
+            }
+            else
+            {
+                litSeatList.Text = "Rækken er: " + bestSeats[1].ToString() + " Total point er : " + bestSeats[0].ToString();
+                litSeatList.Text += " Sæderne er: ";
+                for (int x = 2; x < bestSeats.Count; x++)
+                    litSeatList.Text += bestSeats[x].ToString() + ", ";
+            }
 
+            foreach (Seat s in client.GetAllSeatsBySchedulerID(schedulerID))
+            {
+                litSeatList.Text += "</br> Række : " + s.Row + " Sæde : " + s.ColumnArray;
+            }
             //ddlTickets.SelectedItem.Value;
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            //check her om brugeren er logger ind.
+            //Hvis brugeren er 
+            
         }
 
         
       
-            //int amount;
-            //Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
-            //List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
+
 
             //if (bestSeats == null)
             //{
