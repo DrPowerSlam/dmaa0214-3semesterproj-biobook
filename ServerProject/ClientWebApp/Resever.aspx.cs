@@ -18,6 +18,9 @@ namespace ClientWebApp
         int schedulerID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            schedulerID = Convert.ToInt32(Page.RouteData.Values["SchID"]);
+
             if (!IsPostBack)
             {
 
@@ -29,10 +32,12 @@ namespace ClientWebApp
 
             }
 
-            ddlTickets_SelectedIndexChanged(sender, e);
+       
+
+          //  ddlTickets_SelectedIndexChanged(sender, e);
 
 
-            schedulerID = Convert.ToInt32(Page.RouteData.Values["SchID"]);
+
             
 
             litMovieInfo.Text = schedulerID.ToString();
@@ -72,27 +77,34 @@ namespace ClientWebApp
 
         }
 
-        
         protected void ddlTickets_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int amount;
-            Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
-            List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
 
-            if (bestSeats == null)
-            {
-                litSeatList.Text += "nederen";
-            }
-            else
-            {
-                litSeatList.Text += "Rækken er: " + bestSeats[1].ToString();
-                litSeatList.Text += "Total point er :" + bestSeats[0].ToString();
-                litSeatList.Text += "sæderne er: ";
-                for (int x = 2; x < bestSeats.Count - 1; x++)
-                    litSeatList.Text += bestSeats[x].ToString() + ", ";
+            litSeatList.Text = ddlTickets.SelectedItem.Text;
 
-            }
-            
+            //ddlTickets.SelectedItem.Value;
         }
+
+        
+      
+            //int amount;
+            //Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
+            //List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
+
+            //if (bestSeats == null)
+            //{
+            //    litSeatList.Text += "nederen";
+            //}
+            //else
+            //{
+            //    litSeatList.Text += "Rækken er: " + bestSeats[1].ToString();
+            //    litSeatList.Text += "Total point er :" + bestSeats[0].ToString();
+            //    litSeatList.Text += "sæderne er: ";
+            //    for (int x = 2; x < bestSeats.Count - 1; x++)
+            //        litSeatList.Text += bestSeats[x].ToString() + ", ";
+
+            //}
+            
+       
     }
 }

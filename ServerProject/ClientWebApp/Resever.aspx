@@ -3,9 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager EnablePartialRendering="true" ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
-
 
 
     <script runat="server">
@@ -13,7 +10,6 @@
     </script>
 
 
-    <div class="container">
         <div class="thumbnail2">
             <div class="col-md-12">
 
@@ -25,8 +21,8 @@
             </div>
         </div>
 
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
+<%--        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>--%>
                 <div class="col-md-4 col-sm-6">
                     <div class="thumbnail">
 
@@ -66,7 +62,7 @@
 
                 <div class="col-md-4 col-sm-6">
                     <div class="thumbnail">
-                        <asp:DropDownList ID="ddlTickets" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlTickets_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlTickets" AutoPostBack="true" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlTickets_SelectedIndexChanged"></asp:DropDownList>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -86,9 +82,9 @@
                 </div>
 
 
-            </ContentTemplate>
-            <Triggers>
+<%--            </ContentTemplate>--%>
+   <%--         <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ddlTickets" EventName="SelectedIndexChanged" />
             </Triggers>
-        </asp:UpdatePanel>
+        </asp:UpdatePanel>--%>
 </asp:Content>
