@@ -78,6 +78,7 @@
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Scheduler.datasource" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Reservation.datasource" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Movie1.datasource" />
+    <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Seat.datasource" />
     <None Include="Service References\CustomerServiceReference\Arrays2.xsd">
       <SubType>Designer</SubType>
     </None>

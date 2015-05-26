@@ -54,8 +54,7 @@
                         <span class="glyphicon glyphicon-th"></span>
                         <div class="title">
                             VÆLG <b>BETALING/KVITTERING</b>
-
-
+                            
                         </div>
                     </div>
                 </div>
@@ -76,15 +75,10 @@
 
                 <div class="col-md-4 col-sm-6">
                     <div class="thumbnail">
-                        ddd
+                        <asp:Literal ID="litLoggedOn" runat="server" Text="Jeg kan se at du er ikke logget på. Log på eller registerer en bruger øverst på siden."></asp:Literal>
+                        <asp:Button ID="btnConfirm" runat="server" Text="Klik her for at registere." OnClick="btnConfirm_Click" Visible="false" />
+
                     </div>
                 </div>
-                </div>
-
-
-<%--            </ContentTemplate>--%>
-   <%--         <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ddlTickets" EventName="SelectedIndexChanged" />
-            </Triggers>
-        </asp:UpdatePanel>--%>
+                
 </asp:Content>
