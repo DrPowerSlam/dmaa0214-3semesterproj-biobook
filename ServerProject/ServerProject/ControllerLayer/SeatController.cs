@@ -156,6 +156,22 @@ namespace ServerProject.ControllerLayer
             }
         }
 
+        public int[][] ListAvailable(int schID)
+        {
+           int[][] array = ConvertStringToArray(schID);
+           for(int x = 0; x < array.Length ; x++)
+           {
+               for(int y = 0; y < array[x].Length; y++)
+               {
+                   if(array[x][y] != 0)
+                   {
+                       array[x][y] = y+1;
+                   }
+               }
+           }
+           return array;
+        }
+
 
     }
 }

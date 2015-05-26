@@ -45,6 +45,9 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         List<Scheduler> GetSchedulerListByMovieID(int movieID);
+
+        [OperationContract]
+        int[][] GetAllAvailableSeats(int schID);
         
 
     }
