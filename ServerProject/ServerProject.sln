@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerProject", "ServerProject\ServerProject.csproj", "{3FBAC623-72BF-42C0-B591-4E0D8B831F4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientConsoleApp", "ClientConsoleApp\ClientConsoleApp.csproj", "{43253B78-DB1B-428A-80A1-4290461A17C7}"
@@ -18,9 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientWebApp", "ClientWebAp
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsClient", "FormsClient\FormsClient.csproj", "{332D606F-ACD2-4CE7-A274-81F05412AA1E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4AB64E32-E2B2-4B06-9DF0-64F8EE6F9F59} = {4AB64E32-E2B2-4B06-9DF0-64F8EE6F9F59}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
