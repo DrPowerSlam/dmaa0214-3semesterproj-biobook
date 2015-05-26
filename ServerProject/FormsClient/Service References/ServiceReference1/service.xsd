@@ -157,4 +157,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllAvailableSeats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAvailableSeatsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllAvailableSeatsResult" nillable="true" type="q10:ArrayOfArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

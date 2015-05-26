@@ -130,5 +130,10 @@ namespace WCFConnectionLibrary
             return SchCtr.GetSchListByMovieID(movieID);
         }
 
+        public int[][] GetAllAvailableSeats(int schID)
+        {
+            SeatController seatCtr = new SeatController();
+            return seatCtr.ListAvailable(schID);
+        }
     }
 }

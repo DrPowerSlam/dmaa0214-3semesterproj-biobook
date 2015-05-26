@@ -177,8 +177,52 @@ namespace FormsClient
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {             
+            try
+            {
+                int[] array = client.GetBestSeats(int.Parse(SeatBox.Text), int.Parse(SchID1Box.Text));
+                string copier = "";
+                SeatListBox.Clear();
+                copier = "Row: " + array[1] + "\n" + "Seats: ";
+
+                for (int i = 2; i < array.Length ; i++)
+                {
+                    copier += array[i].ToString() + ", ";
+                }
+                SeatListBox.AppendText(copier);
+            }
+            catch(Exception ex)
+            {
+                SeatListBox.AppendText("Something went wrong" + ex);
+            } 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
-            //client.GetBestSeats
+        }
+
+        private void GetAvailableSeatsBtn_Click(object sender, EventArgs e)
+        {
+            AvailableSeatBox.Clear();
+            int[][] array = client.GetAllAvailableSeats(int.Parse(SchID2Box.Text));
+            string copier = "Row     Seats\n";
+            for(int x = 0; x < array.Length; x++)
+            {
+                copier += x+1 + "     " + array[x][0];
+                for(int y = 1; y < array[x].Length; y++)
+                {
+                        copier += "-" + array[x][y];
+                }
+                copier += "\n";
+            }
+            AvailableSeatBox.AppendText(copier);
+
+        }
+
+        private void richTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
+

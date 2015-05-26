@@ -550,6 +550,12 @@ namespace FormsClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerListByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerListByMovieIDResponse")]
         System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchedulerListByMovieIDAsync(int movieID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllAvailableSeats", ReplyAction="http://tempuri.org/ICustomerService/GetAllAvailableSeatsResponse")]
+        int[][] GetAllAvailableSeats(int schID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllAvailableSeats", ReplyAction="http://tempuri.org/ICustomerService/GetAllAvailableSeatsResponse")]
+        System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -665,6 +671,14 @@ namespace FormsClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchedulerListByMovieIDAsync(int movieID) {
             return base.Channel.GetSchedulerListByMovieIDAsync(movieID);
+        }
+        
+        public int[][] GetAllAvailableSeats(int schID) {
+            return base.Channel.GetAllAvailableSeats(schID);
+        }
+        
+        public System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID) {
+            return base.Channel.GetAllAvailableSeatsAsync(schID);
         }
     }
 }
