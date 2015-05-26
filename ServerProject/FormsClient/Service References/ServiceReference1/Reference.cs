@@ -485,6 +485,12 @@ namespace FormsClient.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICustomerService")]
     public interface ICustomerService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetBestSeats", ReplyAction="http://tempuri.org/ICustomerService/GetBestSeatsResponse")]
+        int[] GetBestSeats(int amount, int schedulerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetBestSeats", ReplyAction="http://tempuri.org/ICustomerService/GetBestSeatsResponse")]
+        System.Threading.Tasks.Task<int[]> GetBestSeatsAsync(int amount, int schedulerID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllMovies", ReplyAction="http://tempuri.org/ICustomerService/GetAllMoviesResponse")]
         FormsClient.ServiceReference1.Movie[] GetAllMovies();
         
@@ -571,6 +577,14 @@ namespace FormsClient.ServiceReference1 {
         
         public CustomerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public int[] GetBestSeats(int amount, int schedulerID) {
+            return base.Channel.GetBestSeats(amount, schedulerID);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetBestSeatsAsync(int amount, int schedulerID) {
+            return base.Channel.GetBestSeatsAsync(amount, schedulerID);
         }
         
         public FormsClient.ServiceReference1.Movie[] GetAllMovies() {
