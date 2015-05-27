@@ -15,14 +15,18 @@ namespace ClientWebApp
 {
     public partial class Login : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
 
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
             if (ValidateUser(txtMail.Text, txtPassword.Text))
             {
                 FormsAuthentication.RedirectFromLoginPage(txtMail.Text, false);
@@ -33,12 +37,20 @@ namespace ClientWebApp
             {
                 Response.Redirect("Default.aspx", true);
             }
-             
+               
+
+
         }
 
         private bool ValidateUser(string userName, string passWord)
         {
+
+            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
+       
+            Customer customer = new Customer();
+
             Page.Validate();
+            
             if (!Page.IsValid)
             {
                 return false;
@@ -46,25 +58,20 @@ namespace ClientWebApp
 
             try
             {
-                // Get user from database
-                var db = new ConnectToDatabaseDataContext();
-                Customer user = (from m in db.Customers
-                               where m.mail.ToLower() == userName.ToLower() &&
-                                     m.password == passWord
-                               select m).SingleOrDefault();
+                client.CustomerLogin(customer.mail, customer.password);
 
-                if (user != null)
+                if (client != null)
                 {
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                // System.Diagnostics.Trace.WriteLine("[ValidateUser] Exception " + ex.Message);
+                System.Diagnostics.Trace.WriteLine("[ValidateUser] Exception " + ex.Message);
             }
 
             return false;
         }
-
     }
+
 }

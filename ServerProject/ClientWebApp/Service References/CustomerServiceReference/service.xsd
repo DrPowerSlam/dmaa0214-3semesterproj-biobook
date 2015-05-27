@@ -128,11 +128,40 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCustomerByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomerByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetCustomerByIDResult" nillable="true" type="q8:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userMail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passWord" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerLoginResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="MakeScheduler">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="time" type="q8:duration" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="time" type="q9:duration" />
         <xs:element minOccurs="0" name="movieID" type="xs:int" />
         <xs:element minOccurs="0" name="hallID" type="xs:int" />
       </xs:sequence>
@@ -153,7 +182,21 @@
   <xs:element name="FindMovieByNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="FindMovieByNameResult" nillable="true" type="q9:Movie" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="FindMovieByNameResult" nillable="true" type="q10:Movie" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchedulerListByMovieID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="movieID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSchedulerListByMovieIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer" minOccurs="0" name="GetSchedulerListByMovieIDResult" nillable="true" type="q11:ArrayOfScheduler" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
