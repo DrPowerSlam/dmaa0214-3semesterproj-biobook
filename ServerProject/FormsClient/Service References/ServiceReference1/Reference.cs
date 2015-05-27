@@ -481,6 +481,131 @@ namespace FormsClient.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string phoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string mailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FormsClient.ServiceReference1.Reservation[] ReservationsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CusID {
+            get {
+                return this.CusIDField;
+            }
+            set {
+                if ((this.CusIDField.Equals(value) != true)) {
+                    this.CusIDField = value;
+                    this.RaisePropertyChanged("CusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
+                    this.phoneNumberField = value;
+                    this.RaisePropertyChanged("phoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string mail {
+            get {
+                return this.mailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.mailField, value) != true)) {
+                    this.mailField = value;
+                    this.RaisePropertyChanged("mail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public FormsClient.ServiceReference1.Reservation[] Reservations {
+            get {
+                return this.ReservationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReservationsField, value) != true)) {
+                    this.ReservationsField = value;
+                    this.RaisePropertyChanged("Reservations");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICustomerService")]
     public interface ICustomerService {
@@ -556,6 +681,18 @@ namespace FormsClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllAvailableSeats", ReplyAction="http://tempuri.org/ICustomerService/GetAllAvailableSeatsResponse")]
         System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByPhone", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByPhoneResponse")]
+        FormsClient.ServiceReference1.Customer GetCustomerByPhone(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByPhone", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByPhoneResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByPhoneAsync(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetResByCusPhone", ReplyAction="http://tempuri.org/ICustomerService/GetResByCusPhoneResponse")]
+        FormsClient.ServiceReference1.Reservation[] GetResByCusPhone(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetResByCusPhone", ReplyAction="http://tempuri.org/ICustomerService/GetResByCusPhoneResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Reservation[]> GetResByCusPhoneAsync(string phone);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -679,6 +816,22 @@ namespace FormsClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID) {
             return base.Channel.GetAllAvailableSeatsAsync(schID);
+        }
+        
+        public FormsClient.ServiceReference1.Customer GetCustomerByPhone(string phone) {
+            return base.Channel.GetCustomerByPhone(phone);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByPhoneAsync(string phone) {
+            return base.Channel.GetCustomerByPhoneAsync(phone);
+        }
+        
+        public FormsClient.ServiceReference1.Reservation[] GetResByCusPhone(string phone) {
+            return base.Channel.GetResByCusPhone(phone);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Reservation[]> GetResByCusPhoneAsync(string phone) {
+            return base.Channel.GetResByCusPhoneAsync(phone);
         }
     }
 }

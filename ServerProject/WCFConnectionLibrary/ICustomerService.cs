@@ -14,9 +14,6 @@ namespace WCFConnectionLibrary
     public interface ICustomerService
     {
         [OperationContract]
-        List<Seat> GetAllSeatsBySchedulerID(int schedulerID);
-
-        [OperationContract]
         int[] GetBestSeats(int amount, int schedulerID);
 
         [OperationContract]
@@ -51,6 +48,12 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         int[][] GetAllAvailableSeats(int schID);
+
+        [OperationContract]
+        Customer GetCustomerByPhone(string phone);
+
+        [OperationContract]
+        List<Reservation> GetResByCusPhone(string phone);
         
 
     }
