@@ -27,7 +27,7 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         Scheduler GetSchedulerByMovieID(int movieID);
-        
+
         [OperationContract]
         Scheduler GetSchedulerByID(int schedulerID);
 
@@ -36,6 +36,12 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         void MakeCustomer(string name, string phoneNumber, string password, string mail);
+
+        [OperationContract]
+        Customer GetCustomerByID(int customerID);
+
+        [OperationContract]
+        bool CustomerLogin(string userMail, string passWord);
 
         [OperationContract]
         void MakeScheduler(DateTime date, TimeSpan time, int movieID, int hallID);
@@ -54,7 +60,5 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         List<Reservation> GetResByCusPhone(string phone);
-        
-
     }
 }

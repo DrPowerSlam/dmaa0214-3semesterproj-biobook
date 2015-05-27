@@ -69,6 +69,18 @@ namespace ClientWebApp.CustomerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/MakeCustomer", ReplyAction="http://tempuri.org/ICustomerService/MakeCustomerResponse")]
         System.Threading.Tasks.Task MakeCustomerAsync(string name, string phoneNumber, string password, string mail);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByID", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByIDResponse")]
+        ServerProject.DatabaseLayer.Customer GetCustomerByID(int customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByID", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByIDResponse")]
+        System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Customer> GetCustomerByIDAsync(int customerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/CustomerLogin", ReplyAction="http://tempuri.org/ICustomerService/CustomerLoginResponse")]
+        bool CustomerLogin(string userMail, string passWord);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/CustomerLogin", ReplyAction="http://tempuri.org/ICustomerService/CustomerLoginResponse")]
+        System.Threading.Tasks.Task<bool> CustomerLoginAsync(string userMail, string passWord);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/MakeScheduler", ReplyAction="http://tempuri.org/ICustomerService/MakeSchedulerResponse")]
         void MakeScheduler(System.DateTime date, System.TimeSpan time, int movieID, int hallID);
         
@@ -80,6 +92,12 @@ namespace ClientWebApp.CustomerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/FindMovieByName", ReplyAction="http://tempuri.org/ICustomerService/FindMovieByNameResponse")]
         System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Movie> FindMovieByNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerListByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerListByMovieIDResponse")]
+        System.Collections.Generic.List<ServerProject.DatabaseLayer.Scheduler> GetSchedulerListByMovieID(int movieID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerListByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerListByMovieIDResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ServerProject.DatabaseLayer.Scheduler>> GetSchedulerListByMovieIDAsync(int movieID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -181,6 +199,22 @@ namespace ClientWebApp.CustomerServiceReference {
             return base.Channel.MakeCustomerAsync(name, phoneNumber, password, mail);
         }
         
+        public ServerProject.DatabaseLayer.Customer GetCustomerByID(int customerID) {
+            return base.Channel.GetCustomerByID(customerID);
+        }
+        
+        public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Customer> GetCustomerByIDAsync(int customerID) {
+            return base.Channel.GetCustomerByIDAsync(customerID);
+        }
+        
+        public bool CustomerLogin(string userMail, string passWord) {
+            return base.Channel.CustomerLogin(userMail, passWord);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CustomerLoginAsync(string userMail, string passWord) {
+            return base.Channel.CustomerLoginAsync(userMail, passWord);
+        }
+        
         public void MakeScheduler(System.DateTime date, System.TimeSpan time, int movieID, int hallID) {
             base.Channel.MakeScheduler(date, time, movieID, hallID);
         }
@@ -195,6 +229,14 @@ namespace ClientWebApp.CustomerServiceReference {
         
         public System.Threading.Tasks.Task<ServerProject.DatabaseLayer.Movie> FindMovieByNameAsync(string name) {
             return base.Channel.FindMovieByNameAsync(name);
+        }
+        
+        public System.Collections.Generic.List<ServerProject.DatabaseLayer.Scheduler> GetSchedulerListByMovieID(int movieID) {
+            return base.Channel.GetSchedulerListByMovieID(movieID);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ServerProject.DatabaseLayer.Scheduler>> GetSchedulerListByMovieIDAsync(int movieID) {
+            return base.Channel.GetSchedulerListByMovieIDAsync(movieID);
         }
     }
 }
