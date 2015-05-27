@@ -62,15 +62,15 @@
 
                 <div class="form-signin">
 
-                    <h2 class="form-signin-heading">Log ind</h2>
-
-                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control" placeholder="E-mail"></asp:TextBox>
- 
                     <p>
+                        <asp:Login ID="loginWebsite" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" OnAuthenticate="loginWebsite_Authenticate" OnLoggingIn="loginWebsite_LoggingIn" Height="122px" OnLoggedIn="loginWebsite_LoggedIn" Width="978px">
+                            <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+                            <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
+                            <TextBoxStyle Font-Size="0.8em" />
+                            <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
+                        </asp:Login>
                     </p>
 
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Adgangskode"></asp:TextBox>
-               
 
                     <p>
                     </p>

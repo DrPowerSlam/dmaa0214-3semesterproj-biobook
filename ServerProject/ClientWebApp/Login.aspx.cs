@@ -27,7 +27,7 @@ namespace ClientWebApp
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (ValidateUser(txtMail.Text, txtPassword.Text))
+            /*if (ValidateUser(txtMail.Text, txtPassword.Text))
             {
                 FormsAuthentication.RedirectFromLoginPage(txtMail.Text, false);
                 Response.Redirect("UI/Startpage.aspx");
@@ -36,7 +36,7 @@ namespace ClientWebApp
             else
             {
                 Response.Redirect("Default.aspx", true);
-            }
+            }*/
                
 
 
@@ -49,6 +49,9 @@ namespace ClientWebApp
        
             Customer customer = new Customer();
 
+            customer.mail = userName;
+            customer.password = passWord;
+
             Page.Validate();
             
             if (!Page.IsValid)
@@ -58,11 +61,14 @@ namespace ClientWebApp
 
             try
             {
-                client.CustomerLogin(customer.mail, customer.password);
+                
 
                 if (client != null)
                 {
-                    return true;
+                    if (client.CustomerLogin(customer.mail, customer.password))
+                    {
+                        return true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -72,6 +78,40 @@ namespace ClientWebApp
 
             return false;
         }
+
+        protected void loginWebsite_LoggingIn(object sender, LoginCancelEventArgs e)
+        {
+            //Check if there are texts in the fields etc. Right now there is none.
+            loginWebsite.InstructionText = "";
+        }
+
+        protected void loginWebsite_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+
+            if (ValidateUser(loginWebsite.UserName, loginWebsite.Password))
+            {
+                //Membership.CreateUser(loginWebsite.UserName, loginWebsite.Password);
+                e.Authenticated = true;
+                //Response.Redirect(FormsAuthentication.GetRedirectUrl(loginWebsite.UserName, false));
+                loginWebsite.InstructionText = "Login successful";
+            }
+
+            else
+            {
+                e.Authenticated = false;
+                loginWebsite.InstructionText = "Login Failed Redirecting";
+                Response.Redirect("Default.aspx", true);
+            }
+        }
+
+        protected void loginWebsite_LoggedIn(object sender, EventArgs e)
+        {
+            //When the user has logged in.
+            FormsAuthentication.RedirectFromLoginPage(loginWebsite.UserName, loginWebsite.RememberMeSet);
+            //Response.Redirect("UI/Startpage.aspx");
+        }
+
+
     }
 
 }

@@ -16,11 +16,10 @@ namespace ClientWebApp.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string userId = Membership.GetUser().UserName;
-
-            litUser.Text = userId;
-
-
+            if (!this.Page.User.Identity.IsAuthenticated)
+            {
+                //FormsAuthentication.RedirectToLoginPage();
+            }
         }
     }
 }

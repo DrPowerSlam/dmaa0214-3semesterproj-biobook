@@ -12,6 +12,7 @@
     <!-- Title -->
 
     <asp:Literal ID="litNewstMovies"   runat="server"></asp:Literal>
-
+    Welcome: <asp:LoginName ID="LoginName1" runat="server" />
+    <asp:LoginStatus ID="LoginStatus1" runat="server" />
 
 </asp:Content>
