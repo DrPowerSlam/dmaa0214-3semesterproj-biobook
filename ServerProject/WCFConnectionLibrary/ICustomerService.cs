@@ -14,6 +14,10 @@ namespace WCFConnectionLibrary
     public interface ICustomerService
     {
         [OperationContract]
+        Customer GetCustomerByEmail(string username);
+
+
+        [OperationContract]
         List<Seat> GetAllSeatsBySchedulerID(int schedulerID);
 
         [OperationContract]

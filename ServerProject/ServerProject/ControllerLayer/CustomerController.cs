@@ -38,6 +38,10 @@ namespace ServerProject.ControllerLayer
             return dbCus.CustomerLogin(userMail, passWord);
         }
 
+        public Customer FindCustomerByEmail(string email)
+        {
+            return dbCus.GetCustomerByEmail(email);
+        }
 
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace ServerProject.ControllerLayer
         /// </summary>
         /// <param name="name">The name to search for</param>
         /// <returns>Returns a list of customers</returns>
-        public IEnumerable FindCustomerByName(string name)
+        public IEnumerable  FindCustomerByName(string name)
         {
             return dbCus.GetCustomerByName(name);
         }
