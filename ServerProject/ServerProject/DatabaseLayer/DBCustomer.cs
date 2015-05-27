@@ -33,6 +33,17 @@ namespace ServerProject.DatabaseLayer
         }
 
         /// <summary>
+        /// Selects the customer with the given phonenumber
+        /// </summary>
+        /// <param name="phone">The phonenumber which to search for</param>
+        /// <returns>returns the customer with the phonernumber, if one exists</returns>
+        public Customer GetByPhone(string phone)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            Customer customer = db.Customers.Single(x=> x.phoneNumber.Equals(phone));
+            return customer;
+        }
+        /// <summary>
         /// Selects all customers with a given name
         /// </summary>
         /// <param name="name">The name which to search for</param>

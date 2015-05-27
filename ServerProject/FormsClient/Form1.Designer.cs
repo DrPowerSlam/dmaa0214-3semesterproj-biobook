@@ -46,12 +46,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.res_CusName = new System.Windows.Forms.TextBox();
+            this.res_CusPhone = new System.Windows.Forms.TextBox();
+            this.res_CusEmail = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.PhoneBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.AvailableSeatBox = new System.Windows.Forms.RichTextBox();
             this.GetAvailableSeatsBtn = new System.Windows.Forms.Button();
@@ -67,6 +67,8 @@
             this.SchID1Box = new System.Windows.Forms.TextBox();
             this.SeatBox = new System.Windows.Forms.TextBox();
             this.SchID2Box = new System.Windows.Forms.TextBox();
+            this.ReserveListBox = new System.Windows.Forms.RichTextBox();
+            this.GetRes = new System.Windows.Forms.Button();
             this.custo_Panel.SuspendLayout();
             this.Scheduler_Panel.SuspendLayout();
             this.sch_Panel.SuspendLayout();
@@ -244,27 +246,27 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Customer information";
             // 
-            // textBox1
+            // res_CusName
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 19;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.res_CusName.Location = new System.Drawing.Point(69, 75);
+            this.res_CusName.Name = "res_CusName";
+            this.res_CusName.Size = new System.Drawing.Size(100, 20);
+            this.res_CusName.TabIndex = 19;
+            this.res_CusName.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
-            // textBox5
+            // res_CusPhone
             // 
-            this.textBox5.Location = new System.Drawing.Point(69, 108);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 20;
+            this.res_CusPhone.Location = new System.Drawing.Point(69, 108);
+            this.res_CusPhone.Name = "res_CusPhone";
+            this.res_CusPhone.Size = new System.Drawing.Size(100, 20);
+            this.res_CusPhone.TabIndex = 20;
             // 
-            // textBox6
+            // res_CusEmail
             // 
-            this.textBox6.Location = new System.Drawing.Point(69, 142);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 21;
+            this.res_CusEmail.Location = new System.Drawing.Point(69, 142);
+            this.res_CusEmail.Name = "res_CusEmail";
+            this.res_CusEmail.Size = new System.Drawing.Size(100, 20);
+            this.res_CusEmail.TabIndex = 21;
             // 
             // button1
             // 
@@ -283,13 +285,14 @@
             this.button2.TabIndex = 23;
             this.button2.Text = "Find Customer";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // textBox7
+            // PhoneBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(69, 247);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 24;
+            this.PhoneBox.Location = new System.Drawing.Point(69, 247);
+            this.PhoneBox.Name = "PhoneBox";
+            this.PhoneBox.Size = new System.Drawing.Size(100, 20);
+            this.PhoneBox.TabIndex = 24;
             // 
             // label6
             // 
@@ -362,7 +365,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 329);
+            this.label9.Location = new System.Drawing.Point(9, 310);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(105, 18);
             this.label9.TabIndex = 35;
@@ -370,9 +373,9 @@
             // 
             // richTextBox8
             // 
-            this.richTextBox8.Location = new System.Drawing.Point(10, 350);
+            this.richTextBox8.Location = new System.Drawing.Point(10, 339);
             this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(107, 46);
+            this.richTextBox8.Size = new System.Drawing.Size(126, 57);
             this.richTextBox8.TabIndex = 36;
             this.richTextBox8.Text = "";
             // 
@@ -380,7 +383,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(10, 402);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 23);
+            this.button5.Size = new System.Drawing.Size(126, 23);
             this.button5.TabIndex = 37;
             this.button5.Text = "Reserve!";
             this.button5.UseVisualStyleBackColor = true;
@@ -424,11 +427,31 @@
             this.SchID2Box.Size = new System.Drawing.Size(43, 20);
             this.SchID2Box.TabIndex = 42;
             // 
+            // ReserveListBox
+            // 
+            this.ReserveListBox.Location = new System.Drawing.Point(207, 49);
+            this.ReserveListBox.Name = "ReserveListBox";
+            this.ReserveListBox.Size = new System.Drawing.Size(117, 329);
+            this.ReserveListBox.TabIndex = 43;
+            this.ReserveListBox.Text = "";
+            // 
+            // GetRes
+            // 
+            this.GetRes.Location = new System.Drawing.Point(207, 384);
+            this.GetRes.Name = "GetRes";
+            this.GetRes.Size = new System.Drawing.Size(117, 28);
+            this.GetRes.TabIndex = 44;
+            this.GetRes.Text = "Get Reservation";
+            this.GetRes.UseVisualStyleBackColor = true;
+            this.GetRes.Click += new System.EventHandler(this.GetRes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 460);
+            this.Controls.Add(this.GetRes);
+            this.Controls.Add(this.ReserveListBox);
             this.Controls.Add(this.SchID2Box);
             this.Controls.Add(this.SeatBox);
             this.Controls.Add(this.SchID1Box);
@@ -444,12 +467,12 @@
             this.Controls.Add(this.GetAvailableSeatsBtn);
             this.Controls.Add(this.AvailableSeatBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.PhoneBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.res_CusEmail);
+            this.Controls.Add(this.res_CusPhone);
+            this.Controls.Add(this.res_CusName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -498,12 +521,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox res_CusName;
+        private System.Windows.Forms.TextBox res_CusPhone;
+        private System.Windows.Forms.TextBox res_CusEmail;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox PhoneBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox AvailableSeatBox;
         private System.Windows.Forms.Button GetAvailableSeatsBtn;
@@ -519,6 +542,8 @@
         private System.Windows.Forms.TextBox SchID1Box;
         private System.Windows.Forms.TextBox SeatBox;
         private System.Windows.Forms.TextBox SchID2Box;
+        private System.Windows.Forms.RichTextBox ReserveListBox;
+        private System.Windows.Forms.Button GetRes;
 
     }
 }

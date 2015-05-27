@@ -223,6 +223,45 @@ namespace FormsClient
         {
 
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Customer c = client.GetCustomerByPhone(PhoneBox.Text);
+                res_CusName.Text = c.name;
+                res_CusPhone.Text = c.phoneNumber;
+                res_CusEmail.Text = c.mail;
+            }
+
+            catch
+            {
+                res_CusPhone.Text = "None found";
+                res_CusName.Text = "None found";
+                res_CusEmail.Text = "None found";
+            }
+        }
+
+        private void GetRes_Click(object sender, EventArgs e)
+        {
+            string copier = "";
+            ReserveListBox.Clear();
+            try
+            {
+                List<Reservation> list = client.GetResByCusPhone(PhoneBox.Text).ToList();
+
+                foreach (Reservation res in list)
+                {
+                    copier += "Row: " + res.Row + "\nSeats: " + res.Seat + "\n";
+                    copier += "-----------------------------------";
+                }
+                ReserveListBox.AppendText(copier);
+            }
+            catch(Exception exe)
+            {
+                ReserveListBox.AppendText("bad\n" + exe);
+            }
+        }
     }
 }
 

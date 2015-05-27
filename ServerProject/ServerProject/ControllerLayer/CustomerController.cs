@@ -72,5 +72,10 @@ namespace ServerProject.ControllerLayer
         {
             dbCus.DeleteCustomer(dbCus.GetCustomerByID(cusID));
         }
+
+        public Customer getByPhone(string phone)
+        {
+            return dbCus.GetByPhone(phone);
+        }
     }
 }
