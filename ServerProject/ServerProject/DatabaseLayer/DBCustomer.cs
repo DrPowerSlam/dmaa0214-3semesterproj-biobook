@@ -180,6 +180,14 @@ namespace ServerProject.DatabaseLayer
             return controlInt;
         }
 
+        /// <summary>
+        /// Update a customer
+        /// </summary>
+        /// <param name="customerID">The ID of the customer you want to edit</param>
+        /// <param name="name">Name of the customer</param>
+        /// <param name="email">Email of the customer</param>
+        /// <param name="phone">Phone number of the customer</param>
+        /// <param name="password">The new password for the customer</param>
         public void UpdateCustomer(int customerID, string name, string email, string phone, string password)
         {
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
