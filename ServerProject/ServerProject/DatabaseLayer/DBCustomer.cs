@@ -58,6 +58,17 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
+
+        public Customer GetCustomerByEmail(string email)
+        {
+
+            var db = new ConnectToDatabaseDataContext();
+
+            var customer = db.Customers.Select(x => x).AsEnumerable().Single(x => x.mail == email);
+
+            return customer;
+        }
+
         public bool CustomerLogin(string userMail, string passWord)
         {
             try
