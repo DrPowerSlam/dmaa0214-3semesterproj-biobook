@@ -67,5 +67,11 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         List<Reservation> GetResByCusPhone(string phone);
+
+        [OperationContract]
+        void DeleteCustomer(int id);
+
+        [OperationContract]
+        List<Scheduler> GetSchListByDate(DateTime date);
     }
 }

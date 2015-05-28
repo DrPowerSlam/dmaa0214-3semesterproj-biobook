@@ -66,5 +66,10 @@ namespace ServerProject.ControllerLayer
             List<Scheduler> list = dbSch.GetScheduerListByMovieID(movieID);
             return list;
         }
+
+        public List<Scheduler> GetByDate(DateTime date)
+        {
+           return dbSch.GetByDate(date);
+        }
     }
 }

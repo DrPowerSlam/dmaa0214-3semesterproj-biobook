@@ -95,6 +95,9 @@
     <None Include="Service References\ServiceReference1\FormsClient.ServiceReference1.Scheduler.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\FormsClient.ServiceReference1.Seat.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\ServerProject.DatabaseLayer.xsd">
       <SubType>Designer</SubType>
     </None>
