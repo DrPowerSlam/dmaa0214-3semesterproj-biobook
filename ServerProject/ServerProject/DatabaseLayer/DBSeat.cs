@@ -8,7 +8,6 @@ namespace ServerProject.DatabaseLayer
 {
     public class DBSeat
     {
-        static int lengthChar;
         ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
 
         /// <summary>
@@ -20,7 +19,7 @@ namespace ServerProject.DatabaseLayer
         {
             return db.Seats.Where(x => x.SchedulerID == schID).ToList();
 
-            //// Testing translater
+            // Testing translater
             //Console.WriteLine(count);
             //for (int column = 0; column < count; column++)
             //{
@@ -33,17 +32,25 @@ namespace ServerProject.DatabaseLayer
 
         }
 
+        /// <summary>
+        /// Gets a seat object by it's scheduler ID and row
+        /// </summary>
+        /// <param name="schID">The scheduler ID of the seats</param>
+        /// <param name="row">The row of the seats</param>
+        /// <returns>A list of the seats with that row (should only be 1 though)</returns>
         public List<Seat> GetSeatsBySchIDAndRow(int schID, int row)
         {
             List<Seat> record = db.Seats.Where(x => x.SchedulerID == schID && x.Row == row).ToList();
             return record;
         }
 
-        public void InsertSeat()
-        {
-            //
-        }
-
+        /// <summary>
+        /// Update a number of given seats, on specific rows, with specific data on a specific scheduler
+        /// </summary>
+        /// <param name="rows">The rows of the seats</param>
+        /// <param name="seats">The seats you want to update (by their index)</param>
+        /// <param name="updateInfo">The info you want to update the seats with (e.g. 0, for reserved), in a char array. Enter in succession of the seat index</param>
+        /// <param name="schID">The scheduler of the seats</param>
         public void UpdateSeat(string rows, string seats,char[] updateInfo, int schID)
         {
             //Create some arrays that doesn't have comma (the seperator in our strings)
