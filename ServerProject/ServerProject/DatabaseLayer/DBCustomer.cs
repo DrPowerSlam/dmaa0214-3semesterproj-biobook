@@ -58,7 +58,11 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
-
+        /// <summary>
+        /// Find a customer by e-mail
+        /// </summary>
+        /// <param name="email">The e-mail of the customer</param>
+        /// <returns>The customer object</returns>
         public Customer GetCustomerByEmail(string email)
         {
 
@@ -69,6 +73,13 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
+
+        /// <summary>
+        /// A login method for a user
+        /// </summary>
+        /// <param name="userMail">The user e-mail</param>
+        /// <param name="passWord">The user password</param>
+        /// <returns>Returns true if the user logged in successfully, false if not</returns>
         public bool CustomerLogin(string userMail, string passWord)
         {
             try
@@ -167,6 +178,33 @@ namespace ServerProject.DatabaseLayer
             }
 
             return controlInt;
+        }
+
+        public void UpdateCustomer(int customerID, string name, string email, string phone, string password)
+        {
+            ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
+
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
+            Customer customer = GetCustomerByID(customerID);
+
+            customer.mail = email;
+            customer.name = name;
+            customer.phoneNumber = phone;
+            customer.password = password;
+
+            try
+            {
+                db.SubmitChanges();
+                db.Transaction.Commit();
+                db.Transaction.Dispose();
+                db.Connection.Close();
+            }
+            catch (Exception e)
+            {
+                db.Transaction.Rollback();
+                Console.WriteLine(e.Message);
+            }
         }
     }
 

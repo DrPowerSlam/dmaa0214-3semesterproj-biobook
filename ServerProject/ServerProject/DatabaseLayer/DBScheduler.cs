@@ -20,7 +20,7 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="schedulerID">The ID of the scheduler</param>
         /// <returns>Returns the scheduler</returns>
-        public Scheduler getSchedulerByID(int schedulerID)
+        public Scheduler GetSchedulerByID(int schedulerID)
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -45,8 +45,12 @@ namespace ServerProject.DatabaseLayer
         }
 
 
-        // Gets a list of schedulers by the specified Movie ID
-        public List<Scheduler> GetScheduerListByMovieID(int movieID)
+        /// <summary>
+        /// Get at list of schedulers, specified by a movie ID
+        /// </summary>
+        /// <param name="movieID">ID of the movie</param>
+        /// <returns>A list of scheduler objects</returns>
+        public List<Scheduler> GetSchedulerListByMovieID(int movieID)
         {
             var db = new ConnectToDatabaseDataContext();
             List<Scheduler> SchList = db.Schedulers.Select(x => x).Where(x => x.MovieID == movieID).ToList();
@@ -55,11 +59,10 @@ namespace ServerProject.DatabaseLayer
         }
 
 
-        ///Innerjoin som joiner tabellerne scheduler, movie og hall
-        ///
+        //Innerjoin som joiner tabellerne scheduler, movie og hall
 
 
-        public IEnumerable getScheduler()
+        public IEnumerable GetScheduler()
         {
             var db = new ConnectToDatabaseDataContext();
 
@@ -121,6 +124,13 @@ namespace ServerProject.DatabaseLayer
             return Sch;
         }
 
+        /// <summary>
+        /// Inserts a scheduler into the database
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="time"></param>
+        /// <param name="movieID">The ID of the movie that is to be scheduled</param>
+        /// <param name="hallID">The ID of the hall in which the movie will be shown</param>
         public void InsertScheduler(DateTime date, TimeSpan time, int movieID, int hallID)
         {
             var db = new ConnectToDatabaseDataContext();

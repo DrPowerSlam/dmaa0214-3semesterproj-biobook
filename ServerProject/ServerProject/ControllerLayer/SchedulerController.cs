@@ -27,7 +27,7 @@ namespace ServerProject.ControllerLayer
         public IEnumerable getMovieByMovieID(int movieID)
         {
             List<Scheduler> listToReturn = new List<Scheduler>();
-            foreach (Scheduler s in dbSch.getScheduler().Cast<Scheduler>())
+            foreach (Scheduler s in dbSch.GetScheduler().Cast<Scheduler>())
             {
                 if (s.Movie.MovieID == movieID)
                 {
@@ -42,7 +42,7 @@ namespace ServerProject.ControllerLayer
         public Scheduler getSchedulerByID(int schedulerID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
-            Scheduler scheduler = schedulerDatabase.getSchedulerByID(schedulerID);
+            Scheduler scheduler = schedulerDatabase.GetSchedulerByID(schedulerID);
             return scheduler;
         }
 
@@ -63,7 +63,7 @@ namespace ServerProject.ControllerLayer
 
         public List<Scheduler> GetSchListByMovieID(int movieID)
         {
-            List<Scheduler> list = dbSch.GetScheduerListByMovieID(movieID);
+            List<Scheduler> list = dbSch.GetSchedulerListByMovieID(movieID);
             return list;
         }
 
