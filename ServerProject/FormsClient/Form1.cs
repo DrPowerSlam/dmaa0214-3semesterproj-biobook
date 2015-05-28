@@ -262,6 +262,11 @@ namespace FormsClient
                 ReserveListBox.AppendText("bad\n" + exe);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
