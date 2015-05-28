@@ -49,8 +49,8 @@
             this.res_CusName = new System.Windows.Forms.TextBox();
             this.res_CusPhone = new System.Windows.Forms.TextBox();
             this.res_CusEmail = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CreateCustomerBtn = new System.Windows.Forms.Button();
+            this.FindCustomerBtn = new System.Windows.Forms.Button();
             this.PhoneBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.AvailableSeatBox = new System.Windows.Forms.RichTextBox();
@@ -58,17 +58,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.SeatListBox = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.GetBestSeatsBtn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ReserveBtn = new System.Windows.Forms.Button();
             this.MovieTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SchID1Box = new System.Windows.Forms.TextBox();
             this.SeatBox = new System.Windows.Forms.TextBox();
             this.SchID2Box = new System.Windows.Forms.TextBox();
             this.ReserveListBox = new System.Windows.Forms.RichTextBox();
-            this.GetRes = new System.Windows.Forms.Button();
+            this.GetResBtn = new System.Windows.Forms.Button();
             this.custo_Panel.SuspendLayout();
             this.Scheduler_Panel.SuspendLayout();
             this.sch_Panel.SuspendLayout();
@@ -268,24 +268,25 @@
             this.res_CusEmail.Size = new System.Drawing.Size(100, 20);
             this.res_CusEmail.TabIndex = 21;
             // 
-            // button1
+            // CreateCustomerBtn
             // 
-            this.button1.Location = new System.Drawing.Point(12, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Create new Customer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CreateCustomerBtn.Location = new System.Drawing.Point(12, 178);
+            this.CreateCustomerBtn.Name = "CreateCustomerBtn";
+            this.CreateCustomerBtn.Size = new System.Drawing.Size(157, 23);
+            this.CreateCustomerBtn.TabIndex = 22;
+            this.CreateCustomerBtn.Text = "Create new Customer";
+            this.CreateCustomerBtn.UseVisualStyleBackColor = true;
+            this.CreateCustomerBtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // FindCustomerBtn
             // 
-            this.button2.Location = new System.Drawing.Point(12, 221);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 23);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Find Customer";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.FindCustomerBtn.Location = new System.Drawing.Point(12, 221);
+            this.FindCustomerBtn.Name = "FindCustomerBtn";
+            this.FindCustomerBtn.Size = new System.Drawing.Size(157, 23);
+            this.FindCustomerBtn.TabIndex = 23;
+            this.FindCustomerBtn.Text = "Find Customer";
+            this.FindCustomerBtn.UseVisualStyleBackColor = true;
+            this.FindCustomerBtn.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // PhoneBox
             // 
@@ -351,15 +352,15 @@
             this.label8.TabIndex = 31;
             this.label8.Text = "Scheduler ID:";
             // 
-            // button4
+            // GetBestSeatsBtn
             // 
-            this.button4.Location = new System.Drawing.Point(349, 436);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(189, 23);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "Get best seats";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.GetBestSeatsBtn.Location = new System.Drawing.Point(349, 436);
+            this.GetBestSeatsBtn.Name = "GetBestSeatsBtn";
+            this.GetBestSeatsBtn.Size = new System.Drawing.Size(189, 23);
+            this.GetBestSeatsBtn.TabIndex = 33;
+            this.GetBestSeatsBtn.Text = "Get best seats";
+            this.GetBestSeatsBtn.UseVisualStyleBackColor = true;
+            this.GetBestSeatsBtn.Click += new System.EventHandler(this.button4_Click);
             // 
             // label9
             // 
@@ -379,15 +380,15 @@
             this.richTextBox8.TabIndex = 36;
             this.richTextBox8.Text = "";
             // 
-            // button5
+            // ReserveBtn
             // 
-            this.button5.Location = new System.Drawing.Point(10, 402);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(126, 23);
-            this.button5.TabIndex = 37;
-            this.button5.Text = "Reserve!";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.ReserveBtn.Location = new System.Drawing.Point(10, 402);
+            this.ReserveBtn.Name = "ReserveBtn";
+            this.ReserveBtn.Size = new System.Drawing.Size(126, 23);
+            this.ReserveBtn.TabIndex = 37;
+            this.ReserveBtn.Text = "Reserve!";
+            this.ReserveBtn.UseVisualStyleBackColor = true;
+            this.ReserveBtn.Click += new System.EventHandler(this.button5_Click);
             // 
             // MovieTextBox
             // 
@@ -435,32 +436,32 @@
             this.ReserveListBox.TabIndex = 43;
             this.ReserveListBox.Text = "";
             // 
-            // GetRes
+            // GetResBtn
             // 
-            this.GetRes.Location = new System.Drawing.Point(207, 384);
-            this.GetRes.Name = "GetRes";
-            this.GetRes.Size = new System.Drawing.Size(117, 28);
-            this.GetRes.TabIndex = 44;
-            this.GetRes.Text = "Get Reservation";
-            this.GetRes.UseVisualStyleBackColor = true;
-            this.GetRes.Click += new System.EventHandler(this.GetRes_Click);
+            this.GetResBtn.Location = new System.Drawing.Point(207, 384);
+            this.GetResBtn.Name = "GetResBtn";
+            this.GetResBtn.Size = new System.Drawing.Size(117, 28);
+            this.GetResBtn.TabIndex = 44;
+            this.GetResBtn.Text = "Get Reservation";
+            this.GetResBtn.UseVisualStyleBackColor = true;
+            this.GetResBtn.Click += new System.EventHandler(this.GetRes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 460);
-            this.Controls.Add(this.GetRes);
+            this.Controls.Add(this.GetResBtn);
             this.Controls.Add(this.ReserveListBox);
             this.Controls.Add(this.SchID2Box);
             this.Controls.Add(this.SeatBox);
             this.Controls.Add(this.SchID1Box);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.MovieTextBox);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ReserveBtn);
             this.Controls.Add(this.richTextBox8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.GetBestSeatsBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.SeatListBox);
             this.Controls.Add(this.label7);
@@ -468,8 +469,8 @@
             this.Controls.Add(this.AvailableSeatBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.PhoneBox);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.FindCustomerBtn);
+            this.Controls.Add(this.CreateCustomerBtn);
             this.Controls.Add(this.res_CusEmail);
             this.Controls.Add(this.res_CusPhone);
             this.Controls.Add(this.res_CusName);
@@ -524,8 +525,8 @@
         private System.Windows.Forms.TextBox res_CusName;
         private System.Windows.Forms.TextBox res_CusPhone;
         private System.Windows.Forms.TextBox res_CusEmail;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CreateCustomerBtn;
+        private System.Windows.Forms.Button FindCustomerBtn;
         private System.Windows.Forms.TextBox PhoneBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox AvailableSeatBox;
@@ -533,17 +534,17 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox SeatListBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button GetBestSeatsBtn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RichTextBox richTextBox8;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ReserveBtn;
         private System.Windows.Forms.TextBox MovieTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox SchID1Box;
         private System.Windows.Forms.TextBox SeatBox;
         private System.Windows.Forms.TextBox SchID2Box;
         private System.Windows.Forms.RichTextBox ReserveListBox;
-        private System.Windows.Forms.Button GetRes;
+        private System.Windows.Forms.Button GetResBtn;
 
     }
 }
