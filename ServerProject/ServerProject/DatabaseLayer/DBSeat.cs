@@ -101,5 +101,27 @@ namespace ServerProject.DatabaseLayer
                 db.Transaction.Rollback();
             }
         }
+
+        /// <summary>
+        /// Checks if selected seats are already occupied
+        /// </summary>
+        /// <param name="rows">The rows of the seats</param>
+        /// <param name="seatsToCheck">The index of the seats to check</param>
+        /// <param name="schID">The scheduler ID for the seats</param>
+        public void CheckForReservation(string rows, string seatsToCheck, int schID)
+        {
+            string[] singleRow = rows.Split(',');
+            string[] singleSeat = seatsToCheck.Split(',');
+            foreach (string row in singleRow)
+            {
+                Seat seat = GetSeatsBySchIDAndRow(schID, int.Parse(row)).First();
+                int seatIndex = 0;
+                if(seat.ColumnArray[int.Parse(singleSeat[seatIndex])] == 0)
+                {
+                    throw new Exception("One or more seat is already occupied");
+                }
+                seatIndex++;
+            }
+        }
     }
 }
