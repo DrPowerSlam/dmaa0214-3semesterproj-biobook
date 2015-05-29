@@ -31,10 +31,51 @@
             this.Reserve = new System.Windows.Forms.Button();
             this.Customer = new System.Windows.Forms.Button();
             this.custo_Panel = new System.Windows.Forms.Panel();
+            this.cus_LogBox = new System.Windows.Forms.RichTextBox();
+            this.DeleteCustomerBtn = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.cus_CusID = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cus_PhoneBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cus_Email = new System.Windows.Forms.TextBox();
+            this.cus_Phone = new System.Windows.Forms.TextBox();
+            this.cus_Name = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.GetBestSeatsBtn = new System.Windows.Forms.Button();
+            this.GetAvailableSeatsBtn = new System.Windows.Forms.Button();
             this.Scheduler = new System.Windows.Forms.Button();
             this.Scheduler_Panel = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.sch_Panel = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.sch_Log = new System.Windows.Forms.RichTextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.DateSearchBox = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.SchViewBox = new System.Windows.Forms.RichTextBox();
+            this.sch_HallID = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.idBox1 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.idSearchBox = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.sch_MovieID = new System.Windows.Forms.TextBox();
+            this.sch_Time = new System.Windows.Forms.TextBox();
+            this.sch_Date = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.MovieBox = new System.Windows.Forms.RichTextBox();
             this.SchedulerBox = new System.Windows.Forms.RichTextBox();
             this.GetMovieButton = new System.Windows.Forms.Button();
@@ -52,11 +93,9 @@
             this.PhoneBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.AvailableSeatBox = new System.Windows.Forms.RichTextBox();
-            this.GetAvailableSeatsBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.SeatListBox = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.GetBestSeatsBtn = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.ReserveBtn = new System.Windows.Forms.Button();
             this.MovieTextBox = new System.Windows.Forms.TextBox();
@@ -75,46 +114,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.CusPhoneBox = new System.Windows.Forms.TextBox();
             this.BookBox = new System.Windows.Forms.RichTextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cus_PhoneBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.cus_Email = new System.Windows.Forms.TextBox();
-            this.cus_Phone = new System.Windows.Forms.TextBox();
-            this.cus_Name = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.cus_CusID = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.cus_LogBox = new System.Windows.Forms.RichTextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.idBox1 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.idSearchBox = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.sch_MovieID = new System.Windows.Forms.TextBox();
-            this.sch_Time = new System.Windows.Forms.TextBox();
-            this.sch_Date = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.sch_HallID = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.SchViewBox = new System.Windows.Forms.RichTextBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.DateSearchBox = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.sch_Log = new System.Windows.Forms.RichTextBox();
-            this.label30 = new System.Windows.Forms.Label();
             this.custo_Panel.SuspendLayout();
             this.Scheduler_Panel.SuspendLayout();
             this.sch_Panel.SuspendLayout();
@@ -142,8 +142,9 @@
             // 
             // custo_Panel
             // 
+            this.custo_Panel.Controls.Add(this.sch_Panel);
             this.custo_Panel.Controls.Add(this.cus_LogBox);
-            this.custo_Panel.Controls.Add(this.button4);
+            this.custo_Panel.Controls.Add(this.DeleteCustomerBtn);
             this.custo_Panel.Controls.Add(this.button3);
             this.custo_Panel.Controls.Add(this.cus_CusID);
             this.custo_Panel.Controls.Add(this.label20);
@@ -166,6 +167,170 @@
             this.custo_Panel.TabIndex = 6;
             this.custo_Panel.Visible = false;
             this.custo_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_3);
+            // 
+            // cus_LogBox
+            // 
+            this.cus_LogBox.Location = new System.Drawing.Point(350, 30);
+            this.cus_LogBox.Name = "cus_LogBox";
+            this.cus_LogBox.Size = new System.Drawing.Size(425, 232);
+            this.cus_LogBox.TabIndex = 49;
+            this.cus_LogBox.Text = "";
+            // 
+            // DeleteCustomerBtn
+            // 
+            this.DeleteCustomerBtn.Location = new System.Drawing.Point(3, 194);
+            this.DeleteCustomerBtn.Name = "DeleteCustomerBtn";
+            this.DeleteCustomerBtn.Size = new System.Drawing.Size(72, 23);
+            this.DeleteCustomerBtn.TabIndex = 48;
+            this.DeleteCustomerBtn.Text = "Delete";
+            this.DeleteCustomerBtn.UseVisualStyleBackColor = true;
+            this.DeleteCustomerBtn.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(81, 165);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(74, 23);
+            this.button3.TabIndex = 47;
+            this.button3.Text = "Update";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // cus_CusID
+            // 
+            this.cus_CusID.Location = new System.Drawing.Point(70, 37);
+            this.cus_CusID.Name = "cus_CusID";
+            this.cus_CusID.ReadOnly = true;
+            this.cus_CusID.Size = new System.Drawing.Size(100, 20);
+            this.cus_CusID.TabIndex = 46;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(10, 38);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(22, 15);
+            this.label20.TabIndex = 45;
+            this.label20.Text = "ID:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(173, 65);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(46, 15);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "Phone:";
+            // 
+            // cus_PhoneBox
+            // 
+            this.cus_PhoneBox.Location = new System.Drawing.Point(220, 64);
+            this.cus_PhoneBox.Name = "cus_PhoneBox";
+            this.cus_PhoneBox.Size = new System.Drawing.Size(105, 20);
+            this.cus_PhoneBox.TabIndex = 43;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(176, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 23);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "Find Customer";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 165);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(72, 23);
+            this.button2.TabIndex = 41;
+            this.button2.Text = "Create new Customer";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
+            // cus_Email
+            // 
+            this.cus_Email.Location = new System.Drawing.Point(70, 131);
+            this.cus_Email.Name = "cus_Email";
+            this.cus_Email.Size = new System.Drawing.Size(100, 20);
+            this.cus_Email.TabIndex = 40;
+            // 
+            // cus_Phone
+            // 
+            this.cus_Phone.Location = new System.Drawing.Point(70, 97);
+            this.cus_Phone.Name = "cus_Phone";
+            this.cus_Phone.Size = new System.Drawing.Size(100, 20);
+            this.cus_Phone.TabIndex = 39;
+            // 
+            // cus_Name
+            // 
+            this.cus_Name.Location = new System.Drawing.Point(70, 64);
+            this.cus_Name.Name = "cus_Name";
+            this.cus_Name.Size = new System.Drawing.Size(100, 20);
+            this.cus_Name.TabIndex = 38;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(9, 10);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(188, 24);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Customer information";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(10, 136);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 15);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "Email:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(10, 98);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 15);
+            this.label18.TabIndex = 35;
+            this.label18.Text = "Phone:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(10, 65);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 15);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Name:";
+            // 
+            // GetBestSeatsBtn
+            // 
+            this.GetBestSeatsBtn.Location = new System.Drawing.Point(347, 391);
+            this.GetBestSeatsBtn.Name = "GetBestSeatsBtn";
+            this.GetBestSeatsBtn.Size = new System.Drawing.Size(189, 23);
+            this.GetBestSeatsBtn.TabIndex = 33;
+            this.GetBestSeatsBtn.Text = "Get best seats";
+            this.GetBestSeatsBtn.UseVisualStyleBackColor = true;
+            this.GetBestSeatsBtn.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // GetAvailableSeatsBtn
+            // 
+            this.GetAvailableSeatsBtn.Location = new System.Drawing.Point(569, 391);
+            this.GetAvailableSeatsBtn.Name = "GetAvailableSeatsBtn";
+            this.GetAvailableSeatsBtn.Size = new System.Drawing.Size(189, 23);
+            this.GetAvailableSeatsBtn.TabIndex = 27;
+            this.GetAvailableSeatsBtn.Text = "Get available seats";
+            this.GetAvailableSeatsBtn.UseVisualStyleBackColor = true;
+            this.GetAvailableSeatsBtn.Click += new System.EventHandler(this.GetAvailableSeatsBtn_Click);
             // 
             // Scheduler
             // 
@@ -220,12 +385,216 @@
             this.sch_Panel.Controls.Add(this.label24);
             this.sch_Panel.Controls.Add(this.label25);
             this.sch_Panel.Controls.Add(this.label26);
-            this.sch_Panel.Location = new System.Drawing.Point(-1, 41);
+            this.sch_Panel.Location = new System.Drawing.Point(241, 179);
             this.sch_Panel.Name = "sch_Panel";
             this.sch_Panel.Size = new System.Drawing.Size(782, 418);
             this.sch_Panel.TabIndex = 8;
             this.sch_Panel.Visible = false;
             this.sch_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.sch_Panel_Paint);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(13, 271);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(42, 24);
+            this.label30.TabIndex = 71;
+            this.label30.Text = "Log";
+            // 
+            // sch_Log
+            // 
+            this.sch_Log.Location = new System.Drawing.Point(13, 303);
+            this.sch_Log.Name = "sch_Log";
+            this.sch_Log.Size = new System.Drawing.Size(184, 45);
+            this.sch_Log.TabIndex = 70;
+            this.sch_Log.Text = "";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(390, 303);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(33, 13);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Date:";
+            // 
+            // DateSearchBox
+            // 
+            this.DateSearchBox.Location = new System.Drawing.Point(429, 300);
+            this.DateSearchBox.Name = "DateSearchBox";
+            this.DateSearchBox.Size = new System.Drawing.Size(118, 20);
+            this.DateSearchBox.TabIndex = 68;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(393, 274);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(154, 23);
+            this.button9.TabIndex = 67;
+            this.button9.Text = "Get Schedulers";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // SchViewBox
+            // 
+            this.SchViewBox.Location = new System.Drawing.Point(393, 3);
+            this.SchViewBox.Name = "SchViewBox";
+            this.SchViewBox.Size = new System.Drawing.Size(379, 265);
+            this.SchViewBox.TabIndex = 66;
+            this.SchViewBox.Text = "";
+            // 
+            // sch_HallID
+            // 
+            this.sch_HallID.Location = new System.Drawing.Point(68, 155);
+            this.sch_HallID.Name = "sch_HallID";
+            this.sch_HallID.Size = new System.Drawing.Size(100, 20);
+            this.sch_HallID.TabIndex = 65;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(8, 160);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 15);
+            this.label28.TabIndex = 64;
+            this.label28.Text = "Hall ID:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(10, 31);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(22, 15);
+            this.label27.TabIndex = 63;
+            this.label27.Text = "ID:";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(10, 210);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(72, 23);
+            this.button5.TabIndex = 62;
+            this.button5.Text = "Delete";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(88, 181);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(74, 23);
+            this.button6.TabIndex = 61;
+            this.button6.Text = "Update";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // idBox1
+            // 
+            this.idBox1.Location = new System.Drawing.Point(68, 33);
+            this.idBox1.Name = "idBox1";
+            this.idBox1.ReadOnly = true;
+            this.idBox1.Size = new System.Drawing.Size(100, 20);
+            this.idBox1.TabIndex = 60;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(177, 63);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(22, 15);
+            this.label22.TabIndex = 59;
+            this.label22.Text = "ID:";
+            // 
+            // idSearchBox
+            // 
+            this.idSearchBox.Location = new System.Drawing.Point(218, 60);
+            this.idSearchBox.Name = "idSearchBox";
+            this.idSearchBox.Size = new System.Drawing.Size(105, 20);
+            this.idSearchBox.TabIndex = 58;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(174, 30);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(154, 23);
+            this.button7.TabIndex = 57;
+            this.button7.Text = "Find Scheduler";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(10, 181);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(72, 23);
+            this.button8.TabIndex = 56;
+            this.button8.Text = "Create new Customer";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // sch_MovieID
+            // 
+            this.sch_MovieID.Location = new System.Drawing.Point(68, 127);
+            this.sch_MovieID.Name = "sch_MovieID";
+            this.sch_MovieID.Size = new System.Drawing.Size(100, 20);
+            this.sch_MovieID.TabIndex = 55;
+            // 
+            // sch_Time
+            // 
+            this.sch_Time.Location = new System.Drawing.Point(68, 93);
+            this.sch_Time.Name = "sch_Time";
+            this.sch_Time.Size = new System.Drawing.Size(100, 20);
+            this.sch_Time.TabIndex = 54;
+            // 
+            // sch_Date
+            // 
+            this.sch_Date.Location = new System.Drawing.Point(68, 60);
+            this.sch_Date.Name = "sch_Date";
+            this.sch_Date.Size = new System.Drawing.Size(100, 20);
+            this.sch_Date.TabIndex = 53;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(7, 6);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(97, 24);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Scheduler";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(8, 132);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(58, 15);
+            this.label24.TabIndex = 51;
+            this.label24.Text = "Movie ID:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(8, 94);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(62, 15);
+            this.label25.TabIndex = 50;
+            this.label25.Text = "Start time:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(8, 61);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 15);
+            this.label26.TabIndex = 49;
+            this.label26.Text = "Date:";
             // 
             // MovieBox
             // 
@@ -383,16 +752,6 @@
             this.AvailableSeatBox.Text = "";
             this.AvailableSeatBox.TextChanged += new System.EventHandler(this.richTextBox4_TextChanged);
             // 
-            // GetAvailableSeatsBtn
-            // 
-            this.GetAvailableSeatsBtn.Location = new System.Drawing.Point(569, 391);
-            this.GetAvailableSeatsBtn.Name = "GetAvailableSeatsBtn";
-            this.GetAvailableSeatsBtn.Size = new System.Drawing.Size(189, 23);
-            this.GetAvailableSeatsBtn.TabIndex = 27;
-            this.GetAvailableSeatsBtn.Text = "Get available seats";
-            this.GetAvailableSeatsBtn.UseVisualStyleBackColor = true;
-            this.GetAvailableSeatsBtn.Click += new System.EventHandler(this.GetAvailableSeatsBtn_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -421,16 +780,6 @@
             this.label8.Size = new System.Drawing.Size(106, 20);
             this.label8.TabIndex = 31;
             this.label8.Text = "Scheduler ID:";
-            // 
-            // GetBestSeatsBtn
-            // 
-            this.GetBestSeatsBtn.Location = new System.Drawing.Point(347, 391);
-            this.GetBestSeatsBtn.Name = "GetBestSeatsBtn";
-            this.GetBestSeatsBtn.Size = new System.Drawing.Size(189, 23);
-            this.GetBestSeatsBtn.TabIndex = 33;
-            this.GetBestSeatsBtn.Text = "Get best seats";
-            this.GetBestSeatsBtn.UseVisualStyleBackColor = true;
-            this.GetBestSeatsBtn.Click += new System.EventHandler(this.button4_Click);
             // 
             // label9
             // 
@@ -585,150 +934,6 @@
             this.BookBox.TabIndex = 53;
             this.BookBox.Text = "";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(173, 65);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 15);
-            this.label15.TabIndex = 44;
-            this.label15.Text = "Phone:";
-            // 
-            // cus_PhoneBox
-            // 
-            this.cus_PhoneBox.Location = new System.Drawing.Point(220, 64);
-            this.cus_PhoneBox.Name = "cus_PhoneBox";
-            this.cus_PhoneBox.Size = new System.Drawing.Size(105, 20);
-            this.cus_PhoneBox.TabIndex = 43;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(176, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Find Customer";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 165);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 23);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Create new Customer";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
-            // cus_Email
-            // 
-            this.cus_Email.Location = new System.Drawing.Point(70, 131);
-            this.cus_Email.Name = "cus_Email";
-            this.cus_Email.Size = new System.Drawing.Size(100, 20);
-            this.cus_Email.TabIndex = 40;
-            // 
-            // cus_Phone
-            // 
-            this.cus_Phone.Location = new System.Drawing.Point(70, 97);
-            this.cus_Phone.Name = "cus_Phone";
-            this.cus_Phone.Size = new System.Drawing.Size(100, 20);
-            this.cus_Phone.TabIndex = 39;
-            // 
-            // cus_Name
-            // 
-            this.cus_Name.Location = new System.Drawing.Point(70, 64);
-            this.cus_Name.Name = "cus_Name";
-            this.cus_Name.Size = new System.Drawing.Size(100, 20);
-            this.cus_Name.TabIndex = 38;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(9, 10);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(188, 24);
-            this.label16.TabIndex = 37;
-            this.label16.Text = "Customer information";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(10, 136);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 15);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "Email:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(10, 98);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 15);
-            this.label18.TabIndex = 35;
-            this.label18.Text = "Phone:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(10, 65);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 15);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "Name:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(10, 38);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(22, 15);
-            this.label20.TabIndex = 45;
-            this.label20.Text = "ID:";
-            // 
-            // cus_CusID
-            // 
-            this.cus_CusID.Location = new System.Drawing.Point(70, 37);
-            this.cus_CusID.Name = "cus_CusID";
-            this.cus_CusID.ReadOnly = true;
-            this.cus_CusID.Size = new System.Drawing.Size(100, 20);
-            this.cus_CusID.TabIndex = 46;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(81, 165);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 23);
-            this.button3.TabIndex = 47;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(3, 194);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(72, 23);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // cus_LogBox
-            // 
-            this.cus_LogBox.Location = new System.Drawing.Point(350, 30);
-            this.cus_LogBox.Name = "cus_LogBox";
-            this.cus_LogBox.Size = new System.Drawing.Size(425, 232);
-            this.cus_LogBox.TabIndex = 49;
-            this.cus_LogBox.Text = "";
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -737,216 +942,11 @@
             this.label21.Size = new System.Drawing.Size(0, 13);
             this.label21.TabIndex = 0;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(10, 210);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(72, 23);
-            this.button5.TabIndex = 62;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(88, 181);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(74, 23);
-            this.button6.TabIndex = 61;
-            this.button6.Text = "Update";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // idBox1
-            // 
-            this.idBox1.Location = new System.Drawing.Point(68, 33);
-            this.idBox1.Name = "idBox1";
-            this.idBox1.ReadOnly = true;
-            this.idBox1.Size = new System.Drawing.Size(100, 20);
-            this.idBox1.TabIndex = 60;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(177, 63);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(22, 15);
-            this.label22.TabIndex = 59;
-            this.label22.Text = "ID:";
-            // 
-            // idSearchBox
-            // 
-            this.idSearchBox.Location = new System.Drawing.Point(218, 60);
-            this.idSearchBox.Name = "idSearchBox";
-            this.idSearchBox.Size = new System.Drawing.Size(105, 20);
-            this.idSearchBox.TabIndex = 58;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(174, 30);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(154, 23);
-            this.button7.TabIndex = 57;
-            this.button7.Text = "Find Scheduler";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(10, 181);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(72, 23);
-            this.button8.TabIndex = 56;
-            this.button8.Text = "Create new Customer";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // sch_MovieID
-            // 
-            this.sch_MovieID.Location = new System.Drawing.Point(68, 127);
-            this.sch_MovieID.Name = "sch_MovieID";
-            this.sch_MovieID.Size = new System.Drawing.Size(100, 20);
-            this.sch_MovieID.TabIndex = 55;
-            // 
-            // sch_Time
-            // 
-            this.sch_Time.Location = new System.Drawing.Point(68, 93);
-            this.sch_Time.Name = "sch_Time";
-            this.sch_Time.Size = new System.Drawing.Size(100, 20);
-            this.sch_Time.TabIndex = 54;
-            // 
-            // sch_Date
-            // 
-            this.sch_Date.Location = new System.Drawing.Point(68, 60);
-            this.sch_Date.Name = "sch_Date";
-            this.sch_Date.Size = new System.Drawing.Size(100, 20);
-            this.sch_Date.TabIndex = 53;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(7, 6);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(97, 24);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "Scheduler";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(8, 132);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(58, 15);
-            this.label24.TabIndex = 51;
-            this.label24.Text = "Movie ID:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(8, 94);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(62, 15);
-            this.label25.TabIndex = 50;
-            this.label25.Text = "Start time:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(8, 61);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(36, 15);
-            this.label26.TabIndex = 49;
-            this.label26.Text = "Date:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(10, 31);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(22, 15);
-            this.label27.TabIndex = 63;
-            this.label27.Text = "ID:";
-            // 
-            // sch_HallID
-            // 
-            this.sch_HallID.Location = new System.Drawing.Point(68, 155);
-            this.sch_HallID.Name = "sch_HallID";
-            this.sch_HallID.Size = new System.Drawing.Size(100, 20);
-            this.sch_HallID.TabIndex = 65;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(8, 160);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(47, 15);
-            this.label28.TabIndex = 64;
-            this.label28.Text = "Hall ID:";
-            // 
-            // SchViewBox
-            // 
-            this.SchViewBox.Location = new System.Drawing.Point(393, 3);
-            this.SchViewBox.Name = "SchViewBox";
-            this.SchViewBox.Size = new System.Drawing.Size(379, 265);
-            this.SchViewBox.TabIndex = 66;
-            this.SchViewBox.Text = "";
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(393, 274);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(154, 23);
-            this.button9.TabIndex = 67;
-            this.button9.Text = "Get Schedulers";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // DateSearchBox
-            // 
-            this.DateSearchBox.Location = new System.Drawing.Point(429, 300);
-            this.DateSearchBox.Name = "DateSearchBox";
-            this.DateSearchBox.Size = new System.Drawing.Size(118, 20);
-            this.DateSearchBox.TabIndex = 68;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(390, 303);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(33, 13);
-            this.label29.TabIndex = 69;
-            this.label29.Text = "Date:";
-            // 
-            // sch_Log
-            // 
-            this.sch_Log.Location = new System.Drawing.Point(13, 303);
-            this.sch_Log.Name = "sch_Log";
-            this.sch_Log.Size = new System.Drawing.Size(184, 45);
-            this.sch_Log.TabIndex = 70;
-            this.sch_Log.Text = "";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(13, 271);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(42, 24);
-            this.label30.TabIndex = 71;
-            this.label30.Text = "Log";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 460);
-            this.Controls.Add(this.sch_Panel);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.custo_Panel);
             this.Controls.Add(this.BookBox);
@@ -1054,7 +1054,7 @@
         private System.Windows.Forms.TextBox CusPhoneBox;
         private System.Windows.Forms.RichTextBox BookBox;
         private System.Windows.Forms.RichTextBox cus_LogBox;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button DeleteCustomerBtn;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox cus_CusID;
         private System.Windows.Forms.Label label20;

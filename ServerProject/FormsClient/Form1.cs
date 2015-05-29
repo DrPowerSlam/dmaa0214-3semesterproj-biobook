@@ -358,6 +358,7 @@ namespace FormsClient
                 cus_Name.Text = cus.name;
                 cus_Phone.Text = cus.phoneNumber;
                 cus_Email.Text = cus.mail;
+                cus_CusID.Text = cus.CusID.ToString();
             }
             catch
             {
