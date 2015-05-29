@@ -16,6 +16,8 @@ namespace ClientWebApp
     {
         CustomerServiceClient client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
         int schedulerID = 0;
+        static List<int> bestSeats;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -89,7 +91,7 @@ namespace ClientWebApp
         {
             int amount;
             Int32.TryParse(ddlTickets.SelectedItem.Value, out amount);
-            List<int> bestSeats = client.GetBestSeats(amount, schedulerID);
+            bestSeats = client.GetBestSeats(amount, schedulerID);
 
             if (bestSeats == null)
             {
@@ -100,20 +102,29 @@ namespace ClientWebApp
                 litSeatList.Text = "Rækken er: " + bestSeats[1].ToString() + " Total point er : " + bestSeats[0].ToString();
                 litSeatList.Text += " Sæderne er: ";
                 for (int x = 2; x < bestSeats.Count; x++)
-                    litSeatList.Text += bestSeats[x].ToString() + ", ";
+                    litSeatList.Text += (bestSeats[x].ToString() + ", ");
+                litSeatList.Text = litSeatList.Text.Remove(litSeatList.Text.Length - 2);
             }
 
             foreach (Seat s in client.GetAllSeatsBySchedulerID(schedulerID))
             {
                 litSeatList.Text += "</br> Række : " + s.Row + " Sæde : " + s.ColumnArray;
             }
+
             //ddlTickets.SelectedItem.Value;
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            //check her om brugeren er logger ind.
-            //Hvis brugeren er 
+            //If the user is logged in then get his customerID
+            int customerID = Convert.ToInt32(Session["UserID"]);
+            string seats = "";
+            for (int x = 2; x < bestSeats.Count; x++)
+                seats += bestSeats[x].ToString() + ", ";
+            seats = seats.Remove(seats.Length - 2);
+            
+            litMovieInfo.Text = seats;
+            client.MakeReservation(bestSeats[1].ToString(), seats, schedulerID, customerID);
             
         }
 
