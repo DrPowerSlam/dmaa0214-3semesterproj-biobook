@@ -21,9 +21,9 @@ namespace ConsoleApplication1
         static void Main(String[] arg)
         {            
             Program program = new Program();
+            ServerProject.ControllerLayer.CustomerController cusCtr = new CustomerController();
 
-            TimeSpan t = new TimeSpan(2);
-            DateTime d = new DateTime(3);
+            cusCtr.DeleteCustomer(42);
 
             //program.schCtr.CreateScheduler(d, t, 1, 1);
 
@@ -46,8 +46,7 @@ namespace ConsoleApplication1
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
             // Console.WriteLine(scheduler.MovieID);
-            ServerProject.ControllerLayer.ReserveController resCtr = new ReserveController();
-            resCtr.makeReservation("2,2,2", "0,2,3", 18, 1);
+            
 
             Console.ReadLine();
 

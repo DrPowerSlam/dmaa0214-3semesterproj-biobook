@@ -163,7 +163,6 @@ namespace ServerProject.DatabaseLayer
 
             Customer customer = GetCustomerByID(customerID);
             Customer customerToDelete = new Customer();
-            customerToDelete.name = customer.name;
             customerToDelete.CusID = customer.CusID;
 
             db.Customers.Attach(customerToDelete);
