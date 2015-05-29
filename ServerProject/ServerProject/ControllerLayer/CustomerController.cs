@@ -70,7 +70,7 @@ namespace ServerProject.ControllerLayer
         /// <param name="cusID">The ID of the customer to delete</param>
         public void DeleteCustomer(int cusID)
         {
-            dbCus.DeleteCustomer(dbCus.GetCustomerByID(cusID));
+            dbCus.DeleteCustomer(cusID);
         }
 
         public Customer getByPhone(string phone)

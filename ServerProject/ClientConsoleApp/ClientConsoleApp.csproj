@@ -53,8 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Customer.datasource" />
+    <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Movie1.datasource" />
     <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Reservation.datasource" />
     <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Scheduler.datasource" />
+    <None Include="Properties\DataSources\ServerProject.DatabaseLayer.Seat.datasource" />
+    <None Include="Service References\CustomerServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CustomerServiceReference\ServerProject.DatabaseLayer.xsd">
       <SubType>Designer</SubType>
     </None>
