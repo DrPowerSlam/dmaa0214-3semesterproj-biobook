@@ -48,7 +48,7 @@ namespace WCFConnectionLibrary
         Customer GetCustomerByID(int customerID);
 
         [OperationContract]
-        bool CustomerLogin(string userMail, string passWord);
+        Customer CustomerLogin(string userMail, string passWord);
 
         [OperationContract]
         void MakeScheduler(DateTime date, TimeSpan time, int movieID, int hallID);
