@@ -165,5 +165,11 @@ namespace WCFConnectionLibrary
             SchedulerController schCtr = new SchedulerController();
             return schCtr.GetByDate(date);
         }
+
+        public void UpdateCustomer(int schID, DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            SchedulerController schCtr = new SchedulerController();
+            schCtr.UpdateSchedulers(schID, date, time, movieID, hallID);
+        }
     }
 }
