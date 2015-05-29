@@ -66,3 +66,11 @@ packages/
 
 #Test files
 *.testsettings
+*.datasource
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/Arrays.xsd
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/configuration.svcinfo
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/Reference.svcmap
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/configuration91.svcinfo
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/configuration.svcinfo
+ServerProject/ClientConsoleApp/Service References/CustomerServiceReference/Reference.cs
+*.wsdl
