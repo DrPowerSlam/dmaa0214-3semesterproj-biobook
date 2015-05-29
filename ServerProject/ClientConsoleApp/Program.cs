@@ -22,8 +22,7 @@ namespace ConsoleApplication1
         {            
             Program program = new Program();
             ServerProject.ControllerLayer.CustomerController cusCtr = new CustomerController();
-
-            cusCtr.DeleteCustomer(42);
+            cusCtr.UpdateCustomer(45, "pulsemand", "puls", "22", null);
 
             //program.schCtr.CreateScheduler(d, t, 1, 1);
 
