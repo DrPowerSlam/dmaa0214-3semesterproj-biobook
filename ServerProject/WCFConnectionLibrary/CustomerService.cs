@@ -110,7 +110,7 @@ namespace WCFConnectionLibrary
         }
 
         // get user login
-        public bool CustomerLogin(string userMail, string passWord)
+        public Customer CustomerLogin(string userMail, string passWord)
         {
             CustomerController customerCtr = new CustomerController();
 

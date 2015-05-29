@@ -49,8 +49,7 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="Registrer.aspx" visible="true" runat="server" id="reg">REGISTRER</a></li>
-                            <li><a href="Login.aspx" visible="true" runat="server" id="log">LOG IND</a></li>
+                           
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                                  </asp:ContentPlaceHolder>
 

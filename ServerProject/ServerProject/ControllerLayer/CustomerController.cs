@@ -32,7 +32,7 @@ namespace ServerProject.ControllerLayer
             return dbCus.GetCustomerByID(ID);
         }
 
-        public bool CustomerLogin(string userMail, string passWord)
+        public Customer CustomerLogin(string userMail, string passWord)
         {
          
             return dbCus.CustomerLogin(userMail, passWord);

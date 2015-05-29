@@ -58,7 +58,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="container">
+         <%--   <div class="container">
 
                 <div class="form-signin">
 
@@ -71,6 +71,37 @@
                         </asp:Login>
                     </p>
 
+
+                    <p>
+                    </p>
+
+                    <asp:Button ID="btnLogin" runat="server" Text ="Log ind" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" />
+                    
+
+                    <br />
+                    <a href="#">Glemt adgangskode?</a>
+                    <br />
+
+
+                </div>
+
+
+
+            </div>
+            <!-- /container -->--%>
+
+                  <div class="container">
+
+                <div class="form-signin">
+
+                    <h2 class="form-signin-heading">Log ind</h2>
+
+                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control" placeholder="E-mail"></asp:TextBox>
+ 
+                    <p>
+                    </p>
+
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Adgangskode"></asp:TextBox>
 
                     <p>
                     </p>

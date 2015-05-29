@@ -22,21 +22,30 @@ namespace ClientWebApp.UI {
         protected global::System.Web.UI.WebControls.Literal litUser;
         
         /// <summary>
-        /// LoginName1 control.
+        /// reg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginName LoginName1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor reg;
         
         /// <summary>
-        /// LoginStatus1 control.
+        /// log control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor log;
+        
+        /// <summary>
+        /// logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logout;
     }
 }

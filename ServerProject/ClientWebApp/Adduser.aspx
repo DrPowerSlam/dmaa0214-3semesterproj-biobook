@@ -42,3 +42,9 @@
   
 
 </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <li><a href="Registrer.aspx" visible="true" runat="server" id="reg">REGISTRER</a></li>
+    <li><a href="Login.aspx" visible="true" runat="server" id="log">LOG IND</a></li>
+
+</asp:Content>
+

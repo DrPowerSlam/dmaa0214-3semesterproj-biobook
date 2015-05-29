@@ -6,9 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using ClientWebApp.CustomerServiceReference;
+
 using ServerProject.DatabaseLayer;
+using ServerProject.ControllerLayer;
 using System.Web.Security;
 using System.Web.Services.Description;
+using System.Data;
 
 
 namespace ClientWebApp
@@ -16,34 +19,39 @@ namespace ClientWebApp
     public partial class Login : System.Web.UI.Page
     {
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-
-
+         
+            
         }
+
+
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            /*if (ValidateUser(txtMail.Text, txtPassword.Text))
+
+
+
+
+            if (ValidateUser(txtMail.Text, txtPassword.Text))
             {
+                Customer customer = clien
+
+                Session["userID"] = 
+               // Session["userID"] = txtMail.Text;
                 FormsAuthentication.RedirectFromLoginPage(txtMail.Text, false);
-                Response.Redirect("UI/Startpage.aspx");
+
+
             }
 
-            else
-            {
-                Response.Redirect("Default.aspx", true);
-            }*/
-               
+            
 
 
         }
 
         private bool ValidateUser(string userName, string passWord)
         {
+            
 
             var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
        
@@ -51,6 +59,11 @@ namespace ClientWebApp
 
             customer.mail = userName;
             customer.password = passWord;
+
+            
+            
+          //  Session["cusID"] = customer.CusID;
+            
 
             Page.Validate();
             
@@ -67,6 +80,8 @@ namespace ClientWebApp
                 {
                     if (client.CustomerLogin(customer.mail, customer.password))
                     {
+                      
+
                         return true;
                     }
                 }
@@ -79,38 +94,7 @@ namespace ClientWebApp
             return false;
         }
 
-        protected void loginWebsite_LoggingIn(object sender, LoginCancelEventArgs e)
-        {
-            //Check if there are texts in the fields etc. Right now there is none.
-            loginWebsite.InstructionText = "";
-        }
-
-        protected void loginWebsite_Authenticate(object sender, AuthenticateEventArgs e)
-        {
-
-            if (ValidateUser(loginWebsite.UserName, loginWebsite.Password))
-            {
-                //Membership.CreateUser(loginWebsite.UserName, loginWebsite.Password);
-                e.Authenticated = true;
-                //Response.Redirect(FormsAuthentication.GetRedirectUrl(loginWebsite.UserName, false));
-                loginWebsite.InstructionText = "Login successful";
-            }
-
-            else
-            {
-                e.Authenticated = false;
-                loginWebsite.InstructionText = "Login Failed Redirecting";
-                Response.Redirect("Default.aspx", true);
-            }
-        }
-
-        protected void loginWebsite_LoggedIn(object sender, EventArgs e)
-        {
-            //When the user has logged in.
-            FormsAuthentication.RedirectFromLoginPage(loginWebsite.UserName, loginWebsite.RememberMeSet);
-            //Response.Redirect("UI/Startpage.aspx");
-        }
-
+     
 
     }
 

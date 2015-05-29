@@ -63,6 +63,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Adduser.aspx" />
     <Content Include="bin\ClientWebApp.dll" />
     <Content Include="bin\ClientWebApp.pdb" />
     <Content Include="bin\ServerProject.dll" />
@@ -102,7 +103,14 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LoginFac.cs" />
+    <Content Include="App_Code\LoginFac.cs" />
+    <Compile Include="Adduser.aspx.cs">
+      <DependentUpon>Adduser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adduser.aspx.designer.cs">
+      <DependentUpon>Adduser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,7 +195,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>

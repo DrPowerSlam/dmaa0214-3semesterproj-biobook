@@ -47,20 +47,18 @@ namespace ServerProject.DatabaseLayer
             return customer;
         }
 
-        public bool CustomerLogin(string userMail, string passWord)
+        public Customer CustomerLogin(string userMail, string passWord)
         {
             try
             {
                 var db = new ConnectToDatabaseDataContext();
 
-                Customer user = (from m in db.Customers
-                                 where m.mail.ToLower() == userMail.ToLower() &&
-                                     m.password == passWord
-                                 select m).SingleOrDefault();
+                Customer user = (from c in db.Customers where c.mail.ToLower() == userMail.ToLower() && c.password == passWord   select  c).SingleOrDefault();
 
-                if (user != null)
+                if (user.CusID > 0)
                 {
-                    return true;
+                 
+                    return user;
                 }
 
             }
@@ -69,8 +67,7 @@ namespace ServerProject.DatabaseLayer
                 System.Diagnostics.Trace.WriteLine("[ValidateUser] Exception " + ex.Message);
             }
 
-            return false;
-
+            return null;
         }
 
         /// <summary>

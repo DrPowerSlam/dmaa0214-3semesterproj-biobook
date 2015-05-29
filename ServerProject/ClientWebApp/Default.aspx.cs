@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.Linq;
+using System.Web.Security;
 using ClientWebApp.CustomerServiceReference;
 using ServerProject.DatabaseLayer;
 
@@ -15,6 +16,35 @@ namespace ClientWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+
+
+            
+
+            if ( val1 == true)
+            {
+                reg.Visible = false;
+                log.Visible = false;
+                logout.Visible = true;
+
+               
+            }
+
+            if (val1 == false)
+            {
+                reg.Visible = true;
+                log.Visible = true;
+                logout.Visible = false;
+             
+           
+
+              //  
+
+                
+            }
+
+
+
             var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
             if (!IsPostBack)
             {
@@ -92,5 +122,13 @@ namespace ClientWebApp
             }
 
         }
+
+        public void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            FormsAuthentication.SignOut();
+            // Response.Redirect("../Login.aspx");
+        }
+
     }
 }

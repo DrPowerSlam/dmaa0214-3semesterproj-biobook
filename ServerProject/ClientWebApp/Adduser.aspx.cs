@@ -13,7 +13,7 @@ namespace ClientWebApp
 {
     public partial class Adduser : System.Web.UI.Page
     {
-        //var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
+     
 
         CustomerServiceClient client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
         protected void Page_Load(object sender, EventArgs e)
