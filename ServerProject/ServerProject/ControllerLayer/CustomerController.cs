@@ -77,5 +77,10 @@ namespace ServerProject.ControllerLayer
         {
             return dbCus.GetByPhone(phone);
         }
+
+        public void UpdateCustomer(int customerID, string name, string email, string phone, string password)
+        {
+            dbCus.UpdateCustomer(customerID, name, email, phone, password);
+        }
     }
 }

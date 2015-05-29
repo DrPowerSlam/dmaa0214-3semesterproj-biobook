@@ -194,7 +194,7 @@ namespace ServerProject.DatabaseLayer
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
 
             db.Connection.Open();
-            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
+           // db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             Customer customer = GetCustomerByID(customerID);
 
             customer.mail = email;
@@ -205,8 +205,8 @@ namespace ServerProject.DatabaseLayer
             try
             {
                 db.SubmitChanges();
-                db.Transaction.Commit();
-                db.Transaction.Dispose();
+               // db.Transaction.Commit();
+               // db.Transaction.Dispose();
                 db.Connection.Close();
             }
             catch (Exception e)

@@ -171,5 +171,11 @@ namespace WCFConnectionLibrary
             SchedulerController schCtr = new SchedulerController();
             schCtr.UpdateSchedulers(schID, date, time, movieID, hallID);
         }
+
+        public void UpdateCustomer(int customerID, string name, string email, string phone, string password)
+        {
+            CustomerController cusCtr = new CustomerController();
+            cusCtr.UpdateCustomer(customerID, name, email, phone, password);
+        }
     }
 }

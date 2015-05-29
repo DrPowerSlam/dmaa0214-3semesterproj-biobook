@@ -735,6 +735,12 @@ namespace FormsClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateScheduler", ReplyAction="http://tempuri.org/ICustomerService/UpdateSchedulerResponse")]
         System.Threading.Tasks.Task UpdateSchedulerAsync(int schID, System.DateTime date, System.TimeSpan time, int movieID, int hallID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateCustomer", ReplyAction="http://tempuri.org/ICustomerService/UpdateCustomerResponse")]
+        void UpdateCustomer(int customerID, string name, string email, string phone, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateCustomer", ReplyAction="http://tempuri.org/ICustomerService/UpdateCustomerResponse")]
+        System.Threading.Tasks.Task UpdateCustomerAsync(int customerID, string name, string email, string phone, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -930,6 +936,14 @@ namespace FormsClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task UpdateSchedulerAsync(int schID, System.DateTime date, System.TimeSpan time, int movieID, int hallID) {
             return base.Channel.UpdateSchedulerAsync(schID, date, time, movieID, hallID);
+        }
+        
+        public void UpdateCustomer(int customerID, string name, string email, string phone, string password) {
+            base.Channel.UpdateCustomer(customerID, name, email, phone, password);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCustomerAsync(int customerID, string name, string email, string phone, string password) {
+            return base.Channel.UpdateCustomerAsync(customerID, name, email, phone, password);
         }
     }
 }

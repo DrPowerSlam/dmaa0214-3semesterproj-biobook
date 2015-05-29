@@ -76,5 +76,8 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         void UpdateScheduler(int schID, DateTime date, TimeSpan time, int movieID, int hallID);
+
+        [OperationContract]
+        void UpdateCustomer(int customerID, string name, string email, string phone, string password);
     }
 }

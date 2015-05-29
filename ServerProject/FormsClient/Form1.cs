@@ -331,7 +331,16 @@ namespace FormsClient
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            cus_LogBox.Clear();
+            try
+            {
+                client.UpdateCustomer(int.Parse(cus_CusID.Text), cus_Name.Text, cus_Email.Text, cus_Phone.Text, null);
+                cus_LogBox.AppendText("Customer was updated");
+            }
+            catch
+            {
+                cus_LogBox.AppendText("Nothing was changed, does the customer exist?");
+            }
         }
 
         private void button4_Click_1(object sender, EventArgs e)
