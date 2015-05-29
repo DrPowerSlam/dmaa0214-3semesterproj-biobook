@@ -46,7 +46,6 @@ namespace ConsoleApplication1
             //Console.WriteLine(scheduler.Movie.name);
             //Console.WriteLine(program.movCtr.findMovieByID(1).name);
             // Console.WriteLine(scheduler.MovieID);
-            
 
             Console.ReadLine();
 
