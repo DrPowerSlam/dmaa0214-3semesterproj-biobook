@@ -71,5 +71,10 @@ namespace ServerProject.ControllerLayer
         {
            return dbSch.GetByDate(date);
         }
+
+        public void UpdateSchedulers(int schID, DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            dbSch.UpdateSchedulers(schID, date, time, movieID, hallID);
+        }
     }
 }

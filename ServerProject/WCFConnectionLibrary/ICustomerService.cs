@@ -73,5 +73,8 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         List<Scheduler> GetSchListByDate(DateTime date);
+
+        [OperationContract]
+        void UpdateScheduler(int schID, DateTime date, TimeSpan time, int movieID, int hallID);
     }
 }

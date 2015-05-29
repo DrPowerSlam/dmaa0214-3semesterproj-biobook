@@ -22,7 +22,7 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c98ea1ea-bdfc-442d-b3ec-be29dece8d33" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="294c1d7d-a43e-40c2-8e3c-d64f7a7123d6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="c6c3d681-e337-44a6-9092-b906d446da98" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="05279627-2ab2-4b08-93a4-acc8b6eb3c5a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" />
     <MetadataFile FileName="ServerProject.DatabaseLayer.xsd" MetadataType="Schema" ID="45d64242-e61d-422a-a29f-25eff516a3d8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFConnectionLibrary/Service1/mex" />
