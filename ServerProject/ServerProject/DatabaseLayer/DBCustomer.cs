@@ -156,13 +156,13 @@ namespace ServerProject.DatabaseLayer
         /// </summary>
         /// <param name="customer">The customer object from the database to delete</param>
         /// <returns>Returns a control integer. 1 for success, -1 for failure</returns>
-        public int DeleteCustomer(Customer customer)
+        public int DeleteCustomer(int customerID)
         {
             int controlInt = -1;
             var db = new ConnectToDatabaseDataContext();
 
+            Customer customer = GetCustomerByID(customerID);
             Customer customerToDelete = new Customer();
-            customerToDelete.name = customer.name;
             customerToDelete.CusID = customer.CusID;
 
             db.Customers.Attach(customerToDelete);
@@ -195,7 +195,7 @@ namespace ServerProject.DatabaseLayer
 
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
-            Customer customer = GetCustomerByID(customerID);
+            Customer customer = db.Customers.Single(x => x.CusID == customerID);
 
             customer.mail = email;
             customer.name = name;
