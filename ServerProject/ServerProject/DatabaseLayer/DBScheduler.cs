@@ -157,6 +157,31 @@ namespace ServerProject.DatabaseLayer
             db.SubmitChanges();
         }
 
+        public void UpdateSchedulers(int schID, DateTime date, TimeSpan time, int movieID, int hallID)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
 
+            Scheduler scheduler = db.Schedulers.Single(x => x.SchID == schID);
+
+            scheduler.Date = date;
+            scheduler.Starttime = time;
+            scheduler.MovieID = movieID;
+            scheduler.HallID = hallID;
+
+            try
+            {
+                db.SubmitChanges();
+                db.Transaction.Commit();
+                db.Transaction.Dispose();
+                db.Connection.Close();
+            }
+            catch (Exception e)
+            {
+                db.Transaction.Rollback();
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }
