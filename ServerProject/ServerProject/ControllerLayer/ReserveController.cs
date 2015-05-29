@@ -121,5 +121,10 @@ namespace ServerProject.ControllerLayer
         {
             dbRes.UpdateReservation(customerID, row, seatArray, schedulerID);
         }
+
+        public List<Reservation> GetResByCusPhone(string phone)
+        {
+            return dbRes.GetReservationByCusPhone(phone);
+        }
     }
 }

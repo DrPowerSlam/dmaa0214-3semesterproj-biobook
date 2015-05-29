@@ -58,7 +58,7 @@ namespace FormsClient
 
         private void res_Reservation_Click(object sender, EventArgs e)
         {
-            sch_Panel.Visible = true;
+            sch_Panel.Visible = false;
             custo_Panel.Visible = false;
         }
 
@@ -162,13 +162,24 @@ namespace FormsClient
             List<Movie> movieList = new List<Movie>();
             movieList = client.GetAllMovies().ToList();
             string copier = "";
-            foreach(Movie m in movieList)
+            try
             {
-                string id = m.MovieID.ToString();
-                copier += m.name + "  " + "id: " + id + "\n";
+                foreach (Movie m in movieList)
+                {
+                    string id = m.MovieID.ToString();
+                    copier += m.name + "  " + "id: " + id + "\n";
+                }
+                MovieBox.Clear();
+                if(copier == "")
+                {
+                    MovieBox.AppendText("No Movies Found");
+                }
+                MovieBox.AppendText(copier);
             }
-            MovieBox.Clear();
-            MovieBox.AppendText(copier);
+            catch
+            {
+                MovieBox.AppendText("Something went wrong");
+            }
         }
 
         private void MovieTextBox_TextChanged(object sender, EventArgs e)
@@ -199,27 +210,226 @@ namespace FormsClient
 
         private void button5_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Customer cus = client.GetCustomerByPhone(CusPhoneBox.Text);
+                client.MakeReservation(RowBox.Text, SeatsBox.Text, int.Parse(SchIdBox3.Text), cus.CusID);
+
+                BookBox.AppendText("Reservation was made for " + cus.name);
+            }
+            catch
+            {
+                BookBox.AppendText("Customer doesn't exist, or the chosen seats aren't available");
+            }
         }
 
         private void GetAvailableSeatsBtn_Click(object sender, EventArgs e)
         {
             AvailableSeatBox.Clear();
-            int[][] array = client.GetAllAvailableSeats(int.Parse(SchID2Box.Text));
-            string copier = "Row     Seats\n";
-            for(int x = 0; x < array.Length; x++)
+
+            try
             {
-                copier += x+1 + "     " + array[x][0];
-                for(int y = 1; y < array[x].Length; y++)
+                int[][] array = client.GetAllAvailableSeats(int.Parse(SchID2Box.Text));
+                string copier = "Row     Seats\n";
+                for (int x = 0; x < array.Length; x++)
                 {
+                    copier += x + 1 + "     " + array[x][0];
+                    for (int y = 1; y < array[x].Length; y++)
+                    {
                         copier += "-" + array[x][y];
+                    }
+                    copier += "\n";
                 }
-                copier += "\n";
+                AvailableSeatBox.AppendText(copier);
             }
-            AvailableSeatBox.AppendText(copier);
+            catch
+            {
+                AvailableSeatBox.AppendText("Something went wrong, does the specified scheduler exist?");
+            }
 
         }
 
         private void richTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Customer c = client.GetCustomerByPhone(PhoneBox.Text);
+                res_CusName.Text = c.name;
+                res_CusPhone.Text = c.phoneNumber;
+                res_CusEmail.Text = c.mail;
+            }
+
+            catch
+            {
+                res_CusPhone.Text = "None found";
+                res_CusName.Text = "None found";
+                res_CusEmail.Text = "None found";
+            }
+        }
+
+        private void GetRes_Click(object sender, EventArgs e)
+        {
+            string copier = "";
+            ReserveListBox.Clear();
+            try
+            {
+                List<Reservation> list = client.GetResByCusPhone(PhoneBox.Text).ToList();
+
+                foreach (Reservation res in list)
+                {
+                    copier += "Row: " + res.Row + "\nSeats: " + res.Seat + "\n";
+                    copier += "-----------------------------------";
+                }
+                ReserveListBox.AppendText(copier);
+            }
+            catch
+            {
+                ReserveListBox.AppendText("No reservations found");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                client.MakeCustomer(res_CusName.Text, res_CusPhone.Text, null, res_CusEmail.Text);
+            }
+            catch
+            {
+                res_CusEmail.AppendText("Error when creating");
+            }
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            cus_LogBox.Clear();
+            try
+            {
+                client.MakeCustomer(cus_Name.Text, cus_Phone.Text, null, cus_Email.Text);
+                cus_LogBox.AppendText("Customer was createed\n");
+            }
+            catch
+            {
+                cus_LogBox.AppendText("Something went wrong while trying to create customer");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            cus_LogBox.Clear();
+            try
+            {
+                client.DeleteCustomer(int.Parse(cus_CusID.Text));
+                cus_LogBox.AppendText("Customer deleted");
+
+            }
+            catch
+            {
+                cus_LogBox.AppendText("Could not delete customer, does the selected customer exist?");
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            cus_LogBox.Clear();
+            try
+            {
+                Customer cus = client.GetCustomerByPhone(cus_PhoneBox.Text);
+                cus_Name.Text = cus.name;
+                cus_Phone.Text = cus.phoneNumber;
+                cus_Email.Text = cus.mail;
+            }
+            catch
+            {
+                cus_LogBox.AppendText("Could not find customer");
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            SchViewBox.Clear();
+            try
+            {
+                DateTime date = Convert.ToDateTime(DateSearchBox.Text);  
+                List<Scheduler> list = client.GetSchListByDate(date).ToList();
+                if (0 < list.Count())
+                {
+                    string copier = "-----------------------------------------\n";
+                    foreach (Scheduler sch in list)
+                    {
+                        copier += " ID: " + sch.SchID + "\n Date: " + sch.Date + "\n Time: " + sch.Starttime + "\n Hall: " + sch.HallID;
+                        copier += "\n -----------------------------------\n";
+                    }
+                    SchedulerBox.AppendText(copier);
+                }
+                else
+                {
+                    SchedulerBox.AppendText("There are no Schedulers for that date");
+                }
+            }
+            catch
+            {
+                SchViewBox.AppendText("Something went wrong");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            sch_Log.Clear();
+            try
+            {
+                DateTime date = Convert.ToDateTime(sch_Date.Text);
+                TimeSpan time = TimeSpan.Parse(sch_Time.Text);
+
+                client.MakeScheduler(date, time, int.Parse(sch_MovieID.Text), int.Parse(sch_HallID.Text));
+                sch_Log.AppendText("Succesfully created scheduler");
+            }
+            catch
+            {
+                sch_Log.AppendText("Something went wrong, scheduler not created");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            sch_Log.Clear();
+
+            try
+            {
+                Scheduler sch = client.GetSchedulerByID(int.Parse(idSearchBox.Text));
+                sch_Date.Text = sch.Date.ToString();
+                sch_Time.Text = sch.Starttime.ToString();
+                sch_MovieID.Text = sch.MovieID.ToString();
+                sch_HallID.Text = sch.HallID.ToString();
+                idBox1.Text = sch.SchID.ToString();
+            }
+            catch
+            {
+                sch_Log.AppendText("Could not find Scheduler");
+            }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -78,5 +78,18 @@ namespace ServerProject.DatabaseLayer
             }
 
         }
+
+        public List<Reservation> GetReservationByCusPhone(string phone)
+        {
+            DBCustomer dbC = new DBCustomer();
+            Customer cus = dbC.GetByPhone(phone);
+            int id = cus.CusID;
+
+            List<Reservation> list = new List<Reservation>();
+            var db = new ConnectToDatabaseDataContext();
+            list = db.Reservations.Select(x => x).Where(x => x.CustomerID == id).ToList();
+            return list;
+
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace FormsClient.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+
     [System.Runtime.Serialization.DataContractAttribute(Name="Seat", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
     [System.SerializableAttribute()]
     public partial class Seat : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -109,29 +110,32 @@ namespace FormsClient.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Movie", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+
     [System.SerializableAttribute()]
-    public partial class Movie : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MovieIDField;
+        private int CusIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PlaytimeField;
+        private string phoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PriceField;
+        private string passwordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ImageField;
+        private string mailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private FormsClient.ServiceReference1.Scheduler[] SchedulersField;
+        private FormsClient.ServiceReference1.Reservation[] ReservationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -144,6 +148,382 @@ namespace FormsClient.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CusID {
+            get {
+                return this.CusIDField;
+            }
+            set {
+                if ((this.CusIDField.Equals(value) != true)) {
+                    this.CusIDField = value;
+                    this.RaisePropertyChanged("CusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
+                    this.phoneNumberField = value;
+                    this.RaisePropertyChanged("phoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string mail {
+            get {
+                return this.mailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.mailField, value) != true)) {
+                    this.mailField = value;
+                    this.RaisePropertyChanged("mail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public FormsClient.ServiceReference1.Reservation[] Reservations {
+            get {
+                return this.ReservationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReservationsField, value) != true)) {
+                    this.ReservationsField = value;
+                    this.RaisePropertyChanged("Reservations");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reservation", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Reservation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ResIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CustomerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SchedulerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SeatField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ResID {
+            get {
+                return this.ResIDField;
+            }
+            set {
+                if ((this.ResIDField.Equals(value) != true)) {
+                    this.ResIDField = value;
+                    this.RaisePropertyChanged("ResID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.Nullable<int> CustomerID {
+            get {
+                return this.CustomerIDField;
+            }
+            set {
+                if ((this.CustomerIDField.Equals(value) != true)) {
+                    this.CustomerIDField = value;
+                    this.RaisePropertyChanged("CustomerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> SchedulerID {
+            get {
+                return this.SchedulerIDField;
+            }
+            set {
+                if ((this.SchedulerIDField.Equals(value) != true)) {
+                    this.SchedulerIDField = value;
+                    this.RaisePropertyChanged("SchedulerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string Row {
+            get {
+                return this.RowField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowField, value) != true)) {
+                    this.RowField = value;
+                    this.RaisePropertyChanged("Row");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string Seat {
+            get {
+                return this.SeatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SeatField, value) != true)) {
+                    this.SeatField = value;
+                    this.RaisePropertyChanged("Seat");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reservation", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Reservation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ResIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CustomerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SchedulerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SeatField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ResID {
+            get {
+                return this.ResIDField;
+            }
+            set {
+                if ((this.ResIDField.Equals(value) != true)) {
+                    this.ResIDField = value;
+                    this.RaisePropertyChanged("ResID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.Nullable<int> CustomerID {
+            get {
+                return this.CustomerIDField;
+            }
+            set {
+                if ((this.CustomerIDField.Equals(value) != true)) {
+                    this.CustomerIDField = value;
+                    this.RaisePropertyChanged("CustomerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> SchedulerID {
+            get {
+                return this.SchedulerIDField;
+            }
+            set {
+                if ((this.SchedulerIDField.Equals(value) != true)) {
+                    this.SchedulerIDField = value;
+                    this.RaisePropertyChanged("SchedulerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string Row {
+            get {
+                return this.RowField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RowField, value) != true)) {
+                    this.RowField = value;
+                    this.RaisePropertyChanged("Row");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public string Seat {
+            get {
+                return this.SeatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SeatField, value) != true)) {
+                    this.SeatField = value;
+                    this.RaisePropertyChanged("Seat");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+
+    [System.Runtime.Serialization.DataContractAttribute(Name="Movie", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
+    [System.SerializableAttribute()]
+    public partial class Movie : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+
+        private int CusIDField;
+
+        private int MovieIDField;
+
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+
+        private string phoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string mailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FormsClient.ServiceReference1.Reservation[] ReservationsField;
+
+        private System.Nullable<int> PlaytimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FormsClient.ServiceReference1.Scheduler[] SchedulersField;
+
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+
+        public int CusID {
+            get {
+                return this.CusIDField;
+            }
+            set {
+                if ((this.CusIDField.Equals(value) != true)) {
+                    this.CusIDField = value;
+                    this.RaisePropertyChanged("CusID");
+
         public int MovieID {
             get {
                 return this.MovieIDField;
@@ -280,10 +660,22 @@ namespace FormsClient.ServiceReference1 {
                 if ((this.SchIDField.Equals(value) != true)) {
                     this.SchIDField = value;
                     this.RaisePropertyChanged("SchID");
+
                 }
             }
         }
         
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+
         [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public System.Nullable<System.DateTime> Date {
             get {
@@ -293,10 +685,22 @@ namespace FormsClient.ServiceReference1 {
                 if ((this.DateField.Equals(value) != true)) {
                     this.DateField = value;
                     this.RaisePropertyChanged("Date");
+
                 }
             }
         }
         
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
+                    this.phoneNumberField = value;
+                    this.RaisePropertyChanged("phoneNumber");
+
         [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
         public System.Nullable<System.TimeSpan> Starttime {
             get {
@@ -306,11 +710,22 @@ namespace FormsClient.ServiceReference1 {
                 if ((this.StarttimeField.Equals(value) != true)) {
                     this.StarttimeField = value;
                     this.RaisePropertyChanged("Starttime");
+
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+
         public System.Nullable<int> MovieID {
             get {
                 return this.MovieIDField;
@@ -319,11 +734,22 @@ namespace FormsClient.ServiceReference1 {
                 if ((this.MovieIDField.Equals(value) != true)) {
                     this.MovieIDField = value;
                     this.RaisePropertyChanged("MovieID");
+
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+
+        public string mail {
+            get {
+                return this.mailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.mailField, value) != true)) {
+                    this.mailField = value;
+                    this.RaisePropertyChanged("mail");
+
         public System.Nullable<int> HallID {
             get {
                 return this.HallIDField;
@@ -332,11 +758,13 @@ namespace FormsClient.ServiceReference1 {
                 if ((this.HallIDField.Equals(value) != true)) {
                     this.HallIDField = value;
                     this.RaisePropertyChanged("HallID");
+
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+
         public FormsClient.ServiceReference1.Seat[] Seats {
             get {
                 return this.SeatsField;
@@ -350,240 +778,7 @@ namespace FormsClient.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public FormsClient.ServiceReference1.Reservation[] Reservations {
-            get {
-                return this.ReservationsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReservationsField, value) != true)) {
-                    this.ReservationsField = value;
-                    this.RaisePropertyChanged("Reservations");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Reservation", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
-    [System.SerializableAttribute()]
-    public partial class Reservation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ResIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> CustomerIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SchedulerIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RowField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SeatField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ResID {
-            get {
-                return this.ResIDField;
-            }
-            set {
-                if ((this.ResIDField.Equals(value) != true)) {
-                    this.ResIDField = value;
-                    this.RaisePropertyChanged("ResID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public System.Nullable<int> CustomerID {
-            get {
-                return this.CustomerIDField;
-            }
-            set {
-                if ((this.CustomerIDField.Equals(value) != true)) {
-                    this.CustomerIDField = value;
-                    this.RaisePropertyChanged("CustomerID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> SchedulerID {
-            get {
-                return this.SchedulerIDField;
-            }
-            set {
-                if ((this.SchedulerIDField.Equals(value) != true)) {
-                    this.SchedulerIDField = value;
-                    this.RaisePropertyChanged("SchedulerID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public string Row {
-            get {
-                return this.RowField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RowField, value) != true)) {
-                    this.RowField = value;
-                    this.RaisePropertyChanged("Row");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public string Seat {
-            get {
-                return this.SeatField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SeatField, value) != true)) {
-                    this.SeatField = value;
-                    this.RaisePropertyChanged("Seat");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/ServerProject.DatabaseLayer")]
-    [System.SerializableAttribute()]
-    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CusIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string phoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string mailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private FormsClient.ServiceReference1.Reservation[] ReservationsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CusID {
-            get {
-                return this.CusIDField;
-            }
-            set {
-                if ((this.CusIDField.Equals(value) != true)) {
-                    this.CusIDField = value;
-                    this.RaisePropertyChanged("CusID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string phoneNumber {
-            get {
-                return this.phoneNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
-                    this.phoneNumberField = value;
-                    this.RaisePropertyChanged("phoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public string mail {
-            get {
-                return this.mailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.mailField, value) != true)) {
-                    this.mailField = value;
-                    this.RaisePropertyChanged("mail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+
         public FormsClient.ServiceReference1.Reservation[] Reservations {
             get {
                 return this.ReservationsField;
@@ -610,6 +805,14 @@ namespace FormsClient.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ICustomerService")]
     public interface ICustomerService {
         
+
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByEmail", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByEmailResponse")]
+        FormsClient.ServiceReference1.Customer GetCustomerByEmail(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByEmail", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByEmailResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByEmailAsync(string username);
+        
+
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllSeatsBySchedulerID", ReplyAction="http://tempuri.org/ICustomerService/GetAllSeatsBySchedulerIDResponse")]
         FormsClient.ServiceReference1.Seat[] GetAllSeatsBySchedulerID(int schedulerID);
         
@@ -693,6 +896,38 @@ namespace FormsClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchedulerListByMovieID", ReplyAction="http://tempuri.org/ICustomerService/GetSchedulerListByMovieIDResponse")]
         System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchedulerListByMovieIDAsync(int movieID);
+
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllAvailableSeats", ReplyAction="http://tempuri.org/ICustomerService/GetAllAvailableSeatsResponse")]
+        int[][] GetAllAvailableSeats(int schID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetAllAvailableSeats", ReplyAction="http://tempuri.org/ICustomerService/GetAllAvailableSeatsResponse")]
+        System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByPhone", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByPhoneResponse")]
+        FormsClient.ServiceReference1.Customer GetCustomerByPhone(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByPhone", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByPhoneResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByPhoneAsync(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetResByCusPhone", ReplyAction="http://tempuri.org/ICustomerService/GetResByCusPhoneResponse")]
+        FormsClient.ServiceReference1.Reservation[] GetResByCusPhone(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetResByCusPhone", ReplyAction="http://tempuri.org/ICustomerService/GetResByCusPhoneResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Reservation[]> GetResByCusPhoneAsync(string phone);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteCustomer", ReplyAction="http://tempuri.org/ICustomerService/DeleteCustomerResponse")]
+        void DeleteCustomer(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteCustomer", ReplyAction="http://tempuri.org/ICustomerService/DeleteCustomerResponse")]
+        System.Threading.Tasks.Task DeleteCustomerAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchListByDate", ReplyAction="http://tempuri.org/ICustomerService/GetSchListByDateResponse")]
+        FormsClient.ServiceReference1.Scheduler[] GetSchListByDate(System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetSchListByDate", ReplyAction="http://tempuri.org/ICustomerService/GetSchListByDateResponse")]
+        System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchListByDateAsync(System.DateTime date);
+
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -722,6 +957,16 @@ namespace FormsClient.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
+
+        public FormsClient.ServiceReference1.Customer GetCustomerByEmail(string username) {
+            return base.Channel.GetCustomerByEmail(username);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByEmailAsync(string username) {
+            return base.Channel.GetCustomerByEmailAsync(username);
+        }
+        
+
         public FormsClient.ServiceReference1.Seat[] GetAllSeatsBySchedulerID(int schedulerID) {
             return base.Channel.GetAllSeatsBySchedulerID(schedulerID);
         }
@@ -833,5 +1078,46 @@ namespace FormsClient.ServiceReference1 {
         public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchedulerListByMovieIDAsync(int movieID) {
             return base.Channel.GetSchedulerListByMovieIDAsync(movieID);
         }
+
+        public int[][] GetAllAvailableSeats(int schID) {
+            return base.Channel.GetAllAvailableSeats(schID);
+        }
+        
+        public System.Threading.Tasks.Task<int[][]> GetAllAvailableSeatsAsync(int schID) {
+            return base.Channel.GetAllAvailableSeatsAsync(schID);
+        }
+        
+        public FormsClient.ServiceReference1.Customer GetCustomerByPhone(string phone) {
+            return base.Channel.GetCustomerByPhone(phone);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Customer> GetCustomerByPhoneAsync(string phone) {
+            return base.Channel.GetCustomerByPhoneAsync(phone);
+        }
+        
+        public FormsClient.ServiceReference1.Reservation[] GetResByCusPhone(string phone) {
+            return base.Channel.GetResByCusPhone(phone);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Reservation[]> GetResByCusPhoneAsync(string phone) {
+            return base.Channel.GetResByCusPhoneAsync(phone);
+        }
+        
+        public void DeleteCustomer(int id) {
+            base.Channel.DeleteCustomer(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCustomerAsync(int id) {
+            return base.Channel.DeleteCustomerAsync(id);
+        }
+        
+        public FormsClient.ServiceReference1.Scheduler[] GetSchListByDate(System.DateTime date) {
+            return base.Channel.GetSchListByDate(date);
+        }
+        
+        public System.Threading.Tasks.Task<FormsClient.ServiceReference1.Scheduler[]> GetSchListByDateAsync(System.DateTime date) {
+            return base.Channel.GetSchListByDateAsync(date);
+        }
+
     }
 }
