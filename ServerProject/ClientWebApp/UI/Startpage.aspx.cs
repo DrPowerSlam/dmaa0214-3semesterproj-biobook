@@ -19,20 +19,22 @@ namespace ClientWebApp.UI
         protected void Page_Load(object sender, EventArgs e)
         {
             var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
+            Customer cus = new Customer();
 
             bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
 
-            var db = new ConnectToDatabaseDataContext();
-            var mail = HttpContext.Current.User.Identity.Name;
-            int userID = db.Customers.Single(x => x.mail.Equals (mail) ).CusID;
+            //var db = new ConnectToDatabaseDataContext();
+            //var mail = HttpContext.Current.User.Identity.Name;
+            //int userID = db.Customers.Single(x => x.mail.Equals (mail) ).CusID;
 
-      
+              //int _ID = Convert.ToInt32(Request.QueryString["id"]);
 
-         //   int userId = userprofileRepository.All.FirstOrDefault(x => x.UserName == userName).UserId;
+              var tst = client.GetCustomerByID(Convert.ToInt32(Session["UserID"]));
 
-       //   var customer = db.Customers.All
+              string test = tst.password += tst.name;
 
-            //FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(getID);
+         
+     
 
             
 
@@ -42,7 +44,7 @@ namespace ClientWebApp.UI
                 log.Visible = false;
                 logout.Visible = true;
 
-                litUser.Text = userID.ToString();
+                litUser.Text = test;
 
             }
 

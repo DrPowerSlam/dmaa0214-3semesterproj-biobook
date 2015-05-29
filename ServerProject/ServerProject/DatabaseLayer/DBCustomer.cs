@@ -83,7 +83,7 @@ namespace ServerProject.DatabaseLayer
         /// <param name="userMail">The user e-mail</param>
         /// <param name="passWord">The user password</param>
         /// <returns>Returns true if the user logged in successfully, false if not</returns>
-        public bool CustomerLogin(string userMail, string passWord)
+        public Customer CustomerLogin(string userMail, string passWord)
 
         {
             try

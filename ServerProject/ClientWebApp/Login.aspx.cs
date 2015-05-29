@@ -31,15 +31,15 @@ namespace ClientWebApp
         {
 
 
+            var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
 
-
-            if (ValidateUser(txtMail.Text, txtPassword.Text))
+            Customer customer = ValidateUser(txtMail.Text, txtPassword.Text);
+            if (customer != null)
             {
-                Customer customer = clien
 
-                Session["userID"] = 
+                Session["userID"] = customer.CusID;
                // Session["userID"] = txtMail.Text;
-                FormsAuthentication.RedirectFromLoginPage(txtMail.Text, false);
+               FormsAuthentication.RedirectFromLoginPage(txtMail.Text, false);
 
 
             }
@@ -49,16 +49,16 @@ namespace ClientWebApp
 
         }
 
-        private bool ValidateUser(string userName, string passWord)
+        private Customer ValidateUser(string userName, string passWord)
         {
             
 
             var client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
        
-            Customer customer = new Customer();
+            //Customer customer = new Customer();
 
-            customer.mail = userName;
-            customer.password = passWord;
+            //customer.mail = userName;
+            //customer.password = passWord;
 
             
             
@@ -66,11 +66,15 @@ namespace ClientWebApp
             
 
             Page.Validate();
-            
+
             if (!Page.IsValid)
             {
-                return false;
+              //  return customer;
+
+              
             }
+
+            
 
             try
             {
@@ -78,12 +82,9 @@ namespace ClientWebApp
 
                 if (client != null)
                 {
-                    if (client.CustomerLogin(customer.mail, customer.password))
-                    {
-                      
+                   return client.CustomerLogin(userName, passWord);
 
-                        return true;
-                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -91,7 +92,7 @@ namespace ClientWebApp
                 System.Diagnostics.Trace.WriteLine("[ValidateUser] Exception " + ex.Message);
             }
 
-            return false;
+            return null;
         }
 
      
