@@ -64,7 +64,6 @@ namespace ServerProject.DatabaseLayer
             {
                 //Index for the seats, so we know which element we are at
                 int seatIndex = 0;
-                int updateInfoIndex = 0;
                 //Index for the rows
                 int rowIndex;
                 Int32.TryParse(row, out rowIndex);
@@ -79,24 +78,32 @@ namespace ServerProject.DatabaseLayer
                 {
                     foreach (char updateChar in updateInfo)
                     {
-                        if (int.Parse(seatsArray[seatIndex]) == 0)
-                            charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[updateInfoIndex];
-                        else if (int.Parse(seatsArray[seatIndex]) % 2 == 0)
-                            charArray[int.Parse(seatsArray[seatIndex])+2] = updateInfo[updateInfoIndex];
-                        else if (int.Parse(seatsArray[seatIndex]) % 2 != 0)
-                            charArray[int.Parse(seatsArray[seatIndex])*2] = updateInfo[updateInfoIndex];
+                        //if (int.Parse(seatsArray[seatIndex]) == 0)
+                        //    charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[updateInfoIndex];
+                        //else if (int.Parse(seatsArray[seatIndex]) % 2 == 0)
+                        //    charArray[int.Parse(seatsArray[seatIndex])+2] = updateInfo[updateInfoIndex];
+                        //else if (int.Parse(seatsArray[seatIndex]) % 2 != 0)
+                        //    charArray[int.Parse(seatsArray[seatIndex])*2] = updateInfo[updateInfoIndex];
+
+                        seatsArray[seatIndex] = updateInfo[seatIndex].ToString();
 
                         //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
                         seatIndex++;
-                        updateInfoIndex++;
                     }
                 }
                 else if (seatFromDB == null)
                 {
                     throw new Exception("There is no such row in the database");
                 }
-                string stringToUpload = new string(charArray);
-                seatFromDB.ColumnArray = stringToUpload;
+                if (seatsArray.Length != 0)
+                {
+                    for (int i = 0; i < seatsArray.Length; i++)
+                    {
+                        seatsArray[i] = seatsArray[i] + ",";
+                    }
+                }
+                string stringToUpload = seatsArray.ToString();
+                seatFromDB.ColumnArray = stringToUpload.Remove(stringToUpload.Length - 1);
             }
             try
             {

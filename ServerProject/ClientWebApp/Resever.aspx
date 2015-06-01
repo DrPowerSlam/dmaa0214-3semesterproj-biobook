@@ -76,7 +76,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="thumbnail">
                         <asp:Literal ID="litLoggedOn" runat="server" Text="Jeg kan se at du er ikke logget på. Log på eller registerer en bruger øverst på siden."></asp:Literal>
-                        <asp:Button ID="btnConfirm" runat="server" Text="Klik her for at registere." OnClick="btnConfirm_Click" Visible="false" />
+                        <asp:Button ID="btnConfirm" runat="server" Text="Klik her for at reservere." OnClick="btnConfirm_Click" Visible="false" />
 
                     </div>
                 </div>
