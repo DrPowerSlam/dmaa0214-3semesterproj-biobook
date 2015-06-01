@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -181,6 +180,24 @@ namespace ServerProject.DatabaseLayer
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        public void DeleteSch (int schID)
+        {
+            var db = new ConnectToDatabaseDataContext();
+            Scheduler scheduler = db.Schedulers.Single(x => x.SchID == schID);
+            //Scheduler DelScheduler = new Scheduler();
+            //DelScheduler.SchID = scheduler.SchID;
+            db.Schedulers.DeleteOnSubmit(scheduler);
+
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch
+            {
+                Console.Write("Delete scheduler failed");
             }
         }
     }

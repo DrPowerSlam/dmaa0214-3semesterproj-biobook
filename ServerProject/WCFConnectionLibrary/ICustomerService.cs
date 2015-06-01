@@ -79,5 +79,8 @@ namespace WCFConnectionLibrary
 
         [OperationContract]
         void UpdateCustomer(int customerID, string name, string email, string phone, string password);
+
+        [OperationContract]
+        void DeleteSch(int schID);
     }
 }

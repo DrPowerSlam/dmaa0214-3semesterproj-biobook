@@ -441,7 +441,34 @@ namespace FormsClient
 
         private void button5_Click_1(object sender, EventArgs e)
         {
+            sch_Log.Clear();
+            try
+            {
+                client.DeleteSch(int.Parse(idBox1.Text));
+                sch_Log.AppendText("Scheduler Deleted succesfully");
+            }
+            catch
+            {
+                sch_Log.AppendText("Scheduler could not be deleted, does the selected scheduler exist?");
+            }
+        }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            sch_Log.Clear();
+            try
+            {
+                DateTime date = Convert.ToDateTime(sch_Date.Text);
+                TimeSpan time = TimeSpan.Parse(sch_Time.Text);
+                client.UpdateScheduler(int.Parse(idBox1.Text), date, time, int.Parse(sch_MovieID.Text), int.Parse(sch_HallID.Text));
+                sch_Log.AppendText("Scheduler updated succesfully");
+            }
+
+            catch
+            {
+                sch_Log.AppendText("Scheduler was not found, nothing was updated");
+            }
+            
         }
     }
 }

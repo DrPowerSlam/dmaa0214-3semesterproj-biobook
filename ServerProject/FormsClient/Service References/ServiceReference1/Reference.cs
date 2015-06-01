@@ -741,6 +741,12 @@ namespace FormsClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/UpdateCustomer", ReplyAction="http://tempuri.org/ICustomerService/UpdateCustomerResponse")]
         System.Threading.Tasks.Task UpdateCustomerAsync(int customerID, string name, string email, string phone, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteSch", ReplyAction="http://tempuri.org/ICustomerService/DeleteSchResponse")]
+        void DeleteSch(int schID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/DeleteSch", ReplyAction="http://tempuri.org/ICustomerService/DeleteSchResponse")]
+        System.Threading.Tasks.Task DeleteSchAsync(int schID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -944,6 +950,14 @@ namespace FormsClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task UpdateCustomerAsync(int customerID, string name, string email, string phone, string password) {
             return base.Channel.UpdateCustomerAsync(customerID, name, email, phone, password);
+        }
+        
+        public void DeleteSch(int schID) {
+            base.Channel.DeleteSch(schID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteSchAsync(int schID) {
+            return base.Channel.DeleteSchAsync(schID);
         }
     }
 }

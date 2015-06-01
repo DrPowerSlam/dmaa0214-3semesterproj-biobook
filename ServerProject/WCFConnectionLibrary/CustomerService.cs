@@ -177,5 +177,11 @@ namespace WCFConnectionLibrary
             CustomerController cusCtr = new CustomerController();
             cusCtr.UpdateCustomer(customerID, name, email, phone, password);
         }
+
+        public void DeleteSch(int schID)
+        {
+            SchedulerController schCtr = new SchedulerController();
+            schCtr.DeleteSch(schID);
+        }
     }
 }

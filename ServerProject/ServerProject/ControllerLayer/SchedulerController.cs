@@ -76,5 +76,10 @@ namespace ServerProject.ControllerLayer
         {
             dbSch.UpdateSchedulers(schID, date, time, movieID, hallID);
         }
+
+        public void DeleteSch(int schID)
+        {
+            dbSch.DeleteSch(schID);
+        }
     }
 }
