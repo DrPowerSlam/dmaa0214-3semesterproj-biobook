@@ -78,7 +78,7 @@ namespace ServerProject.ControllerLayer
                         Int32.TryParse(check, out index);
                         int seatPoint;
                         Int32.TryParse(seatList[index], out seatPoint);
-                        if (seatPoint < 0)
+                        if (seatPoint <= 0)
                         {
                             //The seat is not available, therefore you should not reserve it.
                             isAvailable = false;
