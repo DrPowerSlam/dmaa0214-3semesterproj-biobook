@@ -103,7 +103,8 @@ namespace ServerProject.DatabaseLayer
                     }
                 }
                 string stringToUpload = seatsArray.ToString();
-                seatFromDB.ColumnArray = stringToUpload.Remove(stringToUpload.Length - 1);
+                stringToUpload = stringToUpload.Remove(stringToUpload.Length - 1);
+                seatFromDB.ColumnArray = stringToUpload;
             }
             try
             {
