@@ -126,7 +126,8 @@ namespace ServerProject.ControllerLayer
                 charArray[charArrayIndex] = '0';
                 charArrayIndex++;
             }
-            seatTable.UpdateSeat(row, seatArray, charArray, schedulerID);
+            string updateInfo = new string(charArray);
+            seatTable.UpdateSeat(row, seatArray, updateInfo, schedulerID);
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.insertReservation(reservation);
