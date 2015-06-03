@@ -665,10 +665,10 @@ namespace FormsClient.ServiceReference1 {
         System.Threading.Tasks.Task MakeReservationAsync(string row, string seat, int schedulerID, int customerID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/MakeCustomer", ReplyAction="http://tempuri.org/ICustomerService/MakeCustomerResponse")]
-        void MakeCustomer(string name, string phoneNumber, string password, string mail);
+        int MakeCustomer(string name, string phoneNumber, string password, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/MakeCustomer", ReplyAction="http://tempuri.org/ICustomerService/MakeCustomerResponse")]
-        System.Threading.Tasks.Task MakeCustomerAsync(string name, string phoneNumber, string password, string mail);
+        System.Threading.Tasks.Task<int> MakeCustomerAsync(string name, string phoneNumber, string password, string mail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerService/GetCustomerByID", ReplyAction="http://tempuri.org/ICustomerService/GetCustomerByIDResponse")]
         FormsClient.ServiceReference1.Customer GetCustomerByID(int customerID);
@@ -848,11 +848,11 @@ namespace FormsClient.ServiceReference1 {
             return base.Channel.MakeReservationAsync(row, seat, schedulerID, customerID);
         }
         
-        public void MakeCustomer(string name, string phoneNumber, string password, string mail) {
-            base.Channel.MakeCustomer(name, phoneNumber, password, mail);
+        public int MakeCustomer(string name, string phoneNumber, string password, string mail) {
+            return base.Channel.MakeCustomer(name, phoneNumber, password, mail);
         }
         
-        public System.Threading.Tasks.Task MakeCustomerAsync(string name, string phoneNumber, string password, string mail) {
+        public System.Threading.Tasks.Task<int> MakeCustomerAsync(string name, string phoneNumber, string password, string mail) {
             return base.Channel.MakeCustomerAsync(name, phoneNumber, password, mail);
         }
         

@@ -42,7 +42,7 @@ namespace WCFConnectionLibrary
         void MakeReservation(string row, string seat, int schedulerID, int customerID);
 
         [OperationContract]
-        void MakeCustomer(string name, string phoneNumber, string password, string mail);
+        int MakeCustomer(string name, string phoneNumber, string password, string mail);
 
         [OperationContract]
         Customer GetCustomerByID(int customerID);

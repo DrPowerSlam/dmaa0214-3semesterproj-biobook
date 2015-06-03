@@ -21,6 +21,8 @@
 	phoneNumber varchar(20),
 	password varchar(50),
 	mail varchar(50),
+	unique(phoneNumber),
+	unique(mail),
 
 	primary key(CusID)
 

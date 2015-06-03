@@ -188,21 +188,39 @@ namespace FormsClient
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {             
+        {
             try
             {
                 int[] array = client.GetBestSeats(int.Parse(SeatBox.Text), int.Parse(SchID1Box.Text));
                 string copier = "";
+                string seatCopy = "";
+                string rowCopy = "";
                 SeatListBox.Clear();
-                copier = "Row: " + array[1] + "\n" + "Seats: ";
+                copier = "Row: " + array[1] + "\n" + "Seats: " + array[2].ToString();
+                seatCopy = "" + array[2];
 
-                for (int i = 2; i < array.Length ; i++)
+                for (int i = 3; i < array.Length; i++)
                 {
-                    copier += array[i].ToString() + ", ";
+                    copier += ", " + array[i].ToString();
+                    seatCopy += ", " + array[i].ToString();
                 }
                 SeatListBox.AppendText(copier);
+                SeatsBox.Text = seatCopy;
+
+                foreach(char h in seatCopy)
+                {
+                    int value;
+                    if(int.TryParse(h.ToString(), out value))
+                    {
+                        rowCopy += array[1] + ", ";
+                    }
+                }
+
+                string copierRow = rowCopy.Remove(rowCopy.Length - 2);
+                RowBox.Text = copierRow;
             }
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 SeatListBox.AppendText("Something went wrong" + ex);
             } 
@@ -295,13 +313,24 @@ namespace FormsClient
 
         private void button1_Click(object sender, EventArgs e)
         {
+            res_CustoInfo.Clear();
             try
             {
-                client.MakeCustomer(res_CusName.Text, res_CusPhone.Text, null, res_CusEmail.Text);
+                int i = client.MakeCustomer(res_CusName.Text, res_CusPhone.Text, null, res_CusEmail.Text);
+                if (i == 1)
+                {
+                    res_CustoInfo.Text = "Customer Created";
+                }
+                else
+                {
+                    res_CustoInfo.Text = "Error, not created";
+                }
+                
+                
             }
             catch
             {
-                res_CusEmail.AppendText("Error when creating");
+                res_CustoInfo.Text = "Error, not created";
             }
         }
 
@@ -382,7 +411,8 @@ namespace FormsClient
             {
                 DateTime date = Convert.ToDateTime(DateSearchBox.Text);  
                 List<Scheduler> list = client.GetSchListByDate(date).ToList();
-                if (0 < list.Count())
+                System.Console.WriteLine("movien er " +list.First().MovieID);
+                if (list.Count > 0)
                 {
                     string copier = "-----------------------------------------\n";
                     foreach (Scheduler sch in list)
@@ -390,7 +420,7 @@ namespace FormsClient
                         copier += " ID: " + sch.SchID + "\n Date: " + sch.Date + "\n Time: " + sch.Starttime + "\n Hall: " + sch.HallID;
                         copier += "\n -----------------------------------\n";
                     }
-                    SchedulerBox.AppendText(copier);
+                    SchViewBox.AppendText(copier);
                 }
                 else
                 {

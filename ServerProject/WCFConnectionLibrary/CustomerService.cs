@@ -100,10 +100,10 @@ namespace WCFConnectionLibrary
             return schedulerList;
 
         }
-        public void MakeCustomer(string name, string phoneNumber, string password, string mail)
+        public int MakeCustomer(string name, string phoneNumber, string password, string mail)
         {
             CustomerController customerController = new CustomerController();
-            customerController.InsertCustomer(name, phoneNumber, password, mail);
+            return customerController.InsertCustomer(name, phoneNumber, password, mail);
         }
 
         // get customer by id
