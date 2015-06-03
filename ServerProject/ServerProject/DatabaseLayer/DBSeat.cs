@@ -95,14 +95,15 @@ namespace ServerProject.DatabaseLayer
                 {
                     throw new Exception("There is no such row in the database");
                 }
+                string stringToUpload = "";
                 if (charArray.Length != 0)
                 {
                     for (int i = 0; i < charArray.Length; i++)
                     {
-                        charArray[i] = charArray[i] + ",";
+                        stringToUpload = stringToUpload + charArray[i] + ",";
                     }
+                    
                 }
-                string stringToUpload = charArray.ToString();
                 stringToUpload = stringToUpload.Remove(stringToUpload.Length - 1);
                 seatFromDB.ColumnArray = stringToUpload;
             }
