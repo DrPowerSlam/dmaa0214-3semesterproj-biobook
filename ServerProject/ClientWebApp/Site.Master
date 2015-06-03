@@ -45,7 +45,7 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="Default.aspx" runat="server">FILM</a></li>
-                            <li><a href="Resever.aspx">RESEVER</a></li>
+                         
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
