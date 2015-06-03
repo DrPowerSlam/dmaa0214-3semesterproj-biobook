@@ -85,7 +85,7 @@ namespace ServerProject.DatabaseLayer
                         //else if (int.Parse(seatsArray[seatIndex]) % 2 != 0)
                         //    charArray[int.Parse(seatsArray[seatIndex])*2] = updateInfo[updateInfoIndex];
 
-                        seatsArray[int.Parse(seatsArray[seatIndex]) - 1] = updateInfo[seatIndex].ToString();
+                        charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[seatIndex];
 
                         //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
                         seatIndex++;
@@ -102,7 +102,7 @@ namespace ServerProject.DatabaseLayer
                         seatsArray[i] = seatsArray[i] + ",";
                     }
                 }
-                string stringToUpload = seatsArray.ToString();
+                string stringToUpload = new string(charArray);
                 stringToUpload = stringToUpload.Remove(stringToUpload.Length - 1);
                 seatFromDB.ColumnArray = stringToUpload;
             }
