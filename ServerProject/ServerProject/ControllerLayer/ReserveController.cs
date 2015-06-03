@@ -11,7 +11,11 @@ namespace ServerProject.ControllerLayer
     {
         DBReservation dbRes = new DBReservation();
         
-
+        /// <summary>
+        /// Gets a list of reservations by a customer ID
+        /// </summary>
+        /// <param name="customerID">The ID of the customer</param>
+        /// <returns>Returns a list of reservations</returns>
         public List<Reservation> GetReservationsByCustomerID(int customerID)
         {
             List<Reservation> listToReturn = new List<Reservation>();
@@ -27,7 +31,12 @@ namespace ServerProject.ControllerLayer
             return listToReturn;
         }
 
-        public List<Reservation> findReservationByPhone(string phone)
+        /// <summary>
+        /// Find a list reservations by a customers phone number
+        /// </summary>
+        /// <param name="phone">The phone number of the customer</param>
+        /// <returns>Returns a list of reservations</returns>
+        public List<Reservation> FindReservationByPhone(string phone)
         {
             List<Reservation> listToReturn = new List<Reservation>();
             foreach (Reservation r in dbRes.GetReservation().Cast<Reservation>())
@@ -44,7 +53,15 @@ namespace ServerProject.ControllerLayer
 
         //This needs to have both schedulerID customerId and row and seat.
         //e.g. row = "1,1,1" seat = "2,3,4"
-        public bool makeReservation(string row, string seatArray, int schedulerID, int customerID)
+        /// <summary>
+        /// Creats a reservation, updating the database
+        /// </summary>
+        /// <param name="row">The rows of the seats in format "1,2,1,1"</param>
+        /// <param name="seatArray">The indexes of the seats in format "1,1,2,3". It is possible to reserve 1 twice, if the rows are different</param>
+        /// <param name="schedulerID">The scheduler ID where you want to make a reservation</param>
+        /// <param name="customerID">The customer ID of the customer that wants to make a reservation</param>
+        /// <returns>Returns a boolean that is true or false, depending on success</returns>
+        public bool MakeReservation(string row, string seatArray, int schedulerID, int customerID)
         {
             
             bool isAvailable = true;
@@ -109,7 +126,8 @@ namespace ServerProject.ControllerLayer
                 charArray[charArrayIndex] = '0';
                 charArrayIndex++;
             }
-            seatTable.UpdateSeat(row, seatArray, charArray, schedulerID);
+            string updateInfo = new string(charArray);
+            seatTable.UpdateSeat(row, seatArray, updateInfo, schedulerID);
 
             //Husk at den returner en controlInt for at se om programmet failet i at indsætte i databasen.
             dbRes.insertReservation(reservation);
@@ -117,11 +135,24 @@ namespace ServerProject.ControllerLayer
 
         }
 
-        public void UpdateReservation(string row, string seatArray, int schedulerID, int customerID)
+        /// <summary>
+        /// Updates a reservation
+        /// </summary>
+        /// <param name="resID">The reservation ID you want to update</param>
+        /// <param name="row">The rows of the seats you want to update in format "1,1,2,2"</param>
+        /// <param name="seatArray">The seats you want to update, in format "1,2,2,3". See MakeReservation for more info</param>
+        /// <param name="schedulerID">The scheduler ID of the reservation you want to update</param>
+        /// <param name="customerID">The Customer ID, if the reservation needs to be assigned to a new customer</param>
+        public void UpdateReservation(int resID, string row, string seatArray, int schedulerID, int customerID)
         {
-            dbRes.UpdateReservation(customerID, row, seatArray, schedulerID);
+            dbRes.UpdateReservation(resID, customerID, row, seatArray, schedulerID);
         }
 
+        /// <summary>
+        /// Get a reservation by customer phone number
+        /// </summary>
+        /// <param name="phone">The phone number of the customer</param>
+        /// <returns>Returns a list of reservations</returns>
         public List<Reservation> GetResByCusPhone(string phone)
         {
             return dbRes.GetReservationByCusPhone(phone);

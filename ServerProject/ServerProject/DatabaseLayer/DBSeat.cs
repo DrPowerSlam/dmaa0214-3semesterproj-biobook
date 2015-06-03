@@ -51,7 +51,7 @@ namespace ServerProject.DatabaseLayer
         /// <param name="seats">The seats you want to update (by their index)</param>
         /// <param name="updateInfo">The info you want to update the seats with (e.g. 0, for reserved), in a char array. Enter in succession of the seat index</param>
         /// <param name="schID">The scheduler of the seats</param>
-        public void UpdateSeat(string rows, string seats,char[] updateInfo, int schID)
+        public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
         {
             //Create some arrays that doesn't have comma (the seperator in our strings)
             string[] rowsArray = rows.Split(',');

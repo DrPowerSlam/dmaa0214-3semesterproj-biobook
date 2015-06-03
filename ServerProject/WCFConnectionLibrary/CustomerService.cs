@@ -82,12 +82,12 @@ namespace WCFConnectionLibrary
         {
             SchedulerController schedulerController = new SchedulerController();
 
-            return schedulerController.getSchedulerByID(schedulerID);
+            return schedulerController.GetSchedulerByID(schedulerID);
         }
         public void MakeReservation(string row, string seat, int schedulerID, int customerID)
         {
            ReserveController reserveController = new ReserveController();
-           reserveController.makeReservation(row, seat, schedulerID, customerID);
+           reserveController.MakeReservation(row, seat, schedulerID, customerID);
         }
         public List<Scheduler> GetAllSchedulers()
         {

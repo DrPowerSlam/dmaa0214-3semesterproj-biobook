@@ -58,7 +58,7 @@ namespace ConsoleApplication1
 
         public void CreateReservationTest()
         {
-            resCtr.makeReservation("2,2,2", "0,1,2", 18, 1);
+            resCtr.MakeReservation("2,2,2", "0,1,2", 18, 1);
         }
 
         public void startScreen()
@@ -282,7 +282,7 @@ namespace ConsoleApplication1
             //It must go through the algorithm first to check if the seats available (you can not reserve before you have run through the algorithm
             //and update the seat tabel in the database.
 
-            bool successful = resController.makeReservation("1,2,3,4", "1", 1, 1);
+            bool successful = resController.MakeReservation("1,2,3,4", "1", 1, 1);
         }
 
 

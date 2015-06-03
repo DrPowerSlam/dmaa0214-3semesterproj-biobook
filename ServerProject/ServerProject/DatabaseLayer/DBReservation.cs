@@ -31,12 +31,20 @@ namespace ServerProject.DatabaseLayer
             return cusResJoin;
         }
 
-        public void UpdateReservation(int customerID, string row, string seat, int schID)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resID">The reservation ID, of the reservation that has to be edited</param>
+        /// <param name="customerID">Customer ID, if it needs to be changes to a new customer</param>
+        /// <param name="row">The rows the reservation has made</param>
+        /// <param name="seat">The seats the reservation has made</param>
+        /// <param name="schID">Scheduler ID for the reservation, if it needs to be changed</param>
+        public void UpdateReservation(int resID, int customerID, string row, string seat, int schID)
         {
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
-            Reservation reservation = db.Reservations.First(r => r.ResID == 4);
+            Reservation reservation = db.Reservations.First(r => r.ResID == resID);
 
             reservation.CustomerID = customerID;
             reservation.Row = row;
@@ -48,7 +56,6 @@ namespace ServerProject.DatabaseLayer
                     db.SubmitChanges();
                     db.Transaction.Commit();
                     db.Transaction.Dispose();
-                    //transation.Complete();
                     db.Connection.Close();
 
                 }
@@ -58,13 +65,17 @@ namespace ServerProject.DatabaseLayer
                     Console.WriteLine(e);
                 }
         }
+
+        /// <summary>
+        /// Inserts a new reservation to the database
+        /// </summary>
+        /// <param name="res">A reservation object, that needs to be uploaded</param>
         public void insertReservation(Reservation res)
         {
             //make it a reservation
             Reservation reservation = new Reservation();
             reservation = res;
 
-            //lock it so only one at a time can work with it?
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
             db.Reservations.InsertOnSubmit(reservation);
             try
@@ -79,6 +90,11 @@ namespace ServerProject.DatabaseLayer
 
         }
 
+        /// <summary>
+        /// Gets a list reservations by phone number of the customer
+        /// </summary>
+        /// <param name="phone">The customers phone number</param>
+        /// <returns>Returns the list of the reservations</returns>
         public List<Reservation> GetReservationByCusPhone(string phone)
         {
             DBCustomer dbC = new DBCustomer();
