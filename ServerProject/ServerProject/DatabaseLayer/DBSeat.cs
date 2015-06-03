@@ -71,7 +71,7 @@ namespace ServerProject.DatabaseLayer
                 //Gets the first (and only) seat from the database
                 seatFromDB = GetSeatsBySchIDAndRow(schID,rowIndex).First();
                 //Convert the seats from the database to a char array (so the program can replace chars at certain indices
-                char[] charArray = seatFromDB.ColumnArray.ToCharArray();
+                string[] charArray = seatFromDB.ColumnArray.Split(',');
                 //Check if it's non-exsistent
                 //If not, check if they are equal in length (compared to the input seat)
                 if (seatFromDB != null)
@@ -85,7 +85,7 @@ namespace ServerProject.DatabaseLayer
                         //else if (int.Parse(seatsArray[seatIndex]) % 2 != 0)
                         //    charArray[int.Parse(seatsArray[seatIndex])*2] = updateInfo[updateInfoIndex];
 
-                        charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[seatIndex];
+                        charArray[int.Parse(seatsArray[seatIndex])] = updateInfo[seatIndex].ToString();
 
                         //SeatIndex only counts up in this else if condition, since we have no reason to add to it if there is no database
                         seatIndex++;
@@ -95,14 +95,14 @@ namespace ServerProject.DatabaseLayer
                 {
                     throw new Exception("There is no such row in the database");
                 }
-                if (seatsArray.Length != 0)
+                if (charArray.Length != 0)
                 {
-                    for (int i = 0; i < seatsArray.Length; i++)
+                    for (int i = 0; i < charArray.Length; i++)
                     {
-                        seatsArray[i] = seatsArray[i] + ",";
+                        charArray[i] = charArray[i] + ",";
                     }
                 }
-                string stringToUpload = new string(charArray);
+                string stringToUpload = charArray.ToString();
                 stringToUpload = stringToUpload.Remove(stringToUpload.Length - 1);
                 seatFromDB.ColumnArray = stringToUpload;
             }
