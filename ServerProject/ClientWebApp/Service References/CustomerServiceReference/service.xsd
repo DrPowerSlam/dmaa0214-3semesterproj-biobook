@@ -139,7 +139,9 @@
   </xs:element>
   <xs:element name="MakeCustomerResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MakeCustomerResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCustomerByID">
@@ -310,6 +312,18 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="schID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSchResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
