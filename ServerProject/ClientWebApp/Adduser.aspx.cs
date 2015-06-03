@@ -34,12 +34,12 @@ namespace ClientWebApp
 
 
 
-                objCustomer.name +=  txtName.Text;
-                objCustomer.phoneNumber +=  "+ 45" + txtPhone.Text; ;
-                objCustomer.password += txtPassword.Text ;
-                objCustomer.mail +=  txtMail.Text;
+                objCustomer.name =  txtName.Text;
+                objCustomer.phoneNumber = txtPhone.Text;
+                objCustomer.password = txtPassword.Text;
+                objCustomer.mail =  txtMail.Text;
 
-                client.MakeCustomer(objCustomer.name, objCustomer.phoneNumber, objCustomer.phoneNumber, objCustomer.mail);
+                client.MakeCustomer(objCustomer.name, objCustomer.phoneNumber, objCustomer.password, objCustomer.mail);
 
 
           
