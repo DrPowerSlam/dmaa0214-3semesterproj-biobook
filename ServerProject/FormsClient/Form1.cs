@@ -189,12 +189,12 @@ namespace FormsClient
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             try
             {
                 int[] array = client.GetBestSeats(int.Parse(SeatBox.Text), int.Parse(SchID1Box.Text));
                 string copier = "";
                 string seatCopy = "";
-                string rowCopy = "";
                 SeatListBox.Clear();
                 copier = "Row: " + array[1] + "\n" + "Seats: " + array[2].ToString();
                 seatCopy = "" + array[2];
@@ -202,27 +202,17 @@ namespace FormsClient
                 for (int i = 3; i < array.Length; i++)
                 {
                     copier += ", " + array[i].ToString();
-                    seatCopy += ", " + array[i].ToString();
+                    seatCopy += "," + array[i].ToString();
                 }
                 SeatListBox.AppendText(copier);
                 SeatsBox.Text = seatCopy;
-
-                foreach(char h in seatCopy)
-                {
-                    int value;
-                    if(int.TryParse(h.ToString(), out value))
-                    {
-                        rowCopy += array[1] + ", ";
-                    }
-                }
-
-                string copierRow = rowCopy.Remove(rowCopy.Length - 2);
-                RowBox.Text = copierRow;
+                RowBox.Text = ""+array[1];
             }
 
             catch (Exception ex)
             {
-                SeatListBox.AppendText("Something went wrong" + ex);
+
+                SeatListBox.AppendText("\nSomething went wrong" +ex);
             } 
         }
 
