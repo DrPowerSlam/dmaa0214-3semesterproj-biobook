@@ -101,17 +101,13 @@
                     <p>
                     </p>
 
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Adgangskode"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Adgangskode"></asp:TextBox>
 
                     <p>
                     </p>
 
                     <asp:Button ID="btnLogin" runat="server" Text ="Log ind" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" />
                     
-
-                    <br />
-                    <a href="#">Glemt adgangskode?</a>
-                    <br />
 
 
                 </div>
