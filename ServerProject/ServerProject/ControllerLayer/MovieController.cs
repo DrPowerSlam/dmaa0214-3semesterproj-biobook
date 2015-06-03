@@ -51,9 +51,9 @@ namespace ServerProject.ControllerLayer
         }
 
         /// <summary>
-        /// 
+        /// Deletes a movie from the database
         /// </summary>
-        /// <param name="movie"></param>
+        /// <param name="movie">The movie you want to delete, as a movie object</param>
         public void DeleteMovie(Movie movie)
         {
             dbMovie.DeleteMovie(movie);

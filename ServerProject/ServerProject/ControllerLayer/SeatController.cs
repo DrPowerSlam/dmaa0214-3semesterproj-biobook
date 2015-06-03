@@ -10,12 +10,22 @@ namespace ServerProject.ControllerLayer
     {
         static int counter;
 
+        /// <summary>
+        /// Gets all seats by a scheduler ID
+        /// </summary>
+        /// <param name="schedulerID">The ID of the scheduler</param>
+        /// <returns>Returns a list of seats</returns>
         public List<Seat> GetAllSeatsBySchedulerID(int schedulerID)
         {
             DBSeat dbSeat = new DBSeat();
             return dbSeat.GetSeats(schedulerID);
         }
 
+        /// <summary>
+        /// Converts a string from the database to a jagged array
+        /// </summary>
+        /// <param name="schID">The scheduler ID of the seats you want to convert</param>
+        /// <returns>Returns the jagged array</returns>
         public int[][] ConvertStringToArray(int schID)
         {
             DBSeat dbSeat = new DBSeat();
@@ -44,7 +54,13 @@ namespace ServerProject.ControllerLayer
             return jagged;
         }
 
-        public int[] FindBestSeats(int personer, int schID)
+        /// <summary>
+        /// Finds the best seats for an amount of people
+        /// </summary>
+        /// <param name="personer">The amount of people that wants to reserve seats</param>
+        /// <param name="schID">The scheduler ID where you want to reserve seats</param>
+        /// <returns>Returns an array of the best seats</returns>
+        public int[] FindBestSeats(int amountOfPeople, int schID)
         {
             List<int[]> savedOption = new List<int[]>();
             int freeSeats = 0;
@@ -53,10 +69,10 @@ namespace ServerProject.ControllerLayer
             // loop through to see if enough seats are available
             int i = 0;
             int j = 0;
-            while(freeSeats < personer && i < jaggedArray.Length )
+            while (freeSeats < amountOfPeople && i < jaggedArray.Length)
             {
                 j = 0;
-                while(freeSeats < personer && j < jaggedArray[i].Length)
+                while (freeSeats < amountOfPeople && j < jaggedArray[i].Length)
                 {
                     // if not 0, then the seat is available
                     if(jaggedArray[i][j] != 0)
@@ -68,7 +84,7 @@ namespace ServerProject.ControllerLayer
                 i++;
             }
 
-            if(freeSeats < personer)
+            if (freeSeats < amountOfPeople)
             {
                 // there were not enough available seats available
                 return null;
@@ -88,7 +104,7 @@ namespace ServerProject.ControllerLayer
                     {
                         counter = 1;
                         for(int nextSeat = y+1 ; nextSeat < jaggedArray[x].Length &&
-                            possible == true && counter != personer; nextSeat++)
+                            possible == true && counter != amountOfPeople; nextSeat++)
                         {
                             if(jaggedArray[x][nextSeat] != 0)
                             {   // if the seat was available, count found adjecent
@@ -103,14 +119,14 @@ namespace ServerProject.ControllerLayer
                         }
                     }
                     // if enough seats where found, save them as a possible option
-                    if(counter == personer && possible)
+                    if (counter == amountOfPeople && possible)
                     {
                         // start values
-                        int[] saveArray = new int[personer+2];
+                        int[] saveArray = new int[amountOfPeople + 2];
                         int point = 0;
 
                         // save the seats to a list
-                        for(int next = 0; next < personer; next++)
+                        for (int next = 0; next < amountOfPeople; next++)
                         {
                             saveArray[next + 2] = y + next+1;
                             point += jaggedArray[x][next + y];
@@ -128,7 +144,7 @@ namespace ServerProject.ControllerLayer
             int bestPoint = 0;
             // If one or more options are found, they will always need room for 
             // amount of people+2 ( for row number and point)
-            int[] bestSeats = new int[personer+2];
+            int[] bestSeats = new int[amountOfPeople + 2];
                 foreach (int[] option in savedOption)
                 {   // Loop through the options, and return the best seats
                     // check each of the options total point, and if better than current best
@@ -145,7 +161,10 @@ namespace ServerProject.ControllerLayer
 
         }
 
-        public void easytest()
+        /// <summary>
+        /// A test method for the previous methods
+        /// </summary>
+        public void Easytest()
         {
             int[] p = FindBestSeats(3, 1);
             if (p == null)
@@ -163,6 +182,11 @@ namespace ServerProject.ControllerLayer
             }
         }
 
+        /// <summary>
+        /// Checks if some seats are avaiable. Returns them if they are
+        /// </summary>
+        /// <param name="schID">The scheduler ID of the seats you want to check</param>
+        /// <returns>Returns an array of the available seats</returns>
         public int[][] ListAvailable(int schID)
         {
            int[][] array = ConvertStringToArray(schID);

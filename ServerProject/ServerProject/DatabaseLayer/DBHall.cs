@@ -14,8 +14,6 @@ namespace ServerProject.DatabaseLayer
 {
     class DBHall
     {
-        //string cnStr = ConfigurationManager.ConnectionStrings["testConnection"].ConnectionString; // Concencting string
-
         /// <summary>
         /// Gets a hall by it's ID
         /// </summary>

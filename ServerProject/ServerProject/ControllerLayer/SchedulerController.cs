@@ -13,6 +13,10 @@ namespace ServerProject.ControllerLayer
 
         DBScheduler dbSch = new DBScheduler();
 
+        /// <summary>
+        /// A method to get all schedulers
+        /// </summary>
+        /// <returns>Returns a list of all schedulers</returns>
         public List<Scheduler> GetAllSchedulers()
         {
 
@@ -24,7 +28,7 @@ namespace ServerProject.ControllerLayer
 
 
         // Ikke færdig
-        public IEnumerable getMovieByMovieID(int movieID)
+        public IEnumerable GetMovieByMovieID(int movieID)
         {
             List<Scheduler> listToReturn = new List<Scheduler>();
             foreach (Scheduler s in dbSch.GetScheduler().Cast<Scheduler>())
@@ -39,13 +43,23 @@ namespace ServerProject.ControllerLayer
             return listToReturn;
         }
 
-        public Scheduler getSchedulerByID(int schedulerID)
+        /// <summary>
+        /// Gets a scheduler by ID
+        /// </summary>
+        /// <param name="schedulerID">The scheduler ID you want to get</param>
+        /// <returns>Returns the single scheduler as an object</returns>
+        public Scheduler GetSchedulerByID(int schedulerID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
             Scheduler scheduler = schedulerDatabase.GetSchedulerByID(schedulerID);
             return scheduler;
         }
 
+        /// <summary>
+        /// Gets a scheduler by 
+        /// </summary>
+        /// <param name="movieID"></param>
+        /// <returns></returns>
         public Scheduler GetSchedulerByMovie(int movieID)
         {
             DBScheduler schedulerDatabase = new DBScheduler();
