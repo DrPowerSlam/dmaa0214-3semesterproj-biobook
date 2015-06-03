@@ -1,0 +1,12 @@
+<publishData>
+  <publishTarget publishUrl="C:\Users\tue_b_000\Desktop\">
+    <file relUrl="bin/WCFConnectionLibrary.pdb" publishTime="06/01/2015 16:37:30" />
+    <file relUrl="bin/WCFConnectionLibrary.dll" publishTime="06/01/2015 16:37:30" />
+    <file relUrl="bin/ServerProject.pdb" publishTime="06/01/2015 16:36:59" />
+    <file relUrl="Web.config" publishTime="05/22/2015 10:39:12" />
+    <file relUrl="bin/ServerProject.dll" publishTime="06/01/2015 16:36:59" />
+    <file relUrl="WCFConnectionLibrary.CustomerService.svc" publishTime="06/02/2015 15:02:52" />
+    <file relUrl="bin/System.Data.Linq.dll" publishTime="09/26/2012 03:16:08" />
+    <file relUrl="bin/WCFConnectionLibrary.dll.config" publishTime="05/22/2015 10:39:12" />
+  </publishTarget>
+</publishData>
