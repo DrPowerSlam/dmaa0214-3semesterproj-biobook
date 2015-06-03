@@ -53,9 +53,12 @@ namespace ServerProject.DatabaseLayer
         /// <param name="schID">The scheduler of the seats</param>
         public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
         {
+            seats = seats.Replace(" ", "");
+            rows = rows.Replace(" ", "");
             //Create some arrays that doesn't have comma (the seperator in our strings)
             string[] rowsArray = rows.Split(',');
             string[] seatsArray = seats.Split(',');
+
             //string[] updateArray = updateInfo.Split(',');
             //Create a seat object that will hold the seats from the database
             Seat seatFromDB = new Seat();
