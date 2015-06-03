@@ -50,7 +50,7 @@ namespace ClientWebApp
             {
                //Page.RouteData.Values["movieID"]
 
-                List<Movie> movieList = client.GetAllMovies();
+                Movie[] movieList = client.GetAllMovies();
                 
                 foreach(Movie movie in movieList)
                 {

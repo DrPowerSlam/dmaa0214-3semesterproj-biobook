@@ -16,7 +16,7 @@ namespace ClientWebApp
     {
         CustomerServiceClient client = new CustomerServiceClient("BasicHttpBinding_ICustomerService");
         int schedulerID = 0;
-        static List<int> bestSeats;
+        static int[] bestSeats;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -101,15 +101,28 @@ namespace ClientWebApp
             {
                 litSeatList.Text = "Rækken er: " + bestSeats[1].ToString() + " Total point er : " + bestSeats[0].ToString();
                 litSeatList.Text += " Sæderne er: ";
-                for (int x = 2; x < bestSeats.Count; x++)
+                for (int x = 2; x < bestSeats.Length; x++)
                     litSeatList.Text += (bestSeats[x].ToString() + ", ");
                 litSeatList.Text = litSeatList.Text.Remove(litSeatList.Text.Length - 2);
             }
 
-            foreach (Seat s in client.GetAllSeatsBySchedulerID(schedulerID))
+            
+            int[][] array = client.GetAllAvailableSeats(schedulerID);
+            string copier = "<br>Row &nbsp;&nbsp;&nbsp;&nbsp; Seats<br>";
+            for (int x = 0; x < array.Length; x++)
             {
-                litSeatList.Text += "</br> Række : " + s.Row + " Sæde : " + s.ColumnArray;
+                copier += x + 1 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + array[x][0];
+                for (int y = 1; y < array[x].Length; y++)
+                {
+                    copier += "-" + array[x][y];
+                }
+                copier += "<br>";
             }
+
+            litMovieInfo.Text += copier;
+
+
+
 
             //ddlTickets.SelectedItem.Value;
         }
@@ -119,12 +132,12 @@ namespace ClientWebApp
             //If the user is logged in then get his customerID
             int customerID = Convert.ToInt32(Session["UserID"]);
             string seats = "";
-            for (int x = 2; x < bestSeats.Count; x++)
+            for (int x = 2; x < bestSeats.Length; x++)
                 seats += bestSeats[x].ToString() + ", ";
             seats = seats.Remove(seats.Length - 2);
             
-            litMovieInfo.Text = seats;
             client.MakeReservation(bestSeats[1].ToString(), seats, schedulerID, customerID);
+            litMovieInfo.Text = "Du har nu reserveret denne film";
             
         }
 
