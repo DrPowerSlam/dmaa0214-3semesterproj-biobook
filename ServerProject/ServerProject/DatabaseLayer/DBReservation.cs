@@ -61,6 +61,7 @@ namespace ServerProject.DatabaseLayer
                 {
                     db.Transaction.Rollback();
                     Console.WriteLine(e);
+                    db.Connection.Close();
                 }
         }
 

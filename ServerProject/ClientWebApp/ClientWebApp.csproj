@@ -89,12 +89,12 @@
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Seat.datasource" />
     <Content Include="bin\ClientWebApp.dll.config" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Customer.datasource" />
-    <Content Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
-    <Content Include="Service References\CustomerServiceReference\configuration.svcinfo" />
-    <Content Include="Service References\CustomerServiceReference\Reference.svcmap">
+    <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CustomerServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="UI\Startpage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -167,7 +167,7 @@
     <None Include="Service References\CustomerServiceReference\ServerProject.DatabaseLayer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\CustomerServiceReference\service.wsdl" />
+    <None Include="Service References\CustomerServiceReference\service.wsdl" />
     <None Include="Service References\CustomerServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>

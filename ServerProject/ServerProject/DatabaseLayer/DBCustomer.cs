@@ -213,6 +213,7 @@ namespace ServerProject.DatabaseLayer
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e.Message);
+                db.Transaction.Connection.Close();
             }
         }
     }

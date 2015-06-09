@@ -180,6 +180,7 @@ namespace ServerProject.DatabaseLayer
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e.Message);
+                db.Connection.Close();
             }
         }
 

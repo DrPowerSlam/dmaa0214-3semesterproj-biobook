@@ -9,7 +9,6 @@ namespace ServerProject.DatabaseLayer
 {
     public class DBSeat
     {
-        ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
 
         /// <summary>
         /// Gets all seats in a given scheduler
@@ -18,8 +17,9 @@ namespace ServerProject.DatabaseLayer
         /// <returns>Returns a list of the seats</returns>
         public List<Seat> GetSeats(int schID)
         {
-            return db.Seats.Where(x => x.SchedulerID == schID).ToList();
-
+            ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
+            List<Seat> seat = db.Seats.Where(x => x.SchedulerID == schID).ToList();
+            return seat;
             // Testing translater
             //Console.WriteLine(count);
             //for (int column = 0; column < count; column++)
@@ -41,10 +41,13 @@ namespace ServerProject.DatabaseLayer
         /// <returns>A list of the seats with that row (should only be 1 though)</returns>
         public List<Seat> GetSeatsBySchIDAndRow(int schID, int row)
         {
+            ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             List<Seat> record = db.Seats.Where(x => x.SchedulerID == schID && x.Row == row).ToList();
+            db.Connection.Close();
             return record;
+
         }
 
         /// <summary>
@@ -56,6 +59,8 @@ namespace ServerProject.DatabaseLayer
         /// <param name="schID">The scheduler of the seats</param>
         public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
         {
+            ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
+
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             seats = seats.Replace(" ", "");
@@ -126,6 +131,7 @@ namespace ServerProject.DatabaseLayer
             {
                 Console.WriteLine(e.Message);
                 db.Transaction.Rollback();
+                db.Connection.Close();
             }
         }
 
