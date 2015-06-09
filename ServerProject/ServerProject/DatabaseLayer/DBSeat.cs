@@ -119,16 +119,16 @@ namespace ServerProject.DatabaseLayer
             }
             try
             {
-                db.SubmitChanges();
+                 
                 db.Transaction.Commit();
                 db.Transaction.Dispose();
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 db.Transaction.Rollback();
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
         }
 

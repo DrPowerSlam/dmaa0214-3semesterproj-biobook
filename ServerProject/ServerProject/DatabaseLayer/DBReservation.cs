@@ -51,17 +51,17 @@ namespace ServerProject.DatabaseLayer
                 
                 try
                 {
-                    db.SubmitChanges();
+                     
                     db.Transaction.Commit();
                     db.Transaction.Dispose();
-                    db.Transaction.Connection.Close();
+                    db.Connection.Close();
 
                 }
                 catch (Exception e)
                 {
                     db.Transaction.Rollback();
                     Console.WriteLine(e);
-                    db.Transaction.Connection.Close();
+                    db.Connection.Close();
                 }
         }
 
@@ -76,19 +76,19 @@ namespace ServerProject.DatabaseLayer
             reservation = res;
 
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
-            db.Transaction.Connection.Open();
+            db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             db.Reservations.InsertOnSubmit(reservation);
             try
             {
-                db.SubmitChanges();
-                db.Transaction.Connection.Close();
+                 
+                db.Connection.Close();
             }
             catch (Exception e)
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e);
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
 
             }
 

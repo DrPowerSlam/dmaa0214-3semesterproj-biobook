@@ -72,7 +72,7 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 controlInt = 1;
             }
             catch (Exception e)
@@ -104,7 +104,7 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 controlInt = 1;
             }
             catch (Exception e)

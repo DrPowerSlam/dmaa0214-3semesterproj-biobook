@@ -87,7 +87,7 @@ namespace ServerProject.DatabaseLayer
             db.Schedulers.InsertOnSubmit(sch);
             try
             {
-                db.SubmitChanges();
+                 
             }
             catch (Exception e)
             {
@@ -141,7 +141,7 @@ namespace ServerProject.DatabaseLayer
             sch.HallID = hallID;
 
             db.Schedulers.InsertOnSubmit(sch);
-            db.SubmitChanges();
+             
 
             var result = (from t in db.Schedulers orderby t.SchID descending select t.SchID).First();
             var HallSeatList = db.HallSeats.Select(x => x).Where(x => x.HallID == hallID);
@@ -153,7 +153,7 @@ namespace ServerProject.DatabaseLayer
                 seat.SchedulerID = result;
                 db.Seats.InsertOnSubmit(seat);
             }
-            db.SubmitChanges();
+             
         }
 
         public void UpdateSchedulers(int schID, DateTime date, TimeSpan time, int movieID, int hallID)
@@ -171,16 +171,16 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 db.Transaction.Commit();
                 db.Transaction.Dispose();
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
             catch (Exception e)
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e.Message);
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
         }
 
@@ -194,7 +194,7 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
             }
             catch
             {

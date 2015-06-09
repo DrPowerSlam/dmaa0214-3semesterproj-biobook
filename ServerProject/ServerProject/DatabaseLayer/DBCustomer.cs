@@ -140,7 +140,7 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 controlInt = 1;
             }
             catch (Exception e)
@@ -170,7 +170,7 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 controlInt = 1;
             }
             catch (Exception e)
@@ -204,16 +204,16 @@ namespace ServerProject.DatabaseLayer
 
             try
             {
-                db.SubmitChanges();
+                 
                 db.Transaction.Commit();
                 db.Transaction.Dispose();
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
             catch (Exception e)
             {
                 db.Transaction.Rollback();
                 Console.WriteLine(e.Message);
-                db.Transaction.Connection.Close();
+                db.Connection.Close();
             }
         }
     }
