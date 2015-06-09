@@ -207,7 +207,7 @@ namespace ServerProject.DatabaseLayer
                 db.SubmitChanges();
                 db.Transaction.Commit();
                 db.Transaction.Dispose();
-                db.Connection.Close();
+                db.Transaction.Connection.Close();
             }
             catch (Exception e)
             {

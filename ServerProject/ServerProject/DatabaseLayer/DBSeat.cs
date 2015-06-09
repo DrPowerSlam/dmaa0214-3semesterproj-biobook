@@ -42,10 +42,7 @@ namespace ServerProject.DatabaseLayer
         public List<Seat> GetSeatsBySchIDAndRow(int schID, int row)
         {
             ConnectToDatabaseDataContext db = new ConnectToDatabaseDataContext();
-            db.Connection.Open();
-            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             List<Seat> record = db.Seats.Where(x => x.SchedulerID == schID && x.Row == row).ToList();
-            db.Connection.Close();
             return record;
 
         }
@@ -125,13 +122,13 @@ namespace ServerProject.DatabaseLayer
                 db.SubmitChanges();
                 db.Transaction.Commit();
                 db.Transaction.Dispose();
-                db.Connection.Close();
+                db.Transaction.Connection.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 db.Transaction.Rollback();
-                db.Connection.Close();
+                db.Transaction.Connection.Close();
             }
         }
 
