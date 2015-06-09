@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Linq;
+using System.Data;
 
 namespace ServerProject.DatabaseLayer
 {
@@ -40,6 +41,8 @@ namespace ServerProject.DatabaseLayer
         /// <returns>A list of the seats with that row (should only be 1 though)</returns>
         public List<Seat> GetSeatsBySchIDAndRow(int schID, int row)
         {
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             List<Seat> record = db.Seats.Where(x => x.SchedulerID == schID && x.Row == row).ToList();
             return record;
         }
@@ -53,6 +56,8 @@ namespace ServerProject.DatabaseLayer
         /// <param name="schID">The scheduler of the seats</param>
         public void UpdateSeat(string rows, string seats,string updateInfo, int schID)
         {
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction(IsolationLevel.RepeatableRead);
             seats = seats.Replace(" ", "");
             rows = rows.Replace(" ", "");
             //Create some arrays that doesn't have comma (the seperator in our strings)
@@ -113,6 +118,9 @@ namespace ServerProject.DatabaseLayer
             try
             {
                 db.SubmitChanges();
+                db.Transaction.Commit();
+                db.Transaction.Dispose();
+                db.Connection.Close();
             }
             catch (Exception e)
             {

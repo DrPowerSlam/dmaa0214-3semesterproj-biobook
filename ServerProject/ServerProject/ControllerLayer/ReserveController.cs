@@ -63,14 +63,13 @@ namespace ServerProject.ControllerLayer
         /// <returns>Returns a boolean that is true or false, depending on success</returns>
         public bool MakeReservation(string row, string seatArray, int schedulerID, int customerID)
         {
-            
+
             bool isAvailable = true;
             
             //find seat by schedulerID and use row and seat to see if they are available.
             //lock here. After you have writtin to the database release the lock.
             DBSeat seatTable = new DBSeat();
             string[] rowArray = row.Split(',');
-            //Console.WriteLine(rowArray[3]);
             //check if the row exist in database.
             for (int i = 0; i < rowArray.Length - 1; i++)
             {
@@ -78,11 +77,9 @@ namespace ServerProject.ControllerLayer
                 int rowIndex;
                 Int32.TryParse(rowArray[i], out rowIndex);
                 List<Seat> eachRowList = seatTable.GetSeatsBySchIDAndRow(schedulerID, rowIndex);
-                //Console.WriteLine(eachRowList.First().Row);
                 
                 foreach(Seat eachRow in eachRowList)
                 {
-                    //Console.WriteLine(eachRow.Row);
                     //check if the seat is available by using the seatArray (which is the index in the seatlist)
                     string[] checkSeat = seatArray.Split(',');
 

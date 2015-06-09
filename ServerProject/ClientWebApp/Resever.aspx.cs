@@ -120,11 +120,6 @@ namespace ClientWebApp
             }
 
             litMovieInfo.Text += copier;
-
-
-
-
-            //ddlTickets.SelectedItem.Value;
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
@@ -140,25 +135,5 @@ namespace ClientWebApp
             litMovieInfo.Text = "Du har nu reserveret denne film";
             
         }
-
-        
-      
-
-
-            //if (bestSeats == null)
-            //{
-            //    litSeatList.Text += "nederen";
-            //}
-            //else
-            //{
-            //    litSeatList.Text += "Rækken er: " + bestSeats[1].ToString();
-            //    litSeatList.Text += "Total point er :" + bestSeats[0].ToString();
-            //    litSeatList.Text += "sæderne er: ";
-            //    for (int x = 2; x < bestSeats.Count - 1; x++)
-            //        litSeatList.Text += bestSeats[x].ToString() + ", ";
-
-            //}
-            
-       
     }
 }

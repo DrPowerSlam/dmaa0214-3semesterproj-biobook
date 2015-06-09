@@ -89,15 +89,12 @@
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Seat.datasource" />
     <Content Include="bin\ClientWebApp.dll.config" />
     <Content Include="Properties\DataSources\ServerProject.DatabaseLayer.Customer.datasource" />
-    <None Include="Service References\CustomerServiceReference\Arrays2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\CustomerServiceReference\configuration.svcinfo" />
-    <None Include="Service References\CustomerServiceReference\Reference.svcmap">
+    <Content Include="Service References\CustomerServiceReference\configuration91.svcinfo" />
+    <Content Include="Service References\CustomerServiceReference\configuration.svcinfo" />
+    <Content Include="Service References\CustomerServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="UI\Startpage.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -164,10 +161,13 @@
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Service References\CustomerServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CustomerServiceReference\ServerProject.DatabaseLayer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\CustomerServiceReference\service.wsdl" />
+    <Content Include="Service References\CustomerServiceReference\service.wsdl" />
     <None Include="Service References\CustomerServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
