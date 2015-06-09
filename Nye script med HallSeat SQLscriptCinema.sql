@@ -34,6 +34,7 @@
 	insert into Customer values ('Tue', '+4520304056','20302020','Tue@gmail.com');
 	insert into Customer values ('Hamun', '+4520354050','20302020','Hamun@gmail.com');
 	insert into Customer values ('Renee', '+4522304050','20302020','Renee@gmail.com');
+	insert into Customer values ('Guest', '+4511111111','Guest','Guest@gmail.com');
 
 	create table Movie
 	(
@@ -148,8 +149,4 @@
 	foreign key(SchedulerID) references Scheduler(SchID) on delete set default,
 	primary key(ResID)
 	);
-
-	insert into Reservation values (1, 1, '1,2,3,4', '1,2,3,4')
-	insert into Reservation values (2, 2, '1,2,3,4', '1,2,3,4')
-	insert into Reservation values (3, 3, '1,2,3,4', '1,2,3,4')
 
